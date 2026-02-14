@@ -133,24 +133,14 @@ class ExtendedDataFetcher:
     @staticmethod
     def add_forward_returns(df: pd.DataFrame) -> pd.DataFrame:
         """
-        Add forward returns to properly avoid look-ahead bias
-        Trading decision at bar n uses data from bar n-1
-        Entry at next bar (n+1) at open price
+        Placeholder for forward returns (not used in production)
+        Originally created for performance analysis only.
+        
+        DO NOT USE in signal generation - would create look-ahead bias!
+        All signal generation uses only historical data (df.iloc[:idx])
         """
-        df['next_open'] = df['open'].shift(-1)
-        df['next_high'] = df['high'].shift(-1)
-        df['next_low'] = df['low'].shift(-1)
-        df['next_close'] = df['close'].shift(-1)
-        
-        # Entry return: from today's close to next day open
-        df['entry_slippage'] = (df['next_open'] - df['close']) / df['close']
-        
-        # Max intraday return (best case): close to next high
-        df['max_return'] = (df['next_high'] - df['next_open']) / df['next_open']
-        
-        # Max intraday loss (worst case): close to next low
-        df['min_return'] = (df['next_low'] - df['next_open']) / df['next_open']
-        
+        # Removed unused forward return columns to prevent accidental look-ahead bias
+        # If needed for analysis, use only on closed positions with proper audit
         return df
     
     @staticmethod

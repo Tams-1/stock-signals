@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / 'src'))
 
 from data.extended_fetcher import ExtendedDataFetcher, SP500_TOP_50, IBOV_TOP_30
 from signals.ensemble_signal_generator import EnsembleSignalGenerator
-from backtest.production_backtest import ProductionBacktest
+from production_backtest import ProductionBacktest
 
 logger = logging.getLogger(__name__)
 
@@ -138,7 +138,8 @@ class ExtendedBacktestRunner:
                 reason = sig_row.get('signal_reason', '')
                 confidence = sig_row.get('confidence', 0)
                 
-                if pd.isna(signal_score) or signal_score == 0:
+                # Only skip if signal is missing (NaN), not if confidence is 0
+                if pd.isna(signal_score):
                     continue
                 
                 # Execute at next open (no look-ahead bias)

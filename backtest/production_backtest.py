@@ -183,7 +183,8 @@ class ProductionBacktest:
         
         return trade
     
-    def close_position(self, date: datetime, ticker: str, exit_price: float) -> Optional[TradeRecord]:
+    def close_position(self, date: datetime, ticker: str, exit_price: float,
+                      exit_confidence: float = 0.5, exit_reason: str = 'exit signal') -> Optional[TradeRecord]:
         """Close existing long position"""
         if ticker not in self.positions:
             return None
@@ -197,22 +198,24 @@ class ProductionBacktest:
         # Update cash
         self.cash += (exec_price * quantity)
         
-        # Create trade record
+        # Create trade record with actual exit confidence
         trade = TradeRecord(ticker, pos['entry_date'], pos['entry_price'], 
-                           confidence=0.5, signal_reason='exit')
+                           confidence=exit_confidence, signal_reason=exit_reason)
         trade.close(date, exit_price, exec_price * quantity)
         
         return trade
     
-    def update_equity_curve(self, date: datetime):
+    def update_equity_curve(self, date: datetime, market_data: Dict[str, float] = None):
         """Update equity curve with current portfolio value"""
         # Cash value
         total_value = self.cash
         
-        # Open position values (at current price - approximate)
-        for ticker, pos in self.positions.items():
-            # Would need current price here
-            pass
+        # Open position values (at current price if available)
+        if market_data:
+            for ticker, pos in self.positions.items():
+                if ticker in market_data:
+                    current_price = market_data[ticker]
+                    total_value += pos['shares'] * current_price
         
         self.dates.append(date)
         self.equity_curve.append(total_value)
