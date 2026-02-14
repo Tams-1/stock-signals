@@ -11,7 +11,6 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-import json
 
 from src.signals.information_flow import InformationFlowDetector
 from src.signals.momentum_reversal import MomentumReversalDetector
@@ -21,143 +20,107 @@ class TradingSimulator:
     """Simulate trades based on signals and track P&L."""
     
     def __init__(self, initial_capital=10000, position_size=0.5):
-        """
-        Initialize simulator.
-        
-        Args:
-            initial_capital: Starting cash
-            position_size: Fraction of capital to use per trade (0.0-1.0)
-        """
         self.initial_capital = initial_capital
         self.position_size = position_size
         self.info_detector = InformationFlowDetector()
         self.mom_detector = MomentumReversalDetector()
-        
-        # Tracking
-        self.trades = []
-        self.equity_curve = []
-        self.signals_log = []
     
     def detect_signals(self, data):
         """Detect all signals in the data."""
         signals = []
         
-        # Information flow
-        info_sigs = self.info_detector.run_all(data)
-        for sig_type, strength, explanation in info_sigs:
-            signals.append({
-                'type': sig_type,
-                'strength': strength,
-                'direction': None,
-                'source': 'technical'
-            })
+        try:
+            info_sigs = self.info_detector.run_all(data)
+            for sig_type, strength, explanation in info_sigs:
+                signals.append({'type': sig_type, 'strength': strength, 'direction': None})
+        except:
+            pass
         
-        # Momentum/reversal
-        mom_sigs = self.mom_detector.run_all(data)
-        for sig_type, strength, direction, explanation in mom_sigs:
-            signals.append({
-                'type': sig_type,
-                'strength': strength,
-                'direction': direction,
-                'source': 'technical'
-            })
+        try:
+            mom_sigs = self.mom_detector.run_all(data)
+            for sig_type, strength, direction, explanation in mom_sigs:
+                signals.append({'type': sig_type, 'strength': strength, 'direction': direction})
+        except:
+            pass
         
         return signals
     
     def calculate_signal_score(self, signals):
-        """
-        Calculate overall signal score (0-1.0).
-        Higher = stronger signal, more confident direction.
-        """
+        """Calculate overall signal score."""
         if not signals:
             return 0, None
         
-        # Average strength
         avg_strength = np.mean([s['strength'] for s in signals])
-        
-        # Check directional consensus
         directions = [s['direction'] for s in signals if s['direction']]
+        
         if directions:
-            bullish_count = sum(1 for d in directions if d == 'bullish')
-            bearish_count = sum(1 for d in directions if d == 'bearish')
-            
-            if bullish_count > bearish_count:
-                direction = 'bullish'
-            elif bearish_count > bullish_count:
-                direction = 'bearish'
-            else:
-                direction = None
+            bullish = sum(1 for d in directions if d == 'bullish')
+            bearish = sum(1 for d in directions if d == 'bearish')
+            direction = 'bullish' if bullish > bearish else ('bearish' if bearish > bullish else None)
         else:
             direction = None
         
         return avg_strength, direction
     
     def simulate_ticker(self, ticker, start_date, end_date, threshold=0.5):
-        """
-        Simulate trading on a single ticker.
-        
-        Returns: dict with performance metrics
-        """
-        print(f"\nSimulating {ticker}...")
+        """Simulate trading on a single ticker."""
+        print(f"Simulating {ticker}...", end=" ", flush=True)
         
         try:
             data = yf.download(ticker, start=start_date, end=end_date, progress=False)
         except:
-            print(f"  Failed to fetch {ticker}")
+            print("Failed to fetch data")
             return None
         
         if len(data) < 40:
-            print(f"  Insufficient data")
+            print("Insufficient data")
             return None
         
+        # Convert to standard arrays for easier access
+        closes = np.array(data['Close'].values).flatten().astype(float)
+        dates = data.index.tolist()
+        
         # Trading variables
-        cash = self.initial_capital
-        shares = 0
+        cash = float(self.initial_capital)
+        shares = 0.0
         entry_price = None
         entry_date = None
-        max_drawdown = 0
-        peak_equity = self.initial_capital
+        max_drawdown = 0.0
+        peak_equity = float(self.initial_capital)
         
         trades = []
         equity_log = []
         
-        # Slide window through data
+        # Slide window
         window_size = 20
-        close_prices = data['Close'].values
         for i in range(window_size, len(data)):
-            date = data.index[i]
-            current_price = float(np.asarray(close_prices[i]).item())
+            date = dates[i]
+            current_price = float(closes[i])
             
-            # Calculate current equity
-            current_equity = float(cash) + float(shares * current_price)
+            # Current equity
+            current_equity = cash + (shares * current_price)
             equity_log.append({'date': date, 'equity': current_equity})
             
-            # Track peak and drawdown
-            if float(current_equity) > float(peak_equity):
-                peak_equity = float(current_equity)
-            drawdown = (peak_equity - current_equity) / peak_equity
-            max_drawdown = max(max_drawdown, drawdown)
+            # Track drawdown
+            if current_equity > peak_equity:
+                peak_equity = current_equity
+            if peak_equity > 0:
+                drawdown = (peak_equity - current_equity) / peak_equity
+                max_drawdown = max(max_drawdown, drawdown)
             
-            # Get window for signal detection
-            window = data.iloc[i-window_size:i].copy()
+            # Get window
+            window = data.iloc[max(0, i-window_size):i].copy()
+            if len(window) < window_size:
+                continue
             
             # Detect signals
             signals = self.detect_signals(window)
             signal_score, signal_direction = self.calculate_signal_score(signals)
             
-            if signals:
-                self.signals_log.append({
-                    'ticker': ticker,
-                    'date': date,
-                    'score': signal_score,
-                    'direction': signal_direction,
-                    'signals': len(signals)
-                })
-            
             # Trading logic
             if signal_score > threshold:
                 if signal_direction == 'bullish' and shares == 0:
-                    # Buy signal
+                    # Buy
                     position_value = cash * self.position_size
                     shares = position_value / current_price
                     cash -= position_value
@@ -165,15 +128,14 @@ class TradingSimulator:
                     entry_date = date
                 
                 elif signal_direction == 'bearish' and shares > 0:
-                    # Sell signal
+                    # Sell
                     proceeds = shares * current_price
                     cash += proceeds
                     
                     pnl = proceeds - (shares * entry_price)
-                    pnl_pct = pnl / (shares * entry_price) * 100
+                    pnl_pct = (pnl / (shares * entry_price) * 100) if entry_price else 0
                     
                     trades.append({
-                        'ticker': ticker,
                         'entry_date': entry_date,
                         'exit_date': date,
                         'entry_price': entry_price,
@@ -184,47 +146,47 @@ class TradingSimulator:
                         'hold_days': (date - entry_date).days
                     })
                     
-                    shares = 0
+                    shares = 0.0
                     entry_price = None
                     entry_date = None
         
-        # Close any open positions at end
+        # Close open positions
         if shares > 0:
-            final_price = float(np.asarray(close_prices[-1]).item())
+            final_price = float(closes[-1])
             proceeds = shares * final_price
             cash += proceeds
             
             pnl = proceeds - (shares * entry_price)
-            pnl_pct = pnl / (shares * entry_price) * 100
+            pnl_pct = (pnl / (shares * entry_price) * 100) if entry_price else 0
             
             trades.append({
-                'ticker': ticker,
                 'entry_date': entry_date,
-                'exit_date': data.index[-1],
+                'exit_date': dates[-1],
                 'entry_price': entry_price,
                 'exit_price': final_price,
                 'shares': shares,
                 'pnl': pnl,
                 'pnl_pct': pnl_pct,
-                'hold_days': (data.index[-1] - entry_date).days
+                'hold_days': (dates[-1] - entry_date).days
             })
         
-        # Calculate metrics
-        final_equity = float(cash) + float(shares * float(np.asarray(close_prices[-1]).item()))
+        # Final equity
+        final_equity = cash + (shares * float(closes[-1]))
         total_return = (final_equity - self.initial_capital) / self.initial_capital * 100
         
+        # Stats
         if trades:
-            winning_trades = sum(1 for t in trades if t['pnl'] > 0)
-            losing_trades = sum(1 for t in trades if t['pnl'] < 0)
-            win_rate = winning_trades / len(trades) * 100 if trades else 0
-            avg_win = np.mean([t['pnl'] for t in trades if t['pnl'] > 0]) if winning_trades > 0 else 0
-            avg_loss = np.mean([t['pnl'] for t in trades if t['pnl'] < 0]) if losing_trades > 0 else 0
+            winning = sum(1 for t in trades if t['pnl'] > 0)
+            losing = sum(1 for t in trades if t['pnl'] < 0)
+            win_rate = winning / len(trades) * 100 if trades else 0
+            avg_win = np.mean([t['pnl'] for t in trades if t['pnl'] > 0]) if winning > 0 else 0
+            avg_loss = np.mean([t['pnl'] for t in trades if t['pnl'] < 0]) if losing > 0 else 0
         else:
             win_rate = 0
             avg_win = 0
             avg_loss = 0
-            winning_trades = 0
-            losing_trades = 0
+            winning = 0
+            losing = 0
         
         result = {
             'ticker': ticker,
@@ -236,13 +198,13 @@ class TradingSimulator:
             'win_rate_pct': win_rate,
             'avg_win': avg_win,
             'avg_loss': avg_loss,
-            'winning_trades': winning_trades,
-            'losing_trades': losing_trades,
+            'winning_trades': winning,
+            'losing_trades': losing,
             'trades': trades,
             'equity_log': equity_log
         }
         
-        print(f"  Return: {total_return:+.1f}% | Trades: {len(trades)} | Win rate: {win_rate:.0f}%")
+        print(f"Return: {total_return:+.1f}% | Trades: {len(trades)} | Win: {win_rate:.0f}%")
         
         return result
     
@@ -253,7 +215,7 @@ class TradingSimulator:
         print(f"Initial capital: ${self.initial_capital:,.0f}")
         print(f"Position size: {self.position_size*100:.0f}% per trade")
         print(f"Signal threshold: {threshold:.2f}")
-        print(f"{'='*70}")
+        print(f"{'='*70}\n")
         
         results = []
         
@@ -313,15 +275,3 @@ class TradingSimulator:
             print(f"Avg P&L per trade: ${total_pnl/total_trades:+,.0f}")
         
         return results
-
-
-if __name__ == '__main__':
-    # Test on a few tickers
-    tickers = ['AAPL', 'MSFT', 'NVDA']
-    
-    end_date = datetime.now()
-    start_date = end_date - timedelta(days=180)  # 6 months
-    
-    simulator = TradingSimulator(initial_capital=10000, position_size=0.5)
-    results = simulator.run_backtest(tickers, start_date, end_date, threshold=0.5)
-    simulator.generate_report(results)
