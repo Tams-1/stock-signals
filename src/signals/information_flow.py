@@ -27,18 +27,18 @@ class InformationFlowDetector:
         history = data.iloc[-self.lookback_period:]
         
         # Calculate z-score of current volume
-        avg_volume = history['Volume'].mean()
-        std_volume = history['Volume'].std()
+        avg_volume = float(history['Volume'].mean()) if hasattr(history['Volume'].mean(), 'item') else float(history['Volume'].mean())
+        std_volume = float(history['Volume'].std()) if hasattr(history['Volume'].std(), 'item') else float(history['Volume'].std())
         
-        if std_volume <= 0:
+        if std_volume <= 1e-8:
             return 0, "No volume variation"
         
-        volume_zscore = (recent['Volume'] - avg_volume) / std_volume
+        volume_zscore = (float(recent['Volume']) - avg_volume) / std_volume
         
         # Check if at price extreme
-        high_20 = history['High'].max()
-        low_20 = history['Low'].min()
-        current_price = recent['Close']
+        high_20 = float(history['High'].max())
+        low_20 = float(history['Low'].min())
+        current_price = float(recent['Close'])
         
         at_high = current_price >= high_20 * 0.99
         at_low = current_price <= low_20 * 1.01

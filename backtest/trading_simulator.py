@@ -123,22 +123,23 @@ class TradingSimulator:
         
         # Slide window through data
         window_size = 20
+        close_prices = data['Close'].values
         for i in range(window_size, len(data)):
             date = data.index[i]
-            current_price = data.iloc[i]['Close']
+            current_price = float(np.asarray(close_prices[i]).item())
             
             # Calculate current equity
-            current_equity = cash + (shares * current_price)
+            current_equity = float(cash) + float(shares * current_price)
             equity_log.append({'date': date, 'equity': current_equity})
             
             # Track peak and drawdown
-            if current_equity > peak_equity:
-                peak_equity = current_equity
+            if float(current_equity) > float(peak_equity):
+                peak_equity = float(current_equity)
             drawdown = (peak_equity - current_equity) / peak_equity
             max_drawdown = max(max_drawdown, drawdown)
             
             # Get window for signal detection
-            window = data.iloc[i-window_size:i]
+            window = data.iloc[i-window_size:i].copy()
             
             # Detect signals
             signals = self.detect_signals(window)
@@ -189,7 +190,7 @@ class TradingSimulator:
         
         # Close any open positions at end
         if shares > 0:
-            final_price = data.iloc[-1]['Close']
+            final_price = float(np.asarray(close_prices[-1]).item())
             proceeds = shares * final_price
             cash += proceeds
             
@@ -209,7 +210,7 @@ class TradingSimulator:
             })
         
         # Calculate metrics
-        final_equity = cash + (shares * data.iloc[-1]['Close'])
+        final_equity = float(cash) + float(shares * float(np.asarray(close_prices[-1]).item()))
         total_return = (final_equity - self.initial_capital) / self.initial_capital * 100
         
         if trades:
