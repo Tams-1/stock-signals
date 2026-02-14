@@ -118,14 +118,54 @@ Backtesting validates signal quality by measuring:
 3. **Average move**: How large are typical moves after signals?
 4. **Risk/reward**: Best performing signal combinations
 
+## Real-time Production Daemon
+
+Run the signal monitor every minute on all 100 stocks:
+
+```bash
+# Single scan (test)
+python src/daemon.py
+
+# Continuous monitoring (production)
+from src.daemon import run_continuous_monitor
+
+tickers = [line.strip() for line in open('configs/top_100_tickers.txt')]
+run_continuous_monitor(tickers, interval_seconds=60, fetch_news=True)
+```
+
+**What it does**:
+- Fetches latest daily data for all stocks
+- Detects technical signals (information flow, momentum, reversal)
+- Fetches recent news and analyzes sentiment
+- Correlates technical signals with news sentiment
+- Assesses overall confidence (0-1.0)
+- Stores alerts in SQLite DB
+- Can send Telegram notifications
+
+**Alert Confidence Calculation**:
+- Base: average strength of technical signals
+- Boost: +30% if news sentiment agrees with signal direction
+- Threshold: only alert on confidence > 0.4
+
+## News Sentiment Analysis
+
+Uses TextBlob for quick sentiment classification:
+- **Polarity**: -1.0 (very negative) to +1.0 (very positive)
+- **Sentiment**: positive/negative/neutral
+- **Weighted**: title 60%, description 40%
+
+Can upgrade to transformer models (DistilBERT, FinBERT) for better accuracy on financial text.
+
 ## Next Steps
 
-1. **Add fundamental signals**: Earnings, guidance, cash flow
-2. **Add valuation signals**: P/E relative value, PEG, dividend yields
-3. **Add correlation signals**: Stock/sector/index decoupling
-4. **Backtest full suite**: Optimize signal combinations
-5. **Live alerting**: Telegram/Email notifications for signals
-6. **Dashboard**: Real-time visualization of signals and performance
+1. **Setup NewsAPI** (free tier): Get API key at https://newsapi.org/
+2. **Deploy daemon**: Use cron/systemd to run every minute
+3. **Telegram integration**: Link alerts to OpenClaw messaging
+4. **Add fundamental signals**: Earnings, guidance, cash flow
+5. **Add valuation signals**: P/E relative value, PEG, dividend yields
+6. **Add correlation signals**: Stock/sector/index decoupling
+7. **Dashboard**: Real-time visualization of signals and performance
+8. **Optimize**: Backtest signal combinations, tune confidence thresholds
 
 ## References
 

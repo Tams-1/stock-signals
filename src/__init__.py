@@ -1,0 +1,1 @@
+"""Stock signal detection library."""

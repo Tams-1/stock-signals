@@ -30,7 +30,7 @@ class InformationFlowDetector:
         avg_volume = history['Volume'].mean()
         std_volume = history['Volume'].std()
         
-        if std_volume == 0:
+        if std_volume <= 0:
             return 0, "No volume variation"
         
         volume_zscore = (recent['Volume'] - avg_volume) / std_volume
