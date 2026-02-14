@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from signals.information_flow import InformationFlowDetector
 from signals.momentum_reversal import MomentumReversalDetector
+from data.fetch_data import fetch_ticker_data
 
 class StockSignalMonitor:
     """Monitor S&P500 stocks for important signals."""
@@ -71,7 +72,7 @@ class StockSignalMonitor:
         start_date = end_date - timedelta(days=lookback_days)
         
         try:
-            data = yf.download(ticker, start=start_date, end=end_date, progress=False)
+            data = fetch_ticker_data(ticker, start=start_date, end=end_date, progress=False)
             return data
         except Exception as e:
             print(f"Error fetching {ticker}: {e}")

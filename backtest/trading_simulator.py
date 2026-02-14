@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 
 from src.signals.information_flow import InformationFlowDetector
 from src.signals.momentum_reversal import MomentumReversalDetector
+from src.data.fetch_data import fetch_ticker_data
 
 
 class TradingSimulator:
@@ -67,7 +68,7 @@ class TradingSimulator:
         print(f"Simulating {ticker}...", end=" ", flush=True)
         
         try:
-            data = yf.download(ticker, start=start_date, end=end_date, progress=False)
+            data = fetch_ticker_data(ticker, start=start_date, end=end_date, progress=False)
         except:
             print("Failed to fetch data")
             return None

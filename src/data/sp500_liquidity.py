@@ -5,6 +5,7 @@ Get top 100 most liquid S&P500 stocks by average volume.
 import pandas as pd
 import yfinance as yf
 from datetime import datetime, timedelta
+from fetch_data import fetch_ticker_data
 
 def get_sp500_tickers():
     """Fetch list of S&P500 tickers from Wikipedia."""
@@ -41,7 +42,7 @@ def get_top_100_liquid(n_days=20, min_avg_volume=1e6):
             print(f"  Processed {i + 1}/{len(tickers)}...")
         
         try:
-            data = yf.download(ticker, start=start_date, end=end_date, progress=False)
+            data = fetch_ticker_data(ticker, start=start_date, end=end_date, progress=False)
             if len(data) > 0:
                 avg_volume = data['Volume'].mean()
                 if avg_volume >= min_avg_volume:

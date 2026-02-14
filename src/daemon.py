@@ -18,6 +18,7 @@ import time
 from signals.information_flow import InformationFlowDetector
 from signals.momentum_reversal import MomentumReversalDetector
 from data.news_sentiment import NewsSentimentAnalyzer
+from data.fetch_data import fetch_ticker_data
 
 class SignalDaemon:
     """Production daemon for real-time stock signal detection."""
@@ -82,7 +83,7 @@ class SignalDaemon:
         """Fetch 1-minute OHLCV for signal detection."""
         try:
             # Get last 60 minutes of 1-min bars
-            data = yf.download(ticker, period='60m', interval='1m', progress=False)
+            data = fetch_ticker_data(ticker, period='60m', interval='1m', progress=False)
             return data
         except Exception as e:
             return None
@@ -92,7 +93,7 @@ class SignalDaemon:
         try:
             end_date = datetime.now()
             start_date = end_date - timedelta(days=days)
-            data = yf.download(ticker, start=start_date, end=end_date, progress=False)
+            data = fetch_ticker_data(ticker, start=start_date, end=end_date, progress=False)
             return data
         except Exception as e:
             return None
