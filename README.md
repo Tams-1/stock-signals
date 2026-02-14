@@ -65,6 +65,15 @@ Detect directional persistence and mean reversion:
 - **Mean Reversion Extreme**: Price moves > 2σ from mean (statistical extremes)
 - **Momentum Continuation**: Price + volume both trending in same direction
 
+### 3. Trend Detection & Filtering (New)
+Distinguish oversold consolidation from downtrends using 4 methods:
+- **Slope Analysis**: Linear regression of price (detects direction + strength)
+- **Moving Average Cross**: 5-day vs 20-day MA (simple trend signal)
+- **ADX (Average Directional Index)**: Measures trend strength (0-100 scale)
+- **Price Structure**: Higher lows/lower highs pattern detection
+
+**Why this matters**: Mean-reversion signals work in consolidation but fail in trends. Trend filtering prevents false signals when markets are trending down.
+
 ### 3. Fundamental Signals (Coming)
 - Earnings surprise magnitude
 - Guidance vs expectations delta
@@ -182,6 +191,52 @@ summary = monitor.get_signals_summary()
 print(summary)
 ```
 
+### Enhanced Backtesting with Trend Filter
+
+```python
+from backtest.trading_simulator_with_trend_filter import EnhancedTradingSimulator
+from datetime import datetime, timedelta
+
+simulator = EnhancedTradingSimulator(initial_capital=10000, position_size=0.5)
+
+end_date = datetime.now()
+start_date = end_date - timedelta(days=180)
+
+# Without trend filter (original)
+results_no_filter = simulator.run_backtest(
+    ['NVDA', 'MSFT', 'GOOGL'],
+    start_date, end_date,
+    use_trend_filter=False
+)
+
+# With trend filter (improved - avoids trend trades)
+results_with_filter = simulator.run_backtest(
+    ['NVDA', 'MSFT', 'GOOGL'],
+    start_date, end_date,
+    use_trend_filter=True
+)
+```
+
+### Trend Detection Standalone
+
+```python
+from src.signals.trend_detection import TrendDetector
+from src.data.fetch_data import fetch_ticker_data
+
+detector = TrendDetector()
+data = fetch_ticker_data('MSFT', start='2025-10-17', end='2025-11-06')
+
+# Get full trend context
+trend = detector.get_trend_context(data)
+print(trend['consensus'])  # 'uptrend', 'downtrend', or 'consolidation'
+print(trend['confidence'])  # 0-1.0
+
+# Check if mean-reversion signals should be trusted
+should_trade, multiplier, reason = detector.should_trust_mean_reversion(data)
+# multiplier: reduce signal confidence by this factor
+# reason: explanation of why
+```
+
 ### Legacy Backtesting
 
 ```python
@@ -265,12 +320,61 @@ Can upgrade to transformer models (DistilBERT, FinBERT) for better accuracy on f
 7. **Dashboard**: Real-time visualization of signals and performance
 8. **Optimize**: Backtest signal combinations, tune confidence thresholds
 
+## Forensic Analysis: Trend Detection in Action
+
+### Case Study: NVDA (Winner) vs MSFT (Loser)
+
+**NVDA Trade (+4.84% profit, 23 days)**
+- Detected: Oversold in consolidation (-3% pullback after sideways period)
+- Trend context: Weak downtrend (50% confidence)
+- Signal action: Bullish order imbalance detected
+- Outcome: Stock bounced as expected, exited at profit
+
+**MSFT Trade (-2.27% loss, 46 days)**
+- Detected: Oversold in downtrend (-5.5% decline in strong downtrend)
+- Trend context: Strong downtrend (75% confidence)
+- Signal action: System expected mean-reversion, but trend continued down
+- Outcome: Stock continued down instead of reverting, exited at loss
+
+**Key Learning**: Both trades had the same signal (mean-reversion extreme), but NVDA was in consolidation while MSFT was in a trend. Trend filter would have:
+- ✅ Allowed NVDA (consolidation = trust mean-reversion)
+- ❌ Blocked MSFT (strong downtrend = don't trust mean-reversion)
+
+## Trend Detection Methods Explained
+
+### 1. Slope Analysis
+Fits a line through 20 days of prices. Calculates:
+- Direction: Is slope positive (up), negative (down), or flat?
+- Strength: R² value (how consistent is the trend?)
+- Speed: % change per day
+
+### 2. Moving Average Cross
+Simple but effective:
+- Short MA (5d) > Long MA (20d) = uptrend
+- Short MA (5d) < Long MA (20d) = downtrend
+- Close together = consolidation
+
+### 3. ADX (Average Directional Index)
+Measures trend strength 0-100:
+- <25: Weak/no trend (consolidation)
+- 25-40: Moderate trend
+- >40: Strong trend (trust momentum, avoid mean-reversion)
+
+### 4. Price Structure
+Compares first half vs second half of 20-day window:
+- Higher lows + higher highs = uptrend
+- Lower lows + lower highs = downtrend
+- Overlapping ranges = consolidation
+
+**Consensus**: If 2+ methods agree on direction, confidence is high.
+
 ## References
 
 - Market Microstructure (O'Hara, 1995)
 - Behavioral Finance (Kahneman & Tversky)
 - Value Investing (Graham, Dodd, Buffett)
 - Technical Analysis (Pring, Murphy)
+- Trend Filtering: ADX methodology, Price Action analysis
 
 ## License
 
