@@ -379,3 +379,6 @@ Compares first half vs second half of 20-day window:
 ## License
 
 MIT
+
+# Access Test
+✅ TARS access confirmed (2026-02-14 10:13 GMT-3)
