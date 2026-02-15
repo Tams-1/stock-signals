@@ -17,7 +17,7 @@ from datetime import datetime, timedelta
 
 from src.signals.information_flow import InformationFlowDetector
 from src.signals.momentum_reversal import MomentumReversalDetector
-from src.signals.robust_trend_detection import RobustTrendDetector
+from src.signals.trend_detector_v2 import RobustTrendDetector  # FIX #1: Use improved dual-timeframe detector
 from src.data.fetch_data import fetch_ticker_data
 
 
@@ -76,7 +76,7 @@ class ProductionSimulator:
         
         return signals
     
-    def calculate_signal_score(self, signals, data, base_threshold=0.5):
+    def calculate_signal_score(self, signals, data, base_threshold=0.35):  # FIX #2: Lower from 0.5 to 0.35
         """Calculate signal score with robust trend filtering."""
         if not signals:
             return 0, None, base_threshold
@@ -136,7 +136,7 @@ class ProductionSimulator:
             cost_pct = (self.spread_pct / 2 + self.slippage_pct + self.commission_pct) / 100
             return price * (1 - cost_pct)
     
-    def simulate_ticker(self, ticker, start_date, end_date, base_threshold=0.5):
+    def simulate_ticker(self, ticker, start_date, end_date, base_threshold=0.35):  # FIX #2: Lower from 0.5 to 0.35
         """
         Simulate trading with NO look-ahead bias.
         
@@ -185,7 +185,10 @@ class ProductionSimulator:
             # Current equity (using prior close)
             current_price = closes[i - 1]  # Prior close for equity calc
             current_equity = cash + (shares * current_price)
-            equity_log.append({'date': signal_date, 'equity': current_equity})
+            equity_log.append({
+                'date': str(signal_date.date()) if hasattr(signal_date, 'date') else str(signal_date),
+                'equity': float(current_equity)
+            })
             
             # Track drawdown
             if current_equity > peak_equity:
@@ -206,12 +209,12 @@ class ProductionSimulator:
             )
             
             signal_log.append({
-                'date': signal_date,
-                'signal_score': signal_score,
+                'date': str(signal_date.date()) if hasattr(signal_date, 'date') else str(signal_date),
+                'signal_score': float(signal_score),
                 'direction': signal_direction,
-                'threshold': threshold,
-                'execution_date': execution_date,
-                'execution_price': execution_price
+                'threshold': float(threshold),
+                'execution_date': str(execution_date.date()) if hasattr(execution_date, 'date') else str(execution_date),
+                'execution_price': float(execution_price)
             })
             
             # Trading logic: Execute tomorrow at open
@@ -235,14 +238,14 @@ class ProductionSimulator:
                     pnl_pct = (pnl / (shares * entry_price) * 100) if entry_price else 0
                     
                     trades.append({
-                        'entry_date': entry_date,
-                        'exit_date': execution_date,
-                        'entry_price': entry_price,
-                        'exit_price': fill_price,
-                        'shares': shares,
-                        'pnl': pnl,
-                        'pnl_pct': pnl_pct,
-                        'hold_days': (execution_date - entry_date).days
+                        'entry_date': str(entry_date.date()) if hasattr(entry_date, 'date') else str(entry_date),
+                        'exit_date': str(execution_date.date()) if hasattr(execution_date, 'date') else str(execution_date),
+                        'entry_price': float(entry_price),
+                        'exit_price': float(fill_price),
+                        'shares': float(shares),
+                        'pnl': float(pnl),
+                        'pnl_pct': float(pnl_pct),
+                        'hold_days': int((execution_date - entry_date).days)
                     })
                     
                     shares = 0.0
@@ -259,14 +262,14 @@ class ProductionSimulator:
             pnl_pct = (pnl / (shares * entry_price) * 100) if entry_price else 0
             
             trades.append({
-                'entry_date': entry_date,
-                'exit_date': dates[-1],
-                'entry_price': entry_price,
-                'exit_price': final_price,
-                'shares': shares,
-                'pnl': pnl,
-                'pnl_pct': pnl_pct,
-                'hold_days': (dates[-1] - entry_date).days
+                'entry_date': str(entry_date.date()) if hasattr(entry_date, 'date') else str(entry_date),
+                'exit_date': str(dates[-1].date()) if hasattr(dates[-1], 'date') else str(dates[-1]),
+                'entry_price': float(entry_price),
+                'exit_price': float(final_price),
+                'shares': float(shares),
+                'pnl': float(pnl),
+                'pnl_pct': float(pnl_pct),
+                'hold_days': int((dates[-1] - entry_date).days)
             })
         
         # Final equity
@@ -302,13 +305,16 @@ class ProductionSimulator:
         
         return result
     
-    def run_backtest(self, tickers, start_date, end_date, base_threshold=0.5):
+    def run_backtest(self, tickers, start_date, end_date, base_threshold=0.35):  # FIX #2: Lower from 0.5 to 0.35
         """Run production-grade backtest with NO look-ahead bias."""
         
         print(f"\n{'='*70}")
         print(f"PRODUCTION BACKTEST (NO Look-Ahead Bias)")
         print(f"{'='*70}")
-        print(f"Period: {start_date.date()} to {end_date.date()}")
+        # Handle both string and datetime inputs
+        start_str = start_date if isinstance(start_date, str) else start_date.date()
+        end_str = end_date if isinstance(end_date, str) else end_date.date()
+        print(f"Period: {start_str} to {end_str}")
         print(f"Costs: {self.commission_pct:.2f}% commission + {self.spread_pct:.2f}% spread + {self.slippage_pct:.2f}% slippage")
         print(f"Threshold: {base_threshold:.2f}")
         print(f"Stocks: {len(tickers)}\n")

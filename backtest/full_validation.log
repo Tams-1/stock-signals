@@ -1,0 +1,206 @@
+================================================================================
+FULL VALIDATION - FIX #1 (REGIME) + FIX #2 (THRESHOLD)
+================================================================================
+
+Changes:
+  Fix #1: TrendDetectorV2 (50-day macro + 20-day micro)
+  Fix #2: Threshold 0.50 → 0.35
+
+Testing: 18 IBOV stocks across 4 periods
+
+
+================================================================================
+PERIOD_1: Jan-Jun 2024 (Choppy + Bull Mix)
+================================================================================
+
+======================================================================
+PRODUCTION BACKTEST (NO Look-Ahead Bias)
+======================================================================
+Period: 2024-01-01 to 2024-06-30
+Costs: 0.10% commission + 0.05% spread + 0.10% slippage
+Threshold: 0.35
+Stocks: 18
+
+Simulating PETR4.SA... Return: +64.1% | Trades: 3 | Win: 100%
+Simulating VALE3.SA... Return: +49.0% | Trades: 3 | Win: 67%
+Simulating ITUB4.SA... Return: +60.9% | Trades: 4 | Win: 75%
+Simulating BBDC4.SA... Return: +35.3% | Trades: 2 | Win: 0%
+Simulating BBAS3.SA... Return: +47.0% | Trades: 1 | Win: 0%
+Simulating ABEV3.SA... Return: +44.2% | Trades: 3 | Win: 0%
+Simulating B3SA3.SA... Return: +29.8% | Trades: 1 | Win: 0%
+Simulating SUZB3.SA... Return: +44.9% | Trades: 2 | Win: 50%
+Simulating RENT3.SA... Return: +40.0% | Trades: 3 | Win: 67%
+Simulating WEGE3.SA... Return: +9.1% | Trades: 5 | Win: 80%
+Simulating MGLU3.SA... Return: +36.2% | Trades: 3 | Win: 67%
+Simulating PCAR3.SA... Return: -6.1% | Trades: 3 | Win: 33%
+Simulating LREN3.SA... Return: +39.5% | Trades: 3 | Win: 33%
+Simulating RAIZ4.SA... Return: +39.5% | Trades: 3 | Win: 33%
+Simulating GGBR4.SA... Return: +52.1% | Trades: 2 | Win: 100%
+Simulating ASAI3.SA... Return: +37.7% | Trades: 5 | Win: 20%
+Simulating JBSS3.SA... $JBSS3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['JBSS3.SA']: possibly delisted; no timezone found
+Insufficient data
+Simulating RDOR3.SA... Return: +59.8% | Trades: 7 | Win: 57%
+
+================================================================================
+PERIOD SUMMARY
+================================================================================
+Portfolio return: +40.18%
+Baseline: +4.28%
+Improvement: +35.90%
+Total trades: 53
+Avg win rate: 46.0%
+Stocks tested: 17/18
+
+================================================================================
+PERIOD_2: Jul-Dec 2024 (Continuation)
+================================================================================
+
+======================================================================
+PRODUCTION BACKTEST (NO Look-Ahead Bias)
+======================================================================
+Period: 2024-07-01 to 2024-12-31
+Costs: 0.10% commission + 0.05% spread + 0.10% slippage
+Threshold: 0.35
+Stocks: 18
+
+Simulating PETR4.SA... Return: +6.4% | Trades: 4 | Win: 75%
+Simulating VALE3.SA... Return: +45.3% | Trades: 3 | Win: 33%
+Simulating ITUB4.SA... Return: -3.6% | Trades: 3 | Win: 67%
+Simulating BBDC4.SA... Return: +36.5% | Trades: 4 | Win: 50%
+Simulating BBAS3.SA... Return: +39.9% | Trades: 1 | Win: 0%
+Simulating ABEV3.SA... Return: +6.6% | Trades: 2 | Win: 100%
+Simulating B3SA3.SA... Return: -5.6% | Trades: 4 | Win: 50%
+Simulating SUZB3.SA... Return: +3.6% | Trades: 2 | Win: 100%
+Simulating RENT3.SA... Return: +35.2% | Trades: 4 | Win: 50%
+Simulating WEGE3.SA... Return: +7.3% | Trades: 2 | Win: 100%
+Simulating MGLU3.SA... Return: +30.3% | Trades: 4 | Win: 25%
+Simulating PCAR3.SA... Return: +70.2% | Trades: 4 | Win: 75%
+Simulating LREN3.SA... Return: +31.7% | Trades: 2 | Win: 50%
+Simulating RAIZ4.SA... Return: +18.3% | Trades: 2 | Win: 0%
+Simulating GGBR4.SA... Return: +8.2% | Trades: 2 | Win: 100%
+Simulating ASAI3.SA... Return: +15.3% | Trades: 2 | Win: 0%
+Simulating JBSS3.SA... $JBSS3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['JBSS3.SA']: possibly delisted; no timezone found
+Insufficient data
+Simulating RDOR3.SA... Return: +46.0% | Trades: 3 | Win: 33%
+
+================================================================================
+PERIOD SUMMARY
+================================================================================
+Portfolio return: +23.04%
+Baseline: +2.47%
+Improvement: +20.57%
+Total trades: 48
+Avg win rate: 53.4%
+Stocks tested: 17/18
+
+================================================================================
+PERIOD_3: Jan-Feb 2025 (Trending)
+================================================================================
+
+======================================================================
+PRODUCTION BACKTEST (NO Look-Ahead Bias)
+======================================================================
+Period: 2025-01-01 to 2025-02-28
+Costs: 0.10% commission + 0.05% spread + 0.10% slippage
+Threshold: 0.35
+Stocks: 18
+
+Simulating PETR4.SA... Return: +2.8% | Trades: 1 | Win: 100%
+Simulating VALE3.SA... Return: +46.1% | Trades: 2 | Win: 0%
+Simulating ITUB4.SA... Return: +1.0% | Trades: 1 | Win: 100%
+Simulating BBDC4.SA... Return: +0.0% | Trades: 0 | Win: 0%
+Simulating BBAS3.SA... Return: +0.0% | Trades: 0 | Win: 0%
+Simulating ABEV3.SA... Return: +61.6% | Trades: 1 | Win: 100%
+Simulating B3SA3.SA... Return: +0.3% | Trades: 1 | Win: 100%
+Simulating SUZB3.SA... Return: +45.5% | Trades: 2 | Win: 0%
+Simulating RENT3.SA... Return: +43.5% | Trades: 1 | Win: 0%
+Simulating WEGE3.SA... Return: +42.5% | Trades: 1 | Win: 0%
+Simulating MGLU3.SA... Return: +0.0% | Trades: 0 | Win: 0%
+Simulating PCAR3.SA... Return: +42.7% | Trades: 2 | Win: 50%
+Simulating LREN3.SA... Return: +44.3% | Trades: 1 | Win: 0%
+Simulating RAIZ4.SA... Return: +36.3% | Trades: 2 | Win: 0%
+Simulating GGBR4.SA... Return: +48.2% | Trades: 1 | Win: 0%
+Simulating ASAI3.SA... Return: +0.0% | Trades: 0 | Win: 0%
+Simulating JBSS3.SA... $JBSS3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['JBSS3.SA']: possibly delisted; no timezone found
+Insufficient data
+Simulating RDOR3.SA... Return: +0.0% | Trades: 0 | Win: 0%
+
+================================================================================
+PERIOD SUMMARY
+================================================================================
+Portfolio return: +24.40%
+Baseline: +2.60%
+Improvement: +21.80%
+Total trades: 16
+Avg win rate: 26.5%
+Stocks tested: 17/18
+
+================================================================================
+PERIOD_4: Feb 2025 - Feb 2026 (Bull Market)
+================================================================================
+
+======================================================================
+PRODUCTION BACKTEST (NO Look-Ahead Bias)
+======================================================================
+Period: 2025-02-01 to 2026-02-28
+Costs: 0.10% commission + 0.05% spread + 0.10% slippage
+Threshold: 0.35
+Stocks: 18
+
+Simulating PETR4.SA... Return: +14.8% | Trades: 9 | Win: 78%
+Simulating VALE3.SA... Return: +6.8% | Trades: 7 | Win: 57%
+Simulating ITUB4.SA... Return: +11.7% | Trades: 5 | Win: 80%
+Simulating BBDC4.SA... Return: +11.0% | Trades: 6 | Win: 83%
+Simulating BBAS3.SA... Return: +2.5% | Trades: 6 | Win: 67%
+Simulating ABEV3.SA... Return: -2.1% | Trades: 4 | Win: 25%
+Simulating B3SA3.SA... Return: +21.4% | Trades: 6 | Win: 83%
+Simulating SUZB3.SA... Return: +62.4% | Trades: 6 | Win: 50%
+Simulating RENT3.SA... Return: +6.4% | Trades: 5 | Win: 60%
+Simulating WEGE3.SA... Return: +4.2% | Trades: 4 | Win: 75%
+Simulating MGLU3.SA... Return: -3.4% | Trades: 4 | Win: 50%
+Simulating PCAR3.SA... Return: +78.0% | Trades: 5 | Win: 40%
+Simulating LREN3.SA... Return: +3.1% | Trades: 4 | Win: 50%
+Simulating RAIZ4.SA... Return: -2.3% | Trades: 7 | Win: 43%
+Simulating GGBR4.SA... Return: -2.8% | Trades: 7 | Win: 43%
+Simulating ASAI3.SA... Return: -0.3% | Trades: 5 | Win: 20%
+Simulating JBSS3.SA... $JBSS3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['JBSS3.SA']: possibly delisted; no timezone found
+Insufficient data
+Simulating RDOR3.SA... Return: +5.0% | Trades: 5 | Win: 80%
+
+================================================================================
+PERIOD SUMMARY
+================================================================================
+Portfolio return: +12.73%
+Baseline: +1.06%
+Improvement: +11.67%
+Total trades: 95
+Avg win rate: 57.9%
+Stocks tested: 17/18
+
+================================================================================
+MULTI-PERIOD SUMMARY
+================================================================================
+period_1: +40.18% (baseline: +4.28%) ✓
+period_2: +23.04% (baseline: +2.47%) ✓
+period_3: +24.40% (baseline: +2.60%) ✓
+period_4: +12.73% (baseline: +1.06%) ✓
+
+Periods beating baseline: 4/4
+Average improvement: +22.49%
+
+✓ SUCCESS: Beat baseline in 3+ periods
+✓ SUCCESS: Period 4 >+5% (bull market capture)
+
+Detailed results: /home/ulluboz/.openclaw/workspace/stock-signals/backtest/full_validation_results.json

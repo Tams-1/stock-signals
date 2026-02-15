@@ -1,0 +1,1505 @@
+{
+  "PETR4.SA": {
+    "ticker": "PETR4.SA",
+    "old_classifications": [
+      {
+        "date": "2025-04-16",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-04-25",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-05",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-12",
+        "consensus": "uptrend",
+        "confidence": 0.6666666666666666
+      },
+      {
+        "date": "2025-05-19",
+        "consensus": "uptrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-05-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-02",
+        "consensus": "uptrend",
+        "confidence": 0.6666666666666666
+      },
+      {
+        "date": "2025-06-09",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-16",
+        "consensus": "downtrend",
+        "confidence": 0.5
+      },
+      {
+        "date": "2025-06-24",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-01",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-08",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-15",
+        "consensus": "uptrend",
+        "confidence": 0.6666666666666666
+      },
+      {
+        "date": "2025-07-22",
+        "consensus": "downtrend",
+        "confidence": 0.5
+      },
+      {
+        "date": "2025-07-29",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-08-05",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-08-12",
+        "consensus": "downtrend",
+        "confidence": 0.5
+      },
+      {
+        "date": "2025-08-19",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-08-26",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-02",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-09",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-16",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-23",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-30",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-07",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-14",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-21",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-28",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-04",
+        "consensus": "downtrend",
+        "confidence": 0.6666666666666666
+      },
+      {
+        "date": "2025-11-11",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-18",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-03",
+        "consensus": "downtrend",
+        "confidence": 0.5
+      },
+      {
+        "date": "2025-12-10",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-17",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-26",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-06",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-13",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-20",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-27",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-03",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      }
+    ],
+    "new_classifications": [
+      {
+        "date": "2025-04-16",
+        "consensus": "downtrend",
+        "confidence": 0.907226194817821
+      },
+      {
+        "date": "2025-04-25",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-05",
+        "consensus": "downtrend",
+        "confidence": 0.8666016017872314
+      },
+      {
+        "date": "2025-05-12",
+        "consensus": "downtrend",
+        "confidence": 0.7
+      },
+      {
+        "date": "2025-05-19",
+        "consensus": "uptrend",
+        "confidence": 0.630125531725794
+      },
+      {
+        "date": "2025-05-26",
+        "consensus": "uptrend",
+        "confidence": 0.7072370294860373
+      },
+      {
+        "date": "2025-06-02",
+        "consensus": "downtrend",
+        "confidence": 0.6087089303981269
+      },
+      {
+        "date": "2025-06-09",
+        "consensus": "downtrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-06-16",
+        "consensus": "consolidation",
+        "confidence": 0.2969598821050475
+      },
+      {
+        "date": "2025-06-24",
+        "consensus": "uptrend",
+        "confidence": 0.7197772482178671
+      },
+      {
+        "date": "2025-07-01",
+        "consensus": "uptrend",
+        "confidence": 0.7038849956136749
+      },
+      {
+        "date": "2025-07-08",
+        "consensus": "uptrend",
+        "confidence": 0.5125683131202157
+      },
+      {
+        "date": "2025-07-15",
+        "consensus": "uptrend",
+        "confidence": 0.52373035197723
+      },
+      {
+        "date": "2025-07-22",
+        "consensus": "uptrend",
+        "confidence": 0.35261180370982387
+      },
+      {
+        "date": "2025-07-29",
+        "consensus": "uptrend",
+        "confidence": 0.40715706529548074
+      },
+      {
+        "date": "2025-08-05",
+        "consensus": "uptrend",
+        "confidence": 0.426577277249277
+      },
+      {
+        "date": "2025-08-12",
+        "consensus": "consolidation",
+        "confidence": 0.7395594023993578
+      },
+      {
+        "date": "2025-08-19",
+        "consensus": "downtrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-08-26",
+        "consensus": "downtrend",
+        "confidence": 0.6674625136629064
+      },
+      {
+        "date": "2025-09-02",
+        "consensus": "uptrend",
+        "confidence": 0.48462948036515446
+      },
+      {
+        "date": "2025-09-09",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-09-16",
+        "consensus": "uptrend",
+        "confidence": 0.5629341498730664
+      },
+      {
+        "date": "2025-09-23",
+        "consensus": "uptrend",
+        "confidence": 0.329242858354907
+      },
+      {
+        "date": "2025-09-30",
+        "consensus": "uptrend",
+        "confidence": 0.4437176638066031
+      },
+      {
+        "date": "2025-10-07",
+        "consensus": "consolidation",
+        "confidence": 0.8310742902260474
+      },
+      {
+        "date": "2025-10-14",
+        "consensus": "downtrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-10-21",
+        "consensus": "downtrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-10-28",
+        "consensus": "downtrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-11-04",
+        "consensus": "downtrend",
+        "confidence": 0.4871707761425929
+      },
+      {
+        "date": "2025-11-11",
+        "consensus": "uptrend",
+        "confidence": 0.8
+      },
+      {
+        "date": "2025-11-18",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-11-26",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-12-03",
+        "consensus": "uptrend",
+        "confidence": 0.39893336361880566
+      },
+      {
+        "date": "2025-12-10",
+        "consensus": "downtrend",
+        "confidence": 0.5631844765682957
+      },
+      {
+        "date": "2025-12-17",
+        "consensus": "downtrend",
+        "confidence": 0.6450614952980029
+      },
+      {
+        "date": "2025-12-26",
+        "consensus": "consolidation",
+        "confidence": 0.6
+      },
+      {
+        "date": "2026-01-06",
+        "consensus": "consolidation",
+        "confidence": 0.4271239712710404
+      },
+      {
+        "date": "2026-01-13",
+        "consensus": "consolidation",
+        "confidence": 0.5885422247465543
+      },
+      {
+        "date": "2026-01-20",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2026-01-27",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2026-02-03",
+        "consensus": "uptrend",
+        "confidence": 0.9310150127197665
+      },
+      {
+        "date": "2026-02-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      }
+    ],
+    "differences": [
+      {
+        "date": "2025-05-12",
+        "old": "uptrend",
+        "new": "downtrend",
+        "old_conf": 0.6666666666666666,
+        "new_conf": 0.7,
+        "price": 29.12285041809082,
+        "future_10d_return": -0.011058461128574892
+      },
+      {
+        "date": "2025-06-02",
+        "old": "uptrend",
+        "new": "downtrend",
+        "old_conf": 0.6666666666666666,
+        "new_conf": 0.6087089303981269,
+        "price": 28.59836196899414,
+        "future_10d_return": 0.06758730187948636
+      },
+      {
+        "date": "2025-06-16",
+        "old": "downtrend",
+        "new": "consolidation",
+        "old_conf": 0.5,
+        "new_conf": 0.2969598821050475,
+        "price": 30.531248092651367,
+        "future_10d_return": -0.02235323714683557
+      },
+      {
+        "date": "2025-07-22",
+        "old": "downtrend",
+        "new": "uptrend",
+        "old_conf": 0.5,
+        "new_conf": 0.35261180370982387,
+        "price": 29.71607208251953,
+        "future_10d_return": 0.030622062699216634
+      },
+      {
+        "date": "2025-07-29",
+        "old": "downtrend",
+        "new": "uptrend",
+        "old_conf": 1.0,
+        "new_conf": 0.40715706529548074,
+        "price": 30.7492618560791,
+        "future_10d_return": -0.05055488429745458
+      },
+      {
+        "date": "2025-08-12",
+        "old": "downtrend",
+        "new": "consolidation",
+        "old_conf": 0.5,
+        "new_conf": 0.7395594023993578,
+        "price": 29.19473648071289,
+        "future_10d_return": 0.010400778756668005
+      },
+      {
+        "date": "2025-10-07",
+        "old": "downtrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.8310742902260474,
+        "price": 29.886138916015625,
+        "future_10d_return": -0.04281545712333901
+      },
+      {
+        "date": "2025-12-03",
+        "old": "downtrend",
+        "new": "uptrend",
+        "old_conf": 0.5,
+        "new_conf": 0.39893336361880566,
+        "price": 31.320829391479492,
+        "future_10d_return": -0.0380687449436351
+      },
+      {
+        "date": "2025-12-26",
+        "old": "downtrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.6,
+        "price": 30.40999984741211,
+        "future_10d_return": 0.02400524649454905
+      },
+      {
+        "date": "2026-01-06",
+        "old": "downtrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.4271239712710404,
+        "price": 29.639999389648438,
+        "future_10d_return": 0.08940626114872319
+      },
+      {
+        "date": "2026-01-13",
+        "old": "uptrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.5885422247465543,
+        "price": 31.139999389648438,
+        "future_10d_return": 0.1602441161294812
+      }
+    ],
+    "improvement_metrics": {
+      "old_downtrend_pct": 47.61904761904761,
+      "new_downtrend_pct": 33.33333333333333,
+      "old_uptrend_pct": 52.38095238095239,
+      "new_uptrend_pct": 52.38095238095239,
+      "classification_changes": 11,
+      "avg_old_confidence": 0.9166666666666666,
+      "avg_new_confidence": 0.615781378679922
+    }
+  },
+  "ITUB4.SA": {
+    "ticker": "ITUB4.SA",
+    "old_classifications": [
+      {
+        "date": "2025-04-16",
+        "consensus": "downtrend",
+        "confidence": 0.5
+      },
+      {
+        "date": "2025-04-25",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-05",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-12",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-19",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-02",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-09",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-16",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-24",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-01",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-08",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-15",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-22",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-29",
+        "consensus": "downtrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-08-05",
+        "consensus": "downtrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-08-12",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-08-19",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-08-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-02",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-09",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-16",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-23",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-30",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-07",
+        "consensus": "uptrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-10-14",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-21",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-28",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-04",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-11",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-18",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-03",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-17",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-06",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-13",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-20",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-27",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-03",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      }
+    ],
+    "new_classifications": [
+      {
+        "date": "2025-04-16",
+        "consensus": "uptrend",
+        "confidence": 0.7
+      },
+      {
+        "date": "2025-04-25",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-05",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-12",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-19",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-02",
+        "consensus": "uptrend",
+        "confidence": 0.9234666911400106
+      },
+      {
+        "date": "2025-06-09",
+        "consensus": "downtrend",
+        "confidence": 0.7175883058621881
+      },
+      {
+        "date": "2025-06-16",
+        "consensus": "downtrend",
+        "confidence": 0.8
+      },
+      {
+        "date": "2025-06-24",
+        "consensus": "uptrend",
+        "confidence": 0.7
+      },
+      {
+        "date": "2025-07-01",
+        "consensus": "uptrend",
+        "confidence": 0.4675920290600876
+      },
+      {
+        "date": "2025-07-08",
+        "consensus": "uptrend",
+        "confidence": 0.3078424845092903
+      },
+      {
+        "date": "2025-07-15",
+        "consensus": "downtrend",
+        "confidence": 0.43041790138096325
+      },
+      {
+        "date": "2025-07-22",
+        "consensus": "downtrend",
+        "confidence": 0.6618452501997942
+      },
+      {
+        "date": "2025-07-29",
+        "consensus": "downtrend",
+        "confidence": 0.7920388207866473
+      },
+      {
+        "date": "2025-08-05",
+        "consensus": "downtrend",
+        "confidence": 0.46952924989928757
+      },
+      {
+        "date": "2025-08-12",
+        "consensus": "uptrend",
+        "confidence": 0.5111169919945704
+      },
+      {
+        "date": "2025-08-19",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-08-26",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-09-02",
+        "consensus": "uptrend",
+        "confidence": 0.6514958180772933
+      },
+      {
+        "date": "2025-09-09",
+        "consensus": "uptrend",
+        "confidence": 0.8728871163068347
+      },
+      {
+        "date": "2025-09-16",
+        "consensus": "uptrend",
+        "confidence": 0.7
+      },
+      {
+        "date": "2025-09-23",
+        "consensus": "uptrend",
+        "confidence": 0.7
+      },
+      {
+        "date": "2025-09-30",
+        "consensus": "uptrend",
+        "confidence": 0.8883151679874085
+      },
+      {
+        "date": "2025-10-07",
+        "consensus": "uptrend",
+        "confidence": 0.5843709550128454
+      },
+      {
+        "date": "2025-10-14",
+        "consensus": "downtrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-10-21",
+        "consensus": "downtrend",
+        "confidence": 0.5463237810205217
+      },
+      {
+        "date": "2025-10-28",
+        "consensus": "uptrend",
+        "confidence": 0.3807714308609031
+      },
+      {
+        "date": "2025-11-04",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-11-11",
+        "consensus": "uptrend",
+        "confidence": 0.7716450131135391
+      },
+      {
+        "date": "2025-11-18",
+        "consensus": "uptrend",
+        "confidence": 0.9235863040960869
+      },
+      {
+        "date": "2025-11-26",
+        "consensus": "uptrend",
+        "confidence": 0.6322127648604055
+      },
+      {
+        "date": "2025-12-03",
+        "consensus": "uptrend",
+        "confidence": 0.8562551915269934
+      },
+      {
+        "date": "2025-12-10",
+        "consensus": "uptrend",
+        "confidence": 0.9415735254613332
+      },
+      {
+        "date": "2025-12-17",
+        "consensus": "uptrend",
+        "confidence": 0.9145584929881222
+      },
+      {
+        "date": "2025-12-26",
+        "consensus": "uptrend",
+        "confidence": 0.7
+      },
+      {
+        "date": "2026-01-06",
+        "consensus": "uptrend",
+        "confidence": 0.9104147192027706
+      },
+      {
+        "date": "2026-01-13",
+        "consensus": "uptrend",
+        "confidence": 0.9364910410392246
+      },
+      {
+        "date": "2026-01-20",
+        "consensus": "uptrend",
+        "confidence": 0.8621290620893779
+      },
+      {
+        "date": "2026-01-27",
+        "consensus": "uptrend",
+        "confidence": 0.9857442923290117
+      },
+      {
+        "date": "2026-02-03",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      }
+    ],
+    "differences": [
+      {
+        "date": "2025-04-16",
+        "old": "downtrend",
+        "new": "uptrend",
+        "old_conf": 0.5,
+        "new_conf": 0.7,
+        "price": 29.324066162109375,
+        "future_10d_return": 0.0662982325778887
+      },
+      {
+        "date": "2025-06-24",
+        "old": "downtrend",
+        "new": "uptrend",
+        "old_conf": 1.0,
+        "new_conf": 0.7,
+        "price": 33.7568244934082,
+        "future_10d_return": -0.0024763963178832116
+      }
+    ],
+    "improvement_metrics": {
+      "old_downtrend_pct": 23.809523809523807,
+      "new_downtrend_pct": 19.047619047619047,
+      "old_uptrend_pct": 76.19047619047619,
+      "new_uptrend_pct": 80.95238095238095,
+      "classification_changes": 2,
+      "avg_old_confidence": 0.9761904761904762,
+      "avg_new_confidence": 0.7533383904953693
+    }
+  },
+  "VALE3.SA": {
+    "ticker": "VALE3.SA",
+    "old_classifications": [
+      {
+        "date": "2025-04-16",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-04-25",
+        "consensus": "downtrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-05-05",
+        "consensus": "uptrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-05-12",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-19",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-05-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-02",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-09",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-16",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-06-24",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-01",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-08",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-15",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-22",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-07-29",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-08-05",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-08-12",
+        "consensus": "downtrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-08-19",
+        "consensus": "downtrend",
+        "confidence": 0.6666666666666666
+      },
+      {
+        "date": "2025-08-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-02",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-09",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-16",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-23",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-30",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-07",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-14",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-21",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-28",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-04",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-11",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-18",
+        "consensus": "uptrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-11-26",
+        "consensus": "uptrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-12-03",
+        "consensus": "uptrend",
+        "confidence": 0.8333333333333334
+      },
+      {
+        "date": "2025-12-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-17",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-06",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-13",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-20",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-27",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-03",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      }
+    ],
+    "new_classifications": [
+      {
+        "date": "2025-04-16",
+        "consensus": "downtrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-04-25",
+        "consensus": "downtrend",
+        "confidence": 0.3455568076356216
+      },
+      {
+        "date": "2025-05-05",
+        "consensus": "consolidation",
+        "confidence": 0.3471485372366894
+      },
+      {
+        "date": "2025-05-12",
+        "consensus": "consolidation",
+        "confidence": 0.3990908680543069
+      },
+      {
+        "date": "2025-05-19",
+        "consensus": "consolidation",
+        "confidence": 0.676316748068332
+      },
+      {
+        "date": "2025-05-26",
+        "consensus": "uptrend",
+        "confidence": 0.5246817313907274
+      },
+      {
+        "date": "2025-06-02",
+        "consensus": "downtrend",
+        "confidence": 0.33113429900476915
+      },
+      {
+        "date": "2025-06-09",
+        "consensus": "downtrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-06-16",
+        "consensus": "downtrend",
+        "confidence": 0.4790430194968204
+      },
+      {
+        "date": "2025-06-24",
+        "consensus": "downtrend",
+        "confidence": 0.4695866533048061
+      },
+      {
+        "date": "2025-07-01",
+        "consensus": "consolidation",
+        "confidence": 0.8319513673893062
+      },
+      {
+        "date": "2025-07-08",
+        "consensus": "uptrend",
+        "confidence": 0.3722784901344057
+      },
+      {
+        "date": "2025-07-15",
+        "consensus": "uptrend",
+        "confidence": 0.6
+      },
+      {
+        "date": "2025-07-22",
+        "consensus": "uptrend",
+        "confidence": 0.4871650812316598
+      },
+      {
+        "date": "2025-07-29",
+        "consensus": "consolidation",
+        "confidence": 0.6970282071010571
+      },
+      {
+        "date": "2025-08-05",
+        "consensus": "consolidation",
+        "confidence": 0.787556800686064
+      },
+      {
+        "date": "2025-08-12",
+        "consensus": "uptrend",
+        "confidence": 0.3518374495443811
+      },
+      {
+        "date": "2025-08-19",
+        "consensus": "uptrend",
+        "confidence": 0.3616356080942017
+      },
+      {
+        "date": "2025-08-26",
+        "consensus": "uptrend",
+        "confidence": 0.8054113511546482
+      },
+      {
+        "date": "2025-09-02",
+        "consensus": "uptrend",
+        "confidence": 0.7496496356735861
+      },
+      {
+        "date": "2025-09-09",
+        "consensus": "uptrend",
+        "confidence": 0.7888557204768268
+      },
+      {
+        "date": "2025-09-16",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-23",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-09-30",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-07",
+        "consensus": "uptrend",
+        "confidence": 0.9409410635728389
+      },
+      {
+        "date": "2025-10-14",
+        "consensus": "uptrend",
+        "confidence": 0.963155124740868
+      },
+      {
+        "date": "2025-10-21",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-10-28",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-04",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-11",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-18",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-11-26",
+        "consensus": "uptrend",
+        "confidence": 0.7
+      },
+      {
+        "date": "2025-12-03",
+        "consensus": "uptrend",
+        "confidence": 0.9595691518996246
+      },
+      {
+        "date": "2025-12-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-17",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2025-12-26",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-06",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-13",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-20",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-01-27",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-03",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      },
+      {
+        "date": "2026-02-10",
+        "consensus": "uptrend",
+        "confidence": 1.0
+      }
+    ],
+    "differences": [
+      {
+        "date": "2025-05-05",
+        "old": "uptrend",
+        "new": "consolidation",
+        "old_conf": 0.8333333333333334,
+        "new_conf": 0.3471485372366894,
+        "price": 48.61934280395508,
+        "future_10d_return": 0.04493957718742547
+      },
+      {
+        "date": "2025-05-12",
+        "old": "downtrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.3990908680543069,
+        "price": 49.831153869628906,
+        "future_10d_return": -0.004974225553240785
+      },
+      {
+        "date": "2025-05-19",
+        "old": "uptrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.676316748068332,
+        "price": 50.80427551269531,
+        "future_10d_return": -0.05023488448296731
+      },
+      {
+        "date": "2025-07-01",
+        "old": "downtrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.8319513673893062,
+        "price": 48.98655700683594,
+        "future_10d_return": 0.010307337161952423
+      },
+      {
+        "date": "2025-07-29",
+        "old": "uptrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.6970282071010571,
+        "price": 50.3268928527832,
+        "future_10d_return": 0.01988335689526166
+      },
+      {
+        "date": "2025-08-05",
+        "old": "downtrend",
+        "new": "consolidation",
+        "old_conf": 1.0,
+        "new_conf": 0.787556800686064,
+        "price": 49.675086975097656,
+        "future_10d_return": 0.018447743845696474
+      },
+      {
+        "date": "2025-08-12",
+        "old": "downtrend",
+        "new": "uptrend",
+        "old_conf": 1.0,
+        "new_conf": 0.3518374495443811,
+        "price": 51.32756042480469,
+        "future_10d_return": 0.02583348370876659
+      },
+      {
+        "date": "2025-08-19",
+        "old": "downtrend",
+        "new": "uptrend",
+        "old_conf": 0.6666666666666666,
+        "new_conf": 0.3616356080942017,
+        "price": 50.59148025512695,
+        "future_10d_return": 0.040383183762215946
+      }
+    ],
+    "improvement_metrics": {
+      "old_downtrend_pct": 26.190476190476193,
+      "new_downtrend_pct": 14.285714285714285,
+      "old_uptrend_pct": 73.80952380952381,
+      "new_uptrend_pct": 71.42857142857143,
+      "classification_changes": 8,
+      "avg_old_confidence": 0.9722222222222221,
+      "avg_new_confidence": 0.7659427075212271
+    }
+  }
+}

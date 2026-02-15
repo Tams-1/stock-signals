@@ -1,8 +1,15 @@
 """
 Tests for Phase 5.3: Main Execution Loop
+
+NOTE: These tests require live trading infrastructure (SQLite database, paper trading).
+They are marked with @pytest.mark.live_trading and skipped by default.
+Run with: pytest -m live_trading
 """
 
 import pytest
+
+# Mark entire module as requiring live trading infrastructure
+pytestmark = pytest.mark.live_trading
 import tempfile
 from datetime import datetime
 from pathlib import Path

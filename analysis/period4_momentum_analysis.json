@@ -1,0 +1,4708 @@
+{
+  "PETR4.SA": {
+    "ticker": "PETR4.SA",
+    "missed_moves": [
+      {
+        "date": "2025-06-04",
+        "close": 27.820310592651367,
+        "actual_return": 0.12129470641247986,
+        "signal_strength": 0.048195573665546894,
+        "trend": "downtrend",
+        "volume_spike": 1.137946930312146
+      },
+      {
+        "date": "2025-06-05",
+        "close": 27.829790115356445,
+        "actual_return": 0.11784734584918954,
+        "signal_strength": 0.05690012879745612,
+        "trend": "downtrend",
+        "volume_spike": 0.6636586057949115
+      },
+      {
+        "date": "2025-07-29",
+        "close": 30.7492618560791,
+        "actual_return": -0.05055488429745458,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.374082421000788
+      },
+      {
+        "date": "2025-07-30",
+        "close": 31.06206512451172,
+        "actual_return": -0.06713463807119324,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.1219961386685648
+      },
+      {
+        "date": "2025-07-31",
+        "close": 30.938838958740234,
+        "actual_return": -0.07536763459303208,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.9561854435021755
+      },
+      {
+        "date": "2025-08-01",
+        "close": 30.53125,
+        "actual_return": -0.0633343761994627,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.9537275494987784
+      },
+      {
+        "date": "2025-08-04",
+        "close": 30.483856201171875,
+        "actual_return": -0.055970096957137616,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6030908823904209
+      },
+      {
+        "date": "2025-08-05",
+        "close": 30.626039505004883,
+        "actual_return": -0.07025692748864742,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8313315990004925
+      },
+      {
+        "date": "2025-08-06",
+        "close": 30.663951873779297,
+        "actual_return": -0.06584232053982086,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.2961411960938944
+      },
+      {
+        "date": "2025-08-07",
+        "close": 30.834571838378906,
+        "actual_return": -0.06885948927007934,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8361467084699095
+      },
+      {
+        "date": "2025-08-15",
+        "close": 28.597572326660156,
+        "actual_return": 0.05421091624267915,
+        "signal_strength": 0.1061001652934483,
+        "trend": "downtrend",
+        "volume_spike": 1.7437284526058414
+      },
+      {
+        "date": "2025-10-01",
+        "close": 30.419300079345703,
+        "actual_return": -0.051943903849358875,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8231612916172514
+      },
+      {
+        "date": "2025-10-02",
+        "close": 30.12848472595215,
+        "actual_return": -0.05244529264776665,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8447661694624705
+      },
+      {
+        "date": "2025-11-04",
+        "close": 29.323894500732422,
+        "actual_return": 0.09057857187180107,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.160912448449287
+      },
+      {
+        "date": "2026-01-07",
+        "close": 29.829999923706055,
+        "actual_return": 0.12068388839011646,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7764329824979742
+      },
+      {
+        "date": "2026-01-08",
+        "close": 30.200000762939453,
+        "actual_return": 0.11192056234194103,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9973913530169687
+      },
+      {
+        "date": "2026-01-09",
+        "close": 30.299999237060547,
+        "actual_return": 0.15643570289827613,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8205951710841579
+      },
+      {
+        "date": "2026-01-12",
+        "close": 30.360000610351562,
+        "actual_return": 0.16469037877078296,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5596659974860312
+      },
+      {
+        "date": "2026-01-13",
+        "close": 31.139999389648438,
+        "actual_return": 0.1602441161294812,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.5258604191602494
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-04-16",
+        "close": 27.83635711669922,
+        "signal_strength": 1.0,
+        "actual_return": -0.019564735963461866,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-23",
+        "close": 28.12908363342285,
+        "signal_strength": 1.0,
+        "actual_return": 0.004579616634167838,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-24",
+        "close": 28.000263214111328,
+        "signal_strength": 1.0,
+        "actual_return": 0.01577389738915036,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-09",
+        "close": 28.441936492919922,
+        "signal_strength": 0.7574825954528254,
+        "actual_return": 0.01585244832838706,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-12",
+        "close": 29.12285041809082,
+        "signal_strength": 0.7671627770032016,
+        "actual_return": -0.011058526621773646,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-13",
+        "close": 29.564523696899414,
+        "signal_strength": 0.6819985858067138,
+        "actual_return": -0.018674124574807327,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-15",
+        "close": 29.32528305053711,
+        "signal_strength": 1.0,
+        "actual_return": -0.01976781108214465,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-27",
+        "close": 29.012432098388672,
+        "signal_strength": 0.6909319836350934,
+        "actual_return": -0.01821999662083762,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-28",
+        "close": 28.9204158782959,
+        "signal_strength": 1.0,
+        "actual_return": 0.017679258350152605,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-23",
+        "close": 30.332195281982422,
+        "signal_strength": 1.0,
+        "actual_return": 0.0018750150130737442,
+        "trend": "uptrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 138,
+      "missed_moves_count": 19,
+      "false_signals_count": 49,
+      "optimal_threshold": 0.7,
+      "optimal_f1_score": 0.6037735849056604,
+      "avg_signal_strength": 0.6681987861800326,
+      "signal_strength_std": 0.44208569399183845
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.70 (missed 19 strong moves)",
+      "Improve signal filtering (49 false positives with current threshold)"
+    ]
+  },
+  "VALE3.SA": {
+    "ticker": "VALE3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-06-05",
+        "close": 48.57344055175781,
+        "actual_return": -0.05651108641982294,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7819907420343308
+      },
+      {
+        "date": "2025-06-26",
+        "close": 47.7380256652832,
+        "actual_return": 0.06307687795907979,
+        "signal_strength": 0.07761878520184734,
+        "trend": "downtrend",
+        "volume_spike": 1.8985441496950322
+      },
+      {
+        "date": "2025-06-27",
+        "close": 48.53671646118164,
+        "actual_return": 0.05920191354512694,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.1764599484547853
+      },
+      {
+        "date": "2025-06-30",
+        "close": 48.33475112915039,
+        "actual_return": 0.05147204191729471,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9199729656925606
+      },
+      {
+        "date": "2025-07-08",
+        "close": 50.106571197509766,
+        "actual_return": 0.05349932779536282,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.0731037850762337
+      },
+      {
+        "date": "2025-07-09",
+        "close": 49.6108283996582,
+        "actual_return": 0.06254622676916233,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.4986752394555228
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-04-16",
+        "close": 48.25212860107422,
+        "signal_strength": 1.0,
+        "actual_return": 0.007610321316947832,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-17",
+        "close": 48.545902252197266,
+        "signal_strength": 1.0,
+        "actual_return": 0.0022692096042304932,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-22",
+        "close": 49.40885925292969,
+        "signal_strength": 0.7825808635396981,
+        "actual_return": -0.017094036890618725,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-25",
+        "close": 49.43639373779297,
+        "signal_strength": 0.9566442682710116,
+        "actual_return": 0.00798521295727439,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-12",
+        "close": 49.831153869628906,
+        "signal_strength": 0.6787590251585246,
+        "actual_return": -0.004974225553240785,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-12",
+        "close": 48.5,
+        "signal_strength": 1.0,
+        "actual_return": 0.0007570404367349681,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-13",
+        "close": 47.85737228393555,
+        "signal_strength": 1.0,
+        "actual_return": 0.00997503252753984,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-16",
+        "close": 49.41803741455078,
+        "signal_strength": 0.7801635125213271,
+        "actual_return": -0.008731233174949948,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-02",
+        "close": 50.76755142211914,
+        "signal_strength": 0.8175348274229298,
+        "actual_return": -0.016274747792918043,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-03",
+        "close": 50.528865814208984,
+        "signal_strength": 0.6839207233136938,
+        "actual_return": -0.013444825956287154,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 160,
+      "missed_moves_count": 6,
+      "false_signals_count": 35,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.7883817427385893,
+      "avg_signal_strength": 0.7817448481108279,
+      "signal_strength_std": 0.39041344369806247
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 6 strong moves)",
+      "Improve signal filtering (35 false positives with current threshold)"
+    ]
+  },
+  "ITUB4.SA": {
+    "ticker": "ITUB4.SA",
+    "missed_moves": [
+      {
+        "date": "2025-04-16",
+        "close": 29.324066162109375,
+        "actual_return": 0.0662982325778887,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0930572481473966
+      },
+      {
+        "date": "2025-04-17",
+        "close": 29.377887725830078,
+        "actual_return": 0.058845936048975034,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7048254118433557
+      },
+      {
+        "date": "2025-06-30",
+        "close": 33.484962463378906,
+        "actual_return": -0.05502910611010725,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.4824848566355242
+      },
+      {
+        "date": "2025-07-01",
+        "close": 33.636959075927734,
+        "actual_return": -0.05606473187477912,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.9143778070988474
+      },
+      {
+        "date": "2025-10-22",
+        "close": 34.93776321411133,
+        "actual_return": 0.053476111576665986,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7619287603558396
+      },
+      {
+        "date": "2025-10-23",
+        "close": 34.91025924682617,
+        "actual_return": 0.05430609030308098,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.633565753794896
+      },
+      {
+        "date": "2025-10-27",
+        "close": 35.15778732299805,
+        "actual_return": 0.05497025249438425,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6390388575231989
+      },
+      {
+        "date": "2025-10-28",
+        "close": 35.2769660949707,
+        "actual_return": 0.07168560211816088,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6397821044267428
+      },
+      {
+        "date": "2025-12-17",
+        "close": 37.802303314208984,
+        "actual_return": 0.056656003992876736,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.261438551608777
+      },
+      {
+        "date": "2026-01-15",
+        "close": 39.92403793334961,
+        "actual_return": 0.15548335457225781,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.0079925651342638
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-05-09",
+        "close": 33.413185119628906,
+        "signal_strength": 1.0,
+        "actual_return": 0.013161563116432795,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-14",
+        "close": 33.368309020996094,
+        "signal_strength": 1.0,
+        "actual_return": 0.016406544555109592,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-15",
+        "close": 33.817047119140625,
+        "signal_strength": 1.0,
+        "actual_return": -0.005042450391068765,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-16",
+        "close": 34.014488220214844,
+        "signal_strength": 1.0,
+        "actual_return": -0.01240112086385381,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-21",
+        "close": 33.682430267333984,
+        "signal_strength": 1.0,
+        "actual_return": -0.015256442301713746,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-29",
+        "close": 33.64652633666992,
+        "signal_strength": 1.0,
+        "actual_return": -0.01395926525767166,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-02",
+        "close": 33.35710906982422,
+        "signal_strength": 1.0,
+        "actual_return": 0.000572597258623464,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-03",
+        "close": 33.24936294555664,
+        "signal_strength": 1.0,
+        "actual_return": 0.009811015702971604,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-04",
+        "close": 33.168556213378906,
+        "signal_strength": 0.9636310666142262,
+        "actual_return": 0.00626053917808278,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-10",
+        "close": 32.624046325683594,
+        "signal_strength": 0.849394526440133,
+        "actual_return": 0.016110945981372193,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 154,
+      "missed_moves_count": 10,
+      "false_signals_count": 54,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.6816143497757847,
+      "avg_signal_strength": 0.7422322258024264,
+      "signal_strength_std": 0.40685661869834816
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 10 strong moves)",
+      "Improve signal filtering (54 false positives with current threshold)"
+    ]
+  },
+  "BBDC4.SA": {
+    "ticker": "BBDC4.SA",
+    "missed_moves": [
+      {
+        "date": "2025-08-21",
+        "close": 15.109161376953125,
+        "actual_return": 0.06707549227727094,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8460116745400831
+      },
+      {
+        "date": "2025-10-06",
+        "close": 16.579423904418945,
+        "actual_return": 0.059411717808893316,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8432846018136286
+      },
+      {
+        "date": "2025-10-07",
+        "close": 16.306350708007812,
+        "actual_return": 0.06279903298825729,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.398933084836417
+      },
+      {
+        "date": "2025-10-10",
+        "close": 16.433134078979492,
+        "actual_return": 0.07299701300939732,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9640553570423438
+      },
+      {
+        "date": "2025-10-13",
+        "close": 16.50140380859375,
+        "actual_return": 0.07742298203499787,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5387635484053286
+      },
+      {
+        "date": "2025-10-14",
+        "close": 16.735464096069336,
+        "actual_return": 0.06293699838036582,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.3058351581964622
+      },
+      {
+        "date": "2025-10-15",
+        "close": 16.93051528930664,
+        "actual_return": 0.08467739300753241,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.239702347038253
+      },
+      {
+        "date": "2025-12-16",
+        "close": 17.980981826782227,
+        "actual_return": 0.054075897086445446,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9521815071767131
+      },
+      {
+        "date": "2025-12-17",
+        "close": 17.834400177001953,
+        "actual_return": 0.06890182433578507,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.4593918025027006
+      },
+      {
+        "date": "2025-12-18",
+        "close": 17.912578582763672,
+        "actual_return": 0.05085009077502178,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7001103073369614
+      },
+      {
+        "date": "2026-01-12",
+        "close": 18.383821487426758,
+        "actual_return": 0.13478250629745525,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.72761880216597
+      },
+      {
+        "date": "2026-01-13",
+        "close": 18.17400550842285,
+        "actual_return": 0.17811990307305114,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.9889276674295012
+      },
+      {
+        "date": "2026-01-14",
+        "close": 18.50371551513672,
+        "actual_return": 0.1727861365865686,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.2022758024984328
+      },
+      {
+        "date": "2026-01-15",
+        "close": 18.883380889892578,
+        "actual_return": 0.13439158088669778,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.390832762528864
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-05-26",
+        "close": 14.724553108215332,
+        "signal_strength": 1.0,
+        "actual_return": 0.00881234766250083,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-27",
+        "close": 15.02428913116455,
+        "signal_strength": 1.0,
+        "actual_return": -0.011937774456175165,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-28",
+        "close": 15.12732219696045,
+        "signal_strength": 1.0,
+        "actual_return": 0.011708503268819781,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-30",
+        "close": 15.174159049987793,
+        "signal_strength": 1.0,
+        "actual_return": 0.0067318368709854415,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-04",
+        "close": 15.426350593566895,
+        "signal_strength": 1.0,
+        "actual_return": 0.018844932902753353,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-11",
+        "close": 15.30444049835205,
+        "signal_strength": 1.0,
+        "actual_return": 0.014093086128756482,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-12",
+        "close": 15.454483032226562,
+        "signal_strength": 1.0,
+        "actual_return": 0.0054612716905684255,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-17",
+        "close": 15.838971138000488,
+        "signal_strength": 1.0,
+        "actual_return": -0.01284659868686655,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-18",
+        "close": 15.717059135437012,
+        "signal_strength": 1.0,
+        "actual_return": 0.018525313292393264,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-24",
+        "close": 15.510751724243164,
+        "signal_strength": 0.7904301788178597,
+        "actual_return": 0.019749447283057497,
+        "trend": "uptrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 154,
+      "missed_moves_count": 14,
+      "false_signals_count": 46,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.6949152542372882,
+      "avg_signal_strength": 0.7454622737488261,
+      "signal_strength_std": 0.4093067379989312
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 14 strong moves)",
+      "Improve signal filtering (46 false positives with current threshold)"
+    ]
+  },
+  "BBAS3.SA": {
+    "ticker": "BBAS3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-05-02",
+        "close": 28.2236328125,
+        "actual_return": -0.11176475835611221,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6747363955801159
+      },
+      {
+        "date": "2025-07-02",
+        "close": 21.874414443969727,
+        "actual_return": -0.05047751260780298,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.680879615827466
+      },
+      {
+        "date": "2025-07-03",
+        "close": 22.182783126831055,
+        "actual_return": -0.06995505739513452,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8308212215785145
+      },
+      {
+        "date": "2025-07-07",
+        "close": 21.944046020507812,
+        "actual_return": -0.09972794437201216,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6257926411956501
+      },
+      {
+        "date": "2025-07-08",
+        "close": 21.884363174438477,
+        "actual_return": -0.09590917810448218,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.687400210859177
+      },
+      {
+        "date": "2025-07-09",
+        "close": 21.33725357055664,
+        "actual_return": -0.05780895203357228,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.0906361357631598
+      },
+      {
+        "date": "2025-07-10",
+        "close": 21.098512649536133,
+        "actual_return": -0.05374817263571763,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.004443451706955
+      },
+      {
+        "date": "2025-08-14",
+        "close": 19.745664596557617,
+        "actual_return": 0.06045323723981322,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.6572929834616545
+      },
+      {
+        "date": "2025-08-26",
+        "close": 20.272876739501953,
+        "actual_return": 0.05004908350179038,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7305351695308672
+      },
+      {
+        "date": "2025-08-27",
+        "close": 20.521562576293945,
+        "actual_return": 0.06883173289040112,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.920172040412737
+      },
+      {
+        "date": "2025-10-02",
+        "close": 21.64562225341797,
+        "actual_return": -0.0638786134604099,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8017798619636698
+      },
+      {
+        "date": "2025-10-29",
+        "close": 21.10845947265625,
+        "actual_return": 0.07445807827874651,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7169924373185091
+      },
+      {
+        "date": "2025-12-04",
+        "close": 22.770000457763672,
+        "actual_return": -0.0518225859224104,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.041340567720561
+      },
+      {
+        "date": "2026-01-08",
+        "close": 21.81999969482422,
+        "actual_return": 0.07470215815364445,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.1782321096819133
+      },
+      {
+        "date": "2026-01-09",
+        "close": 21.860000610351562,
+        "actual_return": 0.11070448347325201,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.0314246626896337
+      },
+      {
+        "date": "2026-01-12",
+        "close": 21.8700008392334,
+        "actual_return": 0.1156835245638499,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8161038197234918
+      },
+      {
+        "date": "2026-01-13",
+        "close": 21.200000762939453,
+        "actual_return": 0.1646226247887297,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.901152415817548
+      },
+      {
+        "date": "2026-01-14",
+        "close": 21.5,
+        "actual_return": 0.1813953310944314,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0009132367569287
+      },
+      {
+        "date": "2026-01-16",
+        "close": 21.3700008392334,
+        "actual_return": 0.18015902306624354,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 2.4389212754744163
+      },
+      {
+        "date": "2026-01-19",
+        "close": 21.309999465942383,
+        "actual_return": 0.1872360333699199,
+        "signal_strength": 0.04340263378279584,
+        "trend": "downtrend",
+        "volume_spike": 0.49605785674617636
+      },
+      {
+        "date": "2026-01-20",
+        "close": 21.540000915527344,
+        "actual_return": 0.19266478375767848,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9496416392348923
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-04-30",
+        "close": 28.2529296875,
+        "signal_strength": 0.7003989419363182,
+        "actual_return": 0.016246089834433652,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-09",
+        "close": 21.615779876708984,
+        "signal_strength": 1.0,
+        "actual_return": -0.01334557616086407,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-10",
+        "close": 21.426780700683594,
+        "signal_strength": 1.0,
+        "actual_return": -0.012999069593879309,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-11",
+        "close": 21.28751564025879,
+        "signal_strength": 1.0,
+        "actual_return": 0.009345844635177736,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-12",
+        "close": 21.307409286499023,
+        "signal_strength": 1.0,
+        "actual_return": 0.014472458198160787,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-16",
+        "close": 21.864465713500977,
+        "signal_strength": 1.0,
+        "actual_return": -0.0031846914281142835,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-17",
+        "close": 21.784887313842773,
+        "signal_strength": 1.0,
+        "actual_return": 0.004109598036344364,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-25",
+        "close": 21.148252487182617,
+        "signal_strength": 1.0,
+        "actual_return": 0.008936959849924708,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-26",
+        "close": 21.486465454101562,
+        "signal_strength": 1.0,
+        "actual_return": -0.018055682792228356,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-31",
+        "close": 19.596450805664062,
+        "signal_strength": 1.0,
+        "actual_return": 0.007614327327600812,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 144,
+      "missed_moves_count": 21,
+      "false_signals_count": 39,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.7165354330708661,
+      "avg_signal_strength": 0.703244564681381,
+      "signal_strength_std": 0.435693666023875
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 21 strong moves)",
+      "Improve signal filtering (39 false positives with current threshold)"
+    ]
+  },
+  "ABEV3.SA": {
+    "ticker": "ABEV3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-07-17",
+        "close": 11.934357643127441,
+        "actual_return": -0.07429422903687455,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6192455161053435
+      },
+      {
+        "date": "2025-07-18",
+        "close": 11.810225486755371,
+        "actual_return": -0.07732729841013974,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7901782511807434
+      },
+      {
+        "date": "2025-07-21",
+        "close": 11.89889144897461,
+        "actual_return": -0.07526081014406472,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7132680720602826
+      },
+      {
+        "date": "2025-07-22",
+        "close": 11.881157875061035,
+        "actual_return": -0.07761197216601912,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7500125782311289
+      },
+      {
+        "date": "2025-07-23",
+        "close": 12.049622535705566,
+        "actual_return": -0.08167775957869228,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5493111819549217
+      },
+      {
+        "date": "2025-07-25",
+        "close": 11.943224906921387,
+        "actual_return": -0.07217013874610034,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5948775577960307
+      },
+      {
+        "date": "2025-07-30",
+        "close": 11.659494400024414,
+        "actual_return": -0.06879962531897532,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.993879101420892
+      },
+      {
+        "date": "2025-09-25",
+        "close": 11.161904335021973,
+        "actual_return": -0.05939001743405414,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8567944732763977
+      },
+      {
+        "date": "2025-09-26",
+        "close": 11.161904335021973,
+        "actual_return": -0.05216691066937629,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.42760944510185794
+      },
+      {
+        "date": "2025-10-21",
+        "close": 10.946907997131348,
+        "actual_return": 0.07692305681888967,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.1353289938278321
+      },
+      {
+        "date": "2025-10-27",
+        "close": 10.884200096130371,
+        "actual_return": 0.08477372687826978,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.5880971507117212
+      },
+      {
+        "date": "2025-10-28",
+        "close": 10.776701927185059,
+        "actual_return": 0.12967586123101804,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.2045395280309683
+      },
+      {
+        "date": "2025-10-29",
+        "close": 10.776701927185059,
+        "actual_return": 0.13216953589545533,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.5579349192309482
+      },
+      {
+        "date": "2025-12-09",
+        "close": 12.21897029876709,
+        "actual_return": 0.10238423841556843,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.1352891906767235
+      },
+      {
+        "date": "2025-12-10",
+        "close": 12.183137893676758,
+        "actual_return": 0.12614667803683877,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 2.4987399819886535
+      },
+      {
+        "date": "2025-12-11",
+        "close": 12.344385147094727,
+        "actual_return": 0.12358774619272239,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6251147828742984
+      },
+      {
+        "date": "2025-12-18",
+        "close": 12.469799995422363,
+        "actual_return": 0.09865433401452917,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7342046088610891
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-04-22",
+        "close": 12.320464134216309,
+        "signal_strength": 0.8044731335537295,
+        "actual_return": 0.01783164458578379,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-04-24",
+        "close": 12.434703826904297,
+        "signal_strength": 1.0,
+        "actual_return": 0.009187319748576783,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-04-25",
+        "close": 12.381978034973145,
+        "signal_strength": 1.0,
+        "actual_return": 0.014194460715164503,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-04-28",
+        "close": 12.566521644592285,
+        "signal_strength": 1.0,
+        "actual_return": -0.00349655948533778,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-04-29",
+        "close": 12.751065254211426,
+        "signal_strength": 1.0,
+        "actual_return": -0.01929709080337616,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-04-30",
+        "close": 12.803791046142578,
+        "signal_strength": 1.0,
+        "actual_return": -0.01098143656502415,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-06",
+        "close": 12.487431526184082,
+        "signal_strength": 0.7458832756846867,
+        "actual_return": 0.014642560906233504,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-07",
+        "close": 12.54015827178955,
+        "signal_strength": 1.0,
+        "actual_return": 0.0011847010363814636,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-08",
+        "close": 12.628035545349121,
+        "signal_strength": 1.0,
+        "actual_return": -0.009995200678475258,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-09",
+        "close": 12.548945426940918,
+        "signal_strength": 1.0,
+        "actual_return": 0.006136099013544394,
+        "trend": "uptrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 149,
+      "missed_moves_count": 17,
+      "false_signals_count": 74,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.5167464114832536,
+      "avg_signal_strength": 0.7205687681327804,
+      "signal_strength_std": 0.42497876852176375
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 17 strong moves)",
+      "Improve signal filtering (74 false positives with current threshold)"
+    ]
+  },
+  "B3SA3.SA": {
+    "ticker": "B3SA3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-04-16",
+        "close": 11.597447395324707,
+        "actual_return": 0.09535651628325592,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.2990894103153994
+      },
+      {
+        "date": "2025-04-17",
+        "close": 11.712844848632812,
+        "actual_return": 0.08045965219453022,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.459908660008745
+      },
+      {
+        "date": "2025-04-22",
+        "close": 11.943639755249023,
+        "actual_return": 0.058776024619976,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7129138759200516
+      },
+      {
+        "date": "2025-04-23",
+        "close": 12.164817810058594,
+        "actual_return": 0.12648223512935663,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9939710721570413
+      },
+      {
+        "date": "2025-05-05",
+        "close": 12.703339576721191,
+        "actual_return": 0.12187726555407385,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5300650826123622
+      },
+      {
+        "date": "2025-07-01",
+        "close": 14.020051002502441,
+        "actual_return": -0.053103412951244655,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7335099150826795
+      },
+      {
+        "date": "2025-07-14",
+        "close": 13.159509658813477,
+        "actual_return": -0.06686259751429591,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.50351998935998
+      },
+      {
+        "date": "2025-07-15",
+        "close": 13.275538444519043,
+        "actual_return": -0.07428990422768411,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8455823737557616
+      },
+      {
+        "date": "2025-07-16",
+        "close": 13.227193832397461,
+        "actual_return": -0.06798249250633648,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6381736581934938
+      },
+      {
+        "date": "2025-07-17",
+        "close": 13.28520679473877,
+        "actual_return": -0.08442495697764674,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6131151947171849
+      },
+      {
+        "date": "2025-08-22",
+        "close": 12.144266128540039,
+        "actual_return": 0.0652865444245907,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.2526432034298212
+      },
+      {
+        "date": "2025-09-02",
+        "close": 12.32797622680664,
+        "actual_return": 0.05725491652239301,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5446228521475247
+      },
+      {
+        "date": "2025-09-03",
+        "close": 12.521356582641602,
+        "actual_return": 0.05945949280686058,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.9940117600690974
+      },
+      {
+        "date": "2025-10-29",
+        "close": 12.293769836425781,
+        "actual_return": 0.1170885594795481,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7556104649148484
+      },
+      {
+        "date": "2025-10-30",
+        "close": 12.254865646362305,
+        "actual_return": 0.1484126498678071,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5412200344062763
+      },
+      {
+        "date": "2025-10-31",
+        "close": 12.313220977783203,
+        "actual_return": 0.1406003463000145,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6833592881063926
+      },
+      {
+        "date": "2025-11-04",
+        "close": 12.488290786743164,
+        "actual_return": 0.09423675834037049,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.4076119526272286
+      },
+      {
+        "date": "2025-11-07",
+        "close": 12.624455451965332,
+        "actual_return": 0.07704162527919323,
+        "signal_strength": 0.06895450717658387,
+        "trend": "uptrend",
+        "volume_spike": 0.8197089066887809
+      },
+      {
+        "date": "2025-12-17",
+        "close": 12.887060165405273,
+        "actual_return": 0.1251596418339529,
+        "signal_strength": 0.08427967967716733,
+        "trend": "downtrend",
+        "volume_spike": 3.2251184103828634
+      },
+      {
+        "date": "2025-12-18",
+        "close": 12.935690879821777,
+        "actual_return": 0.10392246271487404,
+        "signal_strength": 0.1060720863308509,
+        "trend": "downtrend",
+        "volume_spike": 0.9341038690895813
+      },
+      {
+        "date": "2025-12-19",
+        "close": 13.023225784301758,
+        "actual_return": 0.10418112629012555,
+        "signal_strength": 0.12375967626582222,
+        "trend": "downtrend",
+        "volume_spike": 0.9422111048752834
+      },
+      {
+        "date": "2026-01-05",
+        "close": 13.949999809265137,
+        "actual_return": 0.08243731813105803,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6732626463430136
+      },
+      {
+        "date": "2026-01-08",
+        "close": 14.380000114440918,
+        "actual_return": 0.0862308596140351,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.9487318353553449
+      },
+      {
+        "date": "2026-01-13",
+        "close": 14.3100004196167,
+        "actual_return": 0.12928017984257778,
+        "signal_strength": 0.1445990190795824,
+        "trend": "uptrend",
+        "volume_spike": 0.6665123393631824
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-05-08",
+        "close": 13.703451156616211,
+        "signal_strength": 1.0,
+        "actual_return": 0.0063157704269785064,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-09",
+        "close": 13.972711563110352,
+        "signal_strength": 1.0,
+        "actual_return": -0.009635223817437866,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-12",
+        "close": 13.80923080444336,
+        "signal_strength": 1.0,
+        "actual_return": -0.0020890843581241603,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-05",
+        "close": 13.059147834777832,
+        "signal_strength": 1.0,
+        "actual_return": 0.0029455561755573623,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-06",
+        "close": 13.049530982971191,
+        "signal_strength": 1.0,
+        "actual_return": -0.012527638365394611,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-24",
+        "close": 12.685729026794434,
+        "signal_strength": 1.0,
+        "actual_return": -0.016006073094089746,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-25",
+        "close": 12.637384414672852,
+        "signal_strength": 1.0,
+        "actual_return": -0.014537110363408545,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-28",
+        "close": 12.279630661010742,
+        "signal_strength": 1.0,
+        "actual_return": 0.004724480018291288,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-29",
+        "close": 12.289299964904785,
+        "signal_strength": 1.0,
+        "actual_return": -0.004720607561616963,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-30",
+        "close": 12.32797622680664,
+        "signal_strength": 1.0,
+        "actual_return": -0.003921614132478046,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 139,
+      "missed_moves_count": 24,
+      "false_signals_count": 29,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.751824817518248,
+      "avg_signal_strength": 0.6820884711586777,
+      "signal_strength_std": 0.44399732579779777
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 24 strong moves)",
+      "Improve signal filtering (29 false positives with current threshold)"
+    ]
+  },
+  "SUZB3.SA": {
+    "ticker": "SUZB3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-05-05",
+        "close": 49.42900848388672,
+        "actual_return": 0.05326730011102443,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.47656281897900526
+      },
+      {
+        "date": "2025-05-06",
+        "close": 49.37028121948242,
+        "actual_return": 0.051149877033312086,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5007752679395704
+      },
+      {
+        "date": "2025-05-19",
+        "close": 52.06195831298828,
+        "actual_return": -0.06786982157472343,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5147272240265752
+      },
+      {
+        "date": "2025-05-21",
+        "close": 52.08153533935547,
+        "actual_return": -0.06483746777781829,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.5455926453177329
+      },
+      {
+        "date": "2025-05-30",
+        "close": 48.59703826904297,
+        "actual_return": 0.08982872221361382,
+        "signal_strength": 0.07772352960781227,
+        "trend": "downtrend",
+        "volume_spike": 1.7248726322241283
+      },
+      {
+        "date": "2025-06-02",
+        "close": 48.52852249145508,
+        "actual_return": 0.09419114675586404,
+        "signal_strength": 0.10348187472947792,
+        "trend": "downtrend",
+        "volume_spike": 1.2317683580635947
+      },
+      {
+        "date": "2025-06-13",
+        "close": 52.96244812011719,
+        "actual_return": -0.053594523339019595,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.4058751106543617
+      },
+      {
+        "date": "2025-06-16",
+        "close": 53.09947967529297,
+        "actual_return": -0.06285712848902747,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8772761396089668
+      },
+      {
+        "date": "2025-07-24",
+        "close": 50.40780258178711,
+        "actual_return": 0.0512621250190044,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5695610903116071
+      },
+      {
+        "date": "2025-10-03",
+        "close": 49.6247673034668,
+        "actual_return": -0.06055223238668184,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.091637100261211
+      },
+      {
+        "date": "2025-10-28",
+        "close": 48.42085266113281,
+        "actual_return": -0.05902568895748883,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7625313187568007
+      },
+      {
+        "date": "2025-11-24",
+        "close": 46.96245193481445,
+        "actual_return": 0.050229288213517576,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9397329544267297
+      },
+      {
+        "date": "2025-11-26",
+        "close": 46.84499740600586,
+        "actual_return": 0.07960710529648085,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0716873949907544
+      },
+      {
+        "date": "2025-12-04",
+        "close": 48.4893684387207,
+        "actual_return": 0.06277756532291967,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.0797330670671414
+      },
+      {
+        "date": "2025-12-15",
+        "close": 47.676971435546875,
+        "actual_return": 0.0879465991669861,
+        "signal_strength": 0.050236352923909405,
+        "trend": "uptrend",
+        "volume_spike": 0.8314165285010392
+      },
+      {
+        "date": "2025-12-16",
+        "close": 47.88251495361328,
+        "actual_return": 0.053202831013166474,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8758974048939739
+      },
+      {
+        "date": "2026-01-08",
+        "close": 49.56999969482422,
+        "actual_return": 0.052854527900235704,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7301977024663246
+      },
+      {
+        "date": "2026-01-28",
+        "close": 51.7599983215332,
+        "actual_return": 0.119204060736527,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.9407826766689322
+      },
+      {
+        "date": "2026-01-30",
+        "close": 49.33000183105469,
+        "actual_return": 0.18264743537595307,
+        "signal_strength": 0.049193560957116585,
+        "trend": "uptrend",
+        "volume_spike": 1.9963669136824538
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-04-22",
+        "close": 50.730804443359375,
+        "signal_strength": 0.9733186641116512,
+        "actual_return": -0.011383378440241398,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-25",
+        "close": 50.192466735839844,
+        "signal_strength": 1.0,
+        "actual_return": 0.018915758082709955,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-23",
+        "close": 51.83683776855469,
+        "signal_strength": 0.7595492920790091,
+        "actual_return": 0.008685736018031465,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-26",
+        "close": 51.64107894897461,
+        "signal_strength": 0.8795953474380892,
+        "actual_return": 0.015352506046397929,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-05",
+        "close": 51.77811050415039,
+        "signal_strength": 0.8917049901184765,
+        "actual_return": -0.019470695491545564,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-07",
+        "close": 49.928192138671875,
+        "signal_strength": 1.0,
+        "actual_return": -0.00019605182491699846,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-08",
+        "close": 49.84988784790039,
+        "signal_strength": 1.0,
+        "actual_return": 0.006479490235921759,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-08-06",
+        "close": 50.52525329589844,
+        "signal_strength": 1.0,
+        "actual_return": 0.016854044562990778,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-08-08",
+        "close": 53.422481536865234,
+        "signal_strength": 1.0,
+        "actual_return": -0.015023867884790043,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-08-11",
+        "close": 52.93308639526367,
+        "signal_strength": 1.0,
+        "actual_return": -0.012389079892889177,
+        "trend": "uptrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 103,
+      "missed_moves_count": 19,
+      "false_signals_count": 37,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.48863636363636365,
+      "avg_signal_strength": 0.49681796325318767,
+      "signal_strength_std": 0.47893156489659844
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 19 strong moves)",
+      "Improve signal filtering (37 false positives with current threshold)"
+    ]
+  },
+  "RENT3.SA": {
+    "ticker": "RENT3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-05-14",
+        "close": 38.25460433959961,
+        "actual_return": 0.0909090999744222,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7368259670143387
+      },
+      {
+        "date": "2025-05-15",
+        "close": 39.25648880004883,
+        "actual_return": 0.06601221492523512,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7192837765893737
+      },
+      {
+        "date": "2025-05-21",
+        "close": 38.88078308105469,
+        "actual_return": 0.08275508998697467,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.6512574768398094
+      },
+      {
+        "date": "2025-05-22",
+        "close": 39.07345199584961,
+        "actual_return": 0.08974358849193753,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7177089100394805
+      },
+      {
+        "date": "2025-05-26",
+        "close": 39.35281753540039,
+        "actual_return": 0.0687884623120838,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.39977785577689934
+      },
+      {
+        "date": "2025-06-24",
+        "close": 41.91532897949219,
+        "actual_return": -0.10908064651762694,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8197588825878375
+      },
+      {
+        "date": "2025-06-25",
+        "close": 41.56852722167969,
+        "actual_return": -0.12394231775158893,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5889977527771698
+      },
+      {
+        "date": "2025-08-07",
+        "close": 34.77754211425781,
+        "actual_return": -0.08274896772129992,
+        "signal_strength": 0.04441201751803967,
+        "trend": "downtrend",
+        "volume_spike": 2.667517301458277
+      },
+      {
+        "date": "2025-08-22",
+        "close": 33.772743225097656,
+        "actual_return": 0.10052000819579354,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.239544476032406
+      },
+      {
+        "date": "2025-08-25",
+        "close": 33.772743225097656,
+        "actual_return": 0.08058941039307044,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.4514937815092593
+      },
+      {
+        "date": "2025-08-26",
+        "close": 33.577640533447266,
+        "actual_return": 0.08251015629428937,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6359238387555453
+      },
+      {
+        "date": "2025-08-27",
+        "close": 34.14344787597656,
+        "actual_return": 0.06685715881794319,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7536486123223836
+      },
+      {
+        "date": "2025-08-28",
+        "close": 34.816558837890625,
+        "actual_return": 0.08405708718529481,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.9257746441276948
+      },
+      {
+        "date": "2025-09-02",
+        "close": 35.11897277832031,
+        "actual_return": 0.08611105438622646,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.41591222486109103
+      },
+      {
+        "date": "2025-09-03",
+        "close": 35.47016525268555,
+        "actual_return": 0.10286019226543885,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5584222680281373
+      },
+      {
+        "date": "2025-10-02",
+        "close": 38.32161331176758,
+        "actual_return": -0.06910781750070005,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 2.0791033005944124
+      },
+      {
+        "date": "2025-10-24",
+        "close": 38.29196548461914,
+        "actual_return": 0.05522589190744909,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.7606277890606652
+      },
+      {
+        "date": "2025-10-27",
+        "close": 38.855228424072266,
+        "actual_return": 0.06993897796560167,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9603622134421674
+      },
+      {
+        "date": "2025-10-28",
+        "close": 38.707000732421875,
+        "actual_return": 0.10416142692361974,
+        "signal_strength": 0.11700902108014584,
+        "trend": "uptrend",
+        "volume_spike": 0.7940262961081234
+      },
+      {
+        "date": "2025-10-29",
+        "close": 39.29991149902344,
+        "actual_return": 0.0827257306083844,
+        "signal_strength": 0.1327433565801742,
+        "trend": "uptrend",
+        "volume_spike": 0.9181831521302779
+      },
+      {
+        "date": "2025-10-30",
+        "close": 38.77617645263672,
+        "actual_return": 0.07135574408589829,
+        "signal_strength": 0.1354152265873198,
+        "trend": "uptrend",
+        "volume_spike": 0.6379465239345464
+      },
+      {
+        "date": "2025-10-31",
+        "close": 38.97380828857422,
+        "actual_return": 0.11688648542834068,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6498226239873865
+      },
+      {
+        "date": "2025-12-26",
+        "close": 44.88999938964844,
+        "actual_return": -0.06727557359824954,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.4124934746452028
+      },
+      {
+        "date": "2025-12-29",
+        "close": 44.97999954223633,
+        "actual_return": -0.06803026688378833,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5702679027920142
+      },
+      {
+        "date": "2026-01-21",
+        "close": 42.619998931884766,
+        "actual_return": 0.17456599314553833,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.3700801118015757
+      },
+      {
+        "date": "2026-01-22",
+        "close": 43.880001068115234,
+        "actual_return": 0.14106651039274598,
+        "signal_strength": 0.062333168408382024,
+        "trend": "downtrend",
+        "volume_spike": 1.5904967206581349
+      },
+      {
+        "date": "2026-01-23",
+        "close": 44.75,
+        "actual_return": 0.13966480446927365,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.990108913519357
+      },
+      {
+        "date": "2026-01-26",
+        "close": 45.689998626708984,
+        "actual_return": 0.1070256807030665,
+        "signal_strength": 0.047502579836606794,
+        "trend": "downtrend",
+        "volume_spike": 1.0425587922804904
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-04-24",
+        "close": 40.07533264160156,
+        "signal_strength": 1.0,
+        "actual_return": -0.014423100720117432,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-06",
+        "close": 40.460670471191406,
+        "signal_strength": 1.0,
+        "actual_return": -0.007142774983166067,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-09",
+        "close": 39.49732208251953,
+        "signal_strength": 1.0,
+        "actual_return": -0.010000013521362705,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-12",
+        "close": 39.979000091552734,
+        "signal_strength": 1.0,
+        "actual_return": -0.015662786831045605,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-09",
+        "close": 42.059837341308594,
+        "signal_strength": 0.7424854770272477,
+        "actual_return": -0.0034357803299082113,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-10",
+        "close": 42.37773895263672,
+        "signal_strength": 1.0,
+        "actual_return": -0.019095207789670998,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-07-11",
+        "close": 35.762821197509766,
+        "signal_strength": 1.0,
+        "actual_return": -0.013093320763745364,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-24",
+        "close": 35.0897102355957,
+        "signal_strength": 1.0,
+        "actual_return": -0.008896286667571918,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-28",
+        "close": 34.30928421020508,
+        "signal_strength": 1.0,
+        "actual_return": -0.016775456186048143,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-31",
+        "close": 33.78250503540039,
+        "signal_strength": 1.0,
+        "actual_return": -0.0066416881617988865,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 147,
+      "missed_moves_count": 28,
+      "false_signals_count": 20,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.7956989247311828,
+      "avg_signal_strength": 0.7214942378544763,
+      "signal_strength_std": 0.42534841056828687
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 28 strong moves)",
+      "Improve signal filtering (20 false positives with current threshold)"
+    ]
+  },
+  "WEGE3.SA": {
+    "ticker": "WEGE3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-04-23",
+        "close": 44.217037200927734,
+        "actual_return": -0.08774581405547,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.2817364277116703
+      },
+      {
+        "date": "2025-05-16",
+        "close": 43.003387451171875,
+        "actual_return": -0.05888896379693931,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8412169451703387
+      },
+      {
+        "date": "2025-05-19",
+        "close": 42.57334899902344,
+        "actual_return": -0.060605995440285554,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.37322505289678704
+      },
+      {
+        "date": "2025-05-20",
+        "close": 42.55424118041992,
+        "actual_return": -0.06355270781103106,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.40928428892170304
+      },
+      {
+        "date": "2025-05-28",
+        "close": 42.678466796875,
+        "actual_return": -0.05306758084445484,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5590155679488611
+      },
+      {
+        "date": "2025-06-26",
+        "close": 41.252197265625,
+        "actual_return": -0.07360096378625669,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.5488008884878353
+      },
+      {
+        "date": "2025-06-27",
+        "close": 40.562583923339844,
+        "actual_return": -0.061393058257512956,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9695123009276451
+      },
+      {
+        "date": "2025-06-30",
+        "close": 40.97443771362305,
+        "actual_return": -0.0759700752327277,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.461713589545115
+      },
+      {
+        "date": "2025-07-01",
+        "close": 40.706260681152344,
+        "actual_return": -0.06658837275424323,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.015145371581298
+      },
+      {
+        "date": "2025-07-16",
+        "close": 39.384498596191406,
+        "actual_return": -0.09957430981528237,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.478817335992254
+      },
+      {
+        "date": "2025-07-17",
+        "close": 40.31356430053711,
+        "actual_return": -0.1141188189696799,
+        "signal_strength": 0.06878111498253192,
+        "trend": "downtrend",
+        "volume_spike": 2.1112897954464205
+      },
+      {
+        "date": "2025-07-18",
+        "close": 40.58174133300781,
+        "actual_return": -0.1183129571941276,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.5782204246248335
+      },
+      {
+        "date": "2025-07-21",
+        "close": 40.19862747192383,
+        "actual_return": -0.11254348500056321,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8817053996645661
+      },
+      {
+        "date": "2025-07-22",
+        "close": 39.5760612487793,
+        "actual_return": -0.09712387732108341,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9981585885035359
+      },
+      {
+        "date": "2025-08-06",
+        "close": 36.72350311279297,
+        "actual_return": -0.05476933982324017,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.715458467794539
+      },
+      {
+        "date": "2025-08-07",
+        "close": 37.531883239746094,
+        "actual_return": -0.07923083381052776,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0322326552737937
+      },
+      {
+        "date": "2025-10-09",
+        "close": 35.90863037109375,
+        "actual_return": 0.11397838701946372,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.8117511967357514
+      },
+      {
+        "date": "2025-10-10",
+        "close": 35.41633224487305,
+        "actual_return": 0.12755516669810008,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.2202041076895211
+      },
+      {
+        "date": "2025-10-13",
+        "close": 36.52641296386719,
+        "actual_return": 0.10121553850684784,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.3162667318257233
+      },
+      {
+        "date": "2025-10-14",
+        "close": 36.03411865234375,
+        "actual_return": 0.1336725481594152,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.1466904120507073
+      },
+      {
+        "date": "2025-10-15",
+        "close": 36.12099075317383,
+        "actual_return": 0.12373062090310172,
+        "signal_strength": 0.06832623554975092,
+        "trend": "uptrend",
+        "volume_spike": 0.8338534372743248
+      },
+      {
+        "date": "2025-11-25",
+        "close": 41.46867370605469,
+        "actual_return": 0.12067293522332001,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.4602597814729023
+      },
+      {
+        "date": "2026-01-08",
+        "close": 45.709999084472656,
+        "actual_return": 0.07700723098372131,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.3687433672424485
+      },
+      {
+        "date": "2026-01-09",
+        "close": 46.099998474121094,
+        "actual_return": 0.08177875450212913,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7289118992664195
+      },
+      {
+        "date": "2026-01-12",
+        "close": 46.75,
+        "actual_return": 0.10395723230698528,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6742649985893229
+      },
+      {
+        "date": "2026-01-13",
+        "close": 46.400001525878906,
+        "actual_return": 0.13577584116127284,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8122581971362564
+      },
+      {
+        "date": "2026-01-21",
+        "close": 47.59000015258789,
+        "actual_return": 0.08005886448991384,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.3046273210630437
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-06-10",
+        "close": 40.42318344116211,
+        "signal_strength": 0.8187187787844064,
+        "actual_return": -0.009109255291390395,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-12",
+        "close": 40.38495635986328,
+        "signal_strength": 1.0,
+        "actual_return": 0.004398359673680297,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-13",
+        "close": 40.50918960571289,
+        "signal_strength": 1.0,
+        "actual_return": 0.011485001611697188,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-16",
+        "close": 40.65253829956055,
+        "signal_strength": 0.957591197640363,
+        "actual_return": 0.0013215012847642704,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-23",
+        "close": 39.844242095947266,
+        "signal_strength": 0.972271726312936,
+        "actual_return": 0.017548132687163376,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-08",
+        "close": 38.896026611328125,
+        "signal_strength": 0.82344024295225,
+        "actual_return": 0.017483396035447907,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-07-23",
+        "close": 36.40576171875,
+        "signal_strength": 1.0,
+        "actual_return": 0.008727777666009517,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-28",
+        "close": 35.34733581542969,
+        "signal_strength": 1.0,
+        "actual_return": 0.013340575509071195,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-29",
+        "close": 35.202980041503906,
+        "signal_strength": 1.0,
+        "actual_return": 0.0008200904830275579,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-30",
+        "close": 35.46281433105469,
+        "signal_strength": 1.0,
+        "actual_return": -0.006241472472463427,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 126,
+      "missed_moves_count": 27,
+      "false_signals_count": 28,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.7063829787234043,
+      "avg_signal_strength": 0.6194874561088884,
+      "signal_strength_std": 0.46387177807872415
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 27 strong moves)",
+      "Improve signal filtering (28 false positives with current threshold)"
+    ]
+  },
+  "MGLU3.SA": {
+    "ticker": "MGLU3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-04-16",
+        "close": 9.569280624389648,
+        "actual_return": -0.11821009081216705,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5836991469844747
+      },
+      {
+        "date": "2025-04-17",
+        "close": 9.430595397949219,
+        "actual_return": -0.11736127796829832,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.76708893479467
+      },
+      {
+        "date": "2025-04-22",
+        "close": 9.375121116638184,
+        "actual_return": -0.13245566590682267,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.741327607015964
+      },
+      {
+        "date": "2025-04-24",
+        "close": 9.772685050964355,
+        "actual_return": -0.18236635174785265,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0965933649763318
+      },
+      {
+        "date": "2025-04-25",
+        "close": 9.661737442016602,
+        "actual_return": -0.1345341151661632,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5635273677342385
+      },
+      {
+        "date": "2025-04-28",
+        "close": 9.523809432983398,
+        "actual_return": -0.08400002082824731,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6969785484456779
+      },
+      {
+        "date": "2025-04-29",
+        "close": 9.5047607421875,
+        "actual_return": -0.06312620002440184,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0143540813372947
+      },
+      {
+        "date": "2025-05-15",
+        "close": 9.2380952835083,
+        "actual_return": -0.06391750874510738,
+        "signal_strength": 0.07295719480354228,
+        "trend": "downtrend",
+        "volume_spike": 1.200937589698855
+      },
+      {
+        "date": "2025-05-16",
+        "close": 9.314285278320312,
+        "actual_return": -0.05725966177441466,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7394883392822054
+      },
+      {
+        "date": "2025-05-20",
+        "close": 9.14285659790039,
+        "actual_return": 0.06770828769852444,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7588875144902348
+      },
+      {
+        "date": "2025-05-21",
+        "close": 8.771428108215332,
+        "actual_return": 0.09011940080732739,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7617194547007108
+      },
+      {
+        "date": "2025-05-29",
+        "close": 8.647619247436523,
+        "actual_return": 0.05947129179373878,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.1062900612046993
+      },
+      {
+        "date": "2025-06-25",
+        "close": 8.69523811340332,
+        "actual_return": -0.0635268992405692,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.705298290537433
+      },
+      {
+        "date": "2025-06-26",
+        "close": 8.971427917480469,
+        "actual_return": -0.11464965647676717,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8166113690818569
+      },
+      {
+        "date": "2025-06-27",
+        "close": 8.857142448425293,
+        "actual_return": -0.13548390952159095,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6498892859932667
+      },
+      {
+        "date": "2025-06-30",
+        "close": 9.380951881408691,
+        "actual_return": -0.1928934379123931,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0931818233906843
+      },
+      {
+        "date": "2025-07-01",
+        "close": 9.247618675231934,
+        "actual_return": -0.17095781085593842,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5461388039370703
+      },
+      {
+        "date": "2025-07-04",
+        "close": 8.80952262878418,
+        "actual_return": -0.14810807176955898,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5476812597243665
+      },
+      {
+        "date": "2025-07-07",
+        "close": 8.676190376281738,
+        "actual_return": -0.16575196108443446,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6094340530596078
+      },
+      {
+        "date": "2025-07-08",
+        "close": 8.476189613342285,
+        "actual_return": -0.15730329303935708,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8052747584000381
+      },
+      {
+        "date": "2025-08-22",
+        "close": 6.571427822113037,
+        "actual_return": 0.3434783974757647,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.1829029921130687
+      },
+      {
+        "date": "2025-08-25",
+        "close": 6.780951976776123,
+        "actual_return": 0.25140452075205655,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8032407084869727
+      },
+      {
+        "date": "2025-08-26",
+        "close": 6.666666030883789,
+        "actual_return": 0.27428586714609793,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.827525790417304
+      },
+      {
+        "date": "2025-08-27",
+        "close": 6.838095188140869,
+        "actual_return": 0.28830067239518775,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9355883031681667
+      },
+      {
+        "date": "2025-10-02",
+        "close": 8.723809242248535,
+        "actual_return": -0.10480354524482272,
+        "signal_strength": 0.1514370166384553,
+        "trend": "uptrend",
+        "volume_spike": 0.7409633238656012
+      },
+      {
+        "date": "2025-10-03",
+        "close": 8.714284896850586,
+        "actual_return": -0.08196712699956987,
+        "signal_strength": 0.24822566226739406,
+        "trend": "uptrend",
+        "volume_spike": 1.1110667806431294
+      },
+      {
+        "date": "2025-10-06",
+        "close": 8.533332824707031,
+        "actual_return": -0.0691964146015891,
+        "signal_strength": 0.30925961574500327,
+        "trend": "downtrend",
+        "volume_spike": 0.7172312646441446
+      },
+      {
+        "date": "2025-10-07",
+        "close": 8.552379608154297,
+        "actual_return": -0.06904225330124825,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7097462647522333
+      },
+      {
+        "date": "2025-10-31",
+        "close": 8.066665649414062,
+        "actual_return": 0.13223153197630988,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6680384853931061
+      },
+      {
+        "date": "2025-11-05",
+        "close": 8.323808670043945,
+        "actual_return": 0.06750574520637032,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.787790206409409
+      },
+      {
+        "date": "2025-11-07",
+        "close": 7.752379894256592,
+        "actual_return": 0.21621629434861855,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.3803176950312799
+      },
+      {
+        "date": "2025-11-10",
+        "close": 8.019046783447266,
+        "actual_return": 0.21852738512329073,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8063509801919677
+      },
+      {
+        "date": "2025-11-11",
+        "close": 8.65714168548584,
+        "actual_return": 0.11221127093061645,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.4122559928857759
+      },
+      {
+        "date": "2026-01-19",
+        "close": 8.359999656677246,
+        "actual_return": 0.17583735973657588,
+        "signal_strength": 0.11689637102693036,
+        "trend": "downtrend",
+        "volume_spike": 0.6062339419209878
+      },
+      {
+        "date": "2026-01-21",
+        "close": 8.8100004196167,
+        "actual_return": 0.10442668317825743,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0174769493228248
+      },
+      {
+        "date": "2026-01-22",
+        "close": 8.960000038146973,
+        "actual_return": 0.07700888141134432,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.4334574161658882
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-05-13",
+        "close": 8.723809242248535,
+        "signal_strength": 0.7453077350591409,
+        "actual_return": 0.019650668149609363,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-02",
+        "close": 9.085714340209961,
+        "signal_strength": 0.8117185742489875,
+        "actual_return": 0.0,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-07-24",
+        "close": 7.180952072143555,
+        "signal_strength": 1.0,
+        "actual_return": -0.015915152300719826,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-29",
+        "close": 6.647618770599365,
+        "signal_strength": 1.0,
+        "actual_return": 0.007163368485353372,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-08-08",
+        "close": 6.704761028289795,
+        "signal_strength": 1.0,
+        "actual_return": -0.019886347270868687,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-08-11",
+        "close": 6.685713768005371,
+        "signal_strength": 1.0,
+        "actual_return": 0.014245032329459839,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-08-12",
+        "close": 6.69523811340332,
+        "signal_strength": 1.0,
+        "actual_return": -0.004267522982092653,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-09-15",
+        "close": 10.076189994812012,
+        "signal_strength": 1.0,
+        "actual_return": 0.0037807419533353315,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-10-13",
+        "close": 8.190476417541504,
+        "signal_strength": 1.0,
+        "actual_return": -0.009302382987532942,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-10-14",
+        "close": 8.36190414428711,
+        "signal_strength": 1.0,
+        "actual_return": -0.013667397650480861,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 139,
+      "missed_moves_count": 36,
+      "false_signals_count": 17,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.7866666666666667,
+      "avg_signal_strength": 0.6676350339993373,
+      "signal_strength_std": 0.43284078847594304
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 36 strong moves)",
+      "Improve signal filtering (17 false positives with current threshold)"
+    ]
+  },
+  "PCAR3.SA": {
+    "ticker": "PCAR3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-05-02",
+        "close": 3.9000000953674316,
+        "actual_return": -0.14615388659565542,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.683370896473001
+      },
+      {
+        "date": "2025-05-05",
+        "close": 3.809999942779541,
+        "actual_return": -0.1601049617472715,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.4877213869994512
+      },
+      {
+        "date": "2025-05-13",
+        "close": 3.3499999046325684,
+        "actual_return": -0.080597011526222,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7612000712734149
+      },
+      {
+        "date": "2025-05-15",
+        "close": 3.369999885559082,
+        "actual_return": -0.10682489831482633,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.48771667564085586
+      },
+      {
+        "date": "2025-05-16",
+        "close": 3.3299999237060547,
+        "actual_return": -0.09609607825055455,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.3179837544698889
+      },
+      {
+        "date": "2025-06-20",
+        "close": 3.049999952316284,
+        "actual_return": 0.05573773080384514,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.976750382299416
+      },
+      {
+        "date": "2025-06-26",
+        "close": 2.990000009536743,
+        "actual_return": 0.05685621262599416,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 2.2400432733599067
+      },
+      {
+        "date": "2025-06-27",
+        "close": 3.049999952316284,
+        "actual_return": 0.05245904535479684,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.0111638026490168
+      },
+      {
+        "date": "2025-07-07",
+        "close": 3.0999999046325684,
+        "actual_return": 0.07741936029678342,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.2354567468110664
+      },
+      {
+        "date": "2025-07-08",
+        "close": 3.1600000858306885,
+        "actual_return": 0.06962026032742874,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8027378695952212
+      },
+      {
+        "date": "2025-07-09",
+        "close": 3.1500000953674316,
+        "actual_return": 0.09206347716608576,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.381196803953792
+      },
+      {
+        "date": "2025-07-10",
+        "close": 3.1600000858306885,
+        "actual_return": 0.10443035276668522,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7945761273057749
+      },
+      {
+        "date": "2025-07-14",
+        "close": 3.200000047683716,
+        "actual_return": 0.09999997764825852,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7979409603536207
+      },
+      {
+        "date": "2025-08-04",
+        "close": 3.390000104904175,
+        "actual_return": -0.12979352318719073,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.614797055363902
+      },
+      {
+        "date": "2025-08-05",
+        "close": 3.380000114440918,
+        "actual_return": -0.14201183515429627,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.4627674797312928
+      },
+      {
+        "date": "2025-08-11",
+        "close": 3.059999942779541,
+        "actual_return": 0.15032681266298753,
+        "signal_strength": 0.19121449108517832,
+        "trend": "downtrend",
+        "volume_spike": 0.3737426958725768
+      },
+      {
+        "date": "2025-08-20",
+        "close": 3.1500000953674316,
+        "actual_return": 0.22539675499456635,
+        "signal_strength": 0.1787393952235017,
+        "trend": "downtrend",
+        "volume_spike": 1.5993685988150044
+      },
+      {
+        "date": "2025-08-21",
+        "close": 3.180000066757202,
+        "actual_return": 0.1981131644015277,
+        "signal_strength": 0.06314431535643678,
+        "trend": "downtrend",
+        "volume_spike": 1.7086553363550494
+      },
+      {
+        "date": "2025-08-22",
+        "close": 3.2300000190734863,
+        "actual_return": 0.20743036295279405,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.7860289138796395
+      },
+      {
+        "date": "2025-08-25",
+        "close": 3.5199999809265137,
+        "actual_return": 0.13636364252114097,
+        "signal_strength": 0.13351138012621033,
+        "trend": "downtrend",
+        "volume_spike": 2.382157196723774
+      },
+      {
+        "date": "2025-08-26",
+        "close": 3.630000114440918,
+        "actual_return": 0.18732777049604987,
+        "signal_strength": 0.2672999003737074,
+        "trend": "downtrend",
+        "volume_spike": 1.5926614002816193
+      },
+      {
+        "date": "2025-08-27",
+        "close": 3.5999999046325684,
+        "actual_return": 0.18611113723413508,
+        "signal_strength": 0.31891891931076827,
+        "trend": "uptrend",
+        "volume_spike": 0.6479714038146802
+      },
+      {
+        "date": "2025-08-28",
+        "close": 3.549999952316284,
+        "actual_return": 0.13802817355448993,
+        "signal_strength": 0.36971948374344676,
+        "trend": "uptrend",
+        "volume_spike": 1.097005126931793
+      },
+      {
+        "date": "2025-08-29",
+        "close": 3.5899999141693115,
+        "actual_return": 0.144846861219331,
+        "signal_strength": 0.40699626122300503,
+        "trend": "uptrend",
+        "volume_spike": 1.6497062691970479
+      },
+      {
+        "date": "2025-09-01",
+        "close": 3.680000066757202,
+        "actual_return": 0.10326083400242791,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7434782303980316
+      },
+      {
+        "date": "2025-09-30",
+        "close": 3.9800000190734863,
+        "actual_return": -0.052763828427282,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.8188783049607424
+      },
+      {
+        "date": "2025-10-08",
+        "close": 3.9800000190734863,
+        "actual_return": -0.11055277766628946,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8493016593671604
+      },
+      {
+        "date": "2025-10-09",
+        "close": 3.9700000286102295,
+        "actual_return": -0.11586902640602847,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6896524927905406
+      },
+      {
+        "date": "2025-10-10",
+        "close": 3.9600000381469727,
+        "actual_return": -0.10606062430506402,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0522799191549639
+      },
+      {
+        "date": "2025-11-11",
+        "close": 3.7899999618530273,
+        "actual_return": 0.058047564444102306,
+        "signal_strength": 0.08259911963676346,
+        "trend": "uptrend",
+        "volume_spike": 0.9547655070647587
+      },
+      {
+        "date": "2025-11-12",
+        "close": 3.819999933242798,
+        "actual_return": 0.08376961749607936,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5826097457412537
+      },
+      {
+        "date": "2025-11-13",
+        "close": 3.7200000286102295,
+        "actual_return": 0.09677416460405763,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.43449005010517927
+      },
+      {
+        "date": "2025-11-14",
+        "close": 3.7899999618530273,
+        "actual_return": 0.05540898159911811,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.440929900176422
+      },
+      {
+        "date": "2025-11-17",
+        "close": 3.740000009536743,
+        "actual_return": 0.06417112538095182,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.3645640190540683
+      },
+      {
+        "date": "2025-12-10",
+        "close": 3.869999885559082,
+        "actual_return": -0.06976743899502935,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.4680220006284602
+      },
+      {
+        "date": "2025-12-18",
+        "close": 3.7899999618530273,
+        "actual_return": 0.058047564444102306,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.345064058712745
+      },
+      {
+        "date": "2025-12-19",
+        "close": 3.7799999713897705,
+        "actual_return": 0.052910065925260596,
+        "signal_strength": 0.04900459634267836,
+        "trend": "downtrend",
+        "volume_spike": 0.882938783393894
+      },
+      {
+        "date": "2026-01-02",
+        "close": 3.9600000381469727,
+        "actual_return": -0.0757575629864552,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.3728897775293407
+      },
+      {
+        "date": "2026-01-05",
+        "close": 3.940000057220459,
+        "actual_return": -0.06852791294551142,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.3632416276387942
+      },
+      {
+        "date": "2026-01-06",
+        "close": 4.010000228881836,
+        "actual_return": -0.06483795861386654,
+        "signal_strength": 0.040494396003545464,
+        "trend": "downtrend",
+        "volume_spike": 1.2440595801887515
+      },
+      {
+        "date": "2026-01-22",
+        "close": 3.890000104904175,
+        "actual_return": -0.05141389261958451,
+        "signal_strength": 0.057379173853321974,
+        "trend": "downtrend",
+        "volume_spike": 1.8001066292733872
+      },
+      {
+        "date": "2026-01-28",
+        "close": 3.819999933242798,
+        "actual_return": -0.06282722872536994,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.1338453066090546
+      },
+      {
+        "date": "2026-01-30",
+        "close": 3.8399999141693115,
+        "actual_return": -0.08333331781129005,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6771296356644724
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-05-09",
+        "close": 3.059999942779541,
+        "signal_strength": 0.81296371682462,
+        "actual_return": 0.00980391240220757,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-12",
+        "close": 3.109999895095825,
+        "signal_strength": 0.8254416373732131,
+        "actual_return": -0.006430862251169733,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-20",
+        "close": 3.0999999046325684,
+        "signal_strength": 1.0,
+        "actual_return": -0.009677410423445276,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-22",
+        "close": 3.0,
+        "signal_strength": 1.0,
+        "actual_return": 0.013333320617675781,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-23",
+        "close": 3.0899999141693115,
+        "signal_strength": 1.0,
+        "actual_return": -0.009708728874782357,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-27",
+        "close": 3.0799999237060547,
+        "signal_strength": 1.0,
+        "actual_return": -0.00974025069249762,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-28",
+        "close": 3.059999942779541,
+        "signal_strength": 1.0,
+        "actual_return": 0.0,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-30",
+        "close": 3.009999990463257,
+        "signal_strength": 1.0,
+        "actual_return": 0.01328902391354192,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-12",
+        "close": 3.0899999141693115,
+        "signal_strength": 1.0,
+        "actual_return": -0.012944971833043106,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-13",
+        "close": 3.049999952316284,
+        "signal_strength": 1.0,
+        "actual_return": 0.00983605634714424,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 110,
+      "missed_moves_count": 43,
+      "false_signals_count": 23,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.6693877551020408,
+      "avg_signal_strength": 0.5427671592872504,
+      "signal_strength_std": 0.46053505321172705
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 43 strong moves)",
+      "Improve signal filtering (23 false positives with current threshold)"
+    ]
+  },
+  "LREN3.SA": {
+    "ticker": "LREN3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-04-17",
+        "close": 12.28641128540039,
+        "actual_return": 0.11796880845775082,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8229255735388197
+      },
+      {
+        "date": "2025-04-22",
+        "close": 12.29601001739502,
+        "actual_return": 0.12177982969605683,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5022218648404195
+      },
+      {
+        "date": "2025-04-23",
+        "close": 12.391997337341309,
+        "actual_return": 0.1959721104073735,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.061774544235759
+      },
+      {
+        "date": "2025-06-13",
+        "close": 17.623321533203125,
+        "actual_return": 0.07189543898413975,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.1134939421208445
+      },
+      {
+        "date": "2025-07-11",
+        "close": 18.1435546875,
+        "actual_return": -0.10588241848996183,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.1209152469759167
+      },
+      {
+        "date": "2025-07-14",
+        "close": 17.62932586669922,
+        "actual_return": -0.09906442216270228,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 2.11724963905888
+      },
+      {
+        "date": "2025-07-15",
+        "close": 17.98831558227539,
+        "actual_return": -0.11812296138990985,
+        "signal_strength": 0.04611884249517974,
+        "trend": "uptrend",
+        "volume_spike": 1.2889203049404705
+      },
+      {
+        "date": "2025-07-16",
+        "close": 18.007719039916992,
+        "actual_return": -0.0969826921934227,
+        "signal_strength": 0.06973454127315902,
+        "trend": "downtrend",
+        "volume_spike": 1.6671075362321088
+      },
+      {
+        "date": "2025-07-17",
+        "close": 18.1629581451416,
+        "actual_return": -0.13087604767636973,
+        "signal_strength": 0.07724713209028267,
+        "trend": "downtrend",
+        "volume_spike": 0.7362315360138513
+      },
+      {
+        "date": "2025-08-07",
+        "close": 17.50319480895996,
+        "actual_return": -0.14412423181933842,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.8106096284667714
+      },
+      {
+        "date": "2025-09-22",
+        "close": 15.78586196899414,
+        "actual_return": -0.10317207924567606,
+        "signal_strength": 0.1007175801194936,
+        "trend": "uptrend",
+        "volume_spike": 1.1915015952617667
+      },
+      {
+        "date": "2025-09-23",
+        "close": 15.446276664733887,
+        "actual_return": -0.13568382737235818,
+        "signal_strength": 0.06581392485330259,
+        "trend": "uptrend",
+        "volume_spike": 2.0482511210141383
+      },
+      {
+        "date": "2025-09-24",
+        "close": 15.682125091552734,
+        "actual_return": -0.13362608626907246,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.5093222928463481
+      },
+      {
+        "date": "2025-09-25",
+        "close": 15.46568489074707,
+        "actual_return": -0.11959286292252558,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.2111066384973037
+      },
+      {
+        "date": "2025-09-26",
+        "close": 15.564065933227539,
+        "actual_return": -0.11630843574177763,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8871548458676967
+      },
+      {
+        "date": "2025-09-29",
+        "close": 15.505037307739258,
+        "actual_return": -0.10279188176312148,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6293431647712217
+      },
+      {
+        "date": "2025-09-30",
+        "close": 14.885229110717773,
+        "actual_return": -0.053536023860134896,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.2032731457865204
+      },
+      {
+        "date": "2025-11-07",
+        "close": 13.724319458007812,
+        "actual_return": 0.08243726353263203,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 3.360261832999524
+      },
+      {
+        "date": "2025-11-10",
+        "close": 14.265421867370605,
+        "actual_return": 0.05034475995025933,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 2.2203972998578108
+      },
+      {
+        "date": "2025-11-12",
+        "close": 14.69830322265625,
+        "actual_return": 0.06291836747405699,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7214979121249007
+      },
+      {
+        "date": "2025-11-13",
+        "close": 14.590083122253418,
+        "actual_return": 0.06203638962531133,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7006534776369384
+      },
+      {
+        "date": "2025-11-21",
+        "close": 14.944258689880371,
+        "actual_return": -0.08624093988388526,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6306513552430286
+      },
+      {
+        "date": "2025-11-24",
+        "close": 14.855714797973633,
+        "actual_return": -0.056953668487558784,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.850972143278942
+      },
+      {
+        "date": "2025-11-25",
+        "close": 14.983611106872559,
+        "actual_return": -0.0820748301159886,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6323521546114211
+      },
+      {
+        "date": "2025-12-03",
+        "close": 15.209890365600586,
+        "actual_return": -0.11702188626226318,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6723084080405278
+      },
+      {
+        "date": "2025-12-04",
+        "close": 14.796685218811035,
+        "actual_return": -0.09574341032605627,
+        "signal_strength": 0.04777255205712391,
+        "trend": "uptrend",
+        "volume_spike": 1.7247430664830843
+      },
+      {
+        "date": "2025-12-08",
+        "close": 14.009627342224121,
+        "actual_return": -0.06635632738896835,
+        "signal_strength": 0.06085090128925489,
+        "trend": "uptrend",
+        "volume_spike": 1.8072673155594636
+      },
+      {
+        "date": "2025-12-15",
+        "close": 14.470000267028809,
+        "actual_return": -0.07532827453165658,
+        "signal_strength": 0.13165146774978942,
+        "trend": "downtrend",
+        "volume_spike": 1.3243355661573573
+      },
+      {
+        "date": "2026-01-07",
+        "close": 13.130000114440918,
+        "actual_return": 0.1035795616773425,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6885250486640567
+      },
+      {
+        "date": "2026-01-08",
+        "close": 13.420000076293945,
+        "actual_return": 0.11400892133181828,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6172254292721043
+      },
+      {
+        "date": "2026-01-09",
+        "close": 13.300000190734863,
+        "actual_return": 0.11654136605310983,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5601479522497329
+      },
+      {
+        "date": "2026-01-12",
+        "close": 13.40999984741211,
+        "actual_return": 0.09992544130017178,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.4045427581956935
+      },
+      {
+        "date": "2026-01-13",
+        "close": 13.239999771118164,
+        "actual_return": 0.15030210011477219,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6845328448359702
+      },
+      {
+        "date": "2026-01-19",
+        "close": 13.390000343322754,
+        "actual_return": 0.12397309969001657,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.2741694115972265
+      },
+      {
+        "date": "2026-01-20",
+        "close": 13.619999885559082,
+        "actual_return": 0.14464025576957207,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8641832051650202
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-05-23",
+        "close": 16.893815994262695,
+        "signal_strength": 1.0,
+        "actual_return": -0.0022728337600095294,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-26",
+        "close": 17.028196334838867,
+        "signal_strength": 1.0,
+        "actual_return": 0.008455613155446073,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-28",
+        "close": 17.44094467163086,
+        "signal_strength": 1.0,
+        "actual_return": 0.01651068593246907,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-30",
+        "close": 17.431344985961914,
+        "signal_strength": 1.0,
+        "actual_return": 0.01101329515283056,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-03",
+        "close": 18.055265426635742,
+        "signal_strength": 1.0,
+        "actual_return": -0.008506089956866303,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-04",
+        "close": 17.680912017822266,
+        "signal_strength": 1.0,
+        "actual_return": 0.016286708903773484,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-05",
+        "close": 17.680912017822266,
+        "signal_strength": 1.0,
+        "actual_return": 0.007600521689038464,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-17",
+        "close": 17.90168571472168,
+        "signal_strength": 1.0,
+        "actual_return": 0.0187667563178171,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-24",
+        "close": 18.516006469726562,
+        "signal_strength": 1.0,
+        "actual_return": 0.011324904302967065,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-26",
+        "close": 18.746376037597656,
+        "signal_strength": 1.0,
+        "actual_return": -0.008348781604517463,
+        "trend": "uptrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 142,
+      "missed_moves_count": 35,
+      "false_signals_count": 40,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.685483870967742,
+      "avg_signal_strength": 0.686910899755446,
+      "signal_strength_std": 0.43546893377735474
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 35 strong moves)",
+      "Improve signal filtering (40 false positives with current threshold)"
+    ]
+  },
+  "RAIZ4.SA": {
+    "ticker": "RAIZ4.SA",
+    "missed_moves": [
+      {
+        "date": "2025-04-29",
+        "close": 1.8300000429153442,
+        "actual_return": -0.06557377155969979,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.46215202086425045
+      },
+      {
+        "date": "2025-04-30",
+        "close": 1.809999942779541,
+        "actual_return": -0.06077342462613722,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.4192240917315535
+      },
+      {
+        "date": "2025-05-02",
+        "close": 1.850000023841858,
+        "actual_return": -0.07567566696791173,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6430554137369882
+      },
+      {
+        "date": "2025-05-09",
+        "close": 1.7999999523162842,
+        "actual_return": 0.1888889786637884,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8594589700512058
+      },
+      {
+        "date": "2025-05-12",
+        "close": 1.7799999713897705,
+        "actual_return": 0.10674160689570833,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.4085692547918904
+      },
+      {
+        "date": "2025-05-13",
+        "close": 1.7899999618530273,
+        "actual_return": 0.11173187259550188,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.6141894513286847
+      },
+      {
+        "date": "2025-05-14",
+        "close": 1.7100000381469727,
+        "actual_return": 0.15204677465680283,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 2.3766770258494425
+      },
+      {
+        "date": "2025-05-15",
+        "close": 1.7000000476837158,
+        "actual_return": 0.17058820806985153,
+        "signal_strength": 0.0499722429674628,
+        "trend": "downtrend",
+        "volume_spike": 1.7222541366764663
+      },
+      {
+        "date": "2025-05-16",
+        "close": 1.7100000381469727,
+        "actual_return": 0.1345029321301794,
+        "signal_strength": 0.06458795179449768,
+        "trend": "downtrend",
+        "volume_spike": 1.6898094245970954
+      },
+      {
+        "date": "2025-05-19",
+        "close": 1.690000057220459,
+        "actual_return": 0.13609461069633166,
+        "signal_strength": 0.08249717441090583,
+        "trend": "downtrend",
+        "volume_spike": 1.307517781365469
+      },
+      {
+        "date": "2025-05-20",
+        "close": 1.6799999475479126,
+        "actual_return": 0.19047622764462102,
+        "signal_strength": 0.10702337612444042,
+        "trend": "downtrend",
+        "volume_spike": 1.2031166858823752
+      },
+      {
+        "date": "2025-05-21",
+        "close": 1.7799999713897705,
+        "actual_return": 0.1292134959383786,
+        "signal_strength": 0.0785633907842282,
+        "trend": "downtrend",
+        "volume_spike": 1.894570182166074
+      },
+      {
+        "date": "2025-05-29",
+        "close": 1.9900000095367432,
+        "actual_return": -0.050251268021419326,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6453274534080189
+      },
+      {
+        "date": "2025-06-09",
+        "close": 1.940000057220459,
+        "actual_return": -0.15463920756548832,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7059694623331642
+      },
+      {
+        "date": "2025-06-13",
+        "close": 1.8300000429153442,
+        "actual_return": -0.09836068991039304,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5322316303832928
+      },
+      {
+        "date": "2025-06-17",
+        "close": 1.850000023841858,
+        "actual_return": -0.09189193194760592,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6245149929762682
+      },
+      {
+        "date": "2025-09-02",
+        "close": 1.2100000381469727,
+        "actual_return": 0.08264454667762733,
+        "signal_strength": 0.16713619643757163,
+        "trend": "downtrend",
+        "volume_spike": 1.081588249721871
+      },
+      {
+        "date": "2025-09-03",
+        "close": 1.2699999809265137,
+        "actual_return": 0.05511815236486828,
+        "signal_strength": 0.2759277746844989,
+        "trend": "downtrend",
+        "volume_spike": 1.272049744679003
+      },
+      {
+        "date": "2025-09-09",
+        "close": 1.2899999618530273,
+        "actual_return": -0.09302326226118407,
+        "signal_strength": 0.369287022739227,
+        "trend": "uptrend",
+        "volume_spike": 0.9839473546452978
+      },
+      {
+        "date": "2025-09-24",
+        "close": 1.100000023841858,
+        "actual_return": -0.1636363665919658,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8581301680460853
+      },
+      {
+        "date": "2025-10-23",
+        "close": 0.9599999785423279,
+        "actual_return": -0.07291666084590043,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8764561066178262
+      },
+      {
+        "date": "2025-10-24",
+        "close": 0.9700000286102295,
+        "actual_return": -0.1340206711359908,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.4305231003579637
+      },
+      {
+        "date": "2025-10-27",
+        "close": 0.949999988079071,
+        "actual_return": -0.08421050980480738,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7461594485474802
+      },
+      {
+        "date": "2025-10-30",
+        "close": 0.9399999976158142,
+        "actual_return": -0.07446807768615782,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.9571517883998495
+      },
+      {
+        "date": "2025-10-31",
+        "close": 0.949999988079071,
+        "actual_return": -0.08421050980480738,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.385666205917481
+      },
+      {
+        "date": "2025-11-03",
+        "close": 0.9399999976158142,
+        "actual_return": -0.09574465319386105,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8897560880977791
+      },
+      {
+        "date": "2025-11-04",
+        "close": 0.9200000166893005,
+        "actual_return": -0.07608694736696164,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7447486823261925
+      },
+      {
+        "date": "2025-11-05",
+        "close": 0.9100000262260437,
+        "actual_return": -0.06593406665384183,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7752646606285739
+      },
+      {
+        "date": "2025-11-06",
+        "close": 0.8899999856948853,
+        "actual_return": -0.06741573409952317,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.3086656843336526
+      },
+      {
+        "date": "2025-11-10",
+        "close": 0.8700000047683716,
+        "actual_return": -0.06896551960383057,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6297160100853674
+      },
+      {
+        "date": "2025-11-11",
+        "close": 0.9200000166893005,
+        "actual_return": -0.11956523077136383,
+        "signal_strength": 0.11889596632527395,
+        "trend": "downtrend",
+        "volume_spike": 1.5742133786297825
+      },
+      {
+        "date": "2025-12-08",
+        "close": 0.8700000047683716,
+        "actual_return": -0.06896551960383057,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.7504808160914178
+      },
+      {
+        "date": "2025-12-11",
+        "close": 0.8600000143051147,
+        "actual_return": -0.0697674434722727,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5087844556003343
+      },
+      {
+        "date": "2025-12-15",
+        "close": 0.8600000143051147,
+        "actual_return": -0.0697674434722727,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.6049056841359992
+      },
+      {
+        "date": "2025-12-30",
+        "close": 0.8100000023841858,
+        "actual_return": 0.061728409597230804,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7181181764165124
+      },
+      {
+        "date": "2026-01-13",
+        "close": 0.8299999833106995,
+        "actual_return": 0.08433734247587221,
+        "signal_strength": 0.06419752832048456,
+        "trend": "downtrend",
+        "volume_spike": 1.6573892031941722
+      },
+      {
+        "date": "2026-01-14",
+        "close": 0.8600000143051147,
+        "actual_return": 0.25581398250090825,
+        "signal_strength": 0.07644884375882276,
+        "trend": "uptrend",
+        "volume_spike": 1.4275477227146613
+      },
+      {
+        "date": "2026-01-15",
+        "close": 0.8600000143051147,
+        "actual_return": 0.20930226110909267,
+        "signal_strength": 0.09359608724575559,
+        "trend": "uptrend",
+        "volume_spike": 1.195225119073711
+      },
+      {
+        "date": "2026-01-16",
+        "close": 0.8199999928474426,
+        "actual_return": 0.25609753704156124,
+        "signal_strength": 0.06862745835649552,
+        "trend": "uptrend",
+        "volume_spike": 1.3587219748296762
+      },
+      {
+        "date": "2026-01-19",
+        "close": 0.800000011920929,
+        "actual_return": 0.17499997951090362,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8632430937589507
+      },
+      {
+        "date": "2026-01-20",
+        "close": 0.7900000214576721,
+        "actual_return": 0.2405063195634285,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7075850216948237
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-04-16",
+        "close": 1.7400000095367432,
+        "signal_strength": 0.8660597633501238,
+        "actual_return": 0.01724136277318622,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-17",
+        "close": 1.7599999904632568,
+        "signal_strength": 0.9471236522453245,
+        "actual_return": 0.0,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-22",
+        "close": 1.7300000190734863,
+        "signal_strength": 1.0,
+        "actual_return": 0.0,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-25",
+        "close": 1.7999999523162842,
+        "signal_strength": 0.7798369983540282,
+        "actual_return": -0.011111100809073515,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-22",
+        "close": 2.0,
+        "signal_strength": 0.6894513992228561,
+        "actual_return": -0.014999985694885254,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-26",
+        "close": 1.9700000286102295,
+        "signal_strength": 0.7308861084658037,
+        "actual_return": -0.015228411651818319,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-02",
+        "close": 1.9199999570846558,
+        "signal_strength": 0.6775225023004952,
+        "actual_return": -0.010416656965389626,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-20",
+        "close": 1.7200000286102295,
+        "signal_strength": 1.0,
+        "actual_return": -0.005813947847045586,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-24",
+        "close": 1.6399999856948853,
+        "signal_strength": 1.0,
+        "actual_return": 0.018292665641127526,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-10-28",
+        "close": 0.9300000071525574,
+        "signal_strength": 0.8789620546363747,
+        "actual_return": -0.01075267783478251,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 128,
+      "missed_moves_count": 41,
+      "false_signals_count": 17,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.7402135231316725,
+      "avg_signal_strength": 0.6328056632010959,
+      "signal_strength_std": 0.4497217418394506
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 41 strong moves)",
+      "Improve signal filtering (17 false positives with current threshold)"
+    ]
+  },
+  "GGBR4.SA": {
+    "ticker": "GGBR4.SA",
+    "missed_moves": [
+      {
+        "date": "2025-05-06",
+        "close": 14.34001350402832,
+        "actual_return": 0.06473207961856264,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5575905684286129
+      },
+      {
+        "date": "2025-05-07",
+        "close": 14.175074577331543,
+        "actual_return": 0.06677084480567785,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6969496669811232
+      },
+      {
+        "date": "2025-05-22",
+        "close": 15.13133716583252,
+        "actual_return": 0.07950867360415503,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.3073660151906918
+      },
+      {
+        "date": "2025-05-23",
+        "close": 15.111774444580078,
+        "actual_return": 0.0802588994312956,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8389704314535094
+      },
+      {
+        "date": "2025-05-26",
+        "close": 15.297616004943848,
+        "actual_return": 0.1355497726316779,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.4195056091580453
+      },
+      {
+        "date": "2025-06-25",
+        "close": 15.512799263000488,
+        "actual_return": 0.05863817381515668,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.8940781394803121
+      },
+      {
+        "date": "2025-06-26",
+        "close": 15.708420753479004,
+        "actual_return": 0.05105851796011196,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6248302178772224
+      },
+      {
+        "date": "2025-08-22",
+        "close": 16.120168685913086,
+        "actual_return": 0.06601463318650147,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8466518416920914
+      },
+      {
+        "date": "2025-09-25",
+        "close": 16.435476303100586,
+        "actual_return": 0.053357329524703845,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6019593701580817
+      },
+      {
+        "date": "2025-09-29",
+        "close": 16.51430320739746,
+        "actual_return": 0.05727923572555249,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8877154682420553
+      },
+      {
+        "date": "2025-09-30",
+        "close": 16.36650276184082,
+        "actual_return": 0.066225128517156,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8173215425505169
+      },
+      {
+        "date": "2025-10-01",
+        "close": 16.71137046813965,
+        "actual_return": 0.05660388987317466,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.4918252442173008
+      },
+      {
+        "date": "2025-10-07",
+        "close": 16.937999725341797,
+        "actual_return": 0.058173345990435,
+        "signal_strength": 0.061532951658026705,
+        "trend": "uptrend",
+        "volume_spike": 1.4688515966735018
+      },
+      {
+        "date": "2025-12-05",
+        "close": 19.100000381469727,
+        "actual_return": 0.06649216923554557,
+        "signal_strength": 0.058281383884205784,
+        "trend": "uptrend",
+        "volume_spike": 2.0405442602777435
+      },
+      {
+        "date": "2025-12-08",
+        "close": 19.049999237060547,
+        "actual_return": 0.0797900534718452,
+        "signal_strength": 0.05199637817727091,
+        "trend": "uptrend",
+        "volume_spike": 1.0548997884767977
+      },
+      {
+        "date": "2025-12-09",
+        "close": 19.079999923706055,
+        "actual_return": 0.08752620979935344,
+        "signal_strength": 0.046896532296501835,
+        "trend": "uptrend",
+        "volume_spike": 1.5389663981950745
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-04-16",
+        "close": 14.621380805969238,
+        "signal_strength": 1.0,
+        "actual_return": -0.016589300458548784,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-17",
+        "close": 14.504953384399414,
+        "signal_strength": 1.0,
+        "actual_return": -0.011371279589804995,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-22",
+        "close": 14.44674015045166,
+        "signal_strength": 1.0,
+        "actual_return": -0.01880462791542792,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-23",
+        "close": 14.611679077148438,
+        "signal_strength": 1.0,
+        "actual_return": -0.010624186108683098,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-25",
+        "close": 14.873641014099121,
+        "signal_strength": 1.0,
+        "actual_return": -0.003717906408013838,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-04-28",
+        "close": 15.087091445922852,
+        "signal_strength": 0.8736016181721258,
+        "actual_return": 0.004877634977884293,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-05-15",
+        "close": 15.366083145141602,
+        "signal_strength": 1.0,
+        "actual_return": 0.002546158865666115,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-17",
+        "close": 16.217037200927734,
+        "signal_strength": 0.9462949533666353,
+        "actual_return": -0.004824991725863703,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-18",
+        "close": 16.168132781982422,
+        "signal_strength": 0.8936056099700229,
+        "actual_return": 0.015729008661094168,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-07-07",
+        "close": 16.48112678527832,
+        "signal_strength": 1.0,
+        "actual_return": -0.01364980348592737,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 137,
+      "missed_moves_count": 16,
+      "false_signals_count": 41,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.669683257918552,
+      "avg_signal_strength": 0.6705234100776625,
+      "signal_strength_std": 0.45182534311635497
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 16 strong moves)",
+      "Improve signal filtering (41 false positives with current threshold)"
+    ]
+  },
+  "ASAI3.SA": {
+    "ticker": "ASAI3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-06-26",
+        "close": 10.86439323425293,
+        "actual_return": -0.07266122560621169,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5195130671888418
+      },
+      {
+        "date": "2025-06-27",
+        "close": 10.893996238708496,
+        "actual_return": -0.09601448212814234,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.4189207183756223
+      },
+      {
+        "date": "2025-06-30",
+        "close": 11.11108684539795,
+        "actual_return": -0.12078155192351714,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.0024054616770983
+      },
+      {
+        "date": "2025-07-08",
+        "close": 10.341402053833008,
+        "actual_return": -0.08110684259848944,
+        "signal_strength": 0.12619506710935857,
+        "trend": "downtrend",
+        "volume_spike": 0.6919826219937766
+      },
+      {
+        "date": "2025-09-11",
+        "close": 9.778940200805664,
+        "actual_return": -0.07467201458324113,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 3.3892163839367564
+      },
+      {
+        "date": "2025-09-12",
+        "close": 9.749337196350098,
+        "actual_return": -0.0536436699452143,
+        "signal_strength": 0.05565874733608921,
+        "trend": "downtrend",
+        "volume_spike": 1.6633395184874145
+      },
+      {
+        "date": "2025-09-15",
+        "close": 9.996030807495117,
+        "actual_return": -0.06811451841598959,
+        "signal_strength": 0.0563958782576705,
+        "trend": "uptrend",
+        "volume_spike": 0.9411854253923738
+      },
+      {
+        "date": "2025-09-16",
+        "close": 9.976295471191406,
+        "actual_return": -0.05934716540750207,
+        "signal_strength": 0.04957074346382739,
+        "trend": "uptrend",
+        "volume_spike": 1.22326140971875
+      },
+      {
+        "date": "2025-09-18",
+        "close": 10.144046783447266,
+        "actual_return": -0.09922172111096528,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.6555074715337856
+      },
+      {
+        "date": "2025-09-19",
+        "close": 9.986163139343262,
+        "actual_return": -0.10474297674652244,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.009996217999713
+      },
+      {
+        "date": "2025-09-22",
+        "close": 9.670395851135254,
+        "actual_return": -0.08367355693631595,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.086906732510539
+      },
+      {
+        "date": "2025-09-23",
+        "close": 9.69999885559082,
+        "actual_return": -0.1119023877844727,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9817050255752264
+      },
+      {
+        "date": "2025-10-30",
+        "close": 8.446794509887695,
+        "actual_return": 0.11214961184838468,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.4556618308116706
+      },
+      {
+        "date": "2025-10-31",
+        "close": 8.486266136169434,
+        "actual_return": 0.10348828650238051,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9679405066634977
+      },
+      {
+        "date": "2025-11-03",
+        "close": 8.417190551757812,
+        "actual_return": 0.1418523591036729,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.36097890563675566
+      },
+      {
+        "date": "2025-11-04",
+        "close": 8.367852210998535,
+        "actual_return": 0.12264162877867935,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5244843845224476
+      },
+      {
+        "date": "2025-12-03",
+        "close": 9.009256362915039,
+        "actual_return": -0.190580550847951,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.9129325057945206
+      },
+      {
+        "date": "2025-12-05",
+        "close": 8.45666217803955,
+        "actual_return": -0.15635938527105808,
+        "signal_strength": 0.07642237472480867,
+        "trend": "downtrend",
+        "volume_spike": 2.054411958436459
+      },
+      {
+        "date": "2026-01-16",
+        "close": 7.449999809265137,
+        "actual_return": 0.15033555895749195,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 1.0577241711848653
+      },
+      {
+        "date": "2026-01-19",
+        "close": 7.449999809265137,
+        "actual_return": 0.16375842929708062,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.4278236837606782
+      },
+      {
+        "date": "2026-01-20",
+        "close": 7.480000019073486,
+        "actual_return": 0.1831551281955659,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.7941162885813987
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-05-29",
+        "close": 11.11108684539795,
+        "signal_strength": 1.0,
+        "actual_return": -0.005328638269979091,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-02",
+        "close": 11.219632148742676,
+        "signal_strength": 1.0,
+        "actual_return": -0.0035180005978935336,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-09",
+        "close": 10.972938537597656,
+        "signal_strength": 1.0,
+        "actual_return": -0.011690636852552894,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-10",
+        "close": 10.86439323425293,
+        "signal_strength": 1.0,
+        "actual_return": -0.009990921812596754,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-11",
+        "close": 11.071616172790527,
+        "signal_strength": 1.0,
+        "actual_return": -0.01871659343166776,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-12",
+        "close": 11.0518798828125,
+        "signal_strength": 1.0,
+        "actual_return": -0.014285682234887354,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-07-02",
+        "close": 9.94669246673584,
+        "signal_strength": 1.0,
+        "actual_return": 0.012896813697361065,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-03",
+        "close": 10.1144437789917,
+        "signal_strength": 1.0,
+        "actual_return": -0.01853652584920107,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-18",
+        "close": 9.591453552246094,
+        "signal_strength": 1.0,
+        "actual_return": -0.002057695412954974,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-07-21",
+        "close": 9.601320266723633,
+        "signal_strength": 1.0,
+        "actual_return": 0.013360828485990073,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 156,
+      "missed_moves_count": 21,
+      "false_signals_count": 23,
+      "optimal_threshold": 0.3,
+      "optimal_f1_score": 0.8071428571428572,
+      "avg_signal_strength": 0.7662770845495065,
+      "signal_strength_std": 0.40008340795575004
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.30 (missed 21 strong moves)",
+      "Improve signal filtering (23 false positives with current threshold)"
+    ]
+  },
+  "RDOR3.SA": {
+    "ticker": "RDOR3.SA",
+    "missed_moves": [
+      {
+        "date": "2025-07-04",
+        "close": 31.932079315185547,
+        "actual_return": -0.05840258097102513,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.2827446753838708
+      },
+      {
+        "date": "2025-08-05",
+        "close": 30.551677703857422,
+        "actual_return": 0.11669660612972588,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9210305064355386
+      },
+      {
+        "date": "2025-08-06",
+        "close": 31.429285049438477,
+        "actual_return": 0.08609656865455184,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.6399588205618287
+      },
+      {
+        "date": "2025-10-09",
+        "close": 36.572261810302734,
+        "actual_return": 0.056546860037014035,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 2.6933036945877125
+      },
+      {
+        "date": "2025-10-10",
+        "close": 36.572261810302734,
+        "actual_return": 0.06207579502626359,
+        "signal_strength": 0.046269145905714244,
+        "trend": "uptrend",
+        "volume_spike": 1.233869732982465
+      },
+      {
+        "date": "2025-10-13",
+        "close": 36.53549575805664,
+        "actual_return": 0.07044016738708314,
+        "signal_strength": 0.06503145295635059,
+        "trend": "downtrend",
+        "volume_spike": 0.7357496512295867
+      },
+      {
+        "date": "2025-10-14",
+        "close": 36.95829391479492,
+        "actual_return": 0.059437915155193366,
+        "signal_strength": 0.06718063905461669,
+        "trend": "downtrend",
+        "volume_spike": 2.628111347653688
+      },
+      {
+        "date": "2025-10-15",
+        "close": 37.24322509765625,
+        "actual_return": 0.056515315646033404,
+        "signal_strength": 0.0700831682711656,
+        "trend": "downtrend",
+        "volume_spike": 1.0494220606012168
+      },
+      {
+        "date": "2025-10-17",
+        "close": 37.49139404296875,
+        "actual_return": 0.06251526229163917,
+        "signal_strength": 0.04119062961220762,
+        "trend": "downtrend",
+        "volume_spike": 0.9691720279210483
+      },
+      {
+        "date": "2025-10-23",
+        "close": 38.64030838012695,
+        "actual_return": 0.1284490328822503,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.6240294572338652
+      },
+      {
+        "date": "2025-10-24",
+        "close": 38.84251403808594,
+        "actual_return": 0.11949846066696712,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5114094128945676
+      },
+      {
+        "date": "2025-10-27",
+        "close": 39.10906219482422,
+        "actual_return": 0.09706232980492202,
+        "signal_strength": 0.0,
+        "trend": "uptrend",
+        "volume_spike": 0.5840451685243805
+      },
+      {
+        "date": "2025-12-15",
+        "close": 43.30949401855469,
+        "actual_return": -0.0655628254773668,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.9044351385384817
+      },
+      {
+        "date": "2026-01-06",
+        "close": 42.5,
+        "actual_return": -0.05552942612591916,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9038518336505157
+      },
+      {
+        "date": "2026-01-08",
+        "close": 40.66999816894531,
+        "actual_return": 0.0668797969796826,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.8420376244121186
+      },
+      {
+        "date": "2026-01-09",
+        "close": 41.189998626708984,
+        "actual_return": 0.06700660908594425,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.9889015267814777
+      },
+      {
+        "date": "2026-01-12",
+        "close": 41.15999984741211,
+        "actual_return": 0.07118562478226065,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.5702471605719404
+      },
+      {
+        "date": "2026-01-13",
+        "close": 40.220001220703125,
+        "actual_return": 0.08403772130365139,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 1.2024624659121985
+      },
+      {
+        "date": "2026-01-14",
+        "close": 40.34000015258789,
+        "actual_return": 0.09444723249577369,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.7222858619060406
+      },
+      {
+        "date": "2026-01-19",
+        "close": 40.45000076293945,
+        "actual_return": 0.08479605044453709,
+        "signal_strength": 0.0,
+        "trend": "downtrend",
+        "volume_spike": 0.3176294408623411
+      }
+    ],
+    "false_signals": [
+      {
+        "date": "2025-05-20",
+        "close": 33.393917083740234,
+        "signal_strength": 1.0,
+        "actual_return": -0.011976218912122083,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-21",
+        "close": 33.02125549316406,
+        "signal_strength": 1.0,
+        "actual_return": 0.007707082128626475,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-05-22",
+        "close": 32.99398422241211,
+        "signal_strength": 1.0,
+        "actual_return": -0.0016527587891330686,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-03",
+        "close": 32.99398422241211,
+        "signal_strength": 1.0,
+        "actual_return": -0.016668757424841085,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-09",
+        "close": 32.557701110839844,
+        "signal_strength": 0.8312360118802534,
+        "actual_return": -0.006580348750750753,
+        "trend": "uptrend"
+      },
+      {
+        "date": "2025-06-13",
+        "close": 31.903274536132812,
+        "signal_strength": 0.9759769879808148,
+        "actual_return": 0.01494346935857016,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-16",
+        "close": 32.2850227355957,
+        "signal_strength": 0.9198934091160264,
+        "actual_return": 0.0026594748517869693,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-20",
+        "close": 31.813236236572266,
+        "signal_strength": 1.0,
+        "actual_return": 0.003735648826467486,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-23",
+        "close": 31.72182273864746,
+        "signal_strength": 1.0,
+        "actual_return": -0.013544824416459766,
+        "trend": "downtrend"
+      },
+      {
+        "date": "2025-06-24",
+        "close": 32.34346008300781,
+        "signal_strength": 1.0,
+        "actual_return": -0.017524087578155156,
+        "trend": "downtrend"
+      }
+    ],
+    "signal_stats": {
+      "total_signals": 152,
+      "missed_moves_count": 20,
+      "false_signals_count": 31,
+      "optimal_threshold": 0.7,
+      "optimal_f1_score": 0.7704918032786884,
+      "avg_signal_strength": 0.7481474760078842,
+      "signal_strength_std": 0.4163198689889232
+    },
+    "recommendations": [
+      "Lower threshold from 0.5 to 0.70 (missed 20 strong moves)",
+      "Improve signal filtering (31 false positives with current threshold)"
+    ]
+  }
+}
