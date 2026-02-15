@@ -68,11 +68,17 @@ class FilteredNewsClient:
         self.cache = {}  # ticker -> (timestamp, news_list)
         
         # Load FinBERT model for sentiment analysis
-        print("📰 Loading FinBERT model for sentiment analysis...")
-        self.tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
-        self.model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert")
-        self.model.eval()
-        print("✅ FinBERT loaded")
+        try:
+            print("📰 Loading FinBERT model for sentiment analysis...")
+            self.tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
+            self.model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert")
+            self.model.eval()
+            print("✅ FinBERT loaded")
+        except Exception as e:
+            print(f"⚠️ FinBERT load failed: {e}")
+            print("📰 News sentiment will return 0.0 (neutral)")
+            self.tokenizer = None
+            self.model = None
     
     def _get_cache_key(self, ticker: str) -> str:
         """Generate cache key"""
@@ -202,24 +208,32 @@ class FilteredNewsClient:
         Returns:
             Sentiment score from -1.0 (very negative) to +1.0 (very positive)
         """
-        # Truncate to avoid token limits
-        text = text[:512]
+        # Check if model loaded successfully
+        if self.model is None or self.tokenizer is None:
+            return 0.0
         
-        # Tokenize
-        inputs = self.tokenizer(text, return_tensors="pt", truncation=True, max_length=512)
-        
-        # Get predictions
-        with torch.no_grad():
-            outputs = self.model(**inputs)
-            predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
-        
-        # FinBERT outputs: [negative, neutral, positive]
-        negative, neutral, positive = predictions[0].tolist()
-        
-        # Convert to -1 to +1 scale
-        sentiment = positive - negative
-        
-        return sentiment
+        try:
+            # Truncate to avoid token limits
+            text = text[:512]
+            
+            # Tokenize
+            inputs = self.tokenizer(text, return_tensors="pt", truncation=True, max_length=512)
+            
+            # Get predictions
+            with torch.no_grad():
+                outputs = self.model(**inputs)
+                predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
+            
+            # FinBERT outputs: [negative, neutral, positive]
+            negative, neutral, positive = predictions[0].tolist()
+            
+            # Convert to -1 to +1 scale
+            sentiment = positive - negative
+            
+            return sentiment
+        except Exception as e:
+            print(f"⚠️ Sentiment analysis error: {e}")
+            return 0.0
     
     def get_ticker_sentiment(
         self,

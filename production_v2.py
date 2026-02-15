@@ -16,8 +16,10 @@ import argparse
 from typing import Dict, List, Optional
 
 from src.signals.trend_detector_v2 import TrendDetectorV2
-from src.news.free_news_client import FreeNewsClient
+from src.news.filtered_news_client import FilteredNewsClient
 from src.risk.exit_manager import ExitManager, Position
+from src.analysis.decision_logger import DecisionLogger
+from src.analysis.signal_analyzer import SignalAnalyzer
 
 # 18 IBOV tickers (will expand later)
 TICKERS = [
@@ -36,18 +38,23 @@ class ProductionRunnerV2:
     Production runner with intelligent exit management
     """
     
-    def __init__(self, use_news: bool = True):
+    def __init__(self, use_news: bool = True, use_reasoning: bool = True):
         self.trend_detector = TrendDetectorV2()
         self.exit_manager = ExitManager()
         self.use_news = use_news
+        self.use_reasoning = use_reasoning
         
         if use_news:
-            self.news_client = FreeNewsClient()
+            self.news_client = FilteredNewsClient(cache_minutes=10)
+        
+        if use_reasoning:
+            self.decision_logger = DecisionLogger()
+            self.signal_analyzer = SignalAnalyzer()
         
         # Load active positions
         self.active_positions = self._load_positions()
         
-        print(f"✅ Sistema V2 inicializado (news={'ON' if use_news else 'OFF'})")
+        print(f"✅ Sistema V2 inicializado (news={'ON' if use_news else 'OFF'}, reasoning={'ON' if use_reasoning else 'OFF'})")
         if self.active_positions:
             print(f"📊 {len(self.active_positions)} posições ativas carregadas")
     
@@ -60,97 +67,137 @@ class ProductionRunnerV2:
             with open(POSITIONS_FILE, 'r') as f:
                 data = json.load(f)
             
+            # Validate JSON structure
+            if not isinstance(data, dict):
+                print(f"⚠️ Invalid positions file format (expected dict, got {type(data)})")
+                return {}
+            
             # Convert JSON to Position objects
             positions = {}
             for ticker, pos_data in data.items():
-                positions[ticker] = Position(**pos_data)
+                try:
+                    positions[ticker] = Position(**pos_data)
+                except Exception as e:
+                    print(f"⚠️ Skipping invalid position for {ticker}: {e}")
             
             return positions
+        except json.JSONDecodeError as e:
+            print(f"⚠️ JSON decode error in positions file: {e}")
+            return {}
         except Exception as e:
             print(f"⚠️ Error loading positions: {e}")
             return {}
     
     def _save_positions(self):
         """Save active positions to file"""
-        data = {}
-        for ticker, pos in self.active_positions.items():
-            data[ticker] = {
-                'ticker': pos.ticker,
-                'entry_price': pos.entry_price,
-                'entry_date': pos.entry_date,
-                'size': pos.size,
-                'current_price': pos.current_price,
-                'highest_price': pos.highest_price,
-                'stop_loss': pos.stop_loss,
-                'trailing_stop_active': pos.trailing_stop_active,
-                'trailing_stop_price': pos.trailing_stop_price,
-            }
-        
-        with open(POSITIONS_FILE, 'w') as f:
-            json.dump(data, f, indent=2)
+        try:
+            data = {}
+            for ticker, pos in self.active_positions.items():
+                data[ticker] = {
+                    'ticker': pos.ticker,
+                    'entry_price': pos.entry_price,
+                    'entry_date': pos.entry_date,
+                    'size': pos.size,
+                    'current_price': pos.current_price,
+                    'highest_price': pos.highest_price,
+                    'stop_loss': pos.stop_loss,
+                    'trailing_stop_active': pos.trailing_stop_active,
+                    'trailing_stop_price': pos.trailing_stop_price,
+                }
+            
+            with open(POSITIONS_FILE, 'w') as f:
+                json.dump(data, f, indent=2)
+                
+        except Exception as e:
+            print(f"⚠️ Error saving positions: {e}")
     
     def _log_exit(self, position: Position, exit_price: float, exit_percentage: float, reason: str):
         """Log position exit to history"""
-        if not os.path.exists(HISTORY_FILE):
-            history = []
-        else:
-            with open(HISTORY_FILE, 'r') as f:
-                history = json.load(f)
-        
-        gain = (exit_price - position.entry_price) / position.entry_price
-        
-        history.append({
-            'ticker': position.ticker,
-            'entry_date': position.entry_date,
-            'entry_price': position.entry_price,
-            'exit_date': datetime.now().strftime("%Y-%m-%d"),
-            'exit_price': exit_price,
-            'exit_percentage': exit_percentage,
-            'gain': gain,
-            'reason': reason,
-        })
-        
-        with open(HISTORY_FILE, 'w') as f:
-            json.dump(history, f, indent=2)
-    
-    def get_data(self, ticker: str, days: int = 120) -> pd.DataFrame:
-        """Download recent data"""
-        end_date = datetime.now()
-        start_date = end_date - timedelta(days=days)
-        
-        data = yf.download(
-            ticker,
-            start=start_date.strftime("%Y-%m-%d"),
-            end=end_date.strftime("%Y-%m-%d"),
-            progress=False
-        )
-        
-        # Flatten MultiIndex columns if needed
-        if isinstance(data.columns, pd.MultiIndex):
-            data.columns = ['_'.join(col).strip('_') if col[1] else col[0] for col in data.columns.values]
-            data = data.rename(columns={
-                f'Open_{ticker}': 'Open',
-                f'High_{ticker}': 'High',
-                f'Low_{ticker}': 'Low',
-                f'Close_{ticker}': 'Close',
-                f'Volume_{ticker}': 'Volume',
+        try:
+            if not os.path.exists(HISTORY_FILE):
+                history = []
+            else:
+                with open(HISTORY_FILE, 'r') as f:
+                    history = json.load(f)
+            
+            gain = (exit_price - position.entry_price) / position.entry_price
+            
+            history.append({
+                'ticker': position.ticker,
+                'entry_date': position.entry_date,
+                'entry_price': position.entry_price,
+                'exit_date': datetime.now().strftime("%Y-%m-%d"),
+                'exit_price': exit_price,
+                'exit_percentage': exit_percentage,
+                'gain': gain,
+                'reason': reason,
             })
-        
-        return data
+            
+            with open(HISTORY_FILE, 'w') as f:
+                json.dump(history, f, indent=2)
+                
+        except Exception as e:
+            print(f"⚠️ Error logging exit for {position.ticker}: {e}")
+    
+    def get_data(self, ticker: str, days: int = 120) -> Optional[pd.DataFrame]:
+        """Download recent data with error handling"""
+        try:
+            end_date = datetime.now()
+            start_date = end_date - timedelta(days=days)
+            
+            data = yf.download(
+                ticker,
+                start=start_date.strftime("%Y-%m-%d"),
+                end=end_date.strftime("%Y-%m-%d"),
+                progress=False
+            )
+            
+            # Validate data
+            if data is None or data.empty:
+                print(f"    ⚠️ No data returned for {ticker}")
+                return None
+            
+            if len(data) < 50:
+                print(f"    ⚠️ Insufficient data for {ticker}: {len(data)} days (need >= 50)")
+                return None
+            
+            # Flatten MultiIndex columns if needed
+            if isinstance(data.columns, pd.MultiIndex):
+                data.columns = ['_'.join(col).strip('_') if col[1] else col[0] for col in data.columns.values]
+                data = data.rename(columns={
+                    f'Open_{ticker}': 'Open',
+                    f'High_{ticker}': 'High',
+                    f'Low_{ticker}': 'Low',
+                    f'Close_{ticker}': 'Close',
+                    f'Volume_{ticker}': 'Volume',
+                })
+            
+            # Validate required columns
+            required_cols = ['Open', 'High', 'Low', 'Close', 'Volume']
+            missing_cols = [col for col in required_cols if col not in data.columns]
+            if missing_cols:
+                print(f"    ⚠️ Missing columns for {ticker}: {missing_cols}")
+                return None
+            
+            # Check for NaN values
+            if data[required_cols].isna().any().any():
+                print(f"    ⚠️ Data contains NaN values for {ticker}, forward-filling...")
+                data = data.fillna(method='ffill')
+            
+            return data
+            
+        except Exception as e:
+            print(f"    ❌ Error fetching data for {ticker}: {e}")
+            return None
     
     def get_news_sentiment(self, ticker: str) -> float:
-        """Get average sentiment from last 3 days"""
+        """Get sentiment from last 48 hours with weighted average"""
         if not self.use_news:
             return 0.0
         
         try:
-            sentiments = []
-            for days_ago in range(3):
-                date = (datetime.now() - timedelta(days=days_ago)).strftime("%Y-%m-%d")
-                sent = self.news_client.get_sentiment(ticker, date)
-                sentiments.append(sent)
-            
-            return sum(sentiments) / len(sentiments) if sentiments else 0.0
+            result = self.news_client.get_ticker_sentiment(ticker, hours_back=48)
+            return result.get('sentiment', 0.0)
         except Exception as e:
             print(f"    ⚠️ News error: {e}")
             return 0.0
@@ -161,12 +208,17 @@ class ProductionRunnerV2:
             # Download data
             data = self.get_data(ticker)
             
-            if len(data) < 50:
+            if data is None or len(data) < 50:
                 return None
             
             # Current price
             price_val = data['Close'].iloc[-1]
             current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+            
+            # Validate price
+            if pd.isna(current_price) or current_price <= 0:
+                print(f"  ⚠️ Invalid price for {ticker}: {current_price}")
+                return None
             
             # Trend detection
             trend_result = self.trend_detector.detect_trend(data)
@@ -184,14 +236,36 @@ class ProductionRunnerV2:
             # News sentiment (if enabled)
             news_sentiment = self.get_news_sentiment(ticker)
             
+            # Generate detailed reasoning (if enabled)
+            reasoning = None
+            if self.use_reasoning:
+                try:
+                    signal, decision = self.signal_analyzer.analyze_signal(
+                        ticker=ticker,
+                        df=data,
+                        current_price=current_price,
+                        news_sentiment=news_sentiment,
+                    )
+                    self.decision_logger.log_decision(decision)
+                    reasoning = decision.reason.primary_reason
+                except Exception as e:
+                    print(f"  ⚠️ Reasoning error for {ticker}: {e}")
+                    reasoning = None
+            
             # Check if we have an active position
             if ticker in self.active_positions:
-                return self._check_exit(ticker, data, trend, previous_trend, news_sentiment, current_price)
+                result = self._check_exit(ticker, data, trend, previous_trend, news_sentiment, current_price)
             else:
-                return self._check_entry(ticker, data, trend, confidence, news_sentiment, current_price)
+                result = self._check_entry(ticker, data, trend, confidence, news_sentiment, current_price)
+            
+            # Add reasoning to result
+            if result and reasoning:
+                result['reasoning'] = reasoning
+            
+            return result
             
         except Exception as e:
-            print(f"  ❌ Error: {e}")
+            print(f"  ❌ Error analyzing {ticker}: {e}")
             return None
     
     def _check_entry(self, ticker: str, data: pd.DataFrame, trend: str, confidence: float, news_sentiment: float, current_price: float) -> Dict:

@@ -131,59 +131,66 @@ def write_alert(alert_text):
 
 
 def main():
-    print(f"🔍 Market Monitor V2 - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    try:
+        print(f"🔍 Market Monitor V2 - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        
+        # Load previous state
+        prev_state = load_previous_state()
+        
+        # Check if we should fetch news
+        use_news = should_fetch_news(prev_state)
+        
+        if use_news:
+            print("📰 Fetching news (10min refresh)...")
+        
+        # Run analysis
+        runner = ProductionRunnerV2(use_news=use_news)
+        
+        # Get previous trends for regime detection
+        previous_trends = prev_state.get("trends", {})
+        
+        results = runner.run(tickers=TICKERS, previous_trends=previous_trends)
+        
+        if not results:
+            print("❌ No results")
+            return
+        
+        # Detect changes
+        alerts = detect_changes(prev_state, results, runner)
+        
+        # Print and save alerts
+        if alerts:
+            print(f"\n🚨 {len(alerts)} ALERTAS:")
+            for alert in alerts:
+                print(f"   {alert}")
+                write_alert(alert)
+        else:
+            print("✅ No changes - market stable")
+        
+        # Save current state
+        save_current_state(results, runner)
+        
+        # Print current summary
+        active_count = len(runner.active_positions)
+        buy_signals = len([r for r in results if r.get('action') == 'ENTER'])
+        exit_signals = len([r for r in results if r.get('action') == 'EXIT'])
+        
+        print(f"\n📊 Current: 🟢 {buy_signals} BUY | 🔴 {exit_signals} SELL | 💼 {active_count} Active Positions")
+        
+        # Show active positions with P&L
+        if runner.active_positions:
+            print(f"\n💼 POSIÇÕES ATIVAS ({active_count}):")
+            for ticker, pos in runner.active_positions.items():
+                gain = (pos.current_price - pos.entry_price) / pos.entry_price * 100
+                gain_emoji = "📈" if gain > 0 else "📉"
+                trailing = "(Trailing)" if pos.trailing_stop_active else ""
+                print(f"   {ticker:<10} {gain_emoji} {gain:+6.2f}% | Stop: R${pos.stop_loss:.2f} {trailing}")
     
-    # Load previous state
-    prev_state = load_previous_state()
-    
-    # Check if we should fetch news
-    use_news = should_fetch_news(prev_state)
-    
-    if use_news:
-        print("📰 Fetching news (10min refresh)...")
-    
-    # Run analysis
-    runner = ProductionRunnerV2(use_news=use_news)
-    
-    # Get previous trends for regime detection
-    previous_trends = prev_state.get("trends", {})
-    
-    results = runner.run(tickers=TICKERS, previous_trends=previous_trends)
-    
-    if not results:
-        print("❌ No results")
-        return
-    
-    # Detect changes
-    alerts = detect_changes(prev_state, results, runner)
-    
-    # Print and save alerts
-    if alerts:
-        print(f"\n🚨 {len(alerts)} ALERTAS:")
-        for alert in alerts:
-            print(f"   {alert}")
-            write_alert(alert)
-    else:
-        print("✅ No changes - market stable")
-    
-    # Save current state
-    save_current_state(results, runner)
-    
-    # Print current summary
-    active_count = len(runner.active_positions)
-    buy_signals = len([r for r in results if r.get('action') == 'ENTER'])
-    exit_signals = len([r for r in results if r.get('action') == 'EXIT'])
-    
-    print(f"\n📊 Current: 🟢 {buy_signals} BUY | 🔴 {exit_signals} SELL | 💼 {active_count} Active Positions")
-    
-    # Show active positions with P&L
-    if runner.active_positions:
-        print(f"\n💼 POSIÇÕES ATIVAS ({active_count}):")
-        for ticker, pos in runner.active_positions.items():
-            gain = (pos.current_price - pos.entry_price) / pos.entry_price * 100
-            gain_emoji = "📈" if gain > 0 else "📉"
-            trailing = "(Trailing)" if pos.trailing_stop_active else ""
-            print(f"   {ticker:<10} {gain_emoji} {gain:+6.2f}% | Stop: R${pos.stop_loss:.2f} {trailing}")
+    except Exception as e:
+        error_msg = f"🚨 ERRO CRÍTICO NO MONITOR: {str(e)}"
+        print(error_msg)
+        write_alert(error_msg)
+        raise  # Re-raise for cron job to know it failed
 
 
 if __name__ == "__main__":

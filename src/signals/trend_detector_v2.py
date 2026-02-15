@@ -67,7 +67,7 @@ class TrendDetectorV2:
             confidence: 0-1 based on strength
         """
         if strength < threshold:
-            return 'consolidation', strength / threshold
+            return 'consolidation', min(1.0, strength / threshold)
         
         if slope > 0:
             direction = 'uptrend'
@@ -182,6 +182,10 @@ class TrendDetectorV2:
         else:
             consensus = 'consolidation'
             confidence = 0.5
+        
+        # Penalize consolidation confidence (consolidation = uncertainty)
+        if consensus == 'consolidation':
+            confidence = confidence * 0.7
         
         return consensus, confidence
     

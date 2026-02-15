@@ -20,5 +20,16 @@
     "stop_loss": 34.925713130405974,
     "trailing_stop_active": false,
     "trailing_stop_price": null
+  },
+  "WEGE3.SA": {
+    "ticker": "WEGE3.SA",
+    "entry_price": 53.79999923706055,
+    "entry_date": "2026-02-15",
+    "size": 0.7,
+    "current_price": 53.79999923706055,
+    "highest_price": 53.79999923706055,
+    "stop_loss": 50.367142813546316,
+    "trailing_stop_active": false,
+    "trailing_stop_price": null
   }
 }
