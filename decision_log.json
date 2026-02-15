@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-02-15T12:13:47.960771",
-  "total_decisions": 7,
+  "last_updated": "2026-02-15T12:27:57.089895",
+  "total_decisions": 42,
   "decisions": [
     {
       "ticker": "WEGE3.SA",
@@ -422,6 +422,2139 @@
         59.179999160766606,
         61.869999122619625
       ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "PETR4.SA",
+      "timestamp": "12:14:19",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 36.17700042724609,
+        "ma_50": 32.85562274932861,
+        "ma_200": 32.85562274932861,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 61.23347524086937,
+        "macd": 1.3923711666346748,
+        "macd_signal": 1.5239449322697716,
+        "macd_histogram": -0.13157376563509682,
+        "atr_14": 0.9821431296212333,
+        "bollinger_upper": 39.93497930437307,
+        "bollinger_lower": 32.41902155011911,
+        "bollinger_position": "middle",
+        "volume_avg_20": 44121150.0,
+        "volume_current": 27507000.0,
+        "volume_ratio": 0.623442498665606,
+        "price_vs_20ma": 1.9708625756196252,
+        "price_vs_50ma": 12.279105683371252,
+        "support_level": 29.530000686645508,
+        "resistance_level": 38.58000183105469,
+        "adx": 1.3167571825632385,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "RSI em 61 indica momentum forte"
+        ],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Volume abaixo da m\u00e9dia - falta confirma\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 38.58 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "Momentum (RSI)": 0.15
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 29.53. Aten\u00e7\u00e3o a 4 fator(es) de risco."
+      },
+      "current_price": 36.88999938964844,
+      "entry_price": 36.88999938964844,
+      "stop_loss": 34.925713130405974,
+      "take_profit_levels": [
+        38.73449935913086,
+        40.578999328613286,
+        42.4234992980957
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "VALE3.SA",
+      "timestamp": "12:14:20",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.9468181250071278,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 85.59249992370606,
+        "ma_50": 77.27476531982421,
+        "ma_200": 77.27476531982421,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 58.12141002993239,
+        "macd": 3.2188113993175733,
+        "macd_signal": 3.5240130964954552,
+        "macd_histogram": -0.3052016971778819,
+        "atr_14": 2.8128569466727122,
+        "bollinger_upper": 91.71896595439719,
+        "bollinger_lower": 79.46603389301492,
+        "bollinger_position": "middle",
+        "volume_avg_20": 36934720.0,
+        "volume_current": 28644800.0,
+        "volume_ratio": 0.7755521092348879,
+        "price_vs_20ma": 1.6794682441477349,
+        "price_vs_50ma": 12.624086814237193,
+        "support_level": 64.38915791570652,
+        "resistance_level": 91.62000274658203,
+        "adx": 2.009904362889406,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 91.62 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 95%. Suporte identificado em R$ 64.39. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 87.02999877929688,
+      "entry_price": 87.02999877929688,
+      "stop_loss": 81.40428488595145,
+      "take_profit_levels": [
+        91.38149871826172,
+        95.73299865722657,
+        100.0844985961914
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "ITUB4.SA",
+      "timestamp": "12:14:20",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 45.3048038482666,
+        "ma_50": 41.477452697753904,
+        "ma_200": 41.477452697753904,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 65.73787212131015,
+        "macd": 2.097703607856687,
+        "macd_signal": 1.9582690853790357,
+        "macd_histogram": 0.1394345224776512,
+        "atr_14": 1.415547990186234,
+        "bollinger_upper": 50.74553903040208,
+        "bollinger_lower": 39.864068666131125,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 36653590.0,
+        "volume_current": 32353500.0,
+        "volume_ratio": 0.8826829786659369,
+        "price_vs_20ma": 5.441358090310748,
+        "price_vs_50ma": 15.171008224308153,
+        "support_level": 37.37223988087994,
+        "resistance_level": 49.66999816894531,
+        "adx": 1.7831814060287603,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "RSI em 66 indica momentum forte",
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "Pre\u00e7o 5.4% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 49.67 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "Momentum (RSI)": 0.15,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 37.37. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 47.77000045776367,
+      "entry_price": 47.77000045776367,
+      "stop_loss": 44.938904477391205,
+      "take_profit_levels": [
+        50.15850048065186,
+        52.54700050354004,
+        54.93550052642822
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "BBDC4.SA",
+      "timestamp": "12:14:20",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.8962501257182666,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 20.853507804870606,
+        "ma_50": 19.323552894592286,
+        "ma_200": 19.323552894592286,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 51.191389915756325,
+        "macd": 0.5379153528132221,
+        "macd_signal": 0.6219255229999398,
+        "macd_histogram": -0.08401017018671764,
+        "atr_14": 0.6833152624409414,
+        "bollinger_upper": 22.433905219703927,
+        "bollinger_lower": 19.273110390037285,
+        "bollinger_position": "middle",
+        "volume_avg_20": 40385280.0,
+        "volume_current": 45493100.0,
+        "volume_ratio": 1.1264772709264366,
+        "price_vs_20ma": 0.5586182889416711,
+        "price_vs_50ma": 8.520412512871616,
+        "support_level": 17.17965689710976,
+        "resistance_level": 22.1200008392334,
+        "adx": 1.5303490171332852,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 22.12 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 90%. Suporte identificado em R$ 17.18. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 20.969999313354492,
+      "entry_price": 20.969999313354492,
+      "stop_loss": 19.603368788472608,
+      "take_profit_levels": [
+        22.01849927902222,
+        23.066999244689942,
+        24.115499210357665
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "BBAS3.SA",
+      "timestamp": "12:14:20",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 24.452000045776366,
+        "ma_50": 22.822483367919922,
+        "ma_200": 22.822483367919922,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 59.279277173937324,
+        "macd": 0.7803700693663664,
+        "macd_signal": 0.7752640328119075,
+        "macd_histogram": 0.005106036554458959,
+        "atr_14": 0.9107141494750977,
+        "bollinger_upper": 27.081465420194107,
+        "bollinger_lower": 21.822534671358625,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 40015105.0,
+        "volume_current": 61597600.0,
+        "volume_ratio": 1.5393586996710367,
+        "price_vs_20ma": 3.9996738817622695,
+        "price_vs_50ma": 11.42521124988999,
+        "support_level": 21.049999237060547,
+        "resistance_level": 26.889999389648438,
+        "adx": 1.5807251662752635,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima",
+          "Volume 1.5x acima da m\u00e9dia - confirma\u00e7\u00e3o forte"
+        ],
+        "risk_factors": [
+          "Resist\u00eancia em R$ 26.89 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1,
+          "Volume": 0.15
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 21.05. Aten\u00e7\u00e3o a 2 fator(es) de risco."
+      },
+      "current_price": 25.43000030517578,
+      "entry_price": 25.43000030517578,
+      "stop_loss": 23.608572006225586,
+      "take_profit_levels": [
+        26.701500320434572,
+        27.97300033569336,
+        29.244500350952148
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "ABEV3.SA",
+      "timestamp": "12:14:21",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 15.138500118255616,
+        "ma_50": 13.969543857574463,
+        "ma_200": 13.969543857574463,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 73.89707674102642,
+        "macd": 0.609814680644428,
+        "macd_signal": 0.5320030128508879,
+        "macd_histogram": 0.0778116677935401,
+        "atr_14": 0.38642856052943636,
+        "bollinger_upper": 16.438205098527934,
+        "bollinger_lower": 13.838795137983297,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 30026055.0,
+        "volume_current": 23238400.0,
+        "volume_ratio": 0.7739411654311563,
+        "price_vs_20ma": 8.002776059387514,
+        "price_vs_50ma": 17.040331081422895,
+        "support_level": 11.771061148188057,
+        "resistance_level": 16.770000457763672,
+        "adx": 1.262438750702527,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "RSI sobrecomprado (74) - poss\u00edvel corre\u00e7\u00e3o",
+          "Pre\u00e7o 8.0% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 16.77 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 11.77. Aten\u00e7\u00e3o a 4 fator(es) de risco."
+      },
+      "current_price": 16.350000381469727,
+      "entry_price": 16.350000381469727,
+      "stop_loss": 15.577143260410853,
+      "take_profit_levels": [
+        17.167500400543215,
+        17.9850004196167,
+        18.802500438690185
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "B3SA3.SA",
+      "timestamp": "12:14:21",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 16.34700026512146,
+        "ma_50": 14.90001895904541,
+        "ma_200": 14.90001895904541,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 68.31274234313433,
+        "macd": 0.7426638150139198,
+        "macd_signal": 0.6856581184019754,
+        "macd_histogram": 0.05700569661194432,
+        "atr_14": 0.6057145254952567,
+        "bollinger_upper": 18.024707031057574,
+        "bollinger_lower": 14.669293499185342,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 54058570.0,
+        "volume_current": 38407300.0,
+        "volume_ratio": 0.7104756933082026,
+        "price_vs_20ma": 6.808581399034608,
+        "price_vs_50ma": 17.181052805796266,
+        "support_level": 12.711990372002134,
+        "resistance_level": 17.700000762939453,
+        "adx": 2.1134670535130557,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "RSI em 68 indica momentum forte",
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "Pre\u00e7o 6.8% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 17.70 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "Momentum (RSI)": 0.15,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 12.71. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 17.459999084472656,
+      "entry_price": 17.459999084472656,
+      "stop_loss": 16.248570033482142,
+      "take_profit_levels": [
+        18.33299903869629,
+        19.205998992919923,
+        20.078998947143553
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "SUZB3.SA",
+      "timestamp": "12:14:21",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "HOLD",
+      "signal_changed": false,
+      "trend": "neutral",
+      "confidence": 0.4550345998537102,
+      "consensus": "consolidation",
+      "indicators": {
+        "ma_20": 51.9129997253418,
+        "ma_50": 50.8856201171875,
+        "ma_200": 50.8856201171875,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 73.11158560587215,
+        "macd": 1.4094094744709267,
+        "macd_signal": 0.521833198729458,
+        "macd_histogram": 0.8875762757414687,
+        "atr_14": 1.7907148088727678,
+        "bollinger_upper": 57.74467392742871,
+        "bollinger_lower": 46.08132552325489,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 8303280.0,
+        "volume_current": 12831100.0,
+        "volume_ratio": 1.5453049879083929,
+        "price_vs_20ma": 12.380329515246052,
+        "price_vs_50ma": 14.64928602271773,
+        "support_level": 46.531785037116855,
+        "resistance_level": 58.810001373291016,
+        "adx": 2.020049595060453,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Mercado lateral: sem tend\u00eancia definida",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima",
+          "Volume 1.5x acima da m\u00e9dia - confirma\u00e7\u00e3o forte"
+        ],
+        "risk_factors": [
+          "RSI sobrecomprado (73) - poss\u00edvel corre\u00e7\u00e3o",
+          "Pre\u00e7o 12.4% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.2,
+          "MACD": 0.1,
+          "Volume": 0.15
+        },
+        "technical_summary": "Aguardar melhor defini\u00e7\u00e3o de tend\u00eancia antes de operar."
+      },
+      "current_price": 58.34000015258789,
+      "entry_price": null,
+      "stop_loss": null,
+      "take_profit_levels": null,
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "RENT3.SA",
+      "timestamp": "12:14:22",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.7169386697267882,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 47.91150016784668,
+        "ma_50": 45.806634674072264,
+        "ma_200": 45.806634674072264,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 78.83652806463486,
+        "macd": 1.9743858452821357,
+        "macd_signal": 1.7152067213388864,
+        "macd_histogram": 0.25917912394324927,
+        "atr_14": 1.7271434238978796,
+        "bollinger_upper": 55.04397976656214,
+        "bollinger_lower": 40.77902056913123,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 9381780.0,
+        "volume_current": 6378600.0,
+        "volume_ratio": 0.6798923018872751,
+        "price_vs_20ma": 7.364616942698593,
+        "price_vs_50ma": 12.298139762328688,
+        "support_level": 40.11000061035156,
+        "resistance_level": 51.900001525878906,
+        "adx": 1.4654192190092983,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "RSI sobrecomprado (79) - poss\u00edvel corre\u00e7\u00e3o",
+          "Volume abaixo da m\u00e9dia - falta confirma\u00e7\u00e3o",
+          "Pre\u00e7o 7.4% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 51.90 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 72%. Suporte identificado em R$ 40.11. Aten\u00e7\u00e3o a 5 fator(es) de risco."
+      },
+      "current_price": 51.439998626708984,
+      "entry_price": 51.439998626708984,
+      "stop_loss": 47.98571177891323,
+      "take_profit_levels": [
+        54.01199855804444,
+        56.58399848937989,
+        59.15599842071533
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "WEGE3.SA",
+      "timestamp": "12:14:22",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 51.39950008392334,
+        "ma_50": 48.86245819091797,
+        "ma_200": 48.86245819091797,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 57.69501008898195,
+        "macd": 1.560938717720127,
+        "macd_signal": 1.4634902190539978,
+        "macd_histogram": 0.09744849866612926,
+        "atr_14": 1.716428211757115,
+        "bollinger_upper": 56.15300466459219,
+        "bollinger_lower": 46.6459955032545,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 8535100.0,
+        "volume_current": 7178500.0,
+        "volume_ratio": 0.8410563438038219,
+        "price_vs_20ma": 4.670277238529074,
+        "price_vs_50ma": 10.104978809806001,
+        "support_level": 43.3220256491736,
+        "resistance_level": 54.52000045776367,
+        "adx": 1.9330508276605523,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "Resist\u00eancia em R$ 54.52 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 43.32. Aten\u00e7\u00e3o a 2 fator(es) de risco."
+      },
+      "current_price": 53.79999923706055,
+      "entry_price": 53.79999923706055,
+      "stop_loss": 50.367142813546316,
+      "take_profit_levels": [
+        56.48999919891358,
+        59.179999160766606,
+        61.869999122619625
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "MGLU3.SA",
+      "timestamp": "12:14:22",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.6,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 9.758999967575074,
+        "ma_50": 9.40706642150879,
+        "ma_200": 9.40706642150879,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 57.50987363816356,
+        "macd": 0.3889159560887574,
+        "macd_signal": 0.32953567129483385,
+        "macd_histogram": 0.05938028479392354,
+        "atr_14": 0.5871426718575614,
+        "bollinger_upper": 11.237760640062042,
+        "bollinger_lower": 8.280239295088105,
+        "bollinger_position": "middle",
+        "volume_avg_20": 20483305.0,
+        "volume_current": 19363800.0,
+        "volume_ratio": 0.9453454899001894,
+        "price_vs_20ma": 4.826309829144194,
+        "price_vs_50ma": 8.74803136125353,
+        "support_level": 8.050000190734863,
+        "resistance_level": 11.380951881408691,
+        "adx": 3.526485337889438,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "Resist\u00eancia em R$ 11.38 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 60%. Suporte identificado em R$ 8.05. Aten\u00e7\u00e3o a 2 fator(es) de risco."
+      },
+      "current_price": 10.229999542236328,
+      "entry_price": 10.229999542236328,
+      "stop_loss": 9.055714198521205,
+      "take_profit_levels": [
+        10.741499519348144,
+        11.252999496459962,
+        11.764499473571776
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "PCAR3.SA",
+      "timestamp": "12:14:23",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "SELL",
+      "signal_changed": true,
+      "trend": "bearish",
+      "confidence": 0.4206550573599316,
+      "consensus": "downtrend",
+      "indicators": {
+        "ma_20": 3.7384999871253966,
+        "ma_50": 3.8009999990463257,
+        "ma_200": 3.8009999990463257,
+        "ma_20_vs_50": "below",
+        "ma_50_vs_200": "below",
+        "rsi_14": 33.33333333333333,
+        "macd": -0.0637610867465801,
+        "macd_signal": -0.0351043203754185,
+        "macd_histogram": -0.028656766371161595,
+        "atr_14": 0.11285713740757533,
+        "bollinger_upper": 3.958478474954729,
+        "bollinger_lower": 3.5185214992960643,
+        "bollinger_position": "near_lower",
+        "volume_avg_20": 10053295.0,
+        "volume_current": 4427800.0,
+        "volume_ratio": 0.44043271385152827,
+        "price_vs_20ma": -5.84459026217335,
+        "price_vs_50ma": -7.392791849258488,
+        "support_level": 3.4600000381469727,
+        "resistance_level": 4.130000114440918,
+        "adx": 1.3113150018223527,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bearish: MA20 abaixo da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "RSI fraco (33) - momentum negativo",
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Volume abaixo da m\u00e9dia - falta confirma\u00e7\u00e3o",
+          "Suporte em R$ 3.46 pode segurar queda",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Sinal de venda com confian\u00e7a de 42%."
+      },
+      "current_price": 3.5199999809265137,
+      "entry_price": null,
+      "stop_loss": null,
+      "take_profit_levels": null,
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "LREN3.SA",
+      "timestamp": "12:14:23",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.39937109894956996,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 14.99000005722046,
+        "ma_50": 14.225308895111084,
+        "ma_200": 14.225308895111084,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 57.81250077610172,
+        "macd": 0.3397960644034903,
+        "macd_signal": 0.3574276780911081,
+        "macd_histogram": -0.017631613687617786,
+        "atr_14": 0.5692858014787946,
+        "bollinger_upper": 16.146928845629123,
+        "bollinger_lower": 13.833071268811796,
+        "bollinger_position": "middle",
+        "volume_avg_20": 14122500.0,
+        "volume_current": 10168000.0,
+        "volume_ratio": 0.7199858382014516,
+        "price_vs_20ma": 2.4016032213145992,
+        "price_vs_50ma": 7.9062711021001,
+        "support_level": 12.430000305175781,
+        "resistance_level": 15.829999923706055,
+        "adx": 1.8045206332413837,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 15.83 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 40%. Suporte identificado em R$ 12.43. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 15.350000381469727,
+      "entry_price": 15.350000381469727,
+      "stop_loss": 14.211428778512138,
+      "take_profit_levels": [
+        16.117500400543214,
+        16.885000419616702,
+        17.652500438690183
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "RAIZ4.SA",
+      "timestamp": "12:14:23",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "HOLD",
+      "signal_changed": false,
+      "trend": "neutral",
+      "confidence": 0.2631313701780403,
+      "consensus": "consolidation",
+      "indicators": {
+        "ma_20": 0.8519999980926514,
+        "ma_50": 0.8412000012397766,
+        "ma_200": 0.8412000012397766,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 37.17949041248011,
+        "macd": -0.03509627366837209,
+        "macd_signal": -0.00251605512578081,
+        "macd_histogram": -0.03258021854259128,
+        "atr_14": 0.10000001106943403,
+        "bollinger_upper": 1.083207354019494,
+        "bollinger_lower": 0.6207926421658089,
+        "bollinger_position": "near_lower",
+        "volume_avg_20": 51792550.0,
+        "volume_current": 163933900.0,
+        "volume_ratio": 3.165202331223313,
+        "price_vs_20ma": -26.05633842230143,
+        "price_vs_50ma": -25.106990691497572,
+        "support_level": 0.6000000238418579,
+        "resistance_level": 1.1299999952316284,
+        "adx": 6.273174970768321,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Mercado lateral: sem tend\u00eancia definida",
+        "secondary_reasons": [
+          "Volume 3.2x acima da m\u00e9dia - confirma\u00e7\u00e3o forte"
+        ],
+        "risk_factors": [
+          "RSI fraco (37) - momentum negativo",
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.2,
+          "Volume": 0.15
+        },
+        "technical_summary": "Aguardar melhor defini\u00e7\u00e3o de tend\u00eancia antes de operar."
+      },
+      "current_price": 0.6299999952316284,
+      "entry_price": null,
+      "stop_loss": null,
+      "take_profit_levels": null,
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "GGBR4.SA",
+      "timestamp": "12:14:23",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.7,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 22.555999946594238,
+        "ma_50": 21.32840000152588,
+        "ma_200": 21.32840000152588,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 40.816331826593554,
+        "macd": 0.17568800600289336,
+        "macd_signal": 0.3590791894693781,
+        "macd_histogram": -0.18339118346648475,
+        "atr_14": 0.695000239780971,
+        "bollinger_upper": 23.64725512851011,
+        "bollinger_lower": 21.464744764678365,
+        "bollinger_position": "near_lower",
+        "volume_avg_20": 14531035.0,
+        "volume_current": 27229400.0,
+        "volume_ratio": 1.8738789081438452,
+        "price_vs_20ma": -4.016671086225829,
+        "price_vs_50ma": 1.5078468941945349,
+        "support_level": 18.899999618530273,
+        "resistance_level": 24.079999923706055,
+        "adx": 1.8458584522704065,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "Volume 1.9x acima da m\u00e9dia - confirma\u00e7\u00e3o forte"
+        ],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 24.08 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "Volume": 0.15
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 70%. Suporte identificado em R$ 18.90. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 21.649999618530273,
+      "entry_price": 21.649999618530273,
+      "stop_loss": 20.259999138968332,
+      "take_profit_levels": [
+        22.732499599456787,
+        23.814999580383304,
+        24.89749956130981
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "ASAI3.SA",
+      "timestamp": "12:14:23",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.7756119966517763,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 8.594999885559082,
+        "ma_50": 8.024188690185547,
+        "ma_200": 8.024188690185547,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 78.30507871852068,
+        "macd": 0.43896853038628336,
+        "macd_signal": 0.3137048964429675,
+        "macd_histogram": 0.12526363394331586,
+        "atr_14": 0.4114287921360561,
+        "bollinger_upper": 9.877604026519187,
+        "bollinger_lower": 7.312395744598978,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 20817530.0,
+        "volume_current": 24336600.0,
+        "volume_ratio": 1.169043589705407,
+        "price_vs_20ma": 15.183243168668234,
+        "price_vs_50ma": 23.376954365979046,
+        "support_level": 6.909999847412109,
+        "resistance_level": 10.229999542236328,
+        "adx": 2.3906997362461997,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "RSI sobrecomprado (78) - poss\u00edvel corre\u00e7\u00e3o",
+          "Pre\u00e7o 15.2% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 10.23 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 78%. Suporte identificado em R$ 6.91. Aten\u00e7\u00e3o a 4 fator(es) de risco."
+      },
+      "current_price": 9.899999618530273,
+      "entry_price": 9.899999618530273,
+      "stop_loss": 9.077142034258161,
+      "take_profit_levels": [
+        10.394999599456787,
+        10.889999580383302,
+        11.384999561309813
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "RDOR3.SA",
+      "timestamp": "12:14:25",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "HOLD",
+      "signal_changed": false,
+      "trend": "neutral",
+      "confidence": 0.2050915540750723,
+      "consensus": "consolidation",
+      "indicators": {
+        "ma_20": 42.39650001525879,
+        "ma_50": 41.70612281799316,
+        "ma_200": 41.70612281799316,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 42.46576223495126,
+        "macd": 0.15434780989362196,
+        "macd_signal": 0.21230971042866775,
+        "macd_histogram": -0.057961900535045796,
+        "atr_14": 1.492142813546317,
+        "bollinger_upper": 44.78757398976449,
+        "bollinger_lower": 40.005426040753086,
+        "bollinger_position": "middle",
+        "volume_avg_20": 5871185.0,
+        "volume_current": 8639500.0,
+        "volume_ratio": 1.4715087329048566,
+        "price_vs_20ma": 0.6215131722158347,
+        "price_vs_50ma": 2.2871390696797618,
+        "support_level": 39.709999084472656,
+        "resistance_level": 45.099998474121094,
+        "adx": 1.5826847824052075,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Mercado lateral: sem tend\u00eancia definida",
+        "secondary_reasons": [
+          "Volume 1.5x acima da m\u00e9dia"
+        ],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.2,
+          "Volume": 0.1
+        },
+        "technical_summary": "Aguardar melhor defini\u00e7\u00e3o de tend\u00eancia antes de operar."
+      },
+      "current_price": 42.65999984741211,
+      "entry_price": null,
+      "stop_loss": null,
+      "take_profit_levels": null,
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "VALE3.SA",
+      "timestamp": "12:26:22",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.9468181250071278,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 85.59249992370606,
+        "ma_50": 77.27476531982421,
+        "ma_200": 77.27476531982421,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 58.12141002993239,
+        "macd": 3.2188113993175733,
+        "macd_signal": 3.5240130964954552,
+        "macd_histogram": -0.3052016971778819,
+        "atr_14": 2.8128569466727122,
+        "bollinger_upper": 91.71896595439719,
+        "bollinger_lower": 79.46603389301492,
+        "bollinger_position": "middle",
+        "volume_avg_20": 36934720.0,
+        "volume_current": 28644800.0,
+        "volume_ratio": 0.7755521092348879,
+        "price_vs_20ma": 1.6794682441477349,
+        "price_vs_50ma": 12.624086814237193,
+        "support_level": 64.38915791570652,
+        "resistance_level": 91.62000274658203,
+        "adx": 2.009904362889406,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 91.62 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 95%. Suporte identificado em R$ 64.39. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 87.02999877929688,
+      "entry_price": 87.02999877929688,
+      "stop_loss": 81.40428488595145,
+      "take_profit_levels": [
+        91.38149871826172,
+        95.73299865722657,
+        100.0844985961914
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "PETR4.SA",
+      "timestamp": "12:27:56",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 36.17700042724609,
+        "ma_50": 32.85562274932861,
+        "ma_200": 32.85562274932861,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 61.23347524086937,
+        "macd": 1.3923711666346748,
+        "macd_signal": 1.5239449322697716,
+        "macd_histogram": -0.13157376563509682,
+        "atr_14": 0.9821431296212333,
+        "bollinger_upper": 39.93497930437307,
+        "bollinger_lower": 32.41902155011911,
+        "bollinger_position": "middle",
+        "volume_avg_20": 44121150.0,
+        "volume_current": 27507000.0,
+        "volume_ratio": 0.623442498665606,
+        "price_vs_20ma": 1.9708625756196252,
+        "price_vs_50ma": 12.279105683371252,
+        "support_level": 29.530000686645508,
+        "resistance_level": 38.58000183105469,
+        "adx": 1.3167571825632385,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "RSI em 61 indica momentum forte"
+        ],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Volume abaixo da m\u00e9dia - falta confirma\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 38.58 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "Momentum (RSI)": 0.15
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 29.53. Aten\u00e7\u00e3o a 4 fator(es) de risco."
+      },
+      "current_price": 36.88999938964844,
+      "entry_price": 36.88999938964844,
+      "stop_loss": 34.925713130405974,
+      "take_profit_levels": [
+        38.73449935913086,
+        40.578999328613286,
+        42.4234992980957
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "VALE3.SA",
+      "timestamp": "12:27:56",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.9468181250071278,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 85.59249992370606,
+        "ma_50": 77.27476531982421,
+        "ma_200": 77.27476531982421,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 58.12141002993239,
+        "macd": 3.2188113993175733,
+        "macd_signal": 3.5240130964954552,
+        "macd_histogram": -0.3052016971778819,
+        "atr_14": 2.8128569466727122,
+        "bollinger_upper": 91.71896595439719,
+        "bollinger_lower": 79.46603389301492,
+        "bollinger_position": "middle",
+        "volume_avg_20": 36934720.0,
+        "volume_current": 28644800.0,
+        "volume_ratio": 0.7755521092348879,
+        "price_vs_20ma": 1.6794682441477349,
+        "price_vs_50ma": 12.624086814237193,
+        "support_level": 64.38915791570652,
+        "resistance_level": 91.62000274658203,
+        "adx": 2.009904362889406,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 91.62 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 95%. Suporte identificado em R$ 64.39. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 87.02999877929688,
+      "entry_price": 87.02999877929688,
+      "stop_loss": 81.40428488595145,
+      "take_profit_levels": [
+        91.38149871826172,
+        95.73299865722657,
+        100.0844985961914
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "ITUB4.SA",
+      "timestamp": "12:27:56",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 45.3048038482666,
+        "ma_50": 41.47745254516602,
+        "ma_200": 41.47745254516602,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 65.73787212131015,
+        "macd": 2.097703610300691,
+        "macd_signal": 1.9582690881998455,
+        "macd_histogram": 0.1394345221008455,
+        "atr_14": 1.415547990186234,
+        "bollinger_upper": 50.74553903040203,
+        "bollinger_lower": 39.864068666131175,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 36653590.0,
+        "volume_current": 32353500.0,
+        "volume_ratio": 0.8826829786659369,
+        "price_vs_20ma": 5.441358090310748,
+        "price_vs_50ma": 15.171008648001019,
+        "support_level": 37.37223612519639,
+        "resistance_level": 49.66999816894531,
+        "adx": 1.7831814060287603,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "RSI em 66 indica momentum forte",
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "Pre\u00e7o 5.4% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 49.67 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "Momentum (RSI)": 0.15,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 37.37. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 47.77000045776367,
+      "entry_price": 47.77000045776367,
+      "stop_loss": 44.938904477391205,
+      "take_profit_levels": [
+        50.15850048065186,
+        52.54700050354004,
+        54.93550052642822
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "BBDC4.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.8962501257182666,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 20.853507804870606,
+        "ma_50": 19.323552894592286,
+        "ma_200": 19.323552894592286,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 51.191389915756325,
+        "macd": 0.537915357095784,
+        "macd_signal": 0.6219255292337537,
+        "macd_histogram": -0.08401017213796969,
+        "atr_14": 0.6833152624409414,
+        "bollinger_upper": 22.433905219703938,
+        "bollinger_lower": 19.273110390037274,
+        "bollinger_position": "middle",
+        "volume_avg_20": 40385280.0,
+        "volume_current": 45493100.0,
+        "volume_ratio": 1.1264772709264366,
+        "price_vs_20ma": 0.5586182889416711,
+        "price_vs_50ma": 8.520412512871616,
+        "support_level": 17.17965689710976,
+        "resistance_level": 22.1200008392334,
+        "adx": 1.5303490171332852,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 22.12 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 90%. Suporte identificado em R$ 17.18. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 20.969999313354492,
+      "entry_price": 20.969999313354492,
+      "stop_loss": 19.603368788472608,
+      "take_profit_levels": [
+        22.01849927902222,
+        23.066999244689942,
+        24.115499210357665
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "BBAS3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 24.452000045776366,
+        "ma_50": 22.822483367919922,
+        "ma_200": 22.822483367919922,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 59.279277173937324,
+        "macd": 0.7803700693663664,
+        "macd_signal": 0.7752640328119075,
+        "macd_histogram": 0.005106036554458959,
+        "atr_14": 0.9107141494750977,
+        "bollinger_upper": 27.081465420194107,
+        "bollinger_lower": 21.822534671358625,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 40015105.0,
+        "volume_current": 61597600.0,
+        "volume_ratio": 1.5393586996710367,
+        "price_vs_20ma": 3.9996738817622695,
+        "price_vs_50ma": 11.42521124988999,
+        "support_level": 21.049999237060547,
+        "resistance_level": 26.889999389648438,
+        "adx": 1.5807251662752635,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima",
+          "Volume 1.5x acima da m\u00e9dia - confirma\u00e7\u00e3o forte"
+        ],
+        "risk_factors": [
+          "Resist\u00eancia em R$ 26.89 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1,
+          "Volume": 0.15
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 21.05. Aten\u00e7\u00e3o a 2 fator(es) de risco."
+      },
+      "current_price": 25.43000030517578,
+      "entry_price": 25.43000030517578,
+      "stop_loss": 23.608572006225586,
+      "take_profit_levels": [
+        26.701500320434572,
+        27.97300033569336,
+        29.244500350952148
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "ABEV3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 15.138500118255616,
+        "ma_50": 13.969543857574463,
+        "ma_200": 13.969543857574463,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 73.89707674102642,
+        "macd": 0.609814680644428,
+        "macd_signal": 0.5320030128508879,
+        "macd_histogram": 0.0778116677935401,
+        "atr_14": 0.38642856052943636,
+        "bollinger_upper": 16.438205098527934,
+        "bollinger_lower": 13.838795137983297,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 30026055.0,
+        "volume_current": 23238400.0,
+        "volume_ratio": 0.7739411654311563,
+        "price_vs_20ma": 8.002776059387514,
+        "price_vs_50ma": 17.040331081422895,
+        "support_level": 11.771061148188057,
+        "resistance_level": 16.770000457763672,
+        "adx": 1.262438750702527,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "RSI sobrecomprado (74) - poss\u00edvel corre\u00e7\u00e3o",
+          "Pre\u00e7o 8.0% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 16.77 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 11.77. Aten\u00e7\u00e3o a 4 fator(es) de risco."
+      },
+      "current_price": 16.350000381469727,
+      "entry_price": 16.350000381469727,
+      "stop_loss": 15.577143260410853,
+      "take_profit_levels": [
+        17.167500400543215,
+        17.9850004196167,
+        18.802500438690185
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "B3SA3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 16.34700026512146,
+        "ma_50": 14.90001895904541,
+        "ma_200": 14.90001895904541,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 68.31274234313433,
+        "macd": 0.7426638150139198,
+        "macd_signal": 0.6856581184019754,
+        "macd_histogram": 0.05700569661194432,
+        "atr_14": 0.6057145254952567,
+        "bollinger_upper": 18.024707031057574,
+        "bollinger_lower": 14.669293499185342,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 54058570.0,
+        "volume_current": 38407300.0,
+        "volume_ratio": 0.7104756933082026,
+        "price_vs_20ma": 6.808581399034608,
+        "price_vs_50ma": 17.181052805796266,
+        "support_level": 12.711990372002134,
+        "resistance_level": 17.700000762939453,
+        "adx": 2.1134670535130557,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "RSI em 68 indica momentum forte",
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "Pre\u00e7o 6.8% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 17.70 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "Momentum (RSI)": 0.15,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 12.71. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 17.459999084472656,
+      "entry_price": 17.459999084472656,
+      "stop_loss": 16.248570033482142,
+      "take_profit_levels": [
+        18.33299903869629,
+        19.205998992919923,
+        20.078998947143553
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "SUZB3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "HOLD",
+      "signal_changed": false,
+      "trend": "neutral",
+      "confidence": 0.4550345998537102,
+      "consensus": "consolidation",
+      "indicators": {
+        "ma_20": 51.9129997253418,
+        "ma_50": 50.8856201171875,
+        "ma_200": 50.8856201171875,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 73.11158560587215,
+        "macd": 1.4094094744709267,
+        "macd_signal": 0.521833198729458,
+        "macd_histogram": 0.8875762757414687,
+        "atr_14": 1.7907148088727678,
+        "bollinger_upper": 57.74467392742871,
+        "bollinger_lower": 46.08132552325489,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 8303280.0,
+        "volume_current": 12831100.0,
+        "volume_ratio": 1.5453049879083929,
+        "price_vs_20ma": 12.380329515246052,
+        "price_vs_50ma": 14.64928602271773,
+        "support_level": 46.531785037116855,
+        "resistance_level": 58.810001373291016,
+        "adx": 2.020049595060453,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Mercado lateral: sem tend\u00eancia definida",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima",
+          "Volume 1.5x acima da m\u00e9dia - confirma\u00e7\u00e3o forte"
+        ],
+        "risk_factors": [
+          "RSI sobrecomprado (73) - poss\u00edvel corre\u00e7\u00e3o",
+          "Pre\u00e7o 12.4% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.2,
+          "MACD": 0.1,
+          "Volume": 0.15
+        },
+        "technical_summary": "Aguardar melhor defini\u00e7\u00e3o de tend\u00eancia antes de operar."
+      },
+      "current_price": 58.34000015258789,
+      "entry_price": null,
+      "stop_loss": null,
+      "take_profit_levels": null,
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "RENT3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.7169386697267882,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 47.91150016784668,
+        "ma_50": 45.806634674072264,
+        "ma_200": 45.806634674072264,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 78.83652806463486,
+        "macd": 1.9743858452821357,
+        "macd_signal": 1.7152067213388864,
+        "macd_histogram": 0.25917912394324927,
+        "atr_14": 1.7271434238978796,
+        "bollinger_upper": 55.04397976656214,
+        "bollinger_lower": 40.77902056913123,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 9381780.0,
+        "volume_current": 6378600.0,
+        "volume_ratio": 0.6798923018872751,
+        "price_vs_20ma": 7.364616942698593,
+        "price_vs_50ma": 12.298139762328688,
+        "support_level": 40.11000061035156,
+        "resistance_level": 51.900001525878906,
+        "adx": 1.4654192190092983,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "RSI sobrecomprado (79) - poss\u00edvel corre\u00e7\u00e3o",
+          "Volume abaixo da m\u00e9dia - falta confirma\u00e7\u00e3o",
+          "Pre\u00e7o 7.4% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 51.90 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 72%. Suporte identificado em R$ 40.11. Aten\u00e7\u00e3o a 5 fator(es) de risco."
+      },
+      "current_price": 51.439998626708984,
+      "entry_price": 51.439998626708984,
+      "stop_loss": 47.98571177891323,
+      "take_profit_levels": [
+        54.01199855804444,
+        56.58399848937989,
+        59.15599842071533
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "WEGE3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 1.0,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 51.39950008392334,
+        "ma_50": 48.86245819091797,
+        "ma_200": 48.86245819091797,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 57.69501008898195,
+        "macd": 1.5609387209496148,
+        "macd_signal": 1.4634902237510437,
+        "macd_histogram": 0.09744849719857118,
+        "atr_14": 1.716428211757115,
+        "bollinger_upper": 56.1530046645922,
+        "bollinger_lower": 46.64599550325448,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 8535100.0,
+        "volume_current": 7178500.0,
+        "volume_ratio": 0.8410563438038219,
+        "price_vs_20ma": 4.670277238529074,
+        "price_vs_50ma": 10.104978809806001,
+        "support_level": 43.3220256491736,
+        "resistance_level": 54.52000045776367,
+        "adx": 1.9330508276605523,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "Resist\u00eancia em R$ 54.52 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 100%. Suporte identificado em R$ 43.32. Aten\u00e7\u00e3o a 2 fator(es) de risco."
+      },
+      "current_price": 53.79999923706055,
+      "entry_price": 53.79999923706055,
+      "stop_loss": 50.367142813546316,
+      "take_profit_levels": [
+        56.48999919891358,
+        59.179999160766606,
+        61.869999122619625
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "MGLU3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.6,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 9.758999967575074,
+        "ma_50": 9.40706642150879,
+        "ma_200": 9.40706642150879,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 57.50987363816356,
+        "macd": 0.3889159560887574,
+        "macd_signal": 0.32953567129483385,
+        "macd_histogram": 0.05938028479392354,
+        "atr_14": 0.5871426718575614,
+        "bollinger_upper": 11.237760640062042,
+        "bollinger_lower": 8.280239295088105,
+        "bollinger_position": "middle",
+        "volume_avg_20": 20483305.0,
+        "volume_current": 19363800.0,
+        "volume_ratio": 0.9453454899001894,
+        "price_vs_20ma": 4.826309829144194,
+        "price_vs_50ma": 8.74803136125353,
+        "support_level": 8.050000190734863,
+        "resistance_level": 11.380951881408691,
+        "adx": 3.526485337889438,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "Resist\u00eancia em R$ 11.38 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 60%. Suporte identificado em R$ 8.05. Aten\u00e7\u00e3o a 2 fator(es) de risco."
+      },
+      "current_price": 10.229999542236328,
+      "entry_price": 10.229999542236328,
+      "stop_loss": 9.055714198521205,
+      "take_profit_levels": [
+        10.741499519348144,
+        11.252999496459962,
+        11.764499473571776
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "PCAR3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "SELL",
+      "signal_changed": true,
+      "trend": "bearish",
+      "confidence": 0.4206550573599316,
+      "consensus": "downtrend",
+      "indicators": {
+        "ma_20": 3.7384999871253966,
+        "ma_50": 3.8009999990463257,
+        "ma_200": 3.8009999990463257,
+        "ma_20_vs_50": "below",
+        "ma_50_vs_200": "below",
+        "rsi_14": 33.33333333333333,
+        "macd": -0.0637610867465801,
+        "macd_signal": -0.0351043203754185,
+        "macd_histogram": -0.028656766371161595,
+        "atr_14": 0.11285713740757533,
+        "bollinger_upper": 3.958478474954729,
+        "bollinger_lower": 3.5185214992960643,
+        "bollinger_position": "near_lower",
+        "volume_avg_20": 10053295.0,
+        "volume_current": 4427800.0,
+        "volume_ratio": 0.44043271385152827,
+        "price_vs_20ma": -5.84459026217335,
+        "price_vs_50ma": -7.392791849258488,
+        "support_level": 3.4600000381469727,
+        "resistance_level": 4.130000114440918,
+        "adx": 1.3113150018223527,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bearish: MA20 abaixo da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "RSI fraco (33) - momentum negativo",
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Volume abaixo da m\u00e9dia - falta confirma\u00e7\u00e3o",
+          "Suporte em R$ 3.46 pode segurar queda",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Sinal de venda com confian\u00e7a de 42%."
+      },
+      "current_price": 3.5199999809265137,
+      "entry_price": null,
+      "stop_loss": null,
+      "take_profit_levels": null,
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "LREN3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.39937109894956996,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 14.99000005722046,
+        "ma_50": 14.225308895111084,
+        "ma_200": 14.225308895111084,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 57.81250077610172,
+        "macd": 0.3397960644034903,
+        "macd_signal": 0.3574276780911081,
+        "macd_histogram": -0.017631613687617786,
+        "atr_14": 0.5692858014787946,
+        "bollinger_upper": 16.146928845629123,
+        "bollinger_lower": 13.833071268811796,
+        "bollinger_position": "middle",
+        "volume_avg_20": 14122500.0,
+        "volume_current": 10168000.0,
+        "volume_ratio": 0.7199858382014516,
+        "price_vs_20ma": 2.4016032213145992,
+        "price_vs_50ma": 7.9062711021001,
+        "support_level": 12.430000305175781,
+        "resistance_level": 15.829999923706055,
+        "adx": 1.8045206332413837,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 15.83 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 40%. Suporte identificado em R$ 12.43. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 15.350000381469727,
+      "entry_price": 15.350000381469727,
+      "stop_loss": 14.211428778512138,
+      "take_profit_levels": [
+        16.117500400543214,
+        16.885000419616702,
+        17.652500438690183
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "RAIZ4.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "HOLD",
+      "signal_changed": false,
+      "trend": "neutral",
+      "confidence": 0.2631313701780403,
+      "consensus": "consolidation",
+      "indicators": {
+        "ma_20": 0.8519999980926514,
+        "ma_50": 0.8412000012397766,
+        "ma_200": 0.8412000012397766,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 37.17949041248011,
+        "macd": -0.03509627366837209,
+        "macd_signal": -0.00251605512578081,
+        "macd_histogram": -0.03258021854259128,
+        "atr_14": 0.10000001106943403,
+        "bollinger_upper": 1.083207354019494,
+        "bollinger_lower": 0.6207926421658089,
+        "bollinger_position": "near_lower",
+        "volume_avg_20": 51792550.0,
+        "volume_current": 163933900.0,
+        "volume_ratio": 3.165202331223313,
+        "price_vs_20ma": -26.05633842230143,
+        "price_vs_50ma": -25.106990691497572,
+        "support_level": 0.6000000238418579,
+        "resistance_level": 1.1299999952316284,
+        "adx": 6.273174970768321,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Mercado lateral: sem tend\u00eancia definida",
+        "secondary_reasons": [
+          "Volume 3.2x acima da m\u00e9dia - confirma\u00e7\u00e3o forte"
+        ],
+        "risk_factors": [
+          "RSI fraco (37) - momentum negativo",
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.2,
+          "Volume": 0.15
+        },
+        "technical_summary": "Aguardar melhor defini\u00e7\u00e3o de tend\u00eancia antes de operar."
+      },
+      "current_price": 0.6299999952316284,
+      "entry_price": null,
+      "stop_loss": null,
+      "take_profit_levels": null,
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "GGBR4.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.7,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 22.555999946594238,
+        "ma_50": 21.32840000152588,
+        "ma_200": 21.32840000152588,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 40.816331826593554,
+        "macd": 0.17568800600289336,
+        "macd_signal": 0.3590791894693781,
+        "macd_histogram": -0.18339118346648475,
+        "atr_14": 0.695000239780971,
+        "bollinger_upper": 23.64725512851011,
+        "bollinger_lower": 21.464744764678365,
+        "bollinger_position": "near_lower",
+        "volume_avg_20": 14531035.0,
+        "volume_current": 27229400.0,
+        "volume_ratio": 1.8738789081438452,
+        "price_vs_20ma": -4.016671086225829,
+        "price_vs_50ma": 1.5078468941945349,
+        "support_level": 18.899999618530273,
+        "resistance_level": 24.079999923706055,
+        "adx": 1.8458584522704065,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "Volume 1.9x acima da m\u00e9dia - confirma\u00e7\u00e3o forte"
+        ],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Resist\u00eancia em R$ 24.08 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "Volume": 0.15
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 70%. Suporte identificado em R$ 18.90. Aten\u00e7\u00e3o a 3 fator(es) de risco."
+      },
+      "current_price": 21.649999618530273,
+      "entry_price": 21.649999618530273,
+      "stop_loss": 20.259999138968332,
+      "take_profit_levels": [
+        22.732499599456787,
+        23.814999580383304,
+        24.89749956130981
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "ASAI3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "BUY",
+      "signal_changed": true,
+      "trend": "bullish",
+      "confidence": 0.7756119966517763,
+      "consensus": "uptrend",
+      "indicators": {
+        "ma_20": 8.594999885559082,
+        "ma_50": 8.024188690185547,
+        "ma_200": 8.024188690185547,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 78.30507871852068,
+        "macd": 0.43896853038628336,
+        "macd_signal": 0.3137048964429675,
+        "macd_histogram": 0.12526363394331586,
+        "atr_14": 0.4114287921360561,
+        "bollinger_upper": 9.877604026519187,
+        "bollinger_lower": 7.312395744598978,
+        "bollinger_position": "near_upper",
+        "volume_avg_20": 20817530.0,
+        "volume_current": 24336600.0,
+        "volume_ratio": 1.169043589705407,
+        "price_vs_20ma": 15.183243168668234,
+        "price_vs_50ma": 23.376954365979046,
+        "support_level": 6.909999847412109,
+        "resistance_level": 10.229999542236328,
+        "adx": 2.3906997362461997,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Tend\u00eancia bullish confirmada: MA20 acima da MA50",
+        "secondary_reasons": [
+          "MACD positivo e cruzando para cima"
+        ],
+        "risk_factors": [
+          "RSI sobrecomprado (78) - poss\u00edvel corre\u00e7\u00e3o",
+          "Pre\u00e7o 15.2% acima da MA20 - poss\u00edvel corre\u00e7\u00e3o",
+          "Resist\u00eancia em R$ 10.23 pode limitar alta",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.4,
+          "MACD": 0.1
+        },
+        "technical_summary": "Setup de compra com confian\u00e7a de 78%. Suporte identificado em R$ 6.91. Aten\u00e7\u00e3o a 4 fator(es) de risco."
+      },
+      "current_price": 9.899999618530273,
+      "entry_price": 9.899999618530273,
+      "stop_loss": 9.077142034258161,
+      "take_profit_levels": [
+        10.394999599456787,
+        10.889999580383302,
+        11.384999561309813
+      ],
+      "news_sentiment": 0.0,
+      "news_count": null,
+      "news_summary": null
+    },
+    {
+      "ticker": "RDOR3.SA",
+      "timestamp": "12:27:57",
+      "date": "2026-02-15",
+      "previous_signal": "HOLD",
+      "current_signal": "HOLD",
+      "signal_changed": false,
+      "trend": "neutral",
+      "confidence": 0.2050915540750723,
+      "consensus": "consolidation",
+      "indicators": {
+        "ma_20": 42.39650001525879,
+        "ma_50": 41.70612281799316,
+        "ma_200": 41.70612281799316,
+        "ma_20_vs_50": "above",
+        "ma_50_vs_200": "below",
+        "rsi_14": 42.46576223495126,
+        "macd": 0.15434780989362196,
+        "macd_signal": 0.21230971042866775,
+        "macd_histogram": -0.057961900535045796,
+        "atr_14": 1.492142813546317,
+        "bollinger_upper": 44.78757398976449,
+        "bollinger_lower": 40.005426040753086,
+        "bollinger_position": "middle",
+        "volume_avg_20": 5871185.0,
+        "volume_current": 8639500.0,
+        "volume_ratio": 1.4715087329048566,
+        "price_vs_20ma": 0.6215131722158347,
+        "price_vs_50ma": 2.2871390696797618,
+        "support_level": 39.709999084472656,
+        "resistance_level": 45.099998474121094,
+        "adx": 1.5826847824052075,
+        "trend_strength": "weak"
+      },
+      "reason": {
+        "primary_reason": "Mercado lateral: sem tend\u00eancia definida",
+        "secondary_reasons": [
+          "Volume 1.5x acima da m\u00e9dia"
+        ],
+        "risk_factors": [
+          "MACD negativo indica poss\u00edvel revers\u00e3o",
+          "Tend\u00eancia fraca - sinal menos confi\u00e1vel"
+        ],
+        "confidence_breakdown": {
+          "Tend\u00eancia (50-day)": 0.2,
+          "Volume": 0.1
+        },
+        "technical_summary": "Aguardar melhor defini\u00e7\u00e3o de tend\u00eancia antes de operar."
+      },
+      "current_price": 42.65999984741211,
+      "entry_price": null,
+      "stop_loss": null,
+      "take_profit_levels": null,
       "news_sentiment": 0.0,
       "news_count": null,
       "news_summary": null

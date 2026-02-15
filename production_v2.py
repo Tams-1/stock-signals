@@ -14,6 +14,10 @@ import json
 from datetime import datetime, timedelta
 import argparse
 from typing import Dict, List, Optional
+import fcntl
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import numpy as np
 
 from src.signals.trend_detector_v2 import TrendDetectorV2
 from src.news.filtered_news_client import FilteredNewsClient
@@ -31,6 +35,57 @@ TICKERS = [
 
 POSITIONS_FILE = "active_positions.json"
 HISTORY_FILE = "position_history.json"
+
+
+def safe_json_read_write(filename: str, operation: str, data=None, max_retries: int = 5):
+    """
+    Safe JSON read/write with file locking to prevent race conditions
+    
+    Args:
+        filename: JSON file path
+        operation: 'read' or 'write'
+        data: Data to write (if operation='write')
+        max_retries: Maximum retry attempts
+        
+    Returns:
+        Loaded data if operation='read', None if operation='write'
+    """
+    for attempt in range(max_retries):
+        try:
+            if operation == 'read':
+                if not os.path.exists(filename):
+                    return {} if filename == POSITIONS_FILE else []
+                
+                with open(filename, 'r') as f:
+                    fcntl.flock(f, fcntl.LOCK_SH)  # Shared lock for reading
+                    try:
+                        return json.load(f)
+                    finally:
+                        fcntl.flock(f, fcntl.LOCK_UN)
+            
+            elif operation == 'write':
+                # Write to temp file first
+                temp_file = f"{filename}.tmp"
+                with open(temp_file, 'w') as f:
+                    fcntl.flock(f, fcntl.LOCK_EX)  # Exclusive lock for writing
+                    try:
+                        json.dump(data, f, indent=2)
+                        f.flush()
+                        os.fsync(f.fileno())  # Ensure data is written to disk
+                    finally:
+                        fcntl.flock(f, fcntl.LOCK_UN)
+                
+                # Atomic rename
+                os.rename(temp_file, filename)
+                return None
+                
+        except (IOError, OSError) as e:
+            if attempt < max_retries - 1:
+                time.sleep(0.1 * (attempt + 1))  # Exponential backoff
+            else:
+                raise e
+    
+    raise RuntimeError(f"Failed to {operation} {filename} after {max_retries} attempts")
 
 
 class ProductionRunnerV2:
@@ -59,13 +114,9 @@ class ProductionRunnerV2:
             print(f"📊 {len(self.active_positions)} posições ativas carregadas")
     
     def _load_positions(self) -> Dict[str, Position]:
-        """Load active positions from file"""
-        if not os.path.exists(POSITIONS_FILE):
-            return {}
-        
+        """Load active positions from file with safe locking"""
         try:
-            with open(POSITIONS_FILE, 'r') as f:
-                data = json.load(f)
+            data = safe_json_read_write(POSITIONS_FILE, 'read')
             
             # Validate JSON structure
             if not isinstance(data, dict):
@@ -81,15 +132,12 @@ class ProductionRunnerV2:
                     print(f"⚠️ Skipping invalid position for {ticker}: {e}")
             
             return positions
-        except json.JSONDecodeError as e:
-            print(f"⚠️ JSON decode error in positions file: {e}")
-            return {}
         except Exception as e:
             print(f"⚠️ Error loading positions: {e}")
             return {}
     
     def _save_positions(self):
-        """Save active positions to file"""
+        """Save active positions to file with safe locking"""
         try:
             data = {}
             for ticker, pos in self.active_positions.items():
@@ -105,8 +153,7 @@ class ProductionRunnerV2:
                     'trailing_stop_price': pos.trailing_stop_price,
                 }
             
-            with open(POSITIONS_FILE, 'w') as f:
-                json.dump(data, f, indent=2)
+            safe_json_read_write(POSITIONS_FILE, 'write', data)
                 
         except Exception as e:
             print(f"⚠️ Error saving positions: {e}")
@@ -236,14 +283,25 @@ class ProductionRunnerV2:
             # News sentiment (if enabled)
             news_sentiment = self.get_news_sentiment(ticker)
             
-            # Generate detailed reasoning (if enabled)
+            # Boost confidence if positive news BEFORE analysis
+            original_confidence = confidence
+            if self.use_news and news_sentiment > 0.1 and trend == "bullish":
+                confidence = min(confidence + 0.15, 1.0)
+                print(f"  📰 News boost: confidence {original_confidence:.2f} → {confidence:.2f}")
+            
+            # Generate detailed reasoning (if enabled) - WITH BOOSTED CONFIDENCE
             reasoning = None
             if self.use_reasoning:
                 try:
-                    signal, decision = self.signal_analyzer.analyze_signal(
+                    # Pass the trend_result with updated confidence
+                    trend_result_updated = trend_result.copy()
+                    trend_result_updated['confidence'] = confidence
+                    
+                    signal, decision = self.signal_analyzer.analyze_signal_with_trend(
                         ticker=ticker,
                         df=data,
                         current_price=current_price,
+                        trend_result=trend_result_updated,
                         news_sentiment=news_sentiment,
                     )
                     self.decision_logger.log_decision(decision)
@@ -276,13 +334,8 @@ class ProductionRunnerV2:
         
         # Entry condition: bullish trend with confidence > 0.35
         if trend == "bullish" and confidence > 0.35:
-            # Calculate position size based on confidence
+            # Calculate position size based on confidence (already boosted if news positive)
             position_size = self.exit_manager.calculate_position_size(confidence)
-            
-            # Boost confidence if positive news
-            if self.use_news and news_sentiment > 0.1:
-                confidence = min(confidence + 0.15, 1.0)
-                position_size = self.exit_manager.calculate_position_size(confidence)
             
             if position_size > 0:
                 signal = "BUY"
@@ -389,8 +442,78 @@ class ProductionRunnerV2:
             "trailing_active": position.trailing_stop_active,
         }
     
+    def get_data_bulk(self, tickers: List[str], days: int = 120) -> Dict[str, pd.DataFrame]:
+        """Download multiple tickers in parallel for better performance"""
+        end_date = datetime.now()
+        start_date = end_date - timedelta(days=days)
+        
+        print(f"📥 Downloading {len(tickers)} tickers in parallel...")
+        
+        # Download all at once (yfinance supports multiple tickers)
+        try:
+            data_bulk = yf.download(
+                tickers,
+                start=start_date.strftime("%Y-%m-%d"),
+                end=end_date.strftime("%Y-%m-%d"),
+                group_by='ticker',
+                threads=True,  # Enable parallel downloads
+                progress=False
+            )
+            
+            result = {}
+            
+            # Process each ticker
+            for ticker in tickers:
+                try:
+                    if len(tickers) == 1:
+                        # Single ticker returns without ticker level
+                        ticker_data = data_bulk
+                    else:
+                        # Multiple tickers are grouped by ticker
+                        ticker_data = data_bulk[ticker]
+                    
+                    # Validate data
+                    if ticker_data.empty or len(ticker_data) < 50:
+                        print(f"  ⚠️ Insufficient data for {ticker}")
+                        continue
+                    
+                    # Create DataFrame with standard columns
+                    df = pd.DataFrame({
+                        'Open': ticker_data['Open'],
+                        'High': ticker_data['High'],
+                        'Low': ticker_data['Low'],
+                        'Close': ticker_data['Close'],
+                        'Volume': ticker_data['Volume']
+                    })
+                    
+                    # Check for NaN values
+                    if df.isna().any().any():
+                        df = df.fillna(method='ffill')
+                    
+                    result[ticker] = df
+                    
+                except Exception as e:
+                    print(f"  ❌ Error processing {ticker}: {e}")
+            
+            print(f"✅ Downloaded {len(result)}/{len(tickers)} tickers successfully")
+            return result
+            
+        except Exception as e:
+            print(f"❌ Bulk download failed: {e}")
+            # Fallback to sequential download
+            return self._download_sequential(tickers, days)
+    
+    def _download_sequential(self, tickers: List[str], days: int) -> Dict[str, pd.DataFrame]:
+        """Fallback sequential download if bulk fails"""
+        result = {}
+        for ticker in tickers:
+            data = self.get_data(ticker, days)
+            if data is not None:
+                result[ticker] = data
+        return result
+    
     def run(self, tickers: List[str] = None, previous_trends: Dict[str, str] = None):
-        """Run analysis"""
+        """Run analysis with parallel downloads"""
         if tickers is None:
             tickers = TICKERS
         
@@ -401,12 +524,25 @@ class ProductionRunnerV2:
         print(f"🚀 PRODUÇÃO V2 - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
         print(f"{'='*70}\n")
         
+        # Download all data in parallel first
+        start_time = time.time()
+        all_data = self.get_data_bulk(tickers)
+        download_time = time.time() - start_time
+        print(f"⏱️  Download time: {download_time:.1f}s\n")
+        
         results = []
         
+        # Analyze each ticker with pre-downloaded data
         for ticker in tickers:
+            if ticker not in all_data:
+                print(f"📊 {ticker}... SKIP (no data)")
+                continue
+                
             print(f"📊 {ticker}...", end=" ")
             prev_trend = previous_trends.get(ticker)
-            result = self.analyze_ticker(ticker, prev_trend)
+            
+            # Call modified analyze_ticker that accepts pre-downloaded data
+            result = self.analyze_ticker_with_data(ticker, all_data[ticker], prev_trend)
             
             if result:
                 status = result.get('action', result['signal'])
@@ -419,6 +555,77 @@ class ProductionRunnerV2:
         self._print_summary(results)
         
         return results
+    
+    def analyze_ticker_with_data(self, ticker: str, data: pd.DataFrame, previous_trend: Optional[str] = None) -> Dict:
+        """Analyze ticker with pre-downloaded data"""
+        try:
+            # Current price
+            price_val = data['Close'].iloc[-1]
+            current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+            
+            # Validate price
+            if pd.isna(current_price) or current_price <= 0:
+                print(f"  ⚠️ Invalid price for {ticker}: {current_price}")
+                return None
+            
+            # Trend detection
+            trend_result = self.trend_detector.detect_trend(data)
+            consensus = trend_result.get('consensus', 'unknown')
+            confidence = trend_result.get('confidence', 0.0)
+            
+            # Map consensus to simple trend
+            if consensus in ['uptrend', 'bull_pullback']:
+                trend = "bullish"
+            elif consensus in ['downtrend', 'bear_bounce']:
+                trend = "bearish"
+            else:
+                trend = "neutral"
+            
+            # News sentiment (if enabled)
+            news_sentiment = self.get_news_sentiment(ticker)
+            
+            # Boost confidence if positive news BEFORE analysis
+            original_confidence = confidence
+            if self.use_news and news_sentiment > 0.1 and trend == "bullish":
+                confidence = min(confidence + 0.15, 1.0)
+                print(f"  📰 News boost: confidence {original_confidence:.2f} → {confidence:.2f}")
+            
+            # Generate detailed reasoning (if enabled) - WITH BOOSTED CONFIDENCE
+            reasoning = None
+            if self.use_reasoning:
+                try:
+                    # Pass the trend_result with updated confidence
+                    trend_result_updated = trend_result.copy()
+                    trend_result_updated['confidence'] = confidence
+                    
+                    signal, decision = self.signal_analyzer.analyze_signal_with_trend(
+                        ticker=ticker,
+                        df=data,
+                        current_price=current_price,
+                        trend_result=trend_result_updated,
+                        news_sentiment=news_sentiment,
+                    )
+                    self.decision_logger.log_decision(decision)
+                    reasoning = decision.reason.primary_reason
+                except Exception as e:
+                    print(f"  ⚠️ Reasoning error for {ticker}: {e}")
+                    reasoning = None
+            
+            # Check if we have an active position
+            if ticker in self.active_positions:
+                result = self._check_exit(ticker, data, trend, previous_trend, news_sentiment, current_price)
+            else:
+                result = self._check_entry(ticker, data, trend, confidence, news_sentiment, current_price)
+            
+            # Add reasoning to result
+            if result and reasoning:
+                result['reasoning'] = reasoning
+            
+            return result
+            
+        except Exception as e:
+            print(f"  ❌ Error analyzing {ticker}: {e}")
+            return None
     
     def _print_summary(self, results: List[Dict]):
         """Print final table"""

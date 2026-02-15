@@ -103,7 +103,21 @@ class ExitManager:
         tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
         atr = tr.rolling(period).mean().iloc[-1]
         
-        return atr if not pd.isna(atr) else df['Close'].iloc[-1] * 0.02  # Fallback: 2%
+        # Improved fallback: use historical volatility instead of fixed 2%
+        if pd.isna(atr):
+            # Calculate volatility from close-to-close returns
+            returns = df['Close'].pct_change().dropna()
+            if len(returns) > 5:
+                # Use 2x the standard deviation as ATR proxy
+                volatility = returns.std()
+                atr = df['Close'].iloc[-1] * volatility * 2.0
+                print(f"    📊 ATR fallback: using volatility-based {volatility*200:.1f}% (2x std)")
+            else:
+                # Last resort: 2%
+                atr = df['Close'].iloc[-1] * 0.02
+                print(f"    ⚠️ ATR fallback: using fixed 2% (insufficient data)")
+        
+        return atr
     
     def initialize_position(
         self,
@@ -239,14 +253,31 @@ class ExitManager:
                 new_stop_loss=position.current_price * 0.98,  # Tighten stop to -2%
             )
         
-        # 5. Check news shock (very negative sentiment)
-        if news_sentiment is not None and news_sentiment <= -0.8:
-            return ExitSignal(
-                should_exit=True,
-                exit_percentage=0.5,  # Exit 50% on bad news
-                reason=ExitReason.NEWS_SHOCK,
-                new_stop_loss=position.current_price * 0.97,  # Tighten stop to -3%
-            )
+        # 5. Check news shock (graduated response to negative sentiment)
+        if news_sentiment is not None:
+            if news_sentiment <= -0.8:
+                # Catastrophic news (bankruptcy, fraud) - exit immediately
+                return ExitSignal(
+                    should_exit=True,
+                    exit_percentage=1.0,  # Exit 100%
+                    reason=ExitReason.NEWS_SHOCK,
+                )
+            elif news_sentiment <= -0.6:
+                # Very negative news - partial exit
+                return ExitSignal(
+                    should_exit=True,
+                    exit_percentage=0.5,  # Exit 50%
+                    reason=ExitReason.NEWS_SHOCK,
+                    new_stop_loss=position.current_price * 0.97,  # Tighten stop to -3%
+                )
+            elif news_sentiment <= -0.4:
+                # Moderately negative news - tighten stop only
+                return ExitSignal(
+                    should_exit=False,
+                    exit_percentage=0.0,
+                    reason=None,
+                    new_stop_loss=position.current_price * 0.98,  # Tighten stop to -2%
+                )
         
         # 6. Check take profit levels (multi-level exit)
         if gain >= self.tp3_pct:  # +15%

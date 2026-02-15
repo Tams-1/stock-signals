@@ -97,8 +97,9 @@ class DecisionLogger:
     Logs and explains all trading decisions
     """
     
-    def __init__(self, log_file: str = "decision_log.json"):
+    def __init__(self, log_file: str = "decision_log.json", max_entries: int = 1000):
         self.log_file = log_file
+        self.max_entries = max_entries
         self.decisions = []
         self._load_history()
     
@@ -122,9 +123,39 @@ class DecisionLogger:
         with open(self.log_file, 'w') as f:
             json.dump(data, f, indent=2)
     
+    def _archive_old_entries(self):
+        """Archive old entries to a separate file"""
+        if len(self.decisions) <= self.max_entries:
+            return
+        
+        # Create archive filename with date
+        archive_file = f"decision_log_archive_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        
+        # Save entries to be archived
+        to_archive = self.decisions[:-self.max_entries]
+        
+        try:
+            with open(archive_file, 'w') as f:
+                json.dump({
+                    'archived_at': datetime.now().isoformat(),
+                    'entries_count': len(to_archive),
+                    'decisions': to_archive
+                }, f, indent=2)
+            print(f"📁 Archived {len(to_archive)} old decisions to {archive_file}")
+        except Exception as e:
+            print(f"⚠️ Failed to archive decisions: {e}")
+    
     def log_decision(self, decision: SignalDecision):
-        """Log a trading decision"""
+        """Log a trading decision with rotation"""
         self.decisions.append(asdict(decision))
+        
+        # Rotate if exceeds max entries
+        if len(self.decisions) > self.max_entries:
+            # Archive old entries before rotating
+            self._archive_old_entries()
+            # Keep only recent entries
+            self.decisions = self.decisions[-self.max_entries:]
+        
         self._save_history()
     
     def get_latest_decision(self, ticker: str) -> Optional[Dict]:

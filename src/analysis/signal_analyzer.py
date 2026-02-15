@@ -294,6 +294,27 @@ class SignalAnalyzer:
         consensus = trend_result.get('consensus', 'unknown')
         confidence = trend_result.get('confidence', 0.0)
         
+        return self.analyze_signal_with_trend(
+            ticker, df, current_price, trend_result, 
+            news_sentiment, news_count, news_summary
+        )
+    
+    def analyze_signal_with_trend(
+        self,
+        ticker: str,
+        df: pd.DataFrame,
+        current_price: float,
+        trend_result: Dict,
+        news_sentiment: Optional[float] = None,
+        news_count: Optional[int] = None,
+        news_summary: Optional[str] = None
+    ) -> Tuple[str, SignalDecision]:
+        """
+        Analyze with pre-computed trend result (avoids duplicate calculation)
+        """
+        consensus = trend_result.get('consensus', 'unknown')
+        confidence = trend_result.get('confidence', 0.0)
+        
         # Map consensus to trend
         if consensus in ['uptrend', 'bull_pullback']:
             trend = "bullish"

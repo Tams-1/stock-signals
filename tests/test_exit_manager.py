@@ -255,8 +255,44 @@ class TestExitManager(unittest.TestCase):
         )
         
         self.assertTrue(exit_signal.should_exit)
-        self.assertEqual(exit_signal.exit_percentage, 0.5)  # Exit 50%
+        self.assertEqual(exit_signal.exit_percentage, 1.0)  # Exit 100% for catastrophic news
         self.assertEqual(exit_signal.reason, ExitReason.NEWS_SHOCK)
+    
+    def test_news_shock_graduated(self):
+        """Test graduated response to news sentiment"""
+        position = self.exit_mgr.initialize_position(
+            ticker="TEST.SA",
+            entry_price=50.0,
+            entry_date="2025-06-01",
+            size=0.70,
+            df=self.df,
+        )
+        
+        position.current_price = 52.0
+        
+        # Test -0.7 sentiment (very negative but not catastrophic)
+        exit_signal = self.exit_mgr.check_exit(
+            position=position,
+            current_trend="bullish",
+            previous_trend="bullish",
+            news_sentiment=-0.7,
+        )
+        
+        self.assertTrue(exit_signal.should_exit)
+        self.assertEqual(exit_signal.exit_percentage, 0.5)  # Exit 50%
+        self.assertIsNotNone(exit_signal.new_stop_loss)
+        
+        # Test -0.5 sentiment (moderately negative)
+        exit_signal = self.exit_mgr.check_exit(
+            position=position,
+            current_trend="bullish",
+            previous_trend="bullish",
+            news_sentiment=-0.5,
+        )
+        
+        self.assertFalse(exit_signal.should_exit)  # Don't exit
+        self.assertIsNotNone(exit_signal.new_stop_loss)  # But tighten stop
+        self.assertLess(exit_signal.new_stop_loss, position.current_price)
     
     def test_no_exit_signal(self):
         """Test no exit when conditions not met"""
