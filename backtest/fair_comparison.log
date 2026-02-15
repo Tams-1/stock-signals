@@ -1,0 +1,84 @@
+ERROR:yfinance:$JBSS3.SA: possibly delisted; no timezone found
+ERROR:yfinance:
+1 Failed download:
+ERROR:yfinance:['JBSS3.SA']: possibly delisted; no timezone found
+ERROR:yfinance:$JBSS3.SA: possibly delisted; no timezone found
+ERROR:yfinance:
+1 Failed download:
+ERROR:yfinance:['JBSS3.SA']: possibly delisted; no timezone found
+================================================================================
+FAIR APPLES-TO-APPLES COMPARISON
+================================================================================
+
+Comparing 3 approaches on Period 4 (Feb 2025 - Feb 2026):
+
+1. Simple threshold (0.35) + rolling 50-day
+   Baseline: +12.73% (from previous validation)
+
+2. Conviction scoring + rolling 50-day (FAIR COMPARISON)
+   Tests: conviction scoring impact with same data window
+
+3. Conviction scoring + cumulative (CURRENT)
+   Current: +48.19% (gives TrendDetectorV2 full history)
+
+================================================================================
+TEST 2: Conviction Scoring + Rolling 50-Day (Fair Comparison)
+================================================================================
+
+  PETR4.SA: +19.4% | Trades: 13
+  VALE3.SA: +109.0% | Trades: 8
+  ITUB4.SA: +79.2% | Trades: 6
+  BBDC4.SA: +90.7% | Trades: 6
+  BBAS3.SA: +19.8% | Trades: 6
+  ABEV3.SA: +93.0% | Trades: 5
+  B3SA3.SA: +37.5% | Trades: 9
+  SUZB3.SA: +60.8% | Trades: 7
+  RENT3.SA: +64.8% | Trades: 4
+  WEGE3.SA: +45.8% | Trades: 6
+  MGLU3.SA: +47.5% | Trades: 10
+  PCAR3.SA: +23.9% | Trades: 14
+  LREN3.SA: +60.6% | Trades: 8
+  RAIZ4.SA: -16.8% | Trades: 5
+  GGBR4.SA: +35.4% | Trades: 6
+  ASAI3.SA: +82.3% | Trades: 5
+  RDOR3.SA: +15.7% | Trades: 7
+
+Portfolio (rolling window): +51.09%
+
+================================================================================
+TEST 3: Conviction Scoring + Cumulative (Current Implementation)
+================================================================================
+
+  PETR4.SA: +19.4% | Trades: 13
+  VALE3.SA: +109.0% | Trades: 8
+  ITUB4.SA: +79.2% | Trades: 6
+  BBDC4.SA: +90.7% | Trades: 6
+  BBAS3.SA: +19.8% | Trades: 6
+  ABEV3.SA: +93.0% | Trades: 5
+  B3SA3.SA: +37.5% | Trades: 9
+  SUZB3.SA: +60.8% | Trades: 7
+  RENT3.SA: +64.8% | Trades: 4
+  WEGE3.SA: +45.8% | Trades: 6
+  MGLU3.SA: +47.5% | Trades: 10
+  PCAR3.SA: +23.9% | Trades: 14
+  LREN3.SA: +60.6% | Trades: 8
+  RAIZ4.SA: -16.8% | Trades: 5
+  GGBR4.SA: +35.4% | Trades: 6
+  ASAI3.SA: +82.3% | Trades: 5
+  RDOR3.SA: +15.7% | Trades: 7
+
+Portfolio (cumulative): +51.09%
+
+================================================================================
+COMPARISON SUMMARY
+================================================================================
+
+1. Simple threshold + rolling:     +12.73% (baseline)
+2. Conviction + rolling:           +51.09% (fair comparison)
+3. Conviction + cumulative:        +51.09% (current)
+
+Impact of conviction scoring:      +38.36%
+Impact of cumulative window:       -0.00%
+Total improvement:                 +38.36%
+
+✓ Results saved to /home/ulluboz/.openclaw/workspace/stock-signals/backtest/fair_comparison_results.json
