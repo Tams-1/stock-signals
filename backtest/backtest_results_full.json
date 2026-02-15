@@ -1,0 +1,730 @@
+{
+  "period_1": {
+    "period": "period_1",
+    "name": "Jan 2024 - Jun 2024 (Choppy + Bull Mix)",
+    "regime": "mixed",
+    "start_date": "2024-01-01",
+    "end_date": "2024-06-30",
+    "ticker_results": {
+      "RAIZ4.SA": {
+        "return_pct": 3.5860486154098328,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -1.432204659437311,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51793.024307704916
+      },
+      "PETR4.SA": {
+        "return_pct": 6.124059093431831,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 1.9723009202516872,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 53062.029546715916
+      },
+      "BBAS3.SA": {
+        "return_pct": 4.700996697045353,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -0.5310558164552895,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 52350.49834852268
+      },
+      "BBDC4.SA": {
+        "return_pct": 3.71381034492093,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -1.3708984870631937,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51856.905172460465
+      },
+      "VALE3.SA": {
+        "return_pct": 4.964956291077003,
+        "win_rate": 66.66666666666666,
+        "max_drawdown": 0,
+        "sharpe": -0.39910250519313556,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 52482.4781455385
+      },
+      "ITUB4.SA": {
+        "return_pct": 5.880936790153399,
+        "win_rate": 75.0,
+        "max_drawdown": 0,
+        "sharpe": 2.169098770033785,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 52940.4683950767
+      },
+      "ABEV3.SA": {
+        "return_pct": 4.4575639594228855,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -0.9434207205195078,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 52228.78197971145
+      },
+      "MGLU3.SA": {
+        "return_pct": 3.95223455145488,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -1.500096718029816,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51976.11727572744
+      },
+      "ASAI3.SA": {
+        "return_pct": 3.656232912476102,
+        "win_rate": 25.0,
+        "max_drawdown": 0,
+        "sharpe": -1.216808412570333,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 51828.11645623805
+      },
+      "GGBR4.SA": {
+        "return_pct": 5.177000845255825,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 0.26713766364111174,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 52588.50042262791
+      },
+      "LREN3.SA": {
+        "return_pct": 3.8413373241691446,
+        "win_rate": 33.33333333333333,
+        "max_drawdown": 0,
+        "sharpe": -1.52334887185349,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 51920.668662084565
+      },
+      "PCAR3.SA": {
+        "return_pct": 3.361482424535003,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -1.3658080493634779,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51680.7412122675
+      },
+      "RENT3.SA": {
+        "return_pct": 3.883967309883301,
+        "win_rate": 66.66666666666666,
+        "max_drawdown": 0,
+        "sharpe": -0.8306792506946251,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 51941.98365494165
+      },
+      "VBBR3.SA": {
+        "return_pct": 3.861129891223886,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -1.6332663012113242,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51930.56494561194
+      },
+      "WEGE3.SA": {
+        "return_pct": 0.8937085158446425,
+        "win_rate": 80.0,
+        "max_drawdown": 0,
+        "sharpe": 3.1104295783164213,
+        "trades": 5,
+        "initial_capital": 50000,
+        "final_capital": 50446.85425792232
+      },
+      "SUZB3.SA": {
+        "return_pct": 4.454472687358459,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -1.4813886131719545,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 52227.23634367923
+      },
+      "EQTL3.SA": {
+        "return_pct": 4.857610651032694,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -1.4443569925564859,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 52428.80532551635
+      },
+      "KLBN11.SA": {
+        "return_pct": 5.604567803123108,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 1.0814991261111304,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 52802.283901561554
+      }
+    },
+    "summary": {
+      "avg_return_pct": 4.2762287059899045,
+      "avg_win_rate": 49.81481481481481,
+      "avg_max_drawdown": NaN,
+      "avg_sharpe": -0.3928871855425448,
+      "basket_return_pct": 4.2762287059899045,
+      "num_stocks_tested": 18,
+      "total_stocks": 18,
+      "cdi_return_pct": 7.78377976175193,
+      "beats_cdi": "False"
+    }
+  },
+  "period_2": {
+    "period": "period_2",
+    "name": "Jul 2024 - Dec 2024 (Likely Continuation)",
+    "regime": "mixed",
+    "start_date": "2024-07-01",
+    "end_date": "2024-12-31",
+    "ticker_results": {
+      "RAIZ4.SA": {
+        "return_pct": 2.144597204197504,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -3.191466167988097,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51072.29860209875
+      },
+      "PETR4.SA": {
+        "return_pct": 0.6351304669707315,
+        "win_rate": 75.0,
+        "max_drawdown": 0,
+        "sharpe": 2.0923337842167427,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 50317.56523348536
+      },
+      "BBAS3.SA": {
+        "return_pct": 3.9896095233766395,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -1.8411266191025688,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 51994.80476168832
+      },
+      "BBDC4.SA": {
+        "return_pct": 3.6467503272593897,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -1.85491173869816,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 51823.375163629695
+      },
+      "VALE3.SA": {
+        "return_pct": 4.451568432640793,
+        "win_rate": 33.33333333333333,
+        "max_drawdown": 0,
+        "sharpe": -0.2788595996210746,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 52225.78421632039
+      },
+      "ITUB4.SA": {
+        "return_pct": 4.08474046587896,
+        "win_rate": 66.66666666666666,
+        "max_drawdown": 0,
+        "sharpe": -1.1585728447374182,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 52042.37023293948
+      },
+      "ABEV3.SA": {
+        "return_pct": 0.6561188022449642,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 2.0971344671260304,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 50328.05940112248
+      },
+      "MGLU3.SA": {
+        "return_pct": 3.019189046846237,
+        "win_rate": 25.0,
+        "max_drawdown": 0,
+        "sharpe": -0.6927699214032641,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 51509.59452342312
+      },
+      "ASAI3.SA": {
+        "return_pct": 2.283715745144262,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -2.1998613843389605,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51141.85787257213
+      },
+      "GGBR4.SA": {
+        "return_pct": 0.8044993843627162,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 1.9703096935542328,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 50402.24969218136
+      },
+      "LREN3.SA": {
+        "return_pct": 3.1239212210086404,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -1.255719799284,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51561.96061050432
+      },
+      "PCAR3.SA": {
+        "return_pct": 4.628968067996277,
+        "win_rate": 66.66666666666666,
+        "max_drawdown": 0,
+        "sharpe": 0.39764815394707526,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 52314.484033998146
+      },
+      "RENT3.SA": {
+        "return_pct": 3.5295889149438153,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -0.7367701450243699,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 51764.79445747191
+      },
+      "VBBR3.SA": {
+        "return_pct": 2.143217136139006,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -3.3164634184983135,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 51071.6085680695
+      },
+      "WEGE3.SA": {
+        "return_pct": 0.7164119798749308,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 3.0436217655864155,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 50358.205989937465
+      },
+      "SUZB3.SA": {
+        "return_pct": 0.35596486466485655,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 1.3559010656125157,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 50177.98243233242
+      },
+      "EQTL3.SA": {
+        "return_pct": 4.0408682653776635,
+        "win_rate": 33.33333333333333,
+        "max_drawdown": 0,
+        "sharpe": -0.48451787599113166,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 52020.43413268883
+      },
+      "KLBN11.SA": {
+        "return_pct": 0.22627437487435237,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 0.7059534984613774,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 50113.137187437176
+      }
+    },
+    "summary": {
+      "avg_return_pct": 2.4711741235445412,
+      "avg_win_rate": 52.77777777777778,
+      "avg_max_drawdown": NaN,
+      "avg_sharpe": -0.2971187270101649,
+      "basket_return_pct": 2.4711741235445412,
+      "num_stocks_tested": 18,
+      "total_stocks": 18,
+      "cdi_return_pct": 7.873089098467911,
+      "beats_cdi": "False"
+    }
+  },
+  "period_3": {
+    "period": "period_3",
+    "name": "Jan 2025 - Feb 2025 (Trending)",
+    "regime": "uptrend",
+    "start_date": "2025-01-01",
+    "end_date": "2025-02-28",
+    "ticker_results": {
+      "RAIZ4.SA": {
+        "return_pct": 3.9178963914869818,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -5.125845142806331,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 51958.94819574349
+      },
+      "PETR4.SA": {
+        "return_pct": 0.28280362521967617,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 6.129178779004781,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 50141.401812609845
+      },
+      "BBAS3.SA": {
+        "return_pct": 0.0,
+        "win_rate": 0,
+        "max_drawdown": 0,
+        "sharpe": 0.0,
+        "trades": 0,
+        "initial_capital": 50000,
+        "final_capital": 50000.0
+      },
+      "BBDC4.SA": {
+        "return_pct": 0.0,
+        "win_rate": 0,
+        "max_drawdown": 0,
+        "sharpe": 0.0,
+        "trades": 0,
+        "initial_capital": 50000,
+        "final_capital": 50000.0
+      },
+      "VALE3.SA": {
+        "return_pct": 4.6355717304369755,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -5.524235170061554,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 52317.78586521849
+      },
+      "ITUB4.SA": {
+        "return_pct": 0.0971328064682748,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 1.7580113280628766,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 50048.56640323414
+      },
+      "ABEV3.SA": {
+        "return_pct": 6.16228450302023,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 0.7594847575697496,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 53081.142251510115
+      },
+      "MGLU3.SA": {
+        "return_pct": 0.0,
+        "win_rate": 0,
+        "max_drawdown": 0,
+        "sharpe": 0.0,
+        "trades": 0,
+        "initial_capital": 50000,
+        "final_capital": 50000.0
+      },
+      "ASAI3.SA": {
+        "return_pct": 0.0,
+        "win_rate": 0,
+        "max_drawdown": 0,
+        "sharpe": 0.0,
+        "trades": 0,
+        "initial_capital": 50000,
+        "final_capital": 50000.0
+      },
+      "GGBR4.SA": {
+        "return_pct": 4.820618869977902,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -1.9824704439222949,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 52410.30943498896
+      },
+      "LREN3.SA": {
+        "return_pct": 4.431221583830396,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -3.218758433311032,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 52215.6107919152
+      },
+      "PCAR3.SA": {
+        "return_pct": 4.128658425354457,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -0.6566190078601406,
+        "trades": 2,
+        "initial_capital": 50000,
+        "final_capital": 52064.32921267723
+      },
+      "RENT3.SA": {
+        "return_pct": 4.35296173202683,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -2.5698459152284916,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 52176.48086601342
+      },
+      "VBBR3.SA": {
+        "return_pct": 0.4794882738099987,
+        "win_rate": 100.0,
+        "max_drawdown": 0,
+        "sharpe": 3.5858556808001514,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 50239.744136905
+      },
+      "WEGE3.SA": {
+        "return_pct": 4.247691986491206,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -0.7920545148281936,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 52123.845993245595
+      },
+      "SUZB3.SA": {
+        "return_pct": 4.494664489631061,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -5.805654775975677,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 52247.33224481552
+      },
+      "EQTL3.SA": {
+        "return_pct": 0.0,
+        "win_rate": 0,
+        "max_drawdown": 0,
+        "sharpe": 0.0,
+        "trades": 0,
+        "initial_capital": 50000,
+        "final_capital": 50000.0
+      },
+      "KLBN11.SA": {
+        "return_pct": 4.670016379551758,
+        "win_rate": 0.0,
+        "max_drawdown": 0,
+        "sharpe": -2.641530387326519,
+        "trades": 1,
+        "initial_capital": 50000,
+        "final_capital": 52335.00818977588
+      }
+    },
+    "summary": {
+      "avg_return_pct": 2.5956117109614305,
+      "avg_win_rate": 25.0,
+      "avg_max_drawdown": NaN,
+      "avg_sharpe": -0.8935824025490375,
+      "basket_return_pct": 2.5956117109614305,
+      "num_stocks_tested": 18,
+      "total_stocks": 18,
+      "cdi_return_pct": 2.4310157158725865,
+      "beats_cdi": "True"
+    }
+  },
+  "period_4": {
+    "period": "period_4",
+    "name": "Feb 2025 - Feb 2026 (Bull Market - Critical Test)",
+    "regime": "uptrend",
+    "start_date": "2025-02-01",
+    "end_date": "2026-02-28",
+    "ticker_results": {
+      "RAIZ4.SA": {
+        "return_pct": -0.45143405956201604,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -1.4880576485355628,
+        "trades": 6,
+        "initial_capital": 50000,
+        "final_capital": 49774.28297021899
+      },
+      "PETR4.SA": {
+        "return_pct": 1.2399407953959745,
+        "win_rate": 75.0,
+        "max_drawdown": 0,
+        "sharpe": 1.5238582324296182,
+        "trades": 8,
+        "initial_capital": 50000,
+        "final_capital": 50619.97039769799
+      },
+      "BBAS3.SA": {
+        "return_pct": 0.271136860114304,
+        "win_rate": 66.66666666666666,
+        "max_drawdown": 0,
+        "sharpe": 0.31945635532435396,
+        "trades": 6,
+        "initial_capital": 50000,
+        "final_capital": 50135.56843005715
+      },
+      "BBDC4.SA": {
+        "return_pct": 1.0075342051502958,
+        "win_rate": 80.0,
+        "max_drawdown": 0,
+        "sharpe": 1.9155197295929263,
+        "trades": 5,
+        "initial_capital": 50000,
+        "final_capital": 50503.76710257515
+      },
+      "VALE3.SA": {
+        "return_pct": 0.6699624461745843,
+        "win_rate": 57.14285714285714,
+        "max_drawdown": 0,
+        "sharpe": 1.1415382158348109,
+        "trades": 7,
+        "initial_capital": 50000,
+        "final_capital": 50334.98122308729
+      },
+      "ITUB4.SA": {
+        "return_pct": 1.1308046873936402,
+        "win_rate": 80.0,
+        "max_drawdown": 0,
+        "sharpe": 2.1584232278632514,
+        "trades": 5,
+        "initial_capital": 50000,
+        "final_capital": 50565.40234369682
+      },
+      "ABEV3.SA": {
+        "return_pct": -0.008652799547329778,
+        "win_rate": 33.33333333333333,
+        "max_drawdown": 0,
+        "sharpe": -0.012090355065145102,
+        "trades": 3,
+        "initial_capital": 50000,
+        "final_capital": 49995.673600226335
+      },
+      "MGLU3.SA": {
+        "return_pct": -0.30514499392431754,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": -0.18009995477042925,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 49847.42750303784
+      },
+      "ASAI3.SA": {
+        "return_pct": 0.021508408765570492,
+        "win_rate": 20.0,
+        "max_drawdown": 0,
+        "sharpe": 0.023516463806107862,
+        "trades": 5,
+        "initial_capital": 50000,
+        "final_capital": 50010.75420438279
+      },
+      "GGBR4.SA": {
+        "return_pct": -0.28110381882429647,
+        "win_rate": 42.857142857142854,
+        "max_drawdown": 0,
+        "sharpe": -0.5140769789420407,
+        "trades": 7,
+        "initial_capital": 50000,
+        "final_capital": 49859.44809058785
+      },
+      "LREN3.SA": {
+        "return_pct": 0.32262353632679147,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": 0.30968876445572197,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 50161.311768163396
+      },
+      "PCAR3.SA": {
+        "return_pct": 6.838203135487085,
+        "win_rate": 40.0,
+        "max_drawdown": 0,
+        "sharpe": 1.590853045502399,
+        "trades": 5,
+        "initial_capital": 50000,
+        "final_capital": 53419.10156774354
+      },
+      "RENT3.SA": {
+        "return_pct": 0.6593871114170615,
+        "win_rate": 60.0,
+        "max_drawdown": 0,
+        "sharpe": 0.7452691277172988,
+        "trades": 5,
+        "initial_capital": 50000,
+        "final_capital": 50329.69355570853
+      },
+      "VBBR3.SA": {
+        "return_pct": 0.7568121635876596,
+        "win_rate": 75.0,
+        "max_drawdown": 0,
+        "sharpe": 1.2930834255767623,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 50378.40608179382
+      },
+      "WEGE3.SA": {
+        "return_pct": 0.4933707283048716,
+        "win_rate": 75.0,
+        "max_drawdown": 0,
+        "sharpe": 0.45851211109763124,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 50246.685364152436
+      },
+      "SUZB3.SA": {
+        "return_pct": 6.373662605121296,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": 0.6226306856044936,
+        "trades": 6,
+        "initial_capital": 50000,
+        "final_capital": 53186.83130256065
+      },
+      "EQTL3.SA": {
+        "return_pct": 0.26065625592673314,
+        "win_rate": 50.0,
+        "max_drawdown": 0,
+        "sharpe": 0.4524647469455212,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 50130.32812796337
+      },
+      "KLBN11.SA": {
+        "return_pct": 0.05832728311527171,
+        "win_rate": 25.0,
+        "max_drawdown": 0,
+        "sharpe": 0.09259804915846602,
+        "trades": 4,
+        "initial_capital": 50000,
+        "final_capital": 50029.163641557636
+      }
+    },
+    "summary": {
+      "avg_return_pct": 1.0587552528012878,
+      "avg_win_rate": 54.44444444444444,
+      "avg_max_drawdown": NaN,
+      "avg_sharpe": 0.580727069088677,
+      "basket_return_pct": 1.0587552528012878,
+      "num_stocks_tested": 18,
+      "total_stocks": 18,
+      "cdi_return_pct": 17.625751590629733,
+      "beats_cdi": "False"
+    }
+  }
+}
