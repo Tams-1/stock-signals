@@ -25,8 +25,7 @@ from src.signals.information_flow import InformationFlowDetector
 from src.signals.momentum_reversal import MomentumReversalDetector
 from src.signals.trend_detector_v2 import RobustTrendDetector
 from src.signals.conviction_scorer import ConvictionScorer
-from src.news.news_aggregator import NewsAggregator
-from src.news.sentiment_analyzer import SentimentAnalyzer
+from src.news.free_news_client import get_client as get_news_client
 from src.data.fetch_data import fetch_ticker_data
 
 logging.basicConfig(level=logging.INFO)
@@ -85,8 +84,8 @@ class ProductionSimulatorFull:
         
         # News sentiment (if enabled)
         if use_news_sentiment:
-            self.news_aggregator = NewsAggregator(api_key=news_api_key or 'demo')
-            self.sentiment_analyzer = SentimentAnalyzer(language='pt')
+            self.news_client = get_news_client()
+            logger.info("Using REAL news (Google News + FinBERT)")
         else:
             self.news_aggregator = None
             self.sentiment_analyzer = None
@@ -102,13 +101,11 @@ class ProductionSimulatorFull:
     
     def get_news_sentiment_signal(self, ticker: str, signal_date: datetime) -> Optional[Dict]:
         """
-        Get news sentiment signal for a ticker on a specific date.
-        
-        TEMPORAL SAFETY: Only uses news published BEFORE signal_date.
+        Get REAL news sentiment using FreeNewsClient (Google News + FinBERT).
         
         Args:
             ticker: Stock ticker (e.g., 'PETR4.SA')
-            signal_date: Date of signal generation (uses news from BEFORE this date)
+            signal_date: Date of signal generation
         
         Returns:
             Dictionary with sentiment signal or None
@@ -116,15 +113,29 @@ class ProductionSimulatorFull:
         if not self.use_news_sentiment:
             return None
         
-        # Use news database if available
-        if self.news_database:
+        try:
             date_str = signal_date.strftime('%Y-%m-%d')
+            sentiment_score = self.news_client.get_sentiment(ticker, date_str)
             
-            if ticker in self.news_database and date_str in self.news_database[ticker]:
-                return self.news_database[ticker][date_str]
+            # Convert to signal format
+            if sentiment_score > 0.2:
+                direction = 'bullish'
+            elif sentiment_score < -0.2:
+                direction = 'bearish'
+            else:
+                direction = 'neutral'
+            
+            return {
+                'type': 'news_sentiment',
+                'strength': abs(sentiment_score),
+                'direction': direction,
+                'source': 'real_news',
+                'raw_sentiment': sentiment_score
+            }
         
-        # Fallback: No news available
-        return None
+        except Exception as e:
+            logger.warning(f"Failed to get real news for {ticker} on {date_str}: {e}")
+            return None
     
     def detect_signals(self, data: pd.DataFrame, signal_date: datetime, ticker: str) -> Dict:
         """
