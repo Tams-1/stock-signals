@@ -25,13 +25,26 @@ from src.risk.exit_manager import ExitManager, Position
 from src.analysis.decision_logger import DecisionLogger
 from src.analysis.signal_analyzer import SignalAnalyzer
 
-# 18 IBOV tickers (will expand later)
-TICKERS = [
-    "PETR4.SA", "VALE3.SA", "ITUB4.SA", "BBDC4.SA", "BBAS3.SA",
-    "ABEV3.SA", "B3SA3.SA", "SUZB3.SA", "RENT3.SA", "WEGE3.SA",
-    "MGLU3.SA", "PCAR3.SA", "LREN3.SA", "RAIZ4.SA", "GGBR4.SA",
-    "ASAI3.SA", "JBSS3.SA", "RDOR3.SA"
-]
+# Load ALL tickers from validated list (65 total: 50 IBOV + 15 SMLL)
+def load_tickers():
+    """Load validated tickers from data/validated_tickers.json"""
+    ticker_file = os.path.join(os.path.dirname(__file__), 'data', 'validated_tickers.json')
+    try:
+        with open(ticker_file, 'r') as f:
+            data = json.load(f)
+            return data.get('all_tickers', [])
+    except Exception as e:
+        # Fallback to original 18 if file doesn't exist
+        print(f"⚠️ Could not load validated_tickers.json: {e}")
+        print("   Using fallback list (18 tickers)")
+        return [
+            "PETR4.SA", "VALE3.SA", "ITUB4.SA", "BBDC4.SA", "BBAS3.SA",
+            "ABEV3.SA", "B3SA3.SA", "SUZB3.SA", "RENT3.SA", "WEGE3.SA",
+            "MGLU3.SA", "PCAR3.SA", "LREN3.SA", "RAIZ4.SA", "GGBR4.SA",
+            "ASAI3.SA", "JBSS3.SA", "RDOR3.SA"
+        ]
+
+TICKERS = load_tickers()
 
 POSITIONS_FILE = "active_positions.json"
 HISTORY_FILE = "position_history.json"
