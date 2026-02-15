@@ -422,6 +422,14 @@ class ProductionRunnerV2:
                 self.active_positions[ticker] = position
             
             self._save_positions()
+        else:
+            # Handle case: tighten stop without exiting (e.g. moderately negative news)
+            if exit_signal.new_stop_loss:
+                old_stop = position.stop_loss
+                position.stop_loss = exit_signal.new_stop_loss
+                self.active_positions[ticker] = position
+                self._save_positions()
+                print(f"  🛡️  Stop loss tightened: R${old_stop:.2f} → R${position.stop_loss:.2f}")
         
         # Calculate gain
         gain = (current_price - position.entry_price) / position.entry_price
@@ -486,9 +494,9 @@ class ProductionRunnerV2:
                         'Volume': ticker_data['Volume']
                     })
                     
-                    # Check for NaN values
+                    # Check for NaN values and forward fill
                     if df.isna().any().any():
-                        df = df.fillna(method='ffill')
+                        df = df.ffill()
                     
                     result[ticker] = df
                     

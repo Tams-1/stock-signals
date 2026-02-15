@@ -87,10 +87,6 @@ class ExitManager:
         Returns:
             ATR value
         """
-        if len(df) < period:
-            # Fallback: use simple volatility
-            return df['Close'].pct_change().std() * df['Close'].iloc[-1]
-        
         high = df['High']
         low = df['Low']
         close = df['Close']

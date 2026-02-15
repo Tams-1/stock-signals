@@ -294,6 +294,34 @@ class TestExitManager(unittest.TestCase):
         self.assertIsNotNone(exit_signal.new_stop_loss)  # But tighten stop
         self.assertLess(exit_signal.new_stop_loss, position.current_price)
     
+    def test_tighten_stop_without_exit(self):
+        """Test that stop loss is tightened even when not exiting (news -0.4 to -0.6)"""
+        position = self.exit_mgr.initialize_position(
+            ticker="TEST.SA",
+            entry_price=50.0,
+            entry_date="2025-06-01",
+            size=0.70,
+            df=self.df,
+        )
+        
+        position.current_price = 52.0
+        
+        # Test with moderately negative news (-0.5)
+        exit_signal = self.exit_mgr.check_exit(
+            position=position,
+            current_trend="bullish",
+            previous_trend="bullish",
+            news_sentiment=-0.5,
+        )
+        
+        # Should NOT exit
+        self.assertFalse(exit_signal.should_exit)
+        # But SHOULD have a new stop loss
+        self.assertIsNotNone(exit_signal.new_stop_loss)
+        # New stop should be tighter (lower) than original
+        self.assertLess(exit_signal.new_stop_loss, position.current_price)
+        self.assertEqual(exit_signal.new_stop_loss, position.current_price * 0.98)
+    
     def test_no_exit_signal(self):
         """Test no exit when conditions not met"""
         position = self.exit_mgr.initialize_position(
