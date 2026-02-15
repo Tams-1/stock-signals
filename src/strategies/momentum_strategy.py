@@ -29,16 +29,22 @@ logger = logging.getLogger(__name__)
 
 
 class MomentumStrategy:
-    """Momentum following strategy for uptrend periods."""
+    """Momentum following strategy for uptrend periods with REGIME-DEPENDENT THRESHOLDS (v2.1)."""
     
     def __init__(self, lookback_days: int = 20, min_momentum_strength: float = 0.6,
                  take_profit_pct: float = 0.05, stop_loss_pct: float = 0.03):
         """
         Initialize momentum strategy.
         
+        IMPROVEMENTS (v2.1):
+        - Regime-dependent momentum thresholds
+        - Aggressive in uptrends, selective in consolidation, avoid in downtrends
+        - Conviction-weighted position sizing
+        - Better risk management
+        
         Args:
             lookback_days: Window for 20-day high/MA
-            min_momentum_strength: Min momentum to trade (0-1.0)
+            min_momentum_strength: Min momentum to trade (0-1.0) - baseline for consolidation
             take_profit_pct: Profit target (default +5%)
             stop_loss_pct: Stop loss level (default -3%)
         """
@@ -46,11 +52,26 @@ class MomentumStrategy:
         self.min_momentum_strength = min_momentum_strength
         self.take_profit_pct = take_profit_pct
         self.stop_loss_pct = stop_loss_pct
+        
+        # REGIME-DEPENDENT THRESHOLDS (new in v2.1)
+        # These thresholds are adapted based on market regime
+        self.momentum_thresholds = {
+            'uptrend': 0.4,           # Aggressive: only 40% momentum required
+            'consolidation': 0.6,     # Selective: 60% momentum required (original value)
+            'downtrend': 0.8          # Defensive: 80% momentum required (avoid trading)
+        }
+        
+        # Position sizing multipliers based on regime + conviction
+        self.position_size_multipliers = {
+            'uptrend': 1.2,           # 120% - more aggressive in uptrends
+            'consolidation': 1.0,     # 100% - normal sizing
+            'downtrend': 0.5          # 50% - defensive in downtrends
+        }
     
     def should_enter(self, df: pd.DataFrame, regime: str, momentum_result: Dict,
                     news_sentiment: Optional[str] = None) -> Tuple[bool, str]:
         """
-        Check entry conditions.
+        Check entry conditions with REGIME-DEPENDENT THRESHOLDS (v2.1).
         
         Args:
             df: DataFrame with OHLCV data
@@ -61,21 +82,25 @@ class MomentumStrategy:
         Returns:
             (should_enter: bool, reason: str)
         """
-        # Condition 1: Regime must be uptrend
-        if regime != 'uptrend':
-            return False, f"Regime is {regime}, not uptrend"
+        # Condition 1: Avoid trading in strong downtrends
+        if regime == 'downtrend':
+            return False, f"Regime is {regime} - too risky, skip trading"
         
-        # Condition 2: Momentum must be detected
+        # Condition 2: Momentum must be detected with regime-dependent threshold
         momentum_strength = momentum_result.get('momentum_strength', 0)
-        if momentum_strength < self.min_momentum_strength:
-            return False, f"Momentum too weak ({momentum_strength:.2f} < {self.min_momentum_strength})"
+        
+        # Get threshold for current regime (defaults to consolidation if unknown)
+        threshold = self.momentum_thresholds.get(regime, self.momentum_thresholds['consolidation'])
+        
+        if momentum_strength < threshold:
+            return False, f"Momentum too weak ({momentum_strength:.2f} < {threshold} for {regime})"
         
         # Condition 3: Momentum type must be bullish
         momentum_type = momentum_result.get('momentum_type', 'none')
         if momentum_type != 'bullish':
             return False, f"Momentum type is {momentum_type}, not bullish"
         
-        # Condition 4: Price must break above 20-day high
+        # Condition 4: Price should be in good entry position
         if len(df) < self.lookback_days:
             return False, "Insufficient data for 20-day high"
         
@@ -83,12 +108,24 @@ class MomentumStrategy:
         twenty_day_high = recent_data['High'].max()
         current_price = df['Close'].iloc[-1]
         
-        if current_price <= twenty_day_high:
-            return False, f"Price {current_price:.2f} not above 20-day high {twenty_day_high:.2f}"
+        # RELAXED CONDITION: In uptrends, allow entry near recent highs (not just above)
+        # This captures more momentum trades in trending markets
+        if regime == 'uptrend':
+            # In uptrends: allow entry if price is within 1% of 20-day high
+            minimum_price = twenty_day_high * 0.99
+            if current_price < minimum_price:
+                return False, f"Price {current_price:.2f} too far below 20-day high {twenty_day_high:.2f}"
+        else:
+            # In consolidation: require clear breakout
+            if current_price <= twenty_day_high:
+                return False, f"Price {current_price:.2f} not above 20-day high {twenty_day_high:.2f}"
         
-        # Condition 5 (optional): News sentiment should be positive
-        if news_sentiment and news_sentiment == 'bearish':
-            return False, "News sentiment is bearish"
+        # Condition 5 (optional): News sentiment check - only for downtrends (sell signals)
+        if news_sentiment and news_sentiment == 'bearish' and regime == 'uptrend':
+            # Don't skip in uptrend - momentum overrides sentiment
+            pass
+        elif news_sentiment and news_sentiment == 'bearish' and regime == 'consolidation':
+            return False, "News sentiment is bearish and we're in consolidation"
         
         return True, "Entry conditions met"
     
@@ -167,7 +204,13 @@ class MomentumStrategy:
     def get_position_signal(self, df: pd.DataFrame, regime: str, momentum_result: Dict,
                            conviction: float, news_sentiment: Optional[str] = None) -> Dict:
         """
-        Generate complete position signal.
+        Generate complete position signal with REGIME-WEIGHTED POSITION SIZING (v2.1).
+        
+        IMPROVEMENTS:
+        - Conviction-weighted position sizing
+        - Regime-dependent multipliers
+        - Higher positions in bull markets, smaller in choppy markets
+        - Better risk management across all regimes
         
         Returns:
             {
@@ -205,8 +248,9 @@ class MomentumStrategy:
         reward = take_profit - entry_price
         risk_reward_ratio = reward / risk if risk > 0 else 0
         
-        # Position size based on conviction
-        position_size_pct = self._conviction_to_position_size(conviction)
+        # Position size with REGIME-WEIGHTED CONVICTION (v2.1)
+        # Combines base conviction with regime multiplier
+        position_size_pct = self._conviction_to_position_size(conviction, regime)
         
         return {
             'should_enter': True,
@@ -223,25 +267,43 @@ class MomentumStrategy:
                 'regime': regime,
                 'news_sentiment': news_sentiment,
                 'risk_pct': (risk / entry_price) * 100,
-                'reward_pct': (reward / entry_price) * 100
+                'reward_pct': (reward / entry_price) * 100,
+                'regime_multiplier': self.position_size_multipliers.get(regime, 1.0)
             }
         }
     
-    def _conviction_to_position_size(self, conviction: float) -> float:
+    def _conviction_to_position_size(self, conviction: float, regime: str = 'consolidation') -> float:
         """
-        Convert conviction score to position size.
+        Convert conviction score to position size with REGIME MULTIPLIER (v2.1).
+        
+        IMPROVEMENTS:
+        - Base size from conviction score
+        - Multiplied by regime-specific multiplier
+        - Higher positions in uptrends, lower in downtrends
+        
+        Args:
+            conviction: Conviction score (0-1)
+            regime: Market regime (uptrend/consolidation/downtrend)
         
         Returns:
             Position size as % of capital
         """
+        # Base conviction-to-size mapping
         if conviction >= 0.8:
-            return 0.70
+            base_size = 0.70
         elif conviction >= 0.6:
-            return 0.50
+            base_size = 0.50
         elif conviction >= 0.4:
-            return 0.25
+            base_size = 0.25
         else:
             return 0.0
+        
+        # Apply regime multiplier
+        multiplier = self.position_size_multipliers.get(regime, 1.0)
+        final_size = base_size * multiplier
+        
+        # Cap at 100% maximum
+        return min(final_size, 1.0)
     
     def track_position(self, position_data: Dict, current_price: float) -> Dict:
         """

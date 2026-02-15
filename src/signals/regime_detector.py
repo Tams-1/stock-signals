@@ -184,7 +184,14 @@ class RegimeDetector:
     
     def _detect_ma_cross(self, df: pd.DataFrame) -> Dict:
         """
-        Method 2: Detect trend via MA crossover (10 & 20 day MA).
+        Method 2: Detect trend via MA crossover (10 & 20 & 50 day MA).
+        
+        FIXES (v2.1):
+        - Added MA50 check for better uptrend confirmation (if available)
+        - Relaxed price vs MA10 requirement (price can be near MA10, not just above)
+        - Strength based on price vs MA20, not MA10
+        - Better downtrend detection
+        - Graceful fallback to MA10/MA20 if less than 50 days available
         
         Returns:
             {regime: str, strength: float}
@@ -199,15 +206,56 @@ class RegimeDetector:
             ma20 = pd.Series(closes).rolling(20).mean().values[-1]
             current_price = closes[-1]
             
-            # Determine regime
-            if ma10 > ma20 and current_price > ma10:
-                regime = 'uptrend'
-                # Strength: how far price is above both MAs
-                strength = min((current_price - ma20) / (ma20) * 2, 1.0)
-            elif ma10 < ma20 and current_price < ma10:
-                regime = 'downtrend'
-                strength = min((ma20 - current_price) / (ma20) * 2, 1.0)
+            # MA50 only if we have 50+ days
+            has_ma50 = len(closes) >= 50
+            if has_ma50:
+                ma50 = pd.Series(closes).rolling(50).mean().values[-1]
+            
+            # Determine regime with improved logic
+            # UPTREND: (MA10 > MA20 > MA50) OR (MA10 > MA20 AND no MA50) AND price near MA20
+            # This is more robust than requiring price > MA10
+            
+            # Check uptrend structure
+            is_uptrend_structure = False
+            if has_ma50:
+                is_uptrend_structure = (ma10 > ma20 > ma50)
             else:
+                is_uptrend_structure = (ma10 > ma20)
+            
+            # Check downtrend structure
+            is_downtrend_structure = False
+            if has_ma50:
+                is_downtrend_structure = (ma10 < ma20 < ma50)
+            else:
+                is_downtrend_structure = (ma10 < ma20)
+            
+            if is_uptrend_structure:
+                # Uptrend structure detected
+                if current_price > ma20:
+                    regime = 'uptrend'
+                    # Strength: how far price is above MA20 (more stable than MA10)
+                    strength = min((current_price - ma20) / ma20 * 3, 1.0)
+                else:
+                    # Price pulled back but structure still intact
+                    # This is a buying dip, still uptrend but weaker
+                    regime = 'uptrend'
+                    ma_gap = (ma20 - current_price) / ma20
+                    # Penalize slightly if price too far below MA20, but still recognize uptrend
+                    strength = max(0.5, 1.0 - ma_gap * 2)
+                    
+            elif is_downtrend_structure:
+                # Downtrend structure detected
+                if current_price < ma20:
+                    regime = 'downtrend'
+                    strength = min((ma20 - current_price) / ma20 * 3, 1.0)
+                else:
+                    # Price bounced up but structure still down
+                    regime = 'downtrend'
+                    ma_gap = (current_price - ma20) / ma20
+                    strength = max(0.5, 1.0 - ma_gap * 2)
+                    
+            else:
+                # No clear MA structure = consolidation
                 regime = 'consolidation'
                 # Strength: how tight MAs are
                 ma_distance = abs(ma10 - ma20) / ma20
@@ -280,13 +328,26 @@ class RegimeDetector:
             else:
                 regime = 'consolidation'
             
-            # Strength: normalize ADX (0-100)
-            strength = min(current_adx / 100, 1.0)
+            # IMPROVED: Strength calculation (v2.1)
+            # - ADX alone is not enough (0-100 scale doesn't map well to 0-1)
+            # - Better: combine ADX (trend strength) + DI difference (directional clarity)
+            # - Formula: (ADX/50) * (DI_difference/50) for 0-1 range
+            
+            di_diff = abs(current_plus_di - current_minus_di)
+            adx_normalized = min(current_adx / 50, 1.0)  # ADX > 25 is strong, normalize to 50
+            di_normalized = min(di_diff / 50, 1.0)       # DI diff > 50 is very clear
+            
+            # Combined strength: both ADX and DI difference must be high
+            # This prevents false signals when trend is weak or directionality unclear
+            combined_strength = (adx_normalized + di_normalized) / 2
+            strength = min(combined_strength, 1.0)
             
             return {
                 'regime': regime,
                 'strength': round(strength, 3),
-                'adx': round(current_adx, 2)
+                'adx': round(current_adx, 2),
+                'plus_di': round(current_plus_di, 2),
+                'minus_di': round(current_minus_di, 2)
             }
             
         except Exception as e:
@@ -349,28 +410,59 @@ class RegimeDetector:
     
     def _ensemble_vote(self, slope: Dict, ma: Dict, adx: Dict, structure: Dict) -> Tuple[str, float]:
         """
-        Ensemble voting of all 4 methods.
+        Ensemble voting of all 4 methods with ADAPTIVE WEIGHTING (v2.1).
+        
+        IMPROVEMENTS:
+        - Each method gets a vote weighted by its confidence (strength)
+        - Methods with high confidence get higher weight
+        - Adaptive weighting: if slope shows very clear trend, weight it more
+        - Prevents weak contradictory votes from drowning out strong signals
         
         Returns:
             (regime, confidence)
         """
-        methods = [
-            (slope.get('regime'), slope.get('strength', 0)),
-            (ma.get('regime'), ma.get('strength', 0)),
-            (adx.get('regime'), adx.get('strength', 0)),
-            (structure.get('regime'), structure.get('strength', 0))
+        methods_data = [
+            ('slope', slope.get('regime'), slope.get('strength', 0)),
+            ('ma', ma.get('regime'), ma.get('strength', 0)),
+            ('adx', adx.get('regime'), adx.get('strength', 0)),
+            ('structure', structure.get('regime'), structure.get('strength', 0))
         ]
         
         # Remove 'unknown' regimes
-        methods = [(r, s) for r, s in methods if r != 'unknown']
+        methods_data = [(n, r, s) for n, r, s in methods_data if r != 'unknown']
         
-        if not methods:
+        if not methods_data:
             return 'consolidation', 0.0
         
-        # Count votes
-        uptrend_votes = sum(s for r, s in methods if r == 'uptrend')
-        downtrend_votes = sum(s for r, s in methods if r == 'downtrend')
-        consolidation_votes = sum(s for r, s in methods if r == 'consolidation')
+        # ADAPTIVE WEIGHTING: if strongest signal is very high confidence,
+        # give it extra weight to avoid weak contradictions
+        # Find the strongest method
+        max_strength = max(s for _, _, s in methods_data)
+        
+        # If any method has very high confidence, apply boost
+        weight_boost = 1.0
+        if max_strength > 0.75:
+            # Strong signal detected - boost weighting to prevent weak contradictions
+            weight_boost = 1.5
+        
+        # Calculate weighted votes
+        uptrend_votes = 0.0
+        downtrend_votes = 0.0
+        consolidation_votes = 0.0
+        
+        for method_name, regime, strength in methods_data:
+            # Apply weight boost to the highest confidence method
+            if strength == max_strength:
+                weight = strength * weight_boost
+            else:
+                weight = strength
+            
+            if regime == 'uptrend':
+                uptrend_votes += weight
+            elif regime == 'downtrend':
+                downtrend_votes += weight
+            else:  # consolidation
+                consolidation_votes += weight
         
         total_votes = uptrend_votes + downtrend_votes + consolidation_votes
         
@@ -388,6 +480,7 @@ class RegimeDetector:
             regime = 'consolidation'
         
         # Confidence: how strong is the consensus?
+        # Higher when there's clear agreement
         confidence = max_votes / total_votes
         
         return regime, confidence
