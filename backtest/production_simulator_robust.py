@@ -53,13 +53,17 @@ class ProductionSimulator:
         self.trend_detector = RobustTrendDetector()
     
     def detect_signals(self, data):
-        """Detect all signals in the data."""
+        """Detect all signals in the data.
+        
+        Note: Both information_flow and momentum_reversal now return 4-tuples
+        (type, strength, direction, explanation) for consistency.
+        """
         signals = []
         
         try:
             info_sigs = self.info_detector.run_all(data)
-            for sig_type, strength, explanation in info_sigs:
-                signals.append({'type': sig_type, 'strength': strength, 'direction': None})
+            for sig_type, strength, direction, explanation in info_sigs:
+                signals.append({'type': sig_type, 'strength': strength, 'direction': direction})
         except Exception as e:
             pass
         

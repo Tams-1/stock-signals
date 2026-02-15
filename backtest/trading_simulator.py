@@ -27,22 +27,29 @@ class TradingSimulator:
         self.mom_detector = MomentumReversalDetector()
     
     def detect_signals(self, data):
-        """Detect all signals in the data."""
+        """Detect all signals in the data.
+        
+        Args:
+            data: DataFrame with OHLCV data, should NOT include current trading day
+            
+        Returns:
+            List of signal dictionaries with keys: type, strength, direction
+        """
         signals = []
         
         try:
             info_sigs = self.info_detector.run_all(data)
-            for sig_type, strength, explanation in info_sigs:
-                signals.append({'type': sig_type, 'strength': strength, 'direction': None})
-        except:
-            pass
+            for sig_type, strength, direction, explanation in info_sigs:
+                signals.append({'type': sig_type, 'strength': strength, 'direction': direction})
+        except Exception as e:
+            pass  # Silently skip if detector fails
         
         try:
             mom_sigs = self.mom_detector.run_all(data)
             for sig_type, strength, direction, explanation in mom_sigs:
                 signals.append({'type': sig_type, 'strength': strength, 'direction': direction})
-        except:
-            pass
+        except Exception as e:
+            pass  # Silently skip if detector fails
         
         return signals
     
@@ -92,8 +99,10 @@ class TradingSimulator:
         trades = []
         equity_log = []
         
-        # Slide window
+        # Slide window - NO LOOK-AHEAD BIAS
+        # Window size for signal detection
         window_size = 20
+        
         for i in range(window_size, len(data)):
             date = dates[i]
             current_price = float(closes[i])
@@ -109,12 +118,13 @@ class TradingSimulator:
                 drawdown = (peak_equity - current_equity) / peak_equity
                 max_drawdown = max(max_drawdown, drawdown)
             
-            # Get window
+            # CRITICAL FIX: Use only historical data (up to day i-1), NOT current day
+            # window = data from (i-window_size) to (i-1), excludes day i
             window = data.iloc[max(0, i-window_size):i].copy()
             if len(window) < window_size:
                 continue
             
-            # Detect signals
+            # Detect signals using only prior days' data
             signals = self.detect_signals(window)
             signal_score, signal_direction = self.calculate_signal_score(signals)
             

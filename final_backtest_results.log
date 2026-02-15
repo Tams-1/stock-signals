@@ -1,0 +1,135 @@
+
+==========================================================================================
+COMPREHENSIVE BACKTESTING IMPROVEMENTS - FINAL REPORT
+==========================================================================================
+
+[1/3] Running 6-month backtest with realistic costs...
+Period: 2025-08-18 to 2026-02-14
+Tickers: AAPL, MSFT, NVDA, GOOGL, AMZN, META, TSLA, BERKB, JNJ, WMT
+Settings: $10k initial capital, 50% position size, 0.1% slippage, $5 commission
+
+
+==========================================================================================
+BACKTEST WITH REALISTIC COSTS: 2025-08-18 to 2026-02-14
+Initial capital: $10,000
+Position size: 50% per trade
+Signal threshold: 0.50
+Slippage: 0.10% on entry/exit
+Commission: $5 per round-trip trade
+==========================================================================================
+
+Simulating AAPL... Return (with costs): +0.1% | Return (no costs): +0.3% | Cost impact: +0.2% | Trades: 1 | Win: 100%
+Simulating MSFT... Return (with costs): +31.2% | Return (no costs): +31.5% | Cost impact: +0.3% | Trades: 2 | Win: 0%
+Simulating NVDA... Return (with costs): +59.8% | Return (no costs): +60.1% | Cost impact: +0.3% | Trades: 2 | Win: 100%
+Simulating GOOGL... Return (with costs): +57.4% | Return (no costs): +57.7% | Cost impact: +0.3% | Trades: 2 | Win: 50%
+Simulating AMZN... Return (with costs): +39.4% | Return (no costs): +39.9% | Cost impact: +0.4% | Trades: 3 | Win: 33%
+Simulating META... Return (with costs): +3.4% | Return (no costs): +3.8% | Cost impact: +0.3% | Trades: 2 | Win: 100%
+Simulating TSLA... Return (with costs): +51.1% | Return (no costs): +51.4% | Cost impact: +0.3% | Trades: 2 | Win: 50%
+Simulating BERKB... HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BERKB"}}}
+$BERKB: possibly delisted; no timezone found
+
+1 Failed download:
+['BERKB']: possibly delisted; no timezone found
+Insufficient data
+Simulating JNJ... Return (with costs): +10.7% | Return (no costs): +11.1% | Cost impact: +0.5% | Trades: 3 | Win: 100%
+Simulating WMT... Return (with costs): +9.7% | Return (no costs): +10.2% | Cost impact: +0.5% | Trades: 3 | Win: 100%
+
+==========================================================================================
+BACKTEST RESULTS WITH REALISTIC COSTS
+==========================================================================================
+
+INDIVIDUAL STOCKS (with costs):
+Ticker     Return(w/o)  Return(w/)   Cost Impact  Trades   Win %   
+----------------------------------------------------------------------
+AAPL             +0.3%       +0.1%       +0.2%      1    100%
+MSFT            +31.5%      +31.2%       +0.3%      2      0%
+NVDA            +60.1%      +59.8%       +0.3%      2    100%
+GOOGL           +57.7%      +57.4%       +0.3%      2     50%
+AMZN            +39.9%      +39.4%       +0.4%      3     33%
+META             +3.8%       +3.4%       +0.3%      2    100%
+TSLA            +51.4%      +51.1%       +0.3%      2     50%
+JNJ             +11.1%      +10.7%       +0.5%      3    100%
+WMT             +10.2%       +9.7%       +0.5%      3    100%
+
+==========================================================================================
+PORTFOLIO STATISTICS (REALISTIC COSTS INCLUDED):
+==========================================================================================
+Average return (without costs): +29.54%
+Average return (with costs):    +29.20%
+Average cost impact:            +0.34%
+
+Total trades: 20
+Winning trades: 14 (70%)
+Losing trades: 6
+
+P&L Summary:
+  Total P&L (before costs): $+2,088.06
+  Total costs (comm + slip): $+305.68
+  Total P&L (after costs):  $+1,988.06
+  Avg P&L per trade (after costs): $+99.40
+  Costs as % of gross P&L: 14.6%
+
+Cost Breakdown:
+  Total commissions: $100.00
+  Total slippage costs: $205.68
+
+
+[2/3] Running 2026 out-of-sample test (using 2025 parameters)...
+Period: 2026-01-01 to 2026-02-14 (44 days)
+Using threshold=0.5 trained on 2025 data
+
+
+==========================================================================================
+BACKTEST WITH REALISTIC COSTS: 2026-01-01 to 2026-02-14
+Initial capital: $10,000
+Position size: 50% per trade
+Signal threshold: 0.50
+Slippage: 0.10% on entry/exit
+Commission: $5 per round-trip trade
+==========================================================================================
+
+Simulating AAPL... Insufficient data
+Simulating MSFT... Insufficient data
+Simulating NVDA... Insufficient data
+Simulating GOOGL... Insufficient data
+Simulating AMZN... Insufficient data
+Simulating META... Insufficient data
+Simulating TSLA... Insufficient data
+Simulating BERKB... HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BERKB"}}}
+$BERKB: possibly delisted; no timezone found
+
+1 Failed download:
+['BERKB']: possibly delisted; no timezone found
+Insufficient data
+Simulating JNJ... Insufficient data
+Simulating WMT... /home/ulluboz/.local/lib/python3.14/site-packages/numpy/_core/fromnumeric.py:3824: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/home/ulluboz/.local/lib/python3.14/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+Insufficient data
+
+No results to report
+
+
+[3/3] Generating comprehensive report...
+
+✅ Report saved to: /home/ulluboz/.openclaw/workspace/stock-signals/BACKTEST_IMPROVEMENTS_REPORT.md
+   Size: 5,786 bytes
+
+==========================================================================================
+SUMMARY
+==========================================================================================
+
+📊 SIX-MONTH BACKTEST (Aug 2025 - Feb 2026)
+   Average Return (with costs):     +29.20%
+   Average Return (without costs):  +29.54%
+   Trading cost impact:             +0.34%
+   Total trades across 10 stocks:   20
+   Total trading costs:             $305.68
+
+🔄 2026 OUT-OF-SAMPLE TEST
+   Period:                          Jan-Feb 2026 (44 days)
+   Return (with costs):             +nan%
+   Comparison to 2025:              ❌ NOT CONFIRMED (2026 negative)
+
+==========================================================================================

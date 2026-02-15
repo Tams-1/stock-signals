@@ -52,10 +52,11 @@ class TestInformationFlowDetector:
         # Add extreme volume spike (10x normal)
         data.iloc[-1, data.columns.get_loc('Volume')] = 50000000
         
-        strength, explanation = self.detector.detect_volume_anomaly(data)
+        strength, direction, explanation = self.detector.detect_volume_anomaly(data)
         
         # Just test that it runs without error
         assert isinstance(strength, (int, float)), "Should return numeric strength"
+        assert direction is None or direction in ['bullish', 'bearish'], "Direction should be valid"
         assert isinstance(explanation, str), "Should return explanation string"
     
     def test_volatility_regime_shift(self):
@@ -65,10 +66,11 @@ class TestInformationFlowDetector:
         # Increase volatility in last 10 bars
         data.iloc[-10:, data.columns.get_loc('Close')] += np.random.normal(0, 3, 10)
         
-        strength, explanation = self.detector.detect_volatility_regime_shift(data)
+        strength, direction, explanation = self.detector.detect_volatility_regime_shift(data)
         
         # May or may not detect depending on statistical threshold
         assert strength >= 0
+        assert direction is None or direction in ['bullish', 'bearish']
     
     def test_bid_ask_spread_expansion(self):
         """Test spread expansion detection."""
@@ -78,9 +80,10 @@ class TestInformationFlowDetector:
         data.iloc[-1, data.columns.get_loc('High')] += 2.0
         data.iloc[-1, data.columns.get_loc('Low')] -= 2.0
         
-        strength, explanation = self.detector.detect_bid_ask_expansion(data)
+        strength, direction, explanation = self.detector.detect_bid_ask_expansion(data)
         
         assert strength > 0, "Should detect spread expansion"
+        assert direction is None or direction in ['bullish', 'bearish']
 
 
 class TestMomentumReversalDetector:
@@ -168,8 +171,9 @@ class TestSignalRun:
         
         assert isinstance(signals, list)
         for sig in signals:
-            assert len(sig) == 3  # (type, strength, explanation)
+            assert len(sig) == 4  # (type, strength, direction, explanation) - now standardized to 4-tuple
             assert sig[1] >= 0 and sig[1] <= 1.0  # Strength in [0, 1]
+            assert sig[2] is None or sig[2] in ['bullish', 'bearish']  # Direction
     
     def test_momentum_run_all(self):
         """Test running all momentum detectors."""
