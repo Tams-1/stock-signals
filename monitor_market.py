@@ -107,8 +107,8 @@ def main():
     # Load previous state
     prev_state = load_previous_state()
     
-    # Run analysis
-    runner = SimpleProductionRunner(use_news=False)  # Fast mode for real-time
+    # Run analysis with news sentiment
+    runner = SimpleProductionRunner(use_news=True)  # Full mode with news analysis
     results = runner.run()
     
     if not results:

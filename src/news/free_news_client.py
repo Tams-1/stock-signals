@@ -25,6 +25,7 @@ from bs4 import BeautifulSoup
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import re
+from urllib.parse import quote_plus
 
 
 logger = logging.getLogger(__name__)
@@ -181,7 +182,9 @@ class FreeNewsClient:
         """
         self._rate_limit()
         
-        url = f"https://news.google.com/rss/search?q={query}+when:{days}d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+        # URL encode the query to handle spaces and special characters
+        encoded_query = quote_plus(query)
+        url = f"https://news.google.com/rss/search?q={encoded_query}+when:{days}d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         
         logger.debug(f"Fetching Google News for '{query}' (last {days} days)")
         

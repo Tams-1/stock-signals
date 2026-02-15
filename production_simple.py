@@ -17,13 +17,44 @@ from typing import Dict, List
 from src.signals.trend_detector_v2 import TrendDetectorV2
 from src.news.free_news_client import FreeNewsClient
 
-# 18 IBOV tickers
-TICKERS = [
-    "PETR4.SA", "VALE3.SA", "ITUB4.SA", "BBDC4.SA", "BBAS3.SA",
-    "ABEV3.SA", "B3SA3.SA", "SUZB3.SA", "RENT3.SA", "WEGE3.SA",
-    "MGLU3.SA", "PCAR3.SA", "LREN3.SA", "RAIZ4.SA", "GGBR4.SA",
-    "ASAI3.SA", "JBSS3.SA", "RDOR3.SA"
+# IBOV Active Tickers (65 valid stocks - delisted removed)
+IBOV_TICKERS = [
+    'PETR4.SA', 'VALE3.SA', 'ITUB4.SA', 'BBDC4.SA', 'BBAS3.SA', 'ABEV3.SA',
+    'B3SA3.SA', 'SUZB3.SA', 'RENT3.SA', 'WEGE3.SA', 'MGLU3.SA', 'PCAR3.SA',
+    'LREN3.SA', 'RAIZ4.SA', 'GGBR4.SA', 'ASAI3.SA', 'RDOR3.SA',
+    'PETR3.SA', 'ITSA4.SA', 'BBDC3.SA', 'CMIG4.SA', 'ENGI11.SA', 'EQTL3.SA',
+    'GGPS3.SA', 'GOAU4.SA', 'HAPV3.SA', 'HYPE3.SA', 'IGTI11.SA',
+    'IRBR3.SA', 'KLBN11.SA', 'LWSA3.SA', 'MRVE3.SA', 'MULT3.SA',
+    'PRIO3.SA', 'QUAL3.SA', 'RAIL3.SA', 'RADL3.SA',
+    'SANB11.SA', 'SBSP3.SA', 'SMTO3.SA', 'TAEE11.SA', 'TIMS3.SA',
+    'TOTS3.SA', 'UGPA3.SA', 'USIM5.SA', 'VBBR3.SA', 'VIVT3.SA',
+    'YDUQ3.SA', 'AZUL4.SA', 'BPAC11.SA', 'CASH3.SA',
+    'COGN3.SA', 'CPFE3.SA', 'CSAN3.SA', 'CVCB3.SA',
+    'ECOR3.SA', 'FLRY3.SA', 'RECV3.SA', 'BEEF3.SA', 'CYRE3.SA', 'DXCO3.SA',
+    'SLCE3.SA', 'VIVA3.SA', 'ALOS3.SA', 'ALPA4.SA'
 ]
+
+SMLL_TICKERS = [
+    'AURE3.SA', 'BMOB3.SA', 'BRAP4.SA', 'CMIN3.SA', 'DIRR3.SA', 'ESPA3.SA',
+    'EVEN3.SA', 'GRND3.SA', 'IFCM3.SA', 'KEPL3.SA', 'LAVV3.SA', 'LEVE3.SA',
+    'MDIA3.SA', 'MILS3.SA', 'ODPV3.SA', 'ORVR3.SA', 'POMO4.SA', 'POSI3.SA',
+    'PSSA3.SA', 'PTBL3.SA', 'RAPT4.SA', 'SAPR11.SA', 'SEQL3.SA', 'SIMH3.SA',
+    'TEND3.SA', 'TGMA3.SA', 'TRIS3.SA', 'UNIP6.SA', 'VLID3.SA',
+    'AMBP3.SA', 'AMAR3.SA', 'BMGB4.SA', 'BRKM5.SA', 'CSED3.SA',
+    'DESK3.SA', 'EZTC3.SA', 'FESA4.SA', 'GGBR3.SA', 'GMAT3.SA', 'HBOR3.SA',
+    'JHSF3.SA', 'JSLG3.SA', 'LIGT3.SA', 'LPSB3.SA', 'MTRE3.SA',
+    'ONCO3.SA', 'OPCT3.SA', 'PINE4.SA', 'PRNR3.SA', 'RANI3.SA', 'ROMI3.SA',
+    'SEER3.SA', 'SGPS3.SA', 'SOJA3.SA', 'TCSA3.SA',
+    'TFCO4.SA', 'TUPY3.SA', 'UCAS3.SA', 'VULC3.SA', 'WIZC3.SA', 'ALUP11.SA',
+    'AZZA3.SA', 'BLAU3.SA',
+    'CEAB3.SA', 'CGRA4.SA', 'CTSA3.SA', 'FHER3.SA',
+    'FRAS3.SA', 'GFSA3.SA', 'HETA4.SA', 'INTB3.SA', 'JFEN3.SA',
+    'LOGN3.SA', 'LOGG3.SA', 'MEAL3.SA',
+    'MELK3.SA', 'MGEL4.SA', 'MOVI3.SA', 'MRSA3B.SA', 'NEOE3.SA', 'PGMN3.SA',
+    'PLPL3.SA', 'PRNR3.SA', 'SHUL4.SA', 'SYNE3.SA'
+]
+
+TICKERS = IBOV_TICKERS + SMLL_TICKERS  # 184 total
 
 class SimpleProductionRunner:
     """Simple production runner using only validated TrendDetectorV2"""
@@ -96,25 +127,38 @@ class SimpleProductionRunner:
             # News sentiment (if enabled)
             news_sentiment = self.get_news_sentiment(ticker)
             
-            # Simple signal logic (validated in backtest)
+            # Improved signal logic with higher threshold and proportional sizing
             signal = "HOLD"
             position_size = 0.0
             conviction = 0.0
             
-            if trend == "uptrend" and confidence > 0.35:
-                # Add news boost if positive
+            # Minimum confidence threshold: 50% (more conservative)
+            MIN_CONFIDENCE = 0.50
+            
+            if trend == "uptrend" and confidence >= MIN_CONFIDENCE:
+                signal = "BUY"
+                conviction = confidence
+                
+                # Proportional position sizing based on confidence
+                if confidence >= 0.90:
+                    position_size = 0.80  # Very high confidence
+                elif confidence >= 0.75:
+                    position_size = 0.60  # High confidence
+                elif confidence >= 0.60:
+                    position_size = 0.40  # Medium-high confidence
+                else:  # 0.50-0.60
+                    position_size = 0.20  # Medium confidence
+                
+                # News boost: +10-20% position size if positive sentiment
                 if self.use_news and news_sentiment > 0.1:
-                    signal = "BUY"
-                    conviction = 0.7 + (news_sentiment * 0.3)  # 0.7-1.0 range
-                    position_size = 0.70  # High conviction
-                else:
-                    signal = "BUY"
-                    conviction = confidence
-                    position_size = 0.50  # Medium conviction
-            elif trend == "downtrend" and confidence > 0.35:
+                    boost = news_sentiment * 0.20  # Up to 20% boost
+                    position_size = min(1.0, position_size + boost)
+                    conviction = min(1.0, conviction + (news_sentiment * 0.1))
+                    
+            elif trend == "downtrend" and confidence >= MIN_CONFIDENCE:
                 signal = "SELL"
                 conviction = -confidence
-                position_size = 1.0  # Exit
+                position_size = 1.0  # Exit completely
             
             return {
                 "ticker": ticker,
