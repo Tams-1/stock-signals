@@ -13,7 +13,7 @@ import json
 import logging
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, Optional, List
+from typing import Dict, Optional, List, Any
 
 logger = logging.getLogger(__name__)
 
@@ -71,15 +71,34 @@ class NewsCache:
             return sentiment
         return None
     
-    def set(self, ticker: str, sentiment: float, source: str = "newsdata_io"):
-        """Cache sentiment score with timestamp."""
+    def get_full(self, ticker: str) -> Optional[Dict]:
+        """Get cached sentiment + article details if fresh, otherwise None."""
+        if self.is_fresh(ticker):
+            logger.debug(f"Cache HIT: {ticker}")
+            return self.cache[ticker]
+        return None
+    
+    def set(self, ticker: str, sentiment: float, source: str = "newsdata_io", articles: List = None):
+        """Cache sentiment score + article snippets with timestamp."""
+        # Store top 3 article snippets for display in alerts
+        article_summaries = []
+        if articles:
+            for article in articles[:3]:  # Keep only top 3
+                article_summaries.append({
+                    'title': article.get('title', ''),
+                    'summary': article.get('summary', '')[:150],  # Truncate to 150 chars
+                    'source_publication': article.get('source_publication', 'Unknown'),
+                    'link': article.get('link', '')
+                })
+        
         self.cache[ticker] = {
             'sentiment': sentiment,
             'timestamp': datetime.now().isoformat(),
-            'source': source
+            'source': source,
+            'articles': article_summaries
         }
         self._save_cache()
-        logger.info(f"Cached {ticker}: {sentiment:+.2f} from {source}")
+        logger.info(f"Cached {ticker}: {sentiment:+.2f} from {source} ({len(article_summaries)} articles)")
     
     def get_cache_age(self, ticker: str) -> Optional[timedelta]:
         """Get age of cached item."""

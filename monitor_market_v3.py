@@ -39,8 +39,8 @@ def detect_technical_patterns(data):
     
     return patterns
 
-def format_alert_output(results):
-    """Format results into actionable alerts for trading"""
+def format_alert_output(results, news_cache=None):
+    """Format results into actionable alerts for trading with article snippets"""
     
     if not results:
         return "❌ No signals detected.\n"
@@ -97,11 +97,23 @@ def format_alert_output(results):
         output.append(f"       • Trend: {trend.upper()} ({confidence:.0%} confidence)")
         output.append(f"       • News: {news_sentiment:+.2f} sentiment")
         
-        # News interpretation
-        if news_sentiment > 0.15:
-            output.append(f"         ✅ Positive news boost (+{news_sentiment*0.20:.0%} position)")
-        elif news_sentiment < -0.15:
-            output.append(f"         ⚠️  Negative news headwind ({news_sentiment*0.15:.0%} position)")
+        # News interpretation + article snippets
+        if abs(news_sentiment) > 0.15:
+            if news_sentiment > 0.15:
+                output.append(f"         ✅ Positive news boost (+{news_sentiment*0.20:.0%} position)")
+            else:
+                output.append(f"         ⚠️  Negative news headwind ({news_sentiment*0.15:.0%} position)")
+            
+            # Add article snippets if available in cache
+            if news_cache:
+                cached = news_cache.get_full(ticker) if hasattr(news_cache, 'get_full') else None
+                if cached and cached.get('articles'):
+                    output.append(f"         📰 Top stories:")
+                    for article in cached['articles'][:2]:
+                        title = article.get('title', '')[:60]
+                        source = article.get('source_publication', 'Unknown')
+                        if title:
+                            output.append(f"            • {title}... ({source})")
         else:
             output.append(f"         😐 Neutral news (no impact)")
         
@@ -167,8 +179,8 @@ def main():
         print(f"   Fresh: {cache_stats['fresh']}")
         print(f"   API calls this run: ~{len(top_movers)} credits")
     
-    # Format and output actionable alerts
-    alert_text = format_alert_output(results)
+    # Format and output actionable alerts with article snippets
+    alert_text = format_alert_output(results, news_cache=runner.news_client.cache)
     print(alert_text)
     
     # Save for cron delivery

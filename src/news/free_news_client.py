@@ -250,7 +250,8 @@ class FreeNewsClient:
                     'link': article.get('link', ''),
                     'published': article.get('pubDate', ''),
                     'summary': article.get('description', ''),
-                    'source': article.get('source_id', 'newsdata_io')
+                    'source': 'newsdata.io',  # Mark source as newsdata.io API, not publication
+                    'source_publication': article.get('source_name', 'Unknown')  # Actual publication name
                 })
             
             logger.info(f"Found {len(formatted_articles)} articles from newsdata.io for '{ticker_search}'")
@@ -395,10 +396,12 @@ class FreeNewsClient:
                 return 0.0
             
             sentiment = self._analyze_articles(articles)
-            source = "newsdata.io" if articles[0].get('source') == 'newsdata_io' else "investing.com"
             
-            # CACHE: Store for future use
-            self.cache.set(ticker, sentiment, source=source)
+            # Determine source: check if articles came from newsdata.io or Investing.com fallback
+            source = articles[0].get('source', 'unknown') if articles else 'unknown'
+            
+            # CACHE: Store sentiment + article summaries for future use
+            self.cache.set(ticker, sentiment, source=source, articles=articles)
             
             logger.info(f"{ticker} on {date}: {len(articles)} articles from {source}, sentiment={sentiment:+.2f}")
             

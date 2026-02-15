@@ -1,0 +1,204 @@
+{
+  "PETR4.SA": {
+    "sentiment": 0.02965063415467739,
+    "timestamp": "2026-02-15T19:56:00.302472",
+    "source": "newsdata.io",
+    "articles": [
+      {
+        "title": "BB surpreende, inflac\u0327a\u0303o em linha e Suzano sente pressa\u0303o; veja os destaques da semana",
+        "summary": "REUTERS/Adriano Machado/File Photo\" data-medium-file=\"https://www.infomoney.com.br/wp-content/uploads/2025/08/banco-do-brasil-sede-brasilia.jpg?fit=30",
+        "source_publication": "Infomoney",
+        "link": "https://www.infomoney.com.br/onde-investir/bb-surpreende-inflacao-em-linha-e-suzano-sente-pressao-veja-os-destaques-da-semana/"
+      }
+    ]
+  },
+  "VALE3.SA": {
+    "sentiment": 0.293883821927011,
+    "timestamp": "2026-02-15T19:56:08.388321",
+    "source": "newsdata.io",
+    "articles": [
+      {
+        "title": "Metais ba\u0301sicos tendem a ganhar maior projec\u0327a\u0303o no balanc\u0327o da Vale",
+        "summary": "\u201cO segmento de metais ba\u0301sicos deve, no me\u0301dio prazo, ter maior participac\u0327a\u0303o no resultado financeiro da Vale\u201d, preve\u0302 a economista chefe do escrito\u0301",
+        "source_publication": "Monitor Mercantil",
+        "link": "https://monitormercantil.com.br/metais-basicos-tendem-a-ganhar-maior-projecao-no-balanco-da-vale/"
+      },
+      {
+        "title": "Ibovespa na semana: Suzano (SUZB3) salta 16% com balanc\u0327o; Rai\u0301zen (RAIZ4) afunda 23,8%",
+        "summary": "O Ibovespa na semana registrou alta de 1,92% e atingiu os 186.464,30 pontos nesta sexta-feira (13). O peri\u0301odo foi marcado por balanc\u0327os, dados de inf",
+        "source_publication": "Estadao Br",
+        "link": "https://einvestidor.estadao.com.br/mercado/ibovespa-na-semana-suzano-suzb3-salta-balanco-raizen-raiz4-afunda/"
+      }
+    ]
+  },
+  "ITUB4.SA": {
+    "sentiment": 0.30564939603209496,
+    "timestamp": "2026-02-15T19:56:25.982812",
+    "source": "newsdata.io",
+    "articles": [
+      {
+        "title": "Entre os \u2018banco\u0303es\u2019 \u2014 Itau\u0301 (ITUB4), Banco do Brasil (BBAS3) e Bradesco (BBDC4) \u2014 apenas um e\u0301 o favorito do BTG Pactual para fevereiro",
+        "summary": "Fevereiro comec\u0327ou e o BTG Pactual ja\u0301 saiu na frente ao divulgar as 10 ac\u0327o\u0303es que considera mais promissoras para o me\u0302s. Mas ha\u0301 um detalhe na sele",
+        "source_publication": "Money Times",
+        "link": "https://www.moneytimes.com.br/conteudo-de-marca/entre-os-bancoes-itau-itub4-banco-do-brasil-bbas3-e-bradesco-bbdc4-apenas-um-e-o-favorito-do-btg-pactual-para-fevereiro-lbrdgm041/"
+      }
+    ]
+  },
+  "BBDC4.SA": {
+    "sentiment": 0.30564939603209496,
+    "timestamp": "2026-02-15T19:56:33.901950",
+    "source": "newsdata.io",
+    "articles": [
+      {
+        "title": "Entre os \u2018banco\u0303es\u2019 \u2014 Itau\u0301 (ITUB4), Banco do Brasil (BBAS3) e Bradesco (BBDC4) \u2014 apenas um e\u0301 o favorito do BTG Pactual para fevereiro",
+        "summary": "Fevereiro comec\u0327ou e o BTG Pactual ja\u0301 saiu na frente ao divulgar as 10 ac\u0327o\u0303es que considera mais promissoras para o me\u0302s. Mas ha\u0301 um detalhe na sele",
+        "source_publication": "Money Times",
+        "link": "https://www.moneytimes.com.br/conteudo-de-marca/entre-os-bancoes-itau-itub4-banco-do-brasil-bbas3-e-bradesco-bbdc4-apenas-um-e-o-favorito-do-btg-pactual-para-fevereiro-lbrdgm041/"
+      }
+    ]
+  },
+  "BBAS3.SA": {
+    "sentiment": 0.3085350152105093,
+    "timestamp": "2026-02-15T19:56:42.523110",
+    "source": "newsdata.io",
+    "articles": [
+      {
+        "title": "Entre os \u2018banco\u0303es\u2019 \u2014 Itau\u0301 (ITUB4), Banco do Brasil (BBAS3) e Bradesco (BBDC4) \u2014 apenas um e\u0301 o favorito do BTG Pactual para fevereiro",
+        "summary": "Fevereiro comec\u0327ou e o BTG Pactual ja\u0301 saiu na frente ao divulgar as 10 ac\u0327o\u0303es que considera mais promissoras para o me\u0302s. Mas ha\u0301 um detalhe na sele",
+        "source_publication": "Money Times",
+        "link": "https://www.moneytimes.com.br/conteudo-de-marca/entre-os-bancoes-itau-itub4-banco-do-brasil-bbas3-e-bradesco-bbdc4-apenas-um-e-o-favorito-do-btg-pactual-para-fevereiro-lbrdgm041/"
+      },
+      {
+        "title": "Banco do Brasil (BBAS3) fora do ar? App apresenta instabilidade neste sa\u0301bado",
+        "summary": "Clientes do Banco do Brasil (BBAS3) relatam instabilidade no aplicativo da instituic\u0327a\u0303o neste sa\u0301bado (14). As reclamac\u0327o\u0303es ganharam forc\u0327a ao longo",
+        "source_publication": "Estadao Br",
+        "link": "https://einvestidor.estadao.com.br/ultimas/banco-do-brasil-bbas3-aplicativo-fora-do-ar/"
+      },
+      {
+        "title": "Da provocac\u0327a\u0303o de Haddad ao mercado a\u0300 conta do Master no Banco do Brasil (BBAS3): o que bombou na semana",
+        "summary": "As falas de Fernando Haddad em um de seus u\u0301ltimos eventos como ministro da Fazenda e a conta do Banco Master que ja\u0301 bate na porta do Banco do Brasil",
+        "source_publication": "Money Times",
+        "link": "https://www.moneytimes.com.br/provocacao-de-haddad-ao-mercado-a-conta-do-master-no-banco-do-brasil-bbas3-e-mais-o-que-bombou-na-semana-lmrs/"
+      }
+    ]
+  },
+  "ABEV3.SA": {
+    "sentiment": 0.33386829821392894,
+    "timestamp": "2026-02-15T19:56:55.127339",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "Calend\u00e1rio Econ\u00f4mico: PIB dos EUA e do Jap\u00e3o, \u00edndice de infla\u00e7\u00e3o preferido do Fed",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economic-indicators/calendario-economico-pib-dos-eua-e-do-japao-indice-de-inflacao-preferido-do-fed-1835887"
+      },
+      {
+        "title": "Quais s\u00e3o os obst\u00e1culos na ambi\u00e7\u00e3o do Brasil por terras raras?",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/commodities-news/quais-sao-os-obstaculos-na-ambicao-do-brasil-por-terras-raras-1835867"
+      },
+      {
+        "title": "Carnaval j\u00e1 mostrou presidentes, mas s\u00f3 Lula foi homenageado em vida",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/politics-news/carnaval-ja-mostrou-presidentes-mas-so-lula-foi-homenageado-em-vida-1835889"
+      }
+    ]
+  },
+  "B3SA3.SA": {
+    "sentiment": 0.33386829821392894,
+    "timestamp": "2026-02-15T19:57:04.772395",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "Calend\u00e1rio Econ\u00f4mico: PIB dos EUA e do Jap\u00e3o, \u00edndice de infla\u00e7\u00e3o preferido do Fed",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economic-indicators/calendario-economico-pib-dos-eua-e-do-japao-indice-de-inflacao-preferido-do-fed-1835887"
+      },
+      {
+        "title": "Quais s\u00e3o os obst\u00e1culos na ambi\u00e7\u00e3o do Brasil por terras raras?",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/commodities-news/quais-sao-os-obstaculos-na-ambicao-do-brasil-por-terras-raras-1835867"
+      },
+      {
+        "title": "Carnaval j\u00e1 mostrou presidentes, mas s\u00f3 Lula foi homenageado em vida",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/politics-news/carnaval-ja-mostrou-presidentes-mas-so-lula-foi-homenageado-em-vida-1835889"
+      }
+    ]
+  },
+  "SUZB3.SA": {
+    "sentiment": 0.2264535902068019,
+    "timestamp": "2026-02-15T19:57:13.732877",
+    "source": "newsdata.io",
+    "articles": [
+      {
+        "title": "BB surpreende, inflac\u0327a\u0303o em linha e Suzano sente pressa\u0303o; veja os destaques da semana",
+        "summary": "REUTERS/Adriano Machado/File Photo\" data-medium-file=\"https://www.infomoney.com.br/wp-content/uploads/2025/08/banco-do-brasil-sede-brasilia.jpg?fit=30",
+        "source_publication": "Infomoney",
+        "link": "https://www.infomoney.com.br/onde-investir/bb-surpreende-inflacao-em-linha-e-suzano-sente-pressao-veja-os-destaques-da-semana/"
+      },
+      {
+        "title": "Ibovespa na semana: Suzano (SUZB3) salta 16% com balanc\u0327o; Rai\u0301zen (RAIZ4) afunda 23,8%",
+        "summary": "O Ibovespa na semana registrou alta de 1,92% e atingiu os 186.464,30 pontos nesta sexta-feira (13). O peri\u0301odo foi marcado por balanc\u0327os, dados de inf",
+        "source_publication": "Estadao Br",
+        "link": "https://einvestidor.estadao.com.br/mercado/ibovespa-na-semana-suzano-suzb3-salta-balanco-raizen-raiz4-afunda/"
+      }
+    ]
+  },
+  "RENT3.SA": {
+    "sentiment": 0.33386829821392894,
+    "timestamp": "2026-02-15T19:57:26.155116",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "Calend\u00e1rio Econ\u00f4mico: PIB dos EUA e do Jap\u00e3o, \u00edndice de infla\u00e7\u00e3o preferido do Fed",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economic-indicators/calendario-economico-pib-dos-eua-e-do-japao-indice-de-inflacao-preferido-do-fed-1835887"
+      },
+      {
+        "title": "Quais s\u00e3o os obst\u00e1culos na ambi\u00e7\u00e3o do Brasil por terras raras?",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/commodities-news/quais-sao-os-obstaculos-na-ambicao-do-brasil-por-terras-raras-1835867"
+      },
+      {
+        "title": "Carnaval j\u00e1 mostrou presidentes, mas s\u00f3 Lula foi homenageado em vida",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/politics-news/carnaval-ja-mostrou-presidentes-mas-so-lula-foi-homenageado-em-vida-1835889"
+      }
+    ]
+  },
+  "WEGE3.SA": {
+    "sentiment": 0.33386829821392894,
+    "timestamp": "2026-02-15T19:57:36.170232",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "Calend\u00e1rio Econ\u00f4mico: PIB dos EUA e do Jap\u00e3o, \u00edndice de infla\u00e7\u00e3o preferido do Fed",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economic-indicators/calendario-economico-pib-dos-eua-e-do-japao-indice-de-inflacao-preferido-do-fed-1835887"
+      },
+      {
+        "title": "Quais s\u00e3o os obst\u00e1culos na ambi\u00e7\u00e3o do Brasil por terras raras?",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/commodities-news/quais-sao-os-obstaculos-na-ambicao-do-brasil-por-terras-raras-1835867"
+      },
+      {
+        "title": "Carnaval j\u00e1 mostrou presidentes, mas s\u00f3 Lula foi homenageado em vida",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/politics-news/carnaval-ja-mostrou-presidentes-mas-so-lula-foi-homenageado-em-vida-1835889"
+      }
+    ]
+  }
+}
