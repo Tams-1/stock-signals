@@ -1,0 +1,529 @@
+[
+  {
+    "timestamp": "2026-02-15T11:01:20.089866",
+    "ticker": "PETR4.SA",
+    "signal": "BUY",
+    "position_size": 0.9,
+    "components": {
+      "price": {
+        "current": 36.88999938964844,
+        "change_pct": -0.5928354003900428,
+        "vs_ma20": 1.9708625756196252,
+        "vs_ma50": 12.279105683371252,
+        "from_52w_high": -3.125006260991797,
+        "from_52w_low": 29.55520281357613
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 1.0,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 61.23347524086937,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 0.623442498665606,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:20.310281",
+    "ticker": "VALE3.SA",
+    "signal": "BUY",
+    "position_size": 0.8361817500085533,
+    "components": {
+      "price": {
+        "current": 87.02999877929688,
+        "change_pct": -2.4655435334193205,
+        "vs_ma20": 1.6794682441477349,
+        "vs_ma50": 12.624086814237193,
+        "from_52w_high": -3.3966008247097204,
+        "from_52w_low": 72.80399391992466
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 0.9468181250071278,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 58.12141002993239,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 0.7755521092348879,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:20.530904",
+    "ticker": "ITUB4.SA",
+    "signal": "BUY",
+    "position_size": 0.9,
+    "components": {
+      "price": {
+        "current": 47.77000045776367,
+        "change_pct": -0.9742976872924167,
+        "vs_ma20": 5.441358090310748,
+        "vs_ma50": 15.171008224308153,
+        "from_52w_high": -3.2408314943020224,
+        "from_52w_low": 43.637633080765966
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 1.0,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 65.73787212131015,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 0.8826829786659369,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:20.751434",
+    "ticker": "BBDC4.SA",
+    "signal": "BUY",
+    "position_size": 0.7755001508619199,
+    "components": {
+      "price": {
+        "current": 20.969999313354492,
+        "change_pct": -1.2246831582100355,
+        "vs_ma20": 0.5586182889416711,
+        "vs_ma50": 8.520412512871616,
+        "from_52w_high": -3.368070832998609,
+        "from_52w_low": 38.78995310578324
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 0.8962501257182666,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 51.191389915756325,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 1.1264772709264366,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:20.961676",
+    "ticker": "BBAS3.SA",
+    "signal": "BUY",
+    "position_size": 0.9,
+    "components": {
+      "price": {
+        "current": 25.43000030517578,
+        "change_pct": -2.3050340593250627,
+        "vs_ma20": 3.9996738817622695,
+        "vs_ma50": 11.42521124988999,
+        "from_52w_high": -2.3050340593250627,
+        "from_52w_low": 32.5952962768001
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 1.0,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 59.279277173937324,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 1.5393586996710367,
+        "signal": "high"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:21.171319",
+    "ticker": "ABEV3.SA",
+    "signal": "BUY",
+    "position_size": 0.9,
+    "components": {
+      "price": {
+        "current": 16.350000381469727,
+        "change_pct": -1.0290561233855946,
+        "vs_ma20": 8.002776059387514,
+        "vs_ma50": 17.040331081422895,
+        "from_52w_high": -1.0290561233855946,
+        "from_52w_low": 55.862138309706424
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 1.0,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 73.89707674102642,
+        "rsi_signal": "overbought"
+      },
+      "volume": {
+        "ratio": 0.7739411654311563,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:21.379652",
+    "ticker": "B3SA3.SA",
+    "signal": "BUY",
+    "position_size": 0.9,
+    "components": {
+      "price": {
+        "current": 17.459999084472656,
+        "change_pct": 0.5760280564821285,
+        "vs_ma20": 6.808581399034608,
+        "vs_ma50": 17.181052805796266,
+        "from_52w_high": -0.9080689395001383,
+        "from_52w_low": 47.40985545277952
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 1.0,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 68.31274234313433,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 0.7104756933082026,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:21.587854",
+    "ticker": "SUZB3.SA",
+    "signal": "BUY",
+    "position_size": 0.48005931403493185,
+    "components": {
+      "price": {
+        "current": 58.34000015258789,
+        "change_pct": 0.15450669972170064,
+        "vs_ma20": 12.380329515246052,
+        "vs_ma50": 14.64928602271773,
+        "from_52w_high": 0.0,
+        "from_52w_low": 28.043113497319034
+      },
+      "trend": {
+        "consensus": "consolidation",
+        "confidence": 0.6500494283624432,
+        "macro_regime": "consolidation",
+        "micro_state": "consolidation"
+      },
+      "momentum": {
+        "rsi": 73.11158560587215,
+        "rsi_signal": "overbought"
+      },
+      "volume": {
+        "ratio": 1.5453049879083929,
+        "signal": "high"
+      }
+    },
+    "key_factor": "price_divergence_ma50"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:22.053624",
+    "ticker": "RENT3.SA",
+    "signal": "BUY",
+    "position_size": 0.5603264036721459,
+    "components": {
+      "price": {
+        "current": 51.439998626708984,
+        "change_pct": -0.3100772328362645,
+        "vs_ma20": 7.364616942698593,
+        "vs_ma50": 12.298139762328688,
+        "from_52w_high": -0.3100772328362645,
+        "from_52w_low": 61.25524667214242
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 0.7169386697267882,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 78.83652806463486,
+        "rsi_signal": "overbought"
+      },
+      "volume": {
+        "ratio": 0.6798923018872751,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:22.264326",
+    "ticker": "WEGE3.SA",
+    "signal": "BUY",
+    "position_size": 0.9,
+    "components": {
+      "price": {
+        "current": 53.79999923706055,
+        "change_pct": -0.42568859417494376,
+        "vs_ma20": 4.670277238529074,
+        "vs_ma50": 10.104978809806001,
+        "from_52w_high": -0.42568859417494376,
+        "from_52w_low": 57.03504246010391
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 1.0,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 57.69501008898195,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 0.8410563438038219,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:22.482226",
+    "ticker": "MGLU3.SA",
+    "signal": "BUY",
+    "position_size": 0.42,
+    "components": {
+      "price": {
+        "current": 10.229999542236328,
+        "change_pct": 0.7881766178592107,
+        "vs_ma20": 4.826309829144194,
+        "vs_ma50": 8.74803136125353,
+        "from_52w_high": -7.837845129138667,
+        "from_52w_low": 62.258325907601865
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 0.6,
+        "macro_regime": "consolidation",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 57.50987363816356,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 0.9453454899001894,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "neutral_market"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:22.681497",
+    "ticker": "PCAR3.SA",
+    "signal": "BUY",
+    "position_size": 0.25,
+    "components": {
+      "price": {
+        "current": 3.5199999809265137,
+        "change_pct": -0.2832858511134722,
+        "vs_ma20": -5.84459026217335,
+        "vs_ma50": -7.392791849258488,
+        "from_52w_high": -19.266057955617615,
+        "from_52w_low": 31.835201511020117
+      },
+      "trend": {
+        "consensus": "downtrend",
+        "confidence": 0.4206550573599316,
+        "macro_regime": "consolidation",
+        "micro_state": "downtrend"
+      },
+      "momentum": {
+        "rsi": 33.33333333333333,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 0.44043271385152827,
+        "signal": "low"
+      }
+    },
+    "key_factor": "price_divergence_ma20"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:22.899388",
+    "ticker": "LREN3.SA",
+    "signal": "BUY",
+    "position_size": 0.25,
+    "components": {
+      "price": {
+        "current": 15.350000381469727,
+        "change_pct": 1.722996860521878,
+        "vs_ma20": 2.4016032213145992,
+        "vs_ma50": 7.9062711021001,
+        "from_52w_high": -7.2095558757788725,
+        "from_52w_low": 18.25886689380476
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 0.39937109894956996,
+        "macro_regime": "uptrend",
+        "micro_state": "consolidation"
+      },
+      "momentum": {
+        "rsi": 57.81250077610172,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 0.7199858382014516,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "neutral_market"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:23.089392",
+    "ticker": "RAIZ4.SA",
+    "signal": "BUY",
+    "position_size": 0.25,
+    "components": {
+      "price": {
+        "current": 0.6299999952316284,
+        "change_pct": -5.970152307656038,
+        "vs_ma20": -26.05633842230143,
+        "vs_ma50": -25.106990691497572,
+        "from_52w_high": -53.33333451070901,
+        "from_52w_low": 0.0
+      },
+      "trend": {
+        "consensus": "consolidation",
+        "confidence": 0.37590195739720045,
+        "macro_regime": "consolidation",
+        "micro_state": "consolidation"
+      },
+      "momentum": {
+        "rsi": 37.17949041248011,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 3.165202331223313,
+        "signal": "high"
+      }
+    },
+    "key_factor": "high_volume"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:23.320397",
+    "ticker": "GGBR4.SA",
+    "signal": "BUY",
+    "position_size": 0.54,
+    "components": {
+      "price": {
+        "current": 21.649999618530273,
+        "change_pct": -2.4335326837804283,
+        "vs_ma20": -4.016671086225829,
+        "vs_ma50": 1.5078468941945349,
+        "from_52w_high": -8.765275869491376,
+        "from_52w_low": 37.49753037472529
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 0.7,
+        "macro_regime": "uptrend",
+        "micro_state": "consolidation"
+      },
+      "momentum": {
+        "rsi": 40.816331826593554,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 1.8738789081438452,
+        "signal": "high"
+      }
+    },
+    "key_factor": "neutral_market"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:23.530360",
+    "ticker": "ASAI3.SA",
+    "signal": "BUY",
+    "position_size": 0.6307343959821315,
+    "components": {
+      "price": {
+        "current": 9.899999618530273,
+        "change_pct": 2.061853744307326,
+        "vs_ma20": 15.183243168668234,
+        "vs_ma50": 23.376954365979046,
+        "from_52w_high": -5.083428805499197,
+        "from_52w_low": 41.30537671966156
+      },
+      "trend": {
+        "consensus": "uptrend",
+        "confidence": 0.7756119966517763,
+        "macro_regime": "uptrend",
+        "micro_state": "uptrend"
+      },
+      "momentum": {
+        "rsi": 78.30507871852068,
+        "rsi_signal": "overbought"
+      },
+      "volume": {
+        "ratio": 1.169043589705407,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "strong_trend"
+  },
+  {
+    "timestamp": "2026-02-15T11:01:23.749942",
+    "ticker": "RDOR3.SA",
+    "signal": "BUY",
+    "position_size": 0.25,
+    "components": {
+      "price": {
+        "current": 42.65999984741211,
+        "change_pct": 0.6132035664539133,
+        "vs_ma20": 0.6215131722158347,
+        "vs_ma50": 2.2871390696797618,
+        "from_52w_high": -3.3748621222434596,
+        "from_52w_low": 26.70405111912595
+      },
+      "trend": {
+        "consensus": "consolidation",
+        "confidence": 0.29298793439296045,
+        "macro_regime": "consolidation",
+        "micro_state": "consolidation"
+      },
+      "momentum": {
+        "rsi": 42.46576223495126,
+        "rsi_signal": "neutral"
+      },
+      "volume": {
+        "ratio": 1.4715087329048566,
+        "signal": "normal"
+      }
+    },
+    "key_factor": "neutral_market"
+  }
+]
