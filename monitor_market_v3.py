@@ -1,200 +1,156 @@
 #!/usr/bin/env python3
 """
-Market Monitor V3 - With detailed reasoning for every signal change
-Logs all decisions with complete technical analysis and explanations
+Monitor Market V3 - Actionable Alert Format
+Delivers top trading opportunities with drivers every 30 minutes.
+Format: BEST STOCKS TO ACT ON + DRIVERS (trend, news, volume, patterns)
 """
 
 import sys
-import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, '/home/ulluboz/.openclaw/workspace/stock-signals')
 
 import yfinance as yf
-import pandas as pd
 from datetime import datetime, timedelta
-from typing import Dict, List
+from production_simple import SimpleProductionRunner
 
-from src.analysis.signal_analyzer import SignalAnalyzer
-from src.analysis.concise_formatter import format_concise_report, format_telegram_alert
-from src.news.filtered_news_client import FilteredNewsClient
+def detect_technical_patterns(data):
+    """Detect golden crosses, double bottoms, etc."""
+    patterns = []
+    
+    if len(data) < 200:
+        return patterns
+    
+    close = data['Close']
+    ma50 = close.rolling(50).mean()
+    ma200 = close.rolling(200).mean()
+    
+    # Golden Cross detection
+    if ma50.iloc[-2] <= ma200.iloc[-2] and ma50.iloc[-1] > ma200.iloc[-1]:
+        patterns.append("🟡 Golden Cross (bullish reversal)")
+    
+    # Death Cross detection
+    if ma50.iloc[-2] >= ma200.iloc[-2] and ma50.iloc[-1] < ma200.iloc[-1]:
+        patterns.append("⚫ Death Cross (bearish reversal)")
+    
+    # Double Bottom detection
+    if len(close) >= 40:
+        lows = close.rolling(10).min()
+        if lows.iloc[-20] == lows.iloc[-10] and close.iloc[-1] > lows.iloc[-10] * 1.02:
+            patterns.append("💎 Double Bottom (support breakout)")
+    
+    return patterns
 
-# Load validated tickers
-import json
-with open("data/validated_tickers.json", 'r') as f:
-    ticker_data = json.load(f)
-    TICKERS = ticker_data['all_tickers']
-
-STATE_FILE = "monitor_state_v3.json"
-ALERT_FILE = "monitor_alerts.txt"
-
-
-class MarketMonitorV3:
-    """Market monitor with detailed decision logging"""
+def format_alert_output(results):
+    """Format results into actionable alerts for trading"""
     
-    def __init__(self, use_news: bool = True):
-        self.analyzer = SignalAnalyzer()
-        self.use_news = use_news
-        
-        if use_news:
-            self.news_client = FilteredNewsClient(cache_minutes=10)
-        
-        print(f"✅ Monitor V3 inicializado (news={'ON' if use_news else 'OFF'})")
-        print(f"📊 Monitorando {len(TICKERS)} tickers")
+    if not results:
+        return "❌ No signals detected.\n"
     
-    def get_data(self, ticker: str, days: int = 120) -> pd.DataFrame:
-        """Download historical data"""
-        end_date = datetime.now()
-        start_date = end_date - timedelta(days=days)
-        
-        data = yf.download(
-            ticker,
-            start=start_date.strftime("%Y-%m-%d"),
-            end=end_date.strftime("%Y-%m-%d"),
-            progress=False
-        )
-        
-        # Flatten MultiIndex if needed
-        if isinstance(data.columns, pd.MultiIndex):
-            data.columns = [col[0] for col in data.columns.values]
-        
-        return data
+    # Sort by conviction (absolute value)
+    sorted_results = sorted(results, key=lambda x: abs(x.get('conviction', 0)), reverse=True)
     
-    def get_news_context(self, ticker: str):
-        """Get news sentiment and summary"""
-        if not self.use_news:
-            return None, None, None
-        
-        try:
-            result = self.news_client.get_ticker_sentiment(ticker, hours_back=24)
-            return (
-                result['sentiment'],
-                result['article_count'],
-                result['summary']
-            )
-        except Exception as e:
-            print(f"⚠️ News error for {ticker}: {e}")
-            return None, None, None
+    # Filter for only BUY/SELL signals (conviction > 0.5 threshold)
+    signals = [r for r in sorted_results if r.get('signal') in ['BUY', 'SELL']]
     
-    def monitor_ticker(self, ticker: str):
-        """Monitor a single ticker and log detailed analysis"""
-        try:
-            # Download data
-            data = self.get_data(ticker)
-            
-            if len(data) < 50:
-                return None
-            
-            # Get current price
-            current_price = float(data['Close'].iloc[-1])
-            
-            # Get news context
-            news_sentiment, news_count, news_summary = self.get_news_context(ticker)
-            
-            # Analyze with full reasoning
-            signal, decision = self.analyzer.analyze_signal(
-                ticker=ticker,
-                df=data,
-                current_price=current_price,
-                news_sentiment=news_sentiment,
-                news_count=news_count,
-                news_summary=news_summary
-            )
-            
-            return {
-                'ticker': ticker,
-                'signal': signal,
-                'changed': decision.signal_changed,
-                'decision': decision,
-            }
-            
-        except Exception as e:
-            print(f"❌ Error analyzing {ticker}: {e}")
-            return None
+    if not signals:
+        return "⚪ No strong signals above 50% confidence threshold.\n"
     
-    def write_alert(self, alert_text: str):
-        """Write alert to file"""
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
-        with open(ALERT_FILE, 'a') as f:
-            f.write(f"[{timestamp}] {alert_text}\n")
+    # Take top 5-10 opportunities
+    top_signals = signals[:10]
     
-    def run(self):
-        """Run market monitor"""
-        print(f"\n{'='*70}")
-        print(f"🔍 Market Monitor V3 - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
-        print(f"{'='*70}\n")
+    output = []
+    output.append("\n" + "="*70)
+    output.append(f"🚨 TOP TRADING OPPORTUNITIES")
+    output.append(f"Generated: {datetime.now().strftime('%H:%M:%S')}")
+    output.append("="*70 + "\n")
+    
+    for i, result in enumerate(top_signals, 1):
+        ticker = result['ticker']
+        signal = result['signal']
+        price = result['price']
+        trend = result['trend']
+        confidence = result.get('confidence', 0.0)
+        news_sentiment = result.get('news_sentiment', 0.0)
+        position_size = result.get('position_size', 0.0)
+        conviction = result.get('conviction', 0.0)
         
-        results = []
-        signal_changes = []
-        
-        # Analyze all tickers
-        for i, ticker in enumerate(TICKERS, 1):
-            print(f"[{i}/{len(TICKERS)}] {ticker}...", end=" ", flush=True)
-            
-            result = self.monitor_ticker(ticker)
-            
-            if result:
-                results.append(result)
-                
-                if result['changed']:
-                    signal_changes.append(result)
-                    print(f"🔔 {result['decision'].previous_signal} → {result['signal']}")
-                else:
-                    print(f"{result['signal']}")
-            else:
-                print("SKIP")
-        
-        # Report signal changes with detailed reasoning
-        if signal_changes:
-            print(f"\n{'='*70}")
-            print(f"🚨 {len(signal_changes)} MUDANÇAS DE SINAL DETECTADAS")
-            print(f"{'='*70}\n")
-            
-            for change in signal_changes:
-                decision = change['decision']
-                
-                # Print concise report (not verbose)
-                report = format_concise_report(decision)
-                print(report)
-                
-                # Write concise alert to file
-                alert_summary = format_telegram_alert(decision)
-                self.write_alert(alert_summary)
+        # Signal emoji
+        if signal == "BUY":
+            emoji = "🟢"
+        elif signal == "SELL":
+            emoji = "🔴"
         else:
-            print(f"\n✅ Nenhuma mudança de sinal")
+            emoji = "⚪"
         
-        # Summary
-        buy_count = len([r for r in results if r['signal'] == "BUY"])
-        sell_count = len([r for r in results if r['signal'] == "SELL"])
-        hold_count = len([r for r in results if r['signal'] == "HOLD"])
+        # Conviction level
+        if abs(conviction) >= 0.8:
+            conviction_label = "VERY HIGH"
+        elif abs(conviction) >= 0.7:
+            conviction_label = "HIGH"
+        elif abs(conviction) >= 0.6:
+            conviction_label = "MEDIUM-HIGH"
+        else:
+            conviction_label = "MEDIUM"
         
-        print(f"\n{'='*70}")
-        print(f"📊 RESUMO")
-        print(f"{'='*70}")
-        print(f"🟢 BUY: {buy_count}")
-        print(f"🔴 SELL: {sell_count}")
-        print(f"⚪ HOLD: {hold_count}")
-        print(f"🔔 Mudanças: {len(signal_changes)}")
-        print(f"{'='*70}\n")
-
+        output.append(f"{i}️⃣  {ticker} - {signal} {emoji}")
+        output.append(f"    Price: R${price:.2f}")
+        output.append(f"    └─ Drivers:")
+        output.append(f"       • Trend: {trend.upper()} ({confidence:.0%} confidence)")
+        output.append(f"       • News: {news_sentiment:+.2f} sentiment")
+        
+        # News interpretation
+        if news_sentiment > 0.15:
+            output.append(f"         ✅ Positive news boost (+{news_sentiment*0.20:.0%} position)")
+        elif news_sentiment < -0.15:
+            output.append(f"         ⚠️  Negative news headwind ({news_sentiment*0.15:.0%} position)")
+        else:
+            output.append(f"         😐 Neutral news (no impact)")
+        
+        output.append(f"       • Position: {position_size:.0%} ({conviction_label} conviction)")
+        
+        # Try to get technical patterns
+        try:
+            ticker_with_sa = f"{ticker}.SA" if not ticker.endswith('.SA') else ticker
+            data = yf.download(ticker_with_sa, period='1y', progress=False)
+            patterns = detect_technical_patterns(data)
+            
+            if patterns:
+                for pattern in patterns:
+                    output.append(f"       • Pattern: {pattern}")
+        except:
+            pass
+        
+        output.append("")
+    
+    # Summary stats
+    buy_count = sum(1 for r in top_signals if r['signal'] == 'BUY')
+    sell_count = sum(1 for r in top_signals if r['signal'] == 'SELL')
+    
+    output.append("="*70)
+    output.append(f"📊 Summary: {buy_count} BUY signals | {sell_count} SELL signals")
+    output.append("="*70 + "\n")
+    
+    return "\n".join(output)
 
 def main():
-    import argparse
+    print("\n" + "="*70)
+    print(f"📈 MARKET MONITOR V3 - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("="*70 + "\n")
     
-    parser = argparse.ArgumentParser(description="Market Monitor V3")
-    parser.add_argument("--no-news", action="store_true", help="Disable news (faster)")
-    parser.add_argument("--ticker", type=str, help="Monitor single ticker")
+    # Run analysis
+    runner = SimpleProductionRunner(use_news=True)
     
-    args = parser.parse_args()
+    print("Analyzing 150 stocks with news sentiment...\n")
+    results = runner.run()
     
-    monitor = MarketMonitorV3(use_news=not args.no_news)
+    # Format and output actionable alerts
+    alert_text = format_alert_output(results)
+    print(alert_text)
     
-    if args.ticker:
-        # Single ticker mode
-        global TICKERS
-        TICKERS = [args.ticker]
+    # Save for cron delivery
+    with open('monitor_alerts.txt', 'w') as f:
+        f.write(alert_text)
     
-    monitor.run()
-
+    print("✅ Alert saved to monitor_alerts.txt")
 
 if __name__ == "__main__":
     main()

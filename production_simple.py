@@ -81,22 +81,44 @@ class SimpleProductionRunner:
         
         return data
     
-    def get_news_sentiment(self, ticker: str) -> float:
-        """Get average sentiment from last 3 days"""
+    def get_news_sentiment(self, ticker: str) -> dict:
+        """Get sentiment from last 3 days with full details"""
         if not self.use_news:
-            return 0.0
+            return {"sentiment": 0.0, "articles": [], "dates": []}
         
         try:
             sentiments = []
+            all_articles = []
+            dates = []
+            
             for days_ago in range(3):
                 date = (datetime.now() - timedelta(days=days_ago)).strftime("%Y-%m-%d")
                 sent = self.news_client.get_sentiment(ticker, date)
                 sentiments.append(sent)
+                dates.append(date)
+                
+                # Get articles from Google News
+                query = self.news_client._ticker_to_query(ticker)
+                articles = self.news_client._fetch_google_news(query, days=1)
+                
+                for article in articles:
+                    article['date'] = date
+                    article['sentiment'] = self.news_client.sentiment_analyzer.analyze(
+                        f"{article.get('title', '')} {article.get('summary', '')}"
+                    )
+                    all_articles.append(article)
             
-            return sum(sentiments) / len(sentiments) if sentiments else 0.0
+            avg_sentiment = sum(sentiments) / len(sentiments) if sentiments else 0.0
+            
+            return {
+                "sentiment": avg_sentiment,
+                "articles": all_articles,
+                "dates": dates,
+                "daily_scores": dict(zip(dates, sentiments))
+            }
         except Exception as e:
             print(f"    ⚠️ News error: {e}")
-            return 0.0
+            return {"sentiment": 0.0, "articles": [], "dates": []}
     
     def analyze_ticker(self, ticker: str) -> Dict:
         """Analyze single ticker"""
@@ -116,6 +138,9 @@ class SimpleProductionRunner:
             consensus = trend_result.get('consensus', 'unknown')
             confidence = trend_result.get('confidence', 0.0)
             
+            # Print trend details
+            print(f"\n     [TREND] {consensus} @ {confidence:.1%} confidence")
+            
             # Map consensus to simple trend
             if consensus in ['uptrend', 'bull_pullback']:
                 trend = "uptrend"
@@ -125,7 +150,17 @@ class SimpleProductionRunner:
                 trend = "neutral"
             
             # News sentiment (if enabled)
-            news_sentiment = self.get_news_sentiment(ticker)
+            if self.use_news:
+                print(f"     [NEWS] newsdata.io...", end=" ", flush=True)
+            
+            news_data = self.get_news_sentiment(ticker)
+            news_sentiment = news_data.get("sentiment", 0.0)
+            news_articles = news_data.get("articles", [])
+            
+            if self.use_news and news_articles:
+                print(f"✅ {len(news_articles)} articles, sentiment: {news_sentiment:+.2f}")
+            elif self.use_news:
+                print(f"⚠️  No articles found, sentiment: {news_sentiment:+.2f}")
             
             # Improved signal logic with higher threshold and proportional sizing
             signal = "HOLD"
@@ -165,6 +200,7 @@ class SimpleProductionRunner:
                 "price": current_price,
                 "trend": trend,
                 "news_sentiment": news_sentiment,
+                "news_articles": news_articles,
                 "signal": signal,
                 "conviction": conviction,
                 "position_size": position_size
@@ -243,6 +279,30 @@ class SimpleProductionRunner:
         print(f"\n{'-'*70}")
         print(f"🟢 BUY: {len(buy)} | 🔴 SELL: {len(sell)} | ⚪ HOLD: {len(results) - len(buy) - len(sell)}")
         print(f"{'='*70}\n")
+        
+        # News details (if enabled)
+        if self.use_news:
+            print(f"\n{'='*70}")
+            print(f"📰 NEWS ANALYSIS DETAILS")
+            print(f"{'='*70}\n")
+            
+            for r in results_sorted:
+                articles = r.get('news_articles', [])
+                sentiment = r.get('news_sentiment', 0.0)
+                
+                if articles:
+                    print(f"📊 {r['ticker']} - Sentiment: {sentiment:+.2f} ({len(articles)} articles)")
+                    for i, article in enumerate(articles[:3], 1):  # Show top 3 articles
+                        title = article.get('title', 'No title')[:70]
+                        art_sentiment = article.get('sentiment', 0.0)
+                        date = article.get('date', 'N/A')
+                        print(f"   [{i}] ({art_sentiment:+.2f}) {title}...")
+                        print(f"       Date: {date} | Source: {article.get('source', 'unknown')}")
+                    if len(articles) > 3:
+                        print(f"   ... and {len(articles) - 3} more articles")
+                else:
+                    print(f"📊 {r['ticker']} - No news found (Sentiment: {sentiment:+.2f})")
+                print()
 
 
 def main():

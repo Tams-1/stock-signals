@@ -208,6 +208,54 @@ class FreeNewsClient:
             logger.error(f"Failed to fetch Google News: {e}")
             return []
     
+    def _fetch_newsdata_io(self, ticker: str, date: str) -> List[Dict]:
+        """
+        Fetch news from newsdata.io API (more reliable than Google News RSS).
+        
+        Args:
+            ticker: Stock ticker (e.g., VALE3.SA or VALE3)
+            date: Date string (YYYY-MM-DD)
+        
+        Returns:
+            List of news articles
+        """
+        self._rate_limit()
+        
+        # Clean ticker for search
+        ticker_search = ticker.replace('.SA', '')
+        
+        # newsdata.io API key
+        api_key = "pub_1757f48565d149cb8e2053f54b26e977"
+        
+        # Build URL with ticker search (category filter too restrictive for stocks)
+        url = f"https://newsdata.io/api/1/news?q={ticker_search}&country=br&language=pt&apikey={api_key}"
+        
+        logger.debug(f"Fetching newsdata.io for '{ticker_search}'")
+        
+        try:
+            response = self.session.get(url, timeout=10)
+            response.raise_for_status()
+            
+            data = response.json()
+            articles = data.get('results', [])
+            
+            formatted_articles = []
+            for article in articles:
+                formatted_articles.append({
+                    'title': article.get('title', ''),
+                    'link': article.get('link', ''),
+                    'published': article.get('pubDate', ''),
+                    'summary': article.get('description', ''),
+                    'source': article.get('source_id', 'newsdata_io')
+                })
+            
+            logger.info(f"Found {len(formatted_articles)} articles from newsdata.io for '{ticker_search}'")
+            return formatted_articles
+        
+        except Exception as e:
+            logger.error(f"Failed to fetch newsdata.io: {e}")
+            return []
+    
     def _fetch_investing_com(self, ticker: str, date: str) -> List[Dict]:
         """
         Scrape Investing.com Brasil for historical news.
@@ -307,9 +355,9 @@ class FreeNewsClient:
         """
         Get sentiment score for a ticker on a given date.
         
-        Automatically chooses source:
-        - Recent dates (< 30 days): Google News RSS
-        - Older dates (> 30 days): Investing.com scraping
+        Source priority:
+        1. newsdata.io API (primary - reliable for Brazilian stocks)
+        2. Investing.com scraping (fallback - historical data)
         
         Args:
             ticker: Stock ticker (e.g., PETR4.SA)
@@ -318,27 +366,24 @@ class FreeNewsClient:
         Returns:
             Sentiment score (-1.0 to +1.0)
         """
-        query = self._ticker_to_query(ticker)
-        
         try:
-            target_date = datetime.strptime(date, '%Y-%m-%d')
-            days_ago = (datetime.now() - target_date).days
+            # PRIMARY: Try newsdata.io API first
+            logger.debug(f"Attempting newsdata.io for {ticker}")
+            articles = self._fetch_newsdata_io(ticker, date)
             
-            # Choose source based on date
-            if days_ago <= 30:
-                # Recent: use Google News RSS
-                articles = self._fetch_google_news(query, days=min(days_ago + 1, 30))
-            else:
-                # Historical: use Investing.com scraping
+            # FALLBACK: If newsdata.io returns nothing, try Investing.com scraping
+            if not articles:
+                logger.debug(f"newsdata.io returned no results, falling back to Investing.com for {ticker}")
                 articles = self._fetch_investing_com(ticker, date)
             
             if not articles:
-                logger.info(f"No news found for {ticker} on {date}")
+                logger.info(f"No news found for {ticker} on {date} (newsdata.io + Investing.com)")
                 return 0.0
             
             sentiment = self._analyze_articles(articles)
+            source = "newsdata.io" if articles[0].get('source') == 'newsdata_io' else "investing.com"
             
-            logger.info(f"{ticker} on {date}: {len(articles)} articles, sentiment={sentiment:.2f}")
+            logger.info(f"{ticker} on {date}: {len(articles)} articles from {source}, sentiment={sentiment:.2f}")
             
             return sentiment
         
