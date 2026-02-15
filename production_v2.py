@@ -98,6 +98,7 @@ class ProductionRunnerV2:
         self.exit_manager = ExitManager()
         self.use_news = use_news
         self.use_reasoning = use_reasoning
+        self.positions_modified = False  # Track if positions were modified
         
         if use_news:
             self.news_client = FilteredNewsClient(cache_minutes=10)
@@ -351,7 +352,7 @@ class ProductionRunnerV2:
                 )
                 
                 self.active_positions[ticker] = position
-                self._save_positions()
+                self.positions_modified = True
         
         result = {
             "ticker": ticker,
@@ -380,12 +381,12 @@ class ProductionRunnerV2:
         """Check for exit signal on active position"""
         position = self.active_positions[ticker]
         
-        # Update position with current price
-        position = self.exit_manager.update_position(position, current_price, data)
-        self.active_positions[ticker] = position
+        # Update position with current price (in-place)
+        self.exit_manager.update_position(position, current_price, data)
         
         # Check exit conditions
-        prev_trend = previous_trend or "bullish"  # Assume bullish if not provided
+        # Use current trend as proxy if no historical data available
+        prev_trend = previous_trend if previous_trend is not None else trend
         exit_signal = self.exit_manager.check_exit(
             position=position,
             current_trend=trend,
@@ -421,14 +422,14 @@ class ProductionRunnerV2:
                 
                 self.active_positions[ticker] = position
             
-            self._save_positions()
+            self.positions_modified = True
         else:
             # Handle case: tighten stop without exiting (e.g. moderately negative news)
             if exit_signal.new_stop_loss:
                 old_stop = position.stop_loss
                 position.stop_loss = exit_signal.new_stop_loss
                 self.active_positions[ticker] = position
-                self._save_positions()
+                self.positions_modified = True
                 print(f"  🛡️  Stop loss tightened: R${old_stop:.2f} → R${position.stop_loss:.2f}")
         
         # Calculate gain
@@ -470,14 +471,25 @@ class ProductionRunnerV2:
             
             result = {}
             
+            # Validate bulk data structure
+            if data_bulk is None or (isinstance(data_bulk, pd.DataFrame) and data_bulk.empty):
+                print(f"❌ Bulk download returned empty data")
+                return self._download_sequential(tickers, days)
+            
             # Process each ticker
             for ticker in tickers:
                 try:
                     if len(tickers) == 1:
                         # Single ticker returns without ticker level
+                        if not isinstance(data_bulk, pd.DataFrame):
+                            print(f"  ⚠️ Invalid data structure for {ticker}")
+                            continue
                         ticker_data = data_bulk
                     else:
                         # Multiple tickers are grouped by ticker
+                        if ticker not in data_bulk:
+                            print(f"  ⚠️ Ticker {ticker} not in bulk download")
+                            continue
                         ticker_data = data_bulk[ticker]
                     
                     # Validate data
@@ -494,9 +506,9 @@ class ProductionRunnerV2:
                         'Volume': ticker_data['Volume']
                     })
                     
-                    # Check for NaN values and forward fill
-                    if df.isna().any().any():
-                        df = df.ffill()
+                    # Forward fill NaN values (only if needed, optimized)
+                    # ffill() is efficient - only processes if NaN exists
+                    df = df.ffill()
                     
                     result[ticker] = df
                     
@@ -558,6 +570,11 @@ class ProductionRunnerV2:
                 results.append(result)
             else:
                 print("SKIP")
+        
+        # Save positions once at the end (batch save for performance)
+        if self.positions_modified:
+            self._save_positions()
+            self.positions_modified = False
         
         # Summary
         self._print_summary(results)

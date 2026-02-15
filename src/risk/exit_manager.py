@@ -96,7 +96,8 @@ class ExitManager:
         tr2 = abs(high - close.shift())
         tr3 = abs(low - close.shift())
         
-        tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+        # Use numpy for better performance
+        tr = pd.Series(np.maximum(np.maximum(tr1.values, tr2.values), tr3.values), index=high.index)
         atr = tr.rolling(period).mean().iloc[-1]
         
         # Improved fallback: use historical volatility instead of fixed 2%
@@ -156,17 +157,14 @@ class ExitManager:
         position: Position,
         current_price: float,
         df: pd.DataFrame,
-    ) -> Position:
+    ) -> None:
         """
-        Update position with current price and adjust trailing stop
+        Update position in-place with current price and adjust trailing stop
         
         Args:
-            position: Current position
+            position: Current position (modified in-place)
             current_price: Latest price
             df: Price DataFrame for ATR calculation
-            
-        Returns:
-            Updated position
         """
         position.current_price = current_price
         
@@ -190,8 +188,6 @@ class ExitManager:
             
             if new_trailing > position.trailing_stop_price:
                 position.trailing_stop_price = new_trailing
-        
-        return position
     
     def check_exit(
         self,

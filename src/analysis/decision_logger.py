@@ -97,9 +97,10 @@ class DecisionLogger:
     Logs and explains all trading decisions
     """
     
-    def __init__(self, log_file: str = "decision_log.json", max_entries: int = 1000):
+    def __init__(self, log_file: str = "decision_log.json", max_entries: int = 1000, archive_threshold: int = 100):
         self.log_file = log_file
         self.max_entries = max_entries
+        self.archive_threshold = archive_threshold  # Archive in batches
         self.decisions = []
         self._load_history()
     
@@ -146,12 +147,12 @@ class DecisionLogger:
             print(f"⚠️ Failed to archive decisions: {e}")
     
     def log_decision(self, decision: SignalDecision):
-        """Log a trading decision with rotation"""
+        """Log a trading decision with batch rotation"""
         self.decisions.append(asdict(decision))
         
-        # Rotate if exceeds max entries
-        if len(self.decisions) > self.max_entries:
-            # Archive old entries before rotating
+        # Archive in batches when threshold is exceeded (more efficient)
+        if len(self.decisions) > self.max_entries + self.archive_threshold:
+            # Archive old entries in batch
             self._archive_old_entries()
             # Keep only recent entries
             self.decisions = self.decisions[-self.max_entries:]

@@ -158,7 +158,7 @@ class TestExitManager(unittest.TestCase):
         )
         
         # Price +8% (should activate trailing stop)
-        position = self.exit_mgr.update_position(position, 54.0, self.df)
+        self.exit_mgr.update_position(position, 54.0, self.df)
         
         self.assertTrue(position.trailing_stop_active)
         self.assertIsNotNone(position.trailing_stop_price)
@@ -175,7 +175,7 @@ class TestExitManager(unittest.TestCase):
         )
         
         # Activate trailing stop
-        position = self.exit_mgr.update_position(position, 54.0, self.df)
+        self.exit_mgr.update_position(position, 54.0, self.df)
         trailing_price = position.trailing_stop_price
         
         # Price drops below trailing stop
@@ -372,17 +372,17 @@ class TestExitManager(unittest.TestCase):
         )
         
         # Activate trailing at 54
-        position = self.exit_mgr.update_position(position, 54.0, self.df)
+        self.exit_mgr.update_position(position, 54.0, self.df)
         initial_trailing = position.trailing_stop_price
         
         # Price goes higher
-        position = self.exit_mgr.update_position(position, 56.0, self.df)
+        self.exit_mgr.update_position(position, 56.0, self.df)
         higher_trailing = position.trailing_stop_price
         
         self.assertGreater(higher_trailing, initial_trailing)
         
         # Price drops (trailing should NOT move down)
-        position = self.exit_mgr.update_position(position, 54.5, self.df)
+        self.exit_mgr.update_position(position, 54.5, self.df)
         final_trailing = position.trailing_stop_price
         
         self.assertEqual(final_trailing, higher_trailing)
