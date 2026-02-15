@@ -143,8 +143,8 @@ def main():
         if use_news:
             print("📰 Fetching news (10min refresh)...")
         
-        # Run analysis
-        runner = ProductionRunnerV2(use_news=use_news)
+        # Run analysis (with reasoning for decision logging)
+        runner = ProductionRunnerV2(use_news=use_news, use_reasoning=True)
         
         # Get previous trends for regime detection
         previous_trends = prev_state.get("trends", {})
