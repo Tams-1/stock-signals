@@ -1,6 +1,5 @@
-"""News sentiment module for stock-signals v2."""
+"""News sentiment module for stock-signals."""
 
-from .news_aggregator import NewsAggregator
-from .sentiment_analyzer import SentimentAnalyzer
+from .free_news_client import FreeNewsClient
 
-__all__ = ['NewsAggregator', 'SentimentAnalyzer']
+__all__ = ['FreeNewsClient']
