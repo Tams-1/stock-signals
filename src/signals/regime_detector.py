@@ -149,13 +149,16 @@ class RegimeDetector:
             {regime: str, strength: float}
         """
         try:
-            closes = df['Close'].values
+            closes = df['Close'].values.flatten()  # Ensure 1D array
             
             if len(closes) < 3:
                 return {'regime': 'unknown', 'strength': 0.0}
             
-            x = np.arange(len(closes))
-            slope, intercept, r_value, p_value, std_err = stats.linregress(x, closes)
+            x = np.arange(len(closes)).astype(float)
+            try:
+                slope, intercept, r_value, p_value, std_err = stats.linregress(x, closes)
+            except (ValueError, RuntimeError):
+                return {'regime': 'consolidation', 'strength': 0.0}
             
             # Normalize slope relative to price level
             price_range = closes.max() - closes.min()
@@ -197,19 +200,19 @@ class RegimeDetector:
             {regime: str, strength: float}
         """
         try:
-            closes = df['Close'].values
+            closes = df['Close'].values.flatten()  # Ensure 1D array
             
             if len(closes) < 20:
                 return {'regime': 'unknown', 'strength': 0.0}
             
-            ma10 = pd.Series(closes).rolling(10).mean().values[-1]
-            ma20 = pd.Series(closes).rolling(20).mean().values[-1]
-            current_price = closes[-1]
+            ma10 = float(pd.Series(closes).rolling(10).mean().values[-1])
+            ma20 = float(pd.Series(closes).rolling(20).mean().values[-1])
+            current_price = float(closes[-1])
             
             # MA50 only if we have 50+ days
             has_ma50 = len(closes) >= 50
             if has_ma50:
-                ma50 = pd.Series(closes).rolling(50).mean().values[-1]
+                ma50 = float(pd.Series(closes).rolling(50).mean().values[-1])
             
             # Determine regime with improved logic
             # UPTREND: (MA10 > MA20 > MA50) OR (MA10 > MA20 AND no MA50) AND price near MA20
@@ -278,9 +281,9 @@ class RegimeDetector:
             {regime: str, strength: float}
         """
         try:
-            high = df['High'].values
-            low = df['Low'].values
-            close = df['Close'].values
+            high = df['High'].values.flatten()  # Ensure 1D array
+            low = df['Low'].values.flatten()    # Ensure 1D array
+            close = df['Close'].values.flatten()  # Ensure 1D array
             
             # Calculate +DM, -DM, TR (True Range)
             plus_dm = np.zeros(len(high))
@@ -305,8 +308,15 @@ class RegimeDetector:
                     minus_dm[i] = down_move
             
             # Smooth using EMA
-            plus_di = self._ema(plus_dm, self.adx_period) / self._ema(tr, self.adx_period) * 100
-            minus_di = self._ema(minus_dm, self.adx_period) / self._ema(tr, self.adx_period) * 100
+            tr_ema = self._ema(tr, self.adx_period)
+            plus_dm_ema = self._ema(plus_dm, self.adx_period)
+            minus_dm_ema = self._ema(minus_dm, self.adx_period)
+            
+            # Avoid division by zero
+            tr_ema = np.clip(tr_ema, 1e-10, None)
+            
+            plus_di = plus_dm_ema / tr_ema * 100
+            minus_di = minus_dm_ema / tr_ema * 100
             
             # DX
             di_sum = plus_di + minus_di
@@ -314,11 +324,11 @@ class RegimeDetector:
             
             # ADX
             adx = self._ema(dx, self.adx_period)
-            current_adx = adx[-1] if len(adx) > 0 else 0
+            current_adx = float(adx[-1]) if len(adx) > 0 else 0.0
             
-            # Current DI values
-            current_plus_di = plus_di[-1] if len(plus_di) > 0 else 0
-            current_minus_di = minus_di[-1] if len(minus_di) > 0 else 0
+            # Current DI values - ensure they're scalars
+            current_plus_di = float(plus_di[-1]) if len(plus_di) > 0 else 0.0
+            current_minus_di = float(minus_di[-1]) if len(minus_di) > 0 else 0.0
             
             # Classify regime
             if current_plus_di > current_minus_di:
@@ -362,9 +372,9 @@ class RegimeDetector:
             {regime: str, strength: float}
         """
         try:
-            high = df['High'].values
-            low = df['Low'].values
-            close = df['Close'].values
+            high = df['High'].values.flatten()  # Ensure 1D array
+            low = df['Low'].values.flatten()    # Ensure 1D array
+            close = df['Close'].values.flatten()  # Ensure 1D array
             
             if len(high) < 5:
                 return {'regime': 'unknown', 'strength': 0.0}
