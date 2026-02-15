@@ -1,1 +1,4 @@
 [2026-02-15 11:43:08] VALE3.SA: HOLD → BUY | Razão: Tendência bullish confirmada: MA20 acima da MA50
+[2026-02-15 11:52:59] 🟢 VALE3.SA: HOLD → BUY
+Razão: MA20 acima da MA50
+Entrada R$ 87.03 | Stop R$ 81.40 | Conf 95%

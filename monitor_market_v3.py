@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List
 
 from src.analysis.signal_analyzer import SignalAnalyzer
+from src.analysis.concise_formatter import format_concise_report, format_telegram_alert
 from src.news.filtered_news_client import FilteredNewsClient
 
 # Load validated tickers
@@ -151,15 +152,12 @@ class MarketMonitorV3:
             for change in signal_changes:
                 decision = change['decision']
                 
-                # Print detailed report
-                report = self.analyzer.logger.format_decision_report(decision)
+                # Print concise report (not verbose)
+                report = format_concise_report(decision)
                 print(report)
                 
-                # Write alert
-                alert_summary = (
-                    f"{decision.ticker}: {decision.previous_signal} → {decision.current_signal} | "
-                    f"Razão: {decision.reason.primary_reason}"
-                )
+                # Write concise alert to file
+                alert_summary = format_telegram_alert(decision)
                 self.write_alert(alert_summary)
         else:
             print(f"\n✅ Nenhuma mudança de sinal")
