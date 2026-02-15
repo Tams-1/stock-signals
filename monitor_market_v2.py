@@ -83,12 +83,31 @@ def detect_changes(prev_state, curr_results, runner):
     prev_trends = prev_state.get("trends", {})
     prev_positions = prev_state.get("positions", {})
     
-    # Check for new positions
+    # Check for new positions (BUY signals)
     for ticker, pos in runner.active_positions.items():
         if ticker not in prev_positions:
-            alerts.append(f"🟢 NOVA POSIÇÃO: {ticker} @ R${pos.entry_price:.2f} (size: {pos.size*100:.0f}%)")
+            # Find the result to get full details
+            result = next((r for r in curr_results if r['ticker'] == ticker), None)
+            
+            # Build detailed alert
+            alert_lines = [
+                f"🟢 SIGNAL: BUY - {ticker}",
+                f"💰 Entrada: R$ {pos.entry_price:.2f} | Tamanho: {pos.size*100:.0f}%",
+                f"📊 Trend: {result.get('trend', 'N/A')} | Confidence: {result.get('confidence', 0)*100:.1f}%",
+                f"🛡️ Stop Loss: R$ {pos.stop_loss:.2f}",
+            ]
+            
+            # Add reasoning if available
+            if result and 'reasoning' in result:
+                reasoning = result['reasoning']
+                # Truncate if too long
+                if len(reasoning) > 100:
+                    reasoning = reasoning[:97] + "..."
+                alert_lines.append(f"💡 Reasoning: {reasoning}")
+            
+            alerts.append("\n".join(alert_lines))
     
-    # Check for closed positions
+    # Check for closed positions (SELL signals - 100%)
     for ticker in prev_positions:
         if ticker not in runner.active_positions:
             # Find the result to get exit info
@@ -96,17 +115,36 @@ def detect_changes(prev_state, curr_results, runner):
             if result and result.get('action') == 'EXIT':
                 gain = result.get('gain', 0) * 100
                 reason = result.get('exit_reason', 'unknown')
+                entry_price = prev_positions[ticker].get('entry_price', 0)
+                exit_price = result.get('price', 0)
                 gain_emoji = "📈" if gain > 0 else "📉"
-                alerts.append(f"🔴 SAÍDA: {ticker} {gain_emoji} {gain:+.2f}% ({reason})")
+                
+                alert_lines = [
+                    f"🔴 SIGNAL: SELL (100%) - {ticker}",
+                    f"💰 Entry: R$ {entry_price:.2f} → Exit: R$ {exit_price:.2f}",
+                    f"{gain_emoji} Gain: {gain:+.2f}%",
+                    f"📝 Razão: {reason}"
+                ]
+                alerts.append("\n".join(alert_lines))
     
-    # Check for partial exits
+    # Check for partial exits (partial SELL signals)
     for result in curr_results:
         ticker = result['ticker']
         if result.get('action') == 'EXIT' and ticker in runner.active_positions:
             exit_pct = result.get('exit_percentage', 0) * 100
             gain = result.get('gain', 0) * 100
             reason = result.get('exit_reason', 'unknown')
-            alerts.append(f"⚠️ SAÍDA PARCIAL: {ticker} - {exit_pct:.0f}% vendido com {gain:+.2f}% ({reason})")
+            entry_price = result.get('entry_price', 0)
+            exit_price = result.get('price', 0)
+            gain_emoji = "📈" if gain > 0 else "📉"
+            
+            alert_lines = [
+                f"⚠️ SIGNAL: SELL ({exit_pct:.0f}%) - {ticker}",
+                f"💰 Entry: R$ {entry_price:.2f} → Exit: R$ {exit_price:.2f}",
+                f"{gain_emoji} Gain: {gain:+.2f}%",
+                f"📝 Razão: {reason}"
+            ]
+            alerts.append("\n".join(alert_lines))
     
     # Check for trend changes
     for result in curr_results:
@@ -117,7 +155,12 @@ def detect_changes(prev_state, curr_results, runner):
         if prev_trend and prev_trend != curr_trend:
             # Only alert if position is active or significant change
             if ticker in runner.active_positions or (prev_trend == "bullish" and curr_trend == "bearish"):
-                alerts.append(f"🔄 MUDANÇA DE TENDÊNCIA: {ticker} {prev_trend} → {curr_trend}")
+                alert_lines = [
+                    f"🔄 MUDANÇA DE TENDÊNCIA - {ticker}",
+                    f"📊 {prev_trend} → {curr_trend}",
+                    f"⚠️ {'Atenção! Revisar posição ativa' if ticker in runner.active_positions else 'Sem posição ativa'}"
+                ]
+                alerts.append("\n".join(alert_lines))
     
     return alerts
 
