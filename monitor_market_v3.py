@@ -133,14 +133,39 @@ def format_alert_output(results):
 
 def main():
     print("\n" + "="*70)
-    print(f"📈 MARKET MONITOR V3 - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"📈 MARKET MONITOR V3 (Smart News) - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("="*70 + "\n")
     
-    # Run analysis
+    # Run analysis with CACHED news (fast, uses 0 API credits)
     runner = SimpleProductionRunner(use_news=True)
     
-    print("Analyzing 150 stocks with news sentiment...\n")
+    print("📊 Analyzing 150 stocks with CACHED news sentiment...\n")
     results = runner.run()
+    
+    # Identify top movers for fresh news refresh
+    top_movers = runner.get_top_movers(results, top_n=10)
+    
+    # Smart news refresh: ONLY fetch fresh news for top movers
+    if top_movers:
+        print(f"\n🔄 Smart News Refresh: Fetching fresh sentiment for {len(top_movers)} top movers...")
+        fresh_sentiments = runner.news_client.refresh_sentiment_batch(top_movers)
+        
+        # Update results with fresh news sentiment
+        for result in results:
+            if result['ticker'] in fresh_sentiments:
+                old_sentiment = result['news_sentiment']
+                new_sentiment = fresh_sentiments[result['ticker']]
+                result['news_sentiment'] = new_sentiment
+                
+                if abs(new_sentiment - old_sentiment) > 0.05:
+                    print(f"   {result['ticker']}: sentiment updated {old_sentiment:+.2f} → {new_sentiment:+.2f}")
+        
+        # Log API usage
+        cache_stats = runner.news_client.get_cache_stats()
+        print(f"\n💾 News Cache Stats:")
+        print(f"   Total cached: {cache_stats['total_entries']}")
+        print(f"   Fresh: {cache_stats['fresh']}")
+        print(f"   API calls this run: ~{len(top_movers)} credits")
     
     # Format and output actionable alerts
     alert_text = format_alert_output(results)

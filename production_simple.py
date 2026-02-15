@@ -210,6 +210,35 @@ class SimpleProductionRunner:
             print(f"  ❌ Error: {e}")
             return None
     
+    def get_top_movers(self, results: List[Dict], top_n: int = 10) -> List[str]:
+        """
+        Identify top movers from analysis results.
+        
+        Used for smart news fetching: fetch fresh news only for high-conviction signals.
+        
+        Args:
+            results: List of analysis results
+            top_n: Number of top movers to return
+        
+        Returns:
+            List of top mover tickers
+        """
+        if not results:
+            return []
+        
+        # Sort by absolute conviction (both BUY and SELL signals matter)
+        sorted_results = sorted(results, key=lambda x: abs(x.get('conviction', 0)), reverse=True)
+        
+        # Get top N tickers
+        top_movers = [r['ticker'] for r in sorted_results[:top_n]]
+        
+        print(f"\n📊 Top {top_n} Movers (for smart news refresh):")
+        for i, ticker in enumerate(top_movers, 1):
+            result = next(r for r in sorted_results if r['ticker'] == ticker)
+            print(f"   [{i}] {ticker} - {result['signal']} ({result['trend']}, conviction: {result['conviction']:.2f})")
+        
+        return top_movers
+    
     def run(self, tickers: List[str] = None):
         """Run analysis"""
         if tickers is None:

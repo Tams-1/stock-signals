@@ -26,6 +26,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import re
 from urllib.parse import quote_plus
+from .news_cache import NewsCache
 
 
 logger = logging.getLogger(__name__)
@@ -143,8 +144,8 @@ class FreeNewsClient:
         'RDOR3.SA': 'Rede D\'Or',
     }
     
-    def __init__(self):
-        """Initialize free news client."""
+    def __init__(self, cache_ttl_hours: int = 6):
+        """Initialize free news client with caching."""
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
@@ -153,10 +154,13 @@ class FreeNewsClient:
         # Initialize sentiment analyzer
         self.sentiment_analyzer = FinBERTSentimentAnalyzer()
         
+        # Initialize news cache (reduces API calls, leaves 50 credits headroom)
+        self.cache = NewsCache(ttl_hours=cache_ttl_hours)
+        
         self.last_request_time = 0
         self.min_request_interval = 2.0  # Be polite: 2 seconds between requests
         
-        logger.info("FreeNewsClient initialized")
+        logger.info(f"FreeNewsClient initialized (cache TTL: {cache_ttl_hours}h)")
     
     def _rate_limit(self):
         """Enforce rate limiting."""
@@ -351,24 +355,34 @@ class FreeNewsClient:
         return avg_sentiment
     
     @lru_cache(maxsize=256)
-    def get_sentiment(self, ticker: str, date: str) -> float:
+    def get_sentiment(self, ticker: str, date: str, use_cache: bool = True) -> float:
         """
         Get sentiment score for a ticker on a given date.
         
-        Source priority:
-        1. newsdata.io API (primary - reliable for Brazilian stocks)
-        2. Investing.com scraping (fallback - historical data)
+        Smart caching strategy:
+        1. Check cache first (if fresh, return immediately - no API call)
+        2. If cache miss, fetch from newsdata.io API
+        3. Fallback to Investing.com scraping if needed
+        4. Store in cache for future use (6-hour TTL)
         
         Args:
             ticker: Stock ticker (e.g., PETR4.SA)
             date: Date string (YYYY-MM-DD)
+            use_cache: Use cache if fresh (default True)
         
         Returns:
             Sentiment score (-1.0 to +1.0)
         """
         try:
-            # PRIMARY: Try newsdata.io API first
-            logger.debug(f"Attempting newsdata.io for {ticker}")
+            # CACHE: Check if we have fresh sentiment in cache
+            if use_cache:
+                cached_sentiment = self.cache.get(ticker)
+                if cached_sentiment is not None:
+                    logger.info(f"✅ Cache HIT: {ticker} (sentiment: {cached_sentiment:+.2f}, age: {self.cache.get_cache_age(ticker)})")
+                    return cached_sentiment
+            
+            # MISS: Fetch fresh news from API
+            logger.debug(f"Cache MISS or disabled - fetching fresh news for {ticker}")
             articles = self._fetch_newsdata_io(ticker, date)
             
             # FALLBACK: If newsdata.io returns nothing, try Investing.com scraping
@@ -383,7 +397,10 @@ class FreeNewsClient:
             sentiment = self._analyze_articles(articles)
             source = "newsdata.io" if articles[0].get('source') == 'newsdata_io' else "investing.com"
             
-            logger.info(f"{ticker} on {date}: {len(articles)} articles from {source}, sentiment={sentiment:.2f}")
+            # CACHE: Store for future use
+            self.cache.set(ticker, sentiment, source=source)
+            
+            logger.info(f"{ticker} on {date}: {len(articles)} articles from {source}, sentiment={sentiment:+.2f}")
             
             return sentiment
         
@@ -409,6 +426,43 @@ class FreeNewsClient:
             time.sleep(0.5)  # Small delay between tickers
         
         return results
+    
+    def refresh_sentiment_batch(self, tickers: List[str], date: str = None) -> Dict[str, float]:
+        """
+        Refresh sentiment for specific tickers (e.g., top movers).
+        
+        Used for smart news fetching: only fetch fresh news for stocks with significant moves.
+        This minimizes API calls while keeping high-conviction signals updated.
+        
+        Args:
+            tickers: List of tickers to fetch fresh news for
+            date: Date string (defaults to today)
+        
+        Returns:
+            Dict of ticker -> sentiment scores
+        
+        Example:
+            # Fetch news only for top 10 movers
+            results = news_client.refresh_sentiment_batch(['VALE3.SA', 'PETR4.SA', 'ITUB4.SA'])
+        """
+        if date is None:
+            date = datetime.now().strftime("%Y-%m-%d")
+        
+        results = {}
+        
+        logger.info(f"🚀 Refreshing sentiment for {len(tickers)} top movers (API calls will be used)")
+        
+        for ticker in tickers:
+            sentiment = self.get_sentiment(ticker, date, use_cache=False)
+            results[ticker] = sentiment
+        
+        logger.info(f"✅ Refreshed {len(tickers)} tickers. API credits used: ~{len(tickers)}")
+        
+        return results
+    
+    def get_cache_stats(self) -> Dict:
+        """Get cache statistics."""
+        return self.cache.stats()
     
     def clear_cache(self):
         """Clear the sentiment cache."""
