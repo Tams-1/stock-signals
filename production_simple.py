@@ -82,29 +82,21 @@ class SimpleProductionRunner:
         return data
     
     def get_news_sentiment(self, ticker: str) -> dict:
-        """Get sentiment from last 3 days (newsdata.io + cache)"""
+        """Get sentiment for today only (newsdata.io + cache)"""
         if not self.use_news:
             return {"sentiment": 0.0, "articles": [], "dates": []}
         
         try:
-            sentiments = []
-            dates = []
-            
-            # Fetch sentiment for last 3 days using FreeNewsClient
+            # Fetch sentiment for TODAY ONLY using FreeNewsClient
             # (which handles newsdata.io + Investing.com fallback + caching)
-            for days_ago in range(3):
-                date = (datetime.now() - timedelta(days=days_ago)).strftime("%Y-%m-%d")
-                sent = self.news_client.get_sentiment(ticker, date)
-                sentiments.append(sent)
-                dates.append(date)
-            
-            avg_sentiment = sum(sentiments) / len(sentiments) if sentiments else 0.0
+            date = datetime.now().strftime("%Y-%m-%d")
+            sentiment = self.news_client.get_sentiment(ticker, date)
             
             return {
-                "sentiment": avg_sentiment,
+                "sentiment": sentiment,
                 "articles": [],  # Already cached in news_client.cache
-                "dates": dates,
-                "daily_scores": dict(zip(dates, sentiments))
+                "dates": [date],
+                "daily_scores": {date: sentiment}
             }
         except Exception as e:
             print(f"    ⚠️ News error: {e}")
