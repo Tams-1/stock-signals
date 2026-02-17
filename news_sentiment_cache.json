@@ -221,8 +221,658 @@
   },
   "TEST.SA": {
     "sentiment": 0.5,
-    "timestamp": "2026-02-17T15:16:09.003390",
+    "timestamp": "2026-02-17T16:27:25.618247",
     "source": "test",
     "articles": []
+  },
+  "MGLU3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:23.922234",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "PCAR3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:27.438893",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "LREN3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:31.364896",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "RAIZ4.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:35.435460",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "GGBR4.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:39.490201",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "ASAI3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:43.498154",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "RDOR3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:47.397643",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "PETR3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:51.422505",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "ITSA4.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:55.406359",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "BBDC3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:00:59.342026",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "CMIG4.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:03.409117",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "ENGI11.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:07.367828",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "EQTL3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:11.353474",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "GGPS3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:15.320274",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "GOAU4.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:19.313116",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "HAPV3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:23.402072",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "HYPE3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:27.376206",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "IGTI11.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:31.378383",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "IRBR3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:35.393436",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "KLBN11.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:39.420456",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "LWSA3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:43.358567",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "MRVE3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:47.416947",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "MULT3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:51.358851",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "PRIO3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:55.320843",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "QUAL3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:01:59.276898",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
+  },
+  "RAIL3.SA": {
+    "sentiment": 0.22525106775574386,
+    "timestamp": "2026-02-17T17:02:03.365339",
+    "source": "investing_com",
+    "articles": [
+      {
+        "title": "QUEM AVISA, AMIGO \u00c9: Assine InvestingPro com um super desconto na Oferta Rel\u00e2mpago",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/stock-market-news/quem-avisa-amigo-e-assine-investingpro-com-um-super-desconto-na-oferta-relampago-1836473"
+      },
+      {
+        "title": "Negocia\u00e7\u00f5es entre EUA e Ir\u00e3; Palo Alto Networks divulga resultados - o que est\u00e1 movendo os mercados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/economy-news/negociacoes-entre-eua-e-ira-palo-alto-networks-divulga-resultados--o-que-esta-movendo-os-mercados-1836426"
+      },
+      {
+        "title": "Pre\u00e7o do bitcoin hoje: est\u00e1vel em US$ 68 mil em mercado reduzido por feriados",
+        "summary": "",
+        "source_publication": "Unknown",
+        "link": "/news/cryptocurrency-news/preco-do-bitcoin-hoje-estavel-em-us-68-mil-em-mercado-reduzido-por-feriados-1836373"
+      }
+    ]
   }
 }
