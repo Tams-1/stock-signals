@@ -11,7 +11,7 @@ Strategy:
 
 import json
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time
 from pathlib import Path
 from typing import Dict, Optional, List, Any
 
@@ -53,49 +53,30 @@ class NewsCache:
         """
         current_time = datetime.now().time()
         
-        if 10 <= current_time < 17:
+        if time(10, 0) <= current_time < time(17, 0):
             return 4  # Trading hours - faster decay
         else:
             return 12  # Overnight - slower decay
     
-    def __init__(self, cache_file: str = "news_sentiment_cache.json", ttl_hours: int = 6):
-        self.cache_file = Path(cache_file)
-        self.ttl = timedelta(hours=ttl_hours)
-        self.cache = self._load_cache()
-    
-    def _is_fresh(self, ticker: str) -> bool:
+    def is_fresh(self, ticker: str) -> bool:
         """Check if cached sentiment is still fresh (within TTL)."""
         if ticker not in self.cache:
             return False
         
         try:
             cached_time = datetime.fromisoformat(self.cache[ticker]['timestamp'])
-            current_ttl = self._get_trading_ttl()
+            current_ttl_hours = self._get_trading_ttl()
+            current_ttl = timedelta(hours=current_ttl_hours)
             age = datetime.now() - cached_time
-            is_fresh = age < current_ttl
+            fresh = age < current_ttl
             
-            if not is_fresh:
+            if not fresh:
                 logger.debug(f"{ticker} cache expired (age: {age})")
             
-            return is_fresh
+            return fresh
         except Exception as e:
             logger.warning(f"Error checking cache for {ticker}: {e}")
             return False
-    
-    def get(self, ticker: str) -> Optional[float]:
-        """Get cached sentiment if fresh, otherwise None."""
-        if self.is_fresh(ticker):
-            sentiment = self.cache[ticker].get('sentiment', 0.0)
-            logger.debug(f"Cache HIT: {ticker} (sentiment: {sentiment:+.2f})")
-            return sentiment
-        return None
-    
-    def get_full(self, ticker: str) -> Optional[Dict]:
-        """Get cached sentiment + article details if fresh, otherwise None."""
-        if self.is_fresh(ticker):
-            logger.debug(f"Cache HIT: {ticker}")
-            return self.cache[ticker]
-        return None
     
     def get(self, ticker: str) -> Optional[float]:
         """Get cached sentiment if fresh, otherwise None."""

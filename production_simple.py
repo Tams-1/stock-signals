@@ -57,16 +57,28 @@ SMLL_TICKERS = [
 
 TICKERS = IBOV_TICKERS + SMLL_TICKERS  # 184 total
 
+from multiprocessing import Pool, cpu_count
+import functools
+
+
 class SimpleProductionRunner:
     """Simple production runner using only validated TrendDetectorV2"""
     
-    def __init__(self, use_news: bool = True):
+    # Class-level model cache (shared across instances)
+    _model_cache = {}
+    
+    def __init__(self, use_news: bool = True, n_workers: int = None):
         self.trend_detector = TrendDetectorV2()
         self.use_news = use_news
-        if use_news:
-            self.news_client = FreeNewsClient()
+        self.n_workers = n_workers or min(cpu_count(), 8)  # Use up to 8 cores
         
-        print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'})")
+        if use_news:
+            # Check if model already cached
+            if 'news_client' not in self._model_cache:
+                self._model_cache['news_client'] = FreeNewsClient()
+            self.news_client = self._model_cache['news_client']
+        
+        print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, workers={self.n_workers})")
     
     def calculate_kelly_position(self, data: pd.DataFrame, confidence: float) -> float:
         """

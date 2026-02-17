@@ -3620,5 +3620,11 @@
         "link": "/news/commodities-news/precos-do-ouro-e-da-prata-caem-com-foco-em-dados-economicos-e-sinais-do-fed-1836320"
       }
     ]
+  },
+  "TEST.SA": {
+    "sentiment": 0.5,
+    "timestamp": "2026-02-17T15:15:31.512683",
+    "source": "test",
+    "articles": []
   }
 }
