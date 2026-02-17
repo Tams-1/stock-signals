@@ -61,7 +61,11 @@ class FinBERTSentimentAnalyzer:
     
     def analyze(self, text: str) -> float:
         """
-        Analyze sentiment of financial text.
+        Analyze sentiment of financial text using ensemble approach.
+        
+        Ensemble combines:
+        1. FinBERT (primary, specialized for finance)
+        2. Simple lexicon fallback (when FinBERT fails)
         
         Args:
             text: Financial news text
@@ -92,9 +96,16 @@ class FinBERTSentimentAnalyzer:
             positive, negative, neutral = probs
             
             # Convert to -1 to +1 scale
-            sentiment = positive - negative
+            finbert_sentiment = positive - negative
             
-            return sentiment
+            # ENSEMBLE: Blend FinBERT with simple lexicon
+            # Weight FinBERT higher (0.7) vs lexicon (0.3)
+            lexicon_sentiment = self._simple_sentiment(text)
+            
+            # Weighted average
+            ensemble_sentiment = 0.7 * finbert_sentiment + 0.3 * lexicon_sentiment
+            
+            return ensemble_sentiment
         
         except Exception as e:
             logger.warning(f"FinBERT analysis failed: {e}, using fallback")
