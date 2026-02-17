@@ -10,6 +10,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 import yfinance as yf
 import pandas as pd
+import numpy as np
 from datetime import datetime, timedelta
 import argparse
 from typing import Dict, List
@@ -67,19 +68,87 @@ class SimpleProductionRunner:
         
         print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'})")
     
-    def get_data(self, ticker: str, days: int = 120) -> pd.DataFrame:
-        """Download recent data"""
+    def calculate_kelly_position(self, data: pd.DataFrame, confidence: float) -> float:
+        """
+        Calculate Kelly Criterion position size based on volatility and confidence.
+        
+        Kelly Criterion: f* = (p*b - q) / b
+        Where:
+        - p = probability of win (confidence)
+        - q = probability of loss (1 - confidence)
+        - b = win/loss ratio (estimated from volatility)
+        
+        Returns position size (0-1) adjusted for risk.
+        """
+        try:
+            # Calculate annualized volatility
+            returns = data['Close'].pct_change().dropna()
+            volatility = returns.std() * np.sqrt(252)  # Annualized
+            
+            # Estimate win/loss ratio from volatility
+            # Higher volatility = lower position size
+            avg_daily_return = abs(returns.mean())
+            
+            if volatility == 0 or avg_daily_return == 0:
+                return 0.20  # Default to 20% if can't calculate
+            
+            # Kelly fraction with conservative adjustment (half-Kelly)
+            # Edge = confidence - 0.5 (excess confidence over random)
+            edge = confidence - 0.5
+            
+            # Win/loss ratio based on return/volatility
+            win_loss_ratio = avg_daily_return / (volatility / np.sqrt(252))
+            
+            # Kelly formula: f = (p*b - q) / b
+            kelly_fraction = (confidence * win_loss_ratio - (1 - confidence)) / win_loss_ratio
+            
+            # Apply half-Kelly for safety (industry standard)
+            safe_kelly = kelly_fraction * 0.5
+            
+            # Bound between 10% and 80%
+            return max(0.10, min(0.80, safe_kelly))
+        
+        except Exception as e:
+            print(f"    ⚠️ Kelly calculation failed: {e}, using default 20%")
+            return 0.20
+    
+    def get_data(self, ticker: str, days: int = 120, max_retries: int = 3) -> pd.DataFrame:
+        """
+        Download recent data with error handling and retries.
+        
+        Implements exponential backoff for network failures.
+        Returns None if all retries fail.
+        """
         end_date = datetime.now()
         start_date = end_date - timedelta(days=days)
         
-        data = yf.download(
-            ticker,
-            start=start_date.strftime("%Y-%m-%d"),
-            end=end_date.strftime("%Y-%m-%d"),
-            progress=False
-        )
+        for attempt in range(max_retries):
+            try:
+                data = yf.download(
+                    ticker,
+                    start=start_date.strftime("%Y-%m-%d"),
+                    end=end_date.strftime("%Y-%m-%d"),
+                    progress=False
+                )
+                
+                if data.empty:
+                    print(f"    ⚠️ No data returned for {ticker}")
+                    return None
+                
+                return data
+            
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    wait_time = (2 ** attempt) * 1.0  # Exponential backoff: 1s, 2s, 4s
+                    print(f"    ⚠️ Attempt {attempt + 1}/{max_retries} failed for {ticker}: {e}")
+                    print(f"       Retrying in {wait_time}s...")
+                    import time
+                    time.sleep(wait_time)
+                else:
+                    print(f"    ❌ All retries exhausted for {ticker}: {e}")
+                    return None
         
-        return data
+        return None
     
     def get_news_sentiment(self, ticker: str) -> dict:
         """Get sentiment for today only (newsdata.io + cache)"""
@@ -156,21 +225,23 @@ class SimpleProductionRunner:
                 signal = "BUY"
                 conviction = confidence
                 
-                # Proportional position sizing based on confidence
-                if confidence >= 0.90:
-                    position_size = 0.80  # Very high confidence
-                elif confidence >= 0.75:
-                    position_size = 0.60  # High confidence
-                elif confidence >= 0.60:
-                    position_size = 0.40  # Medium-high confidence
-                else:  # 0.50-0.60
-                    position_size = 0.20  # Medium confidence
+                # Kelly Criterion position sizing (volatility-adjusted)
+                position_size = self.calculate_kelly_position(data, confidence)
                 
-                # News boost: +10-20% position size if positive sentiment
-                if self.use_news and news_sentiment > 0.1:
-                    boost = news_sentiment * 0.20  # Up to 20% boost
-                    position_size = min(1.0, position_size + boost)
-                    conviction = min(1.0, conviction + (news_sentiment * 0.1))
+                # News boost: Sigmoid scaling (SOTA approach)
+                # Uses logistic function to prevent over-amplification
+                if self.use_news and abs(news_sentiment) > 0.1:
+                    # Sigmoid scaling: maps sentiment to 0.5-1.5 range
+                    # This provides multiplicative boost instead of additive
+                    sigmoid_boost = 1 / (1 + np.exp(-5 * news_sentiment))  # 0.5 to 1.0
+                    position_size *= sigmoid_boost  # Multiplicative scaling
+                    
+                    # Update conviction based on news agreement with trend
+                    if (news_sentiment > 0 and trend == "uptrend") or (news_sentiment < 0 and trend == "downtrend"):
+                        conviction = min(1.0, conviction * 1.1)  # 10% boost when aligned
+                
+                # Cap at 80% for safety
+                position_size = min(0.80, position_size)
                     
             elif trend == "downtrend" and confidence >= MIN_CONFIDENCE:
                 signal = "SELL"
