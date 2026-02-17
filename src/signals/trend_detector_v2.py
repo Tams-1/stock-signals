@@ -38,15 +38,23 @@ class TrendDetectorV2:
         if len(prices) < 2:
             return 0, 0
         
+        # FIX: Ensure prices is 1D array
+        prices = np.array(prices).flatten()
+        
         x = np.arange(len(prices))
         result = stats.theilslopes(prices, x, alpha=0.95)
         slope = result[0]
         
         # Normalize by ATR-like measure (better than std for trends)
         daily_changes = np.diff(prices)
-        atr = np.mean(np.abs(daily_changes))
         
-        if atr > 0:
+        # FIX: Handle empty or invalid arrays
+        if len(daily_changes) == 0 or np.all(np.isnan(daily_changes)):
+            return slope, 0
+        
+        atr = np.nanmean(np.abs(daily_changes))  # Use nanmean to handle any NaNs
+        
+        if atr > 0 and not np.isnan(atr):
             strength = abs(slope) / atr
         else:
             strength = 0
