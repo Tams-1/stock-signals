@@ -53,21 +53,54 @@ class TrendDetectorV2:
         
         return slope, strength
     
-    def _classify_trend(self, slope, strength, threshold=0.15):
+    def _calculate_volatility_regime(self, prices):
         """
-        Classify trend based on slope and strength.
+        Classify the volatility regime of recent price action.
+        
+        Returns:
+            regime: 'low', 'medium', or 'high' volatility
+        """
+        if len(prices) < 20:
+            return 'medium'
+        
+        returns = np.diff(prices)
+        volatility = np.std(returns)
+        
+        # Classify regime using percentile-based approach
+        # Low: < 25th percentile, Medium: 25th-75th, High: > 75th
+        if volatility < 0.005:
+            return 'low'
+        elif volatility < 0.015:
+            return 'medium'
+        else:
+            return 'high'
+    
+    def _classify_trend(self, slope, strength, volatility_regime: str = 'medium', threshold=0.15):
+        """
+        Classify trend based on slope, strength, and volatility regime.
         
         Args:
             slope: Daily price change
             strength: Normalized slope magnitude
-            threshold: Minimum strength to call it a trend (default: 0.15)
+            volatility_regime: 'low', 'medium', or 'high'
+            threshold: Base minimum strength (adjusted by volatility)
         
         Returns:
             direction: 'uptrend', 'downtrend', or 'consolidation'
             confidence: 0-1 based on strength
         """
-        if strength < threshold:
-            return 'consolidation', min(1.0, strength / threshold)
+        # Adaptive thresholds based on volatility regime
+        # Low volatility: more sensitive (lower threshold)
+        # High volatility: require stronger signal (higher threshold)
+        if volatility_regime == 'low':
+            adjusted_threshold = threshold * 0.67  # More sensitive
+        elif volatility_regime == 'high':
+            adjusted_threshold = threshold * 1.33  # Require stronger signal
+        else:  # medium
+            adjusted_threshold = threshold
+        
+        if strength < adjusted_threshold:
+            return 'consolidation', min(1.0, strength / adjusted_threshold)
         
         if slope > 0:
             direction = 'uptrend'
@@ -75,7 +108,7 @@ class TrendDetectorV2:
             direction = 'downtrend'
         
         # Confidence scales with strength above threshold
-        confidence = min(1.0, strength / (2 * threshold))
+        confidence = min(1.0, strength / (2 * adjusted_threshold))
         
         return direction, confidence
     

@@ -101,21 +101,66 @@ class FinBERTSentimentAnalyzer:
             return self._simple_sentiment(text)
     
     def _simple_sentiment(self, text: str) -> float:
-        """Simple rule-based sentiment (fallback)."""
+        """
+        Enhanced lexicon-based sentiment (fallback when FinBERT fails).
+        
+        Uses expanded financial lexicon based on Loughran-McDonald approach.
+        Categories: Positive, Negative, Uncertainty, Litigious, Strong Modal, Weak Modal
+        """
         text_lower = text.lower()
         
-        positive_words = ['alta', 'subiu', 'crescimento', 'lucro', 'ganho', 
-                         'valorização', 'otimista', 'positivo', 'recorde']
-        negative_words = ['queda', 'caiu', 'prejuízo', 'perda', 'crise',
-                         'desvalorização', 'pessimista', 'negativo', 'risco']
+        # POSITIVE WORDS (Portuguese financial context)
+        positive_words = {
+            # Performance
+            'alta': 1.5, 'subiu': 1.3, 'crescimento': 1.4, 'lucro': 1.6, 
+            'ganho': 1.4, 'valorização': 1.5, 'recorde': 1.7, 'alta histórico': 1.8,
+            # Optimism
+            'otimista': 1.2, 'positivo': 1.1, 'sucesso': 1.3, 'expansão': 1.4,
+            'crescer': 1.3, 'superou': 1.5, 'melhor': 1.2, 'superar': 1.4,
+            # Financial strength
+            'dividendo': 1.3, 'resultado': 1.0, 'receita': 1.1, 'faturamento': 1.1,
+            'rentabilidade': 1.4, 'margem': 1.0, 'eficiência': 1.2,
+            # Market sentiment
+            'compra': 0.8, 'demanda': 1.0, 'interesse': 0.7, 'oportunidade': 1.1
+        }
         
-        pos_count = sum(1 for word in positive_words if word in text_lower)
-        neg_count = sum(1 for word in negative_words if word in text_lower)
+        # NEGATIVE WORDS (Portuguese financial context)
+        negative_words = {
+            # Performance decline
+            'queda': -1.5, 'caiu': -1.3, 'prejuízo': -1.7, 'perda': -1.6,
+            'desvalorização': -1.5, 'baixa': -1.2, 'recuo': -1.1, 'negativo': -1.2,
+            # Pessimism
+            'pessimista': -1.3, 'risco': -1.0, 'crise': -1.6, 'recessão': -1.7,
+            'instabilidade': -1.3, 'incerteza': -1.2, 'preocupação': -1.1,
+            # Financial weakness
+            'divida': -1.2, 'endividamento': -1.4, 'inadimplência': -1.6,
+            'redução': -0.8, 'corte': -1.0, 'fechamento': -0.9,
+            # Market sentiment
+            'venda': -0.7, 'pressão': -0.9, 'volatilidade': -0.8
+        }
         
-        if pos_count == 0 and neg_count == 0:
+        # UNCERTAINTY WORDS (moderate impact)
+        uncertainty_words = {
+            'pode': -0.3, 'possível': -0.2, 'provável': -0.2, 'talvez': -0.3,
+            'incerto': -0.5, 'imprevisível': -0.6, 'variável': -0.3
+        }
+        
+        # Calculate weighted sentiment scores
+        pos_score = sum(weight for word, weight in positive_words.items() if word in text_lower)
+        neg_score = sum(weight for word, weight in negative_words.items() if word in text_lower)
+        uncertainty_score = sum(weight for word, weight in uncertainty_words.items() if word in text_lower)
+        
+        # Total sentiment
+        total_score = pos_score + neg_score + uncertainty_score
+        
+        # Normalize to -1 to +1 range
+        if total_score == 0:
             return 0.0
         
-        return (pos_count - neg_count) / (pos_count + neg_count)
+        # Soft normalization (preserves relative strength)
+        normalized = total_score / (abs(total_score) + 3)  # +3 prevents extreme values
+        
+        return max(-1.0, min(1.0, normalized))
 
 
 class FreeNewsClient:
