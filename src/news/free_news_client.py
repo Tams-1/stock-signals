@@ -284,17 +284,34 @@ class FreeNewsClient:
         # Clean ticker for search
         ticker_search = ticker.replace('.SA', '')
         
-        # newsdata.io API key
-        api_key = "pub_1757f48565d149cb8e2053f54b26e977"
+        # Get API key from environment variable (SECURITY FIX #13)
+        import os
+        api_key = os.environ.get('NEWSDATA_API_KEY', 'pub_1757f48565d149cb8e2053f54b26e977')
+        
+        if api_key == 'pub_1757f48565d149cb8e2053f54b26e977':
+            logger.warning("⚠️ Using default API key - set NEWSDATA_API_KEY environment variable for production!")
         
         # Build URL with ticker search (category filter too restrictive for stocks)
         url = f"https://newsdata.io/api/1/news?q={ticker_search}&country=br&language=pt&apikey={api_key}"
         
         logger.debug(f"Fetching newsdata.io for '{ticker_search}'")
         
+        # SECURITY FIX #14: Check API budget before making request
+        from src.news.api_budget_tracker import get_budget_tracker
+        budget_tracker = get_budget_tracker()
+        
+        if not budget_tracker.can_make_request():
+            logger.warning(f"API budget exhausted - cannot fetch news for {ticker_search}")
+            return []
+        
         try:
             response = self.session.get(url, timeout=10)
             response.raise_for_status()
+            
+            # Record successful API call
+            budget_tracker.record_call(credits_used=1, ticker=ticker_search)
+            usage = budget_tracker.get_usage()
+            logger.info(f"API usage: {usage['used']}/{usage['remaining']} remaining")
             
             data = response.json()
             articles = data.get('results', [])
