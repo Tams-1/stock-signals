@@ -1,22 +1,10 @@
 STOCK-SIGNALS BACKTEST RESULTS
-Period: Nov 2024 - Feb 2025
+Period: Nov 2025 - Feb 2026 (CORRECTED)
 ======================================================================
 
-PERFORMANCE
-----------------------------------------------------------------------
-IBOV Benchmark: 0.08%
-Equal Weight Portfolio: 1.59%
-Alpha (Outperformance): +1.51%
+IBOV Return: 23.93%
+Portfolio Return: 25.88%
+Alpha: +1.95%
 
-METHODOLOGY
-----------------------------------------------------------------------
-• Universe: 5 major IBOV stocks
-• Period: 70 trading days
-• Strategy: Buy and hold
-
-PRODUCTION STATUS
-----------------------------------------------------------------------
-✅ Grade: A+ (upgraded from B-)
-✅ Tests: 233/236 passing (98.7%%)
-✅ All 14 fixes validated
-✅ Ready for live trading
+Note: Previous results used wrong dates (2024-2025).
+This is the corrected analysis for Nov 2025 - Feb 2026.
