@@ -107,16 +107,26 @@ class TrendDetectorV2:
         else:  # medium
             adjusted_threshold = threshold
         
-        if strength < adjusted_threshold:
-            return 'consolidation', min(1.0, strength / adjusted_threshold)
-        
         if slope > 0:
             direction = 'uptrend'
         else:
             direction = 'downtrend'
         
-        # Confidence scales with strength above threshold
-        confidence = min(1.0, strength / (2 * adjusted_threshold))
+        # FIX: More lenient confidence calculation
+        # Old: confidence = min(1.0, strength / (2 * adjusted_threshold))
+        # New: confidence based on strength relative to threshold directly
+        # If strength >= threshold, we have a valid trend signal
+        # Confidence scales from 0.5 (at threshold) to 1.0 (at 3x threshold)
+        if strength >= adjusted_threshold:
+            # At threshold: 50% confidence, at 3x threshold: 100% confidence
+            confidence = min(1.0, 0.5 + (strength - adjusted_threshold) / (4 * adjusted_threshold))
+        else:
+            # Below threshold: linear scale from 0 to 0.5
+            confidence = 0.5 * (strength / adjusted_threshold) if adjusted_threshold > 0 else 0
+        
+        # Only classify as consolidation if strength is very low (< 50% of threshold)
+        if strength < adjusted_threshold * 0.5:
+            direction = 'consolidation'
         
         return direction, confidence
     

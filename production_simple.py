@@ -82,47 +82,73 @@ class SimpleProductionRunner:
     
     def calculate_kelly_position(self, data: pd.DataFrame, confidence: float) -> float:
         """
-        Calculate Kelly Criterion position size based on volatility and confidence.
+        Calculate position size using TRUE Kelly Criterion with confidence adjustment.
         
-        Kelly Criterion: f* = (p*b - q) / b
-        Where:
-        - p = probability of win (confidence)
-        - q = probability of loss (1 - confidence)
-        - b = win/loss ratio (estimated from volatility)
+        Kelly Formula: f* = (bp - q) / b
+        where: b = average win / average loss (payoff ratio/odds)
+               p = win probability (win rate)
+               q = 1 - p (loss probability)
         
-        Returns position size (0-1) adjusted for risk.
+        Uses Half-Kelly for safety: position = 0.5 * kelly * confidence
+        
+        Args:
+            data: Price data DataFrame with 'Close' column
+            confidence: Signal confidence from trend detection (0-1)
+        
+        Returns:
+            Position size as fraction of portfolio (0.10 to 0.60)
         """
+        from src.config import get_config
+        config = get_config()
+        
         try:
-            # Calculate annualized volatility
-            returns = data['Close'].pct_change().dropna()
-            volatility = returns.std() * np.sqrt(252)  # Annualized
+            # Calculate returns from close prices
+            close_prices = data['Close'].squeeze()
+            returns = close_prices.pct_change().dropna()
             
-            # Estimate win/loss ratio from volatility
-            # Higher volatility = lower position size
-            avg_daily_return = abs(returns.mean())
+            # Need minimum data points for statistical significance
+            if len(returns) < config.KELLY_MIN_DATA_POINTS:
+                return config.DEFAULT_POSITION_SIZE
             
-            if volatility == 0 or avg_daily_return == 0:
-                return 0.20  # Default to 20% if can't calculate
+            # Separate positive and negative returns
+            positive_returns = returns[returns > 0]
+            negative_returns = returns[returns < 0]
             
-            # Kelly fraction with conservative adjustment (half-Kelly)
-            # Edge = confidence - 0.5 (excess confidence over random)
-            edge = confidence - 0.5
+            # Need both winning and losing trades to calculate Kelly
+            if len(positive_returns) == 0 or len(negative_returns) == 0:
+                return config.DEFAULT_POSITION_SIZE
             
-            # Win/loss ratio based on return/volatility
-            win_loss_ratio = avg_daily_return / (volatility / np.sqrt(252))
+            # Calculate Kelly parameters
+            p = len(positive_returns) / len(returns)  # Win probability
+            q = 1 - p  # Loss probability
             
-            # Kelly formula: f = (p*b - q) / b
-            kelly_fraction = (confidence * win_loss_ratio - (1 - confidence)) / win_loss_ratio
+            avg_win = positive_returns.mean()  # Average winning return
+            avg_loss = abs(negative_returns.mean())  # Average losing return (absolute)
             
-            # Apply half-Kelly for safety (industry standard)
-            safe_kelly = kelly_fraction * 0.5
+            # Payoff ratio (odds) - how much we win vs how much we lose
+            if avg_loss == 0:
+                return config.DEFAULT_POSITION_SIZE
             
-            # Bound between 10% and 80%
-            return max(0.10, min(0.80, safe_kelly))
+            b = avg_win / avg_loss  # Payoff ratio
+            
+            # Kelly formula: f* = (bp - q) / b
+            # This gives the optimal fraction of capital to risk
+            kelly = (b * p - q) / b
+            
+            # Kelly can be negative if edge is negative (don't trade)
+            # or > 1 if edge is very high (cap at reasonable levels)
+            if kelly <= 0:
+                return config.MIN_POSITION_SIZE
+            
+            # Apply Half-Kelly for safety (reduces volatility and drawdowns)
+            # Also scale by confidence from signal quality
+            position = kelly * config.KELLY_FRACTION * confidence
+            
+            # Enforce bounds
+            return max(config.MIN_POSITION_SIZE, min(config.MAX_POSITION_SIZE, position))
         
         except Exception as e:
-            print(f"    ⚠️ Kelly calculation failed: {e}, using default 20%")
-            return 0.20
+            return config.DEFAULT_POSITION_SIZE
     
     def get_data(self, ticker: str, days: int = 120, max_retries: int = 3) -> pd.DataFrame:
         """
@@ -183,11 +209,17 @@ class SimpleProductionRunner:
             print(f"    ⚠️ News error: {e}")
             return {"sentiment": 0.0, "articles": [], "dates": []}
     
-    def analyze_ticker(self, ticker: str) -> Dict:
-        """Analyze single ticker"""
+    def analyze_ticker(self, ticker: str, data: pd.DataFrame = None) -> Dict:
+        """Analyze single ticker
+        
+        Args:
+            ticker: Stock ticker symbol
+            data: Optional pre-loaded DataFrame (for backtesting). If None, downloads fresh data.
+        """
         try:
-            # Download data
-            data = self.get_data(ticker)
+            # Download data if not provided (production mode)
+            if data is None:
+                data = self.get_data(ticker)
             
             if len(data) < 50:
                 return None
@@ -226,12 +258,15 @@ class SimpleProductionRunner:
                 print(f"⚠️  No articles found, sentiment: {news_sentiment:+.2f}")
             
             # Improved signal logic with higher threshold and proportional sizing
+            from src.config import get_config
+            config = get_config()
+            
             signal = "HOLD"
             position_size = 0.0
             conviction = 0.0
             
-            # Minimum confidence threshold: 50% (more conservative)
-            MIN_CONFIDENCE = 0.50
+            # Minimum confidence threshold from centralized config
+            MIN_CONFIDENCE = config.MIN_CONFIDENCE
             
             if trend == "uptrend" and confidence >= MIN_CONFIDENCE:
                 signal = "BUY"

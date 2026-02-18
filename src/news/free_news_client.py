@@ -270,7 +270,12 @@ class FreeNewsClient:
     
     def _fetch_newsdata_io(self, ticker: str, date: str) -> List[Dict]:
         """
-        Fetch news from newsdata.io API (more reliable than Google News RSS).
+        Fetch news from newsdata.io API with proper error handling.
+        
+        Implements:
+        - Environment-based API key (no hardcoded fallback)
+        - Rate limit handling (HTTP 429) with exponential backoff
+        - Specific error handling for different HTTP status codes
         
         Args:
             ticker: Stock ticker (e.g., VALE3.SA or VALE3)
@@ -279,24 +284,26 @@ class FreeNewsClient:
         Returns:
             List of news articles
         """
+        import os
+        import time
+        
         self._rate_limit()
         
         # Clean ticker for search
         ticker_search = ticker.replace('.SA', '')
         
-        # Get API key from environment variable (SECURITY FIX #13)
-        import os
-        api_key = os.environ.get('NEWSDATA_API_KEY', 'pub_1757f48565d149cb8e2053f54b26e977')
+        # SECURITY: Only use environment variable, no hardcoded fallback
+        api_key = os.environ.get('NEWSDATA_API_KEY')
+        if not api_key:
+            logger.error("NEWSDATA_API_KEY environment variable not set - news fetching disabled")
+            return []
         
-        if api_key == 'pub_1757f48565d149cb8e2053f54b26e977':
-            logger.warning("⚠️ Using default API key - set NEWSDATA_API_KEY environment variable for production!")
-        
-        # Build URL with ticker search (category filter too restrictive for stocks)
+        # Build URL with ticker search
         url = f"https://newsdata.io/api/1/news?q={ticker_search}&country=br&language=pt&apikey={api_key}"
         
         logger.debug(f"Fetching newsdata.io for '{ticker_search}'")
         
-        # SECURITY FIX #14: Check API budget before making request
+        # Check API budget before making request
         from src.news.api_budget_tracker import get_budget_tracker
         budget_tracker = get_budget_tracker()
         
@@ -304,35 +311,82 @@ class FreeNewsClient:
             logger.warning(f"API budget exhausted - cannot fetch news for {ticker_search}")
             return []
         
-        try:
-            response = self.session.get(url, timeout=10)
-            response.raise_for_status()
+        # Implement retry with exponential backoff
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                response = self.session.get(url, timeout=10)
+                
+                # Handle specific status codes
+                if response.status_code == 429:
+                    # Rate limited - check Retry-After header
+                    retry_after = int(response.headers.get('Retry-After', 60))
+                    logger.warning(f"Rate limited (HTTP 429) for {ticker_search}. Retry after {retry_after}s")
+                    if attempt < max_retries - 1:
+                        time.sleep(retry_after)
+                        continue
+                    logger.error(f"Max retries exceeded for rate limit on {ticker_search}")
+                    return []
+                
+                elif response.status_code == 401:
+                    logger.error("API key invalid (HTTP 401) - check NEWSDATA_API_KEY")
+                    return []
+                
+                elif response.status_code == 403:
+                    logger.error("API key quota exceeded or access forbidden (HTTP 403)")
+                    return []
+                
+                elif response.status_code >= 500:
+                    # Server error - retry with backoff
+                    logger.warning(f"Server error (HTTP {response.status_code}) for {ticker_search}")
+                    if attempt < max_retries - 1:
+                        backoff = 2 ** attempt  # 1s, 2s, 4s
+                        time.sleep(backoff)
+                        continue
+                    logger.error(f"Max retries exceeded for server errors on {ticker_search}")
+                    return []
+                
+                response.raise_for_status()
+                
+                # Record successful API call
+                budget_tracker.record_call(credits_used=1, ticker=ticker_search)
+                usage = budget_tracker.get_usage()
+                logger.info(f"API usage: {usage['used']}/{usage['remaining']} remaining")
+                
+                data = response.json()
+                articles = data.get('results', [])
+                
+                formatted_articles = []
+                for article in articles:
+                    formatted_articles.append({
+                        'title': article.get('title', ''),
+                        'link': article.get('link', ''),
+                        'published': article.get('pubDate', ''),
+                        'summary': article.get('description', ''),
+                        'source': 'newsdata.io',
+                        'source_publication': article.get('source_name', 'Unknown')
+                    })
+                
+                logger.info(f"Found {len(formatted_articles)} articles from newsdata.io for '{ticker_search}'")
+                return formatted_articles
             
-            # Record successful API call
-            budget_tracker.record_call(credits_used=1, ticker=ticker_search)
-            usage = budget_tracker.get_usage()
-            logger.info(f"API usage: {usage['used']}/{usage['remaining']} remaining")
+            except requests.exceptions.Timeout:
+                logger.warning(f"Request timeout (attempt {attempt + 1}/{max_retries}) for {ticker_search}")
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)  # Exponential backoff
+                    continue
+                logger.error(f"Max retries exceeded for timeouts on {ticker_search}")
+                return []
             
-            data = response.json()
-            articles = data.get('results', [])
+            except requests.exceptions.RequestException as e:
+                logger.error(f"Request failed for {ticker_search}: {e}")
+                return []
             
-            formatted_articles = []
-            for article in articles:
-                formatted_articles.append({
-                    'title': article.get('title', ''),
-                    'link': article.get('link', ''),
-                    'published': article.get('pubDate', ''),
-                    'summary': article.get('description', ''),
-                    'source': 'newsdata.io',  # Mark source as newsdata.io API, not publication
-                    'source_publication': article.get('source_name', 'Unknown')  # Actual publication name
-                })
-            
-            logger.info(f"Found {len(formatted_articles)} articles from newsdata.io for '{ticker_search}'")
-            return formatted_articles
+            except Exception as e:
+                logger.error(f"Unexpected error fetching news for {ticker_search}: {e}")
+                return []
         
-        except Exception as e:
-            logger.error(f"Failed to fetch newsdata.io: {e}")
-            return []
+        return []
     
     def _fetch_investing_com(self, ticker: str, date: str) -> List[Dict]:
         """
