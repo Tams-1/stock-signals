@@ -299,6 +299,7 @@ class SimpleProductionRunner:
                 "ticker": ticker,
                 "price": current_price,
                 "trend": trend,
+                "confidence": confidence,  # Add confidence from trend detector
                 "news_sentiment": news_sentiment,
                 "news_articles": news_articles,
                 "signal": signal,
