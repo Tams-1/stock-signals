@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Sheets Authorization</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .auth-link {
+            display: inline-block;
+            background: #4285f4;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .auth-link:hover {
+            background: #3367d6;
+        }
+        .step {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        code {
+            background: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 Google Sheets Authorization</h1>
+    
+    <p>Click the button below to authorize access to Google Sheets for <strong>tarsdabot@gmail.com</strong>:</p>
+    
+    <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=49434098257-4a5ir54sr4j8jbpji33o6vvpsmi5d3i7.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fspreadsheets+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file&access_type=offline&prompt=consent" class="auth-link" target="_blank">
+        Authorize Google Sheets
+    </a>
+    
+    <h2>Instructions:</h2>
+    
+    <div class="step">
+        <strong>Step 1:</strong> Click the blue button above
+    </div>
+    
+    <div class="step">
+        <strong>Step 2:</strong> Sign in with <code>tarsdabot@gmail.com</code> if prompted
+    </div>
+    
+    <div class="step">
+        <strong>Step 3:</strong> Click "Allow" to grant Sheets and Drive access
+    </div>
+    
+    <div class="step">
+        <strong>Step 4:</strong> You'll be redirected to a URL that looks like:<br>
+        <code>http://localhost/?state=...&code=4/0AeanS0...</code>
+    </div>
+    
+    <div class="step">
+        <strong>Step 5:</strong> Copy the <code>code</code> parameter from the URL<br>
+        (everything after <code>code=</code> until <code>&</code> or end of URL)
+    </div>
+    
+    <div class="step">
+        <strong>Step 6:</strong> Paste the code back in Telegram
+    </div>
+</body>
+</html>
