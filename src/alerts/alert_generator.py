@@ -78,6 +78,74 @@ def _deduplicate_ticker_groups(results: List[Dict]) -> List[Dict]:
     return list(groups.values())
 
 
+def _interpret_technicals(tech_indicators: Dict, trend: str, confidence: float) -> str:
+    """
+    Generate a concise plain English interpretation of technical indicators.
+    
+    Args:
+        tech_indicators: Dictionary of technical indicators
+        trend: Current trend (uptrend/downtrend/consolidation)
+        confidence: Trend confidence (0-1)
+    
+    Returns:
+        Concise interpretation string
+    """
+    if not tech_indicators:
+        return f"{trend.upper()} ({confidence*100:.0f}% confidence)"
+    
+    parts = []
+    
+    # RSI interpretation
+    rsi = tech_indicators.get('rsi')
+    if rsi:
+        if rsi > 70:
+            parts.append("overbought")
+        elif rsi < 30:
+            parts.append("oversold")
+        elif rsi > 60:
+            parts.append("strong momentum")
+        elif rsi < 40:
+            parts.append("weak momentum")
+    
+    # MACD interpretation
+    macd = tech_indicators.get('macd')
+    macd_signal = tech_indicators.get('macd_signal')
+    if macd is not None and macd_signal is not None:
+        if macd > macd_signal:
+            parts.append("bullish MACD")
+        else:
+            parts.append("bearish MACD")
+    
+    # Volume interpretation
+    volume = tech_indicators.get('volume_vs_avg')
+    if volume:
+        if volume > 150:
+            parts.append("high volume")
+        elif volume < 70:
+            parts.append("low volume")
+    
+    # MA interpretation
+    ma50 = tech_indicators.get('price_vs_50d')
+    if ma50:
+        if ma50 > 5:
+            parts.append("well above 50-day MA")
+        elif ma50 < -5:
+            parts.append("well below 50-day MA")
+    
+    # Combine into concise message
+    if not parts:
+        return f"{trend.upper()} ({confidence*100:.0f%} confidence)"
+    
+    # Create a natural flow
+    if len(parts) <= 2:
+        interpretation = f"{trend.upper()} with {', '.join(parts)} ({confidence*100:.0f}% confidence)"
+    else:
+        # Group by theme for longer lists
+        interpretation = f"{trend.upper()} ({confidence*100:.0f}% confidence) - {', '.join(parts)}"
+    
+    return interpretation
+
+
 def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
     """
     Generate formatted trading alerts for Telegram.
@@ -122,59 +190,10 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
         lines.append(f"    Price: R${r['price']:.2f}")
         lines.append(f"    └─ Drivers:")
         
-        # Trend with technical indicators
-        trend_conf = r.get('confidence', 0) * 100
-        lines.append(f"       • Trend: {r['trend'].upper()} ({trend_conf:.0f}% confidence)")
-        
-        # Technical indicators
+        # Technical interpretation (concise)
         tech_indicators = r.get('technical_indicators', {})
-        if tech_indicators:
-            # RSI
-            if 'rsi' in tech_indicators:
-                rsi = tech_indicators['rsi']
-                if rsi > 70:
-                    lines.append(f"         📊 RSI: {rsi:.1f} (overbought - watch for reversal)")
-                elif rsi < 30:
-                    lines.append(f"         📊 RSI: {rsi:.1f} (oversold - buying opportunity)")
-                else:
-                    lines.append(f"         📊 RSI: {rsi:.1f}")
-            
-            # MACD
-            if 'macd' in tech_indicators:
-                macd = tech_indicators['macd']
-                macd_signal = tech_indicators.get('macd_signal', 0)
-                lines.append(f"         📊 MACD: {macd:+.3f} | Signal: {macd_signal:+.3f}")
-                if macd > macd_signal:
-                    lines.append(f"         ✅ Bullish MACD crossover")
-                else:
-                    lines.append(f"         ⚠️ Bearish MACD")
-            
-            # Volume
-            if 'volume_vs_avg' in tech_indicators:
-                vol_pct = tech_indicators['volume_vs_avg']
-                if vol_pct > 150:
-                    lines.append(f"         📊 Volume: +{vol_pct:.0f}% vs avg (high participation)")
-                elif vol_pct > 120:
-                    lines.append(f"         📊 Volume: +{vol_pct:.0f}% vs avg (above normal)")
-                elif vol_pct < 80:
-                    lines.append(f"         📊 Volume: {vol_pct:.0f}% vs avg (low participation)")
-                else:
-                    lines.append(f"         📊 Volume: {vol_pct:.0f}% vs avg (normal)")
-            
-            # Moving averages
-            if 'price_vs_50d' in tech_indicators:
-                ma50 = tech_indicators['price_vs_50d']
-                if ma50 > 0:
-                    lines.append(f"         📊 Above 50-day MA by +{ma50:.1f}%")
-                else:
-                    lines.append(f"         📊 Below 50-day MA by {ma50:.1f}%")
-            
-            if 'price_vs_20d' in tech_indicators:
-                ma20 = tech_indicators['price_vs_20d']
-                if ma20 > 0:
-                    lines.append(f"         📊 Above 20-day MA by +{ma20:.1f}%")
-                else:
-                    lines.append(f"         📊 Below 20-day MA by {ma20:.1f}%")
+        tech_summary = _interpret_technicals(tech_indicators, r.get('trend', 'unknown'), r.get('confidence', 0))
+        lines.append(f"       • {tech_summary}")
         
         # News with headlines
         if r.get('news_sentiment') is not None:
@@ -188,29 +207,29 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
                     lines.append(f"         📰 {headline}")
             
             if ns > 0.1:
-                lines.append(f"         ✅ Positive news impact (+{(ns*10):.0f}% position)")
+                lines.append(f"         ✅ Positive impact (+{(ns*10):.0f}% position)")
             elif ns < -0.1:
-                lines.append(f"         ⚠️ Negative news headwind ({(abs(ns)*10):.0f}% position reduction)")
+                lines.append(f"         ⚠️ Negative headwind ({(abs(ns)*10):.0f}% position reduction)")
             else:
-                lines.append(f"         😐 Neutral news (no impact)")
+                lines.append(f"         😐 Neutral (no impact)")
         
-        # Fundamentals
+        # Fundamentals (concise)
         if fund:
             lines.append(f"       • Fundamentals: Grade {fund.get('fundamental_grade', 'N/A')}")
             
-            if fund.get('pe_ratio') and fund.get('pb_ratio'):
-                lines.append(f"         P/E: {fund['pe_ratio']:.1f} | P/B: {fund['pb_ratio']:.2f}")
+            if fund.get('pe_ratio') and fund.get('roe'):
+                lines.append(f"         P/E: {fund['pe_ratio']:.1f} | ROE: {fund['roe']:.1f}%")
             
-            if fund.get('roe'):
-                lines.append(f"         ROE: {fund['roe']:.1f}% | Div: {fund.get('div_yield', 0):.1f}%")
+            # Value/Quality summary
+            value = fund.get('value_score', 0)
+            quality = fund.get('quality_score', 0)
             
-            # Strengths
-            if fund.get('strengths'):
-                lines.append(f"         ✅ {', '.join(fund['strengths'][:2])}")
-            
-            # Weaknesses
-            if fund.get('weaknesses'):
-                lines.append(f"         ⚠️ {', '.join(fund['weaknesses'][:2])}")
+            if value > 70 and quality > 70:
+                lines.append(f"         ✅ Excellent value + quality")
+            elif value > 70:
+                lines.append(f"         ✅ Deep value play")
+            elif quality > 70:
+                lines.append(f"         ✅ High quality")
         
         # Position
         pos_pct = r.get('position_size', 0) * 100
@@ -236,30 +255,21 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
                 lines.append(f"       Entry: R${price:.2f} | Stop: R${stop_loss:.2f}")
                 lines.append(f"       Targets: R${target1:.2f} (2:1) | R${target2:.2f} (3:1)")
         
-        # Action notes and reversal signals
-        if fund and fund.get('action_notes'):
-            lines.append(f"    └─ Watch for:")
-            
-            # Add reversal signals based on indicators
-            tech_indicators = r.get('technical_indicators', {})
-            
-            # RSI warnings
-            if 'rsi' in tech_indicators:
-                rsi = tech_indicators['rsi']
-                if rsi > 70:
-                    lines.append(f"       ⚠️ RSI breaks above 70 (overbought) → Take partial profits")
-                elif rsi < 30:
-                    lines.append(f"       ✅ RSI breaks above 40 (reversal) → Strong buy signal")
-            
-            # MA warnings
-            if 'price_vs_50d' in tech_indicators:
-                ma50 = tech_indicators['price_vs_50d']
-                if ma50 < -2:
-                    lines.append(f"       ⚠️ Price drops below 50-day MA → Exit or tighten stop-loss")
-            
-            # Add action notes
-            for note in fund['action_notes'][:2]:
-                lines.append(f"       {note}")
+        # Action notes
+        lines.append(f"    └─ Watch for:")
+        tech_indicators = r.get('technical_indicators', {})
+        
+        # RSI warnings (simplified)
+        if 'rsi' in tech_indicators:
+            rsi = tech_indicators['rsi']
+            if rsi > 70:
+                lines.append(f"       ⚠️ RSI > 70 → Take partial profits")
+            elif rsi < 30 and r['signal'] in ['BUY', 'STRONG_BUY']:
+                lines.append(f"       ✅ RSI breaks above 40 → Strong entry")
+        
+        # MA warnings
+        if 'price_vs_50d' in tech_indicators and tech_indicators['price_vs_50d'] < -2:
+            lines.append(f"       ⚠️ Breaks below 50-day MA → Exit")
         
         lines.append("")
     
