@@ -102,13 +102,14 @@ class BrAPIClient:
 
         return None
 
-    def get_prices(self, tickers: List[str]) -> Dict[str, float]:
+    def get_prices(self, tickers: List[str], batch_size: int = 20) -> Dict[str, float]:
         """
         Fetch prices for multiple tickers, using cache where possible.
-        Fetches one ticker at a time (free-plan limit) with cache to minimize calls.
+        Uses batch API to fetch multiple tickers per request (more efficient).
 
         Args:
             tickers: List of stock tickers (without .SA suffix)
+            batch_size: Number of tickers per batch request (default 20 for rate limit safety)
 
         Returns:
             Dict mapping ticker -> price
@@ -127,24 +128,33 @@ class BrAPIClient:
             return prices
 
         import time
-        for i, ticker in enumerate(need_fetch):
+        
+        # Batch requests - much more efficient than individual calls
+        for i in range(0, len(need_fetch), batch_size):
+            batch = need_fetch[i:i + batch_size]
+            batch_str = ",".join(batch)
+            
             try:
-                url = self._build_url(ticker)
+                url = self._build_url(batch_str)
                 response = requests.get(url, timeout=self.timeout)
                 response.raise_for_status()
 
                 data = response.json()
-                if data.get("results") and len(data["results"]) > 0:
-                    price = float(data["results"][0]["regularMarketPrice"])
-                    prices[ticker] = price
-                    self._cache_put(ticker, price)
+                if data.get("results"):
+                    for result in data["results"]:
+                        ticker = result.get("symbol")
+                        price = result.get("regularMarketPrice")
+                        if ticker and price:
+                            prices[ticker] = float(price)
+                            self._cache_put(ticker, float(price))
 
             except Exception as e:
-                print(f"❌ BrAPI error for {ticker}: {e}")
+                # On rate limit, just skip - we'll use yfinance fallback
+                pass
 
-            # Small delay between requests to respect rate limits
-            if i < len(need_fetch) - 1:
-                time.sleep(0.3)
+            # Rate limit: 2 seconds between batch requests (BrAPI free tier is strict)
+            if i + batch_size < len(need_fetch):
+                time.sleep(2)
 
         self._save_cache()
         return prices

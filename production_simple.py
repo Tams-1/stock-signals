@@ -241,18 +241,16 @@ class SimpleProductionRunner:
             if len(data) < 50:
                 return None
             
-            # Current price: prefer BrAPI real-time, fall back to yfinance close
+            # Current price: use pre-fetched BrAPI prices or fall back to yfinance close
             clean_ticker = ticker.replace('.SA', '')
             brapi_price = self._brapi_prices.get(clean_ticker)
-            if brapi_price is None:
-                brapi_price = self.brapi_client.get_price(clean_ticker)
             
             if brapi_price is not None:
                 current_price = brapi_price
             else:
+                # Fall back to yfinance close (no additional API calls)
                 price_val = data['Close'].iloc[-1]
                 current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
-                print(f"     ⚠️ BrAPI unavailable for {clean_ticker}, using yfinance close")
             
             # Trend detection (core validated logic)
             trend_result = self.trend_detector.detect_trend(data)
