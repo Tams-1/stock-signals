@@ -25,6 +25,7 @@ from src.news.free_news_client import FreeNewsClient
 from src.features.feature_engineering import get_feature_engineer
 from src.fundamentals.integration import FundamentalIntegrator, format_integrated_signal
 from src.brapi_client import BrAPIClient
+from src.alerts.alert_generator import generate_trading_alerts
 
 
 def load_tickers() -> List[str]:
@@ -574,6 +575,14 @@ class SimpleProductionRunner:
         elif results and not buy_signals:
             print(f"\n⚠️  MONITORING: 0 BUY signals out of {len(results)} tickers. "
                   f"({len(sell_signals)} SELL)")
+        
+        # Generate formatted alerts for Telegram delivery
+        if buy_signals or sell_signals:
+            print("\n" + "=" * 70)
+            print("📱 TELEGRAM ALERTS")
+            print("=" * 70 + "\n")
+            alert_message = generate_trading_alerts(results, top_n=5)
+            print(alert_message)
         
         return results
     
