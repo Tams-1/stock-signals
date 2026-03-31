@@ -13,7 +13,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import argparse
-from typing import Dict, List
+from typing import Dict, List, Optional, Tuple
 import json
 from pathlib import Path
 
@@ -23,7 +23,8 @@ load_dotenv()
 from src.signals.trend_detector_v2 import TrendDetectorV2
 from src.news.free_news_client import FreeNewsClient
 from src.features.feature_engineering import get_feature_engineer
-from src.fundamentals.integration import FundamentalIntegrator, format_integrated_signal
+from src.fundamentals.integration import FundamentalIntegrator
+from src.indicators.signal_fusion import fuse_all_signals
 from src.brapi_client import BrAPIClient
 from src.alerts.alert_generator import generate_trading_alerts
 
@@ -63,6 +64,8 @@ class SimpleProductionRunner:
     
     # Class-level model cache (shared across instances)
     _model_cache = {}
+    MIN_SKIP_TURNOVER_BRL = 50_000
+    MIN_DOWNGRADE_TURNOVER_BRL = 500_000
     
     def __init__(self, use_news: bool = True, use_fundamentals: bool = True, n_workers: int = None):
         self.trend_detector = TrendDetectorV2()
@@ -88,6 +91,151 @@ class SimpleProductionRunner:
         print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, "
               f"fundamentals={'ON' if use_fundamentals else 'OFF'}, "
               f"price_source=BrAPI, workers={self.n_workers})")
+
+    @staticmethod
+    def _normalize_data(data: pd.DataFrame) -> pd.DataFrame:
+        """Normalize yfinance/brapi frames to flat OHLCV columns."""
+        if isinstance(data.columns, pd.MultiIndex):
+            data = data.copy()
+            data.columns = data.columns.get_level_values(0)
+        return data
+
+    def _calculate_liquidity_profile(self, data: pd.DataFrame) -> Dict:
+        """
+        Calculate 20-day liquidity using average traded value (price * volume).
+
+        This is more robust than raw share volume for Brazilian equities where
+        penny stocks can print high share count but still be illiquid in BRL.
+        """
+        data = self._normalize_data(data)
+
+        if 'Close' not in data.columns or 'Volume' not in data.columns or len(data) < 20:
+            return {
+                'avg_volume_20d': 0.0,
+                'avg_turnover_20d': 0.0,
+                'status': 'skip',
+            }
+
+        closes = data['Close'].tail(20).astype(float)
+        volumes = data['Volume'].tail(20).astype(float)
+        avg_volume_20d = float(volumes.mean()) if not volumes.empty else 0.0
+        avg_turnover_20d = float((closes * volumes).mean()) if not closes.empty else 0.0
+
+        if np.isnan(avg_turnover_20d):
+            avg_turnover_20d = 0.0
+        if np.isnan(avg_volume_20d):
+            avg_volume_20d = 0.0
+
+        status = 'healthy'
+        if avg_turnover_20d < self.MIN_SKIP_TURNOVER_BRL:
+            status = 'skip'
+        elif avg_turnover_20d < self.MIN_DOWNGRADE_TURNOVER_BRL:
+            status = 'downgrade'
+
+        return {
+            'avg_volume_20d': avg_volume_20d,
+            'avg_turnover_20d': avg_turnover_20d,
+            'status': status,
+        }
+
+    @staticmethod
+    def _downgrade_signal(signal: str) -> str:
+        """Downgrade a signal by one level toward neutral."""
+        downgrade_map = {
+            'STRONG_BUY': 'BUY',
+            'BUY': 'HOLD',
+            'SELL': 'HOLD',
+            'STRONG_SELL': 'SELL',
+        }
+        return downgrade_map.get(signal, signal)
+
+    def _apply_liquidity_adjustment(
+        self,
+        ticker: str,
+        signal: str,
+        conviction: float,
+        position_size: float,
+        liquidity_profile: Dict,
+    ) -> Tuple[Optional[str], float, float]:
+        """Apply low-liquidity skip/downgrade policy to the final signal."""
+        avg_turnover = liquidity_profile.get('avg_turnover_20d', 0.0)
+        status = liquidity_profile.get('status', 'healthy')
+
+        if status == 'skip':
+            print(
+                f"     [LIQ] Skipping {ticker}: "
+                f"20d avg turnover R${avg_turnover:,.0f} < R${self.MIN_SKIP_TURNOVER_BRL:,.0f}"
+            )
+            return None, 0.0, 0.0
+
+        if status == 'downgrade' and signal not in ['HOLD', 'NONE']:
+            downgraded_signal = self._downgrade_signal(signal)
+            if downgraded_signal != signal:
+                print(
+                    f"     [LIQ] Downgrading {ticker}: "
+                    f"20d avg turnover R${avg_turnover:,.0f} < R${self.MIN_DOWNGRADE_TURNOVER_BRL:,.0f} "
+                    f"({signal} -> {downgraded_signal})"
+                )
+                signal = downgraded_signal
+                if signal == 'HOLD':
+                    conviction = 0.0
+                    position_size = 0.0
+                else:
+                    conviction = np.sign(conviction) * min(abs(conviction), 0.65)
+                    position_size *= 0.75
+
+        return signal, conviction, position_size
+
+    @staticmethod
+    def _extract_key_indicators(fused: Dict) -> List[Dict]:
+        """Extract the strongest indicator signals from the fusion output."""
+        category_details = fused.get('category_details', {})
+        top_signals = []
+
+        for category, details in category_details.items():
+            for sig_name, sig_signal, sig_strength in details.get('signals', []):
+                top_signals.append({
+                    'name': sig_name,
+                    'category': category,
+                    'signal': sig_signal,
+                    'strength': sig_strength,
+                })
+
+        top_signals.sort(key=lambda x: abs(x['strength']), reverse=True)
+        return top_signals[:5]
+
+    def _build_trade_levels(
+        self,
+        current_price: float,
+        technical_indicators: Dict,
+        market_regime: str,
+    ) -> Optional[Dict]:
+        """Build entry, stop, and target levels for long setups."""
+        from src.config import get_config
+
+        config = get_config()
+        if current_price <= 0:
+            return None
+
+        stop_pct = config.get_stop_loss(market_regime)
+        base_stop = current_price * (1 - stop_pct)
+        ma50 = technical_indicators.get('ma50')
+
+        if ma50 and ma50 > 0 and ma50 < current_price:
+            stop_loss = max(base_stop, ma50 * 0.995)
+        else:
+            stop_loss = base_stop
+
+        risk = current_price - stop_loss
+        if risk <= 0:
+            return None
+
+        return {
+            'entry': current_price,
+            'stop_loss': stop_loss,
+            'target_1': current_price + (risk * 2),
+            'target_2': current_price + (risk * 3),
+        }
     
     def calculate_kelly_position(self, data: pd.DataFrame, confidence: float) -> float:
         """
@@ -150,8 +298,15 @@ class SimpleProductionRunner:
                 return config.MIN_POSITION_SIZE
             
             # Apply Half-Kelly for safety (reduces volatility and drawdowns)
-            # Also scale by confidence from signal quality
-            position = kelly * config.KELLY_FRACTION * confidence
+            # Also scale by confidence from signal quality and realized volatility.
+            realized_vol = float(returns.std() * np.sqrt(252))
+            if np.isnan(realized_vol) or realized_vol <= 0:
+                vol_adjustment = 1.0
+            else:
+                target_vol = 0.35
+                vol_adjustment = float(np.clip(target_vol / realized_vol, 0.5, 1.25))
+
+            position = kelly * config.KELLY_FRACTION * confidence * vol_adjustment
             
             # Enforce bounds
             return max(config.MIN_POSITION_SIZE, min(config.MAX_POSITION_SIZE, position))
@@ -214,10 +369,22 @@ class SimpleProductionRunner:
             # (which handles newsdata.io + Investing.com fallback + caching)
             date = datetime.now().strftime("%Y-%m-%d")
             sentiment = self.news_client.get_sentiment(ticker, date)
+            cached_payload = self.news_client.cache.get_full(ticker) or {}
+            cached_articles = cached_payload.get("articles", [])
+            articles = [
+                {
+                    "title": article.get("title", ""),
+                    "summary": article.get("summary", ""),
+                    "source": article.get("source_publication", article.get("source", "Unknown")),
+                    "link": article.get("link", ""),
+                }
+                for article in cached_articles
+                if article.get("title")
+            ]
             
             return {
                 "sentiment": sentiment,
-                "articles": [],  # Already cached in news_client.cache
+                "articles": articles,
                 "dates": [date],
                 "daily_scores": {date: sentiment}
             }
@@ -239,6 +406,11 @@ class SimpleProductionRunner:
             if data is None:
                 data = self.get_data(ticker, end_date=as_of_date)
             
+            if data is None:
+                return None
+
+            data = self._normalize_data(data)
+
             if len(data) < 50:
                 return None
             
@@ -252,6 +424,11 @@ class SimpleProductionRunner:
                 # Fall back to yfinance close (no additional API calls)
                 price_val = data['Close'].iloc[-1]
                 current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+
+            liquidity_profile = self._calculate_liquidity_profile(data)
+            if liquidity_profile['status'] == 'skip':
+                self._apply_liquidity_adjustment(ticker, 'BUY', 0.0, 0.0, liquidity_profile)
+                return None
             
             # Trend detection (core validated logic)
             trend_result = self.trend_detector.detect_trend(data)
@@ -276,13 +453,29 @@ class SimpleProductionRunner:
             if vol_regime == 'high':
                 confidence *= 0.90  # Reduce confidence in high volatility
                 print(f"     [VOL] High volatility regime (-10% confidence)")
+
+            regime_map = {'low': 'bull', 'medium': 'sideways', 'high': 'bear'}
+            market_regime = regime_map.get(vol_regime, 'default')
+
+            # Technical signal fusion adds a second opinion on the trend setup.
+            fused = fuse_all_signals(
+                data,
+                regime=market_regime if market_regime in {'bull', 'bear', 'sideways'} else 'sideways',
+                regime_strength=min(1.0, max(confidence, 0.25)),
+            )
+            fused_score = float(fused.get('score', 0.0))
+            fusion_confidence = float(fused.get('confidence', 0.0))
+            key_indicators = self._extract_key_indicators(fused)
             
             # Store features for reporting
             feature_summary = {
                 'volume_momentum': volume_features.get('volume_momentum', 1.0),
                 'unusual_volume': volume_features.get('unusual_volume', False),
                 'volatility_regime': vol_regime,
-                'vix_equivalent': volatility_features.get('vix_equivalent', 20.0)
+                'vix_equivalent': volatility_features.get('vix_equivalent', 20.0),
+                'avg_volume_20d': liquidity_profile.get('avg_volume_20d', 0.0),
+                'avg_turnover_20d': liquidity_profile.get('avg_turnover_20d', 0.0),
+                'liquidity_status': liquidity_profile.get('status', 'healthy'),
             }
             
             # Print trend details
@@ -295,6 +488,10 @@ class SimpleProductionRunner:
                 trend = "DOWNTREND"
             else:
                 trend = "SIDEWAYS"
+
+            trend_direction = 1 if trend == "UPTREND" else -1 if trend == "DOWNTREND" else 0
+            fusion_alignment = fused_score * trend_direction if trend_direction else 0.0
+            confidence = float(np.clip(confidence + (fusion_alignment * 0.10), 0.0, 1.0))
             
             # News sentiment (if enabled)
             if self.use_news:
@@ -315,13 +512,11 @@ class SimpleProductionRunner:
             signal = "HOLD"
             position_size = 0.0
             conviction = 0.0
-            technical_score = confidence * 100  # Convert to 0-100 scale
+            technical_score = float(np.clip((confidence * 100) + (fusion_alignment * 15), 0.0, 100.0))
             
             # Regime-aware thresholds: map volatility regime to market regime
-            regime_map = {'low': 'bull', 'medium': 'sideways', 'high': 'bear'}
-            market_regime = regime_map.get(vol_regime, 'default')
             thresholds = config.get_thresholds(market_regime)
-            MIN_CONFIDENCE = thresholds.buy_confidence
+            MIN_CONFIDENCE = max(0.60, thresholds.buy_confidence)
             SELL_CONFIDENCE = thresholds.sell_confidence
             
             print(f"     [REGIME] {market_regime} -> buy_conf={MIN_CONFIDENCE:.2f}, sell_conf={SELL_CONFIDENCE:.2f}")
@@ -336,9 +531,8 @@ class SimpleProductionRunner:
                 # News boost: Sigmoid scaling (SOTA approach)
                 # Uses logistic function to prevent over-amplification
                 if self.use_news and abs(news_sentiment) > 0.1:
-                    # Sigmoid scaling: maps sentiment to 0.5-1.5 range
-                    # This provides multiplicative boost instead of additive
-                    sigmoid_boost = 1 / (1 + np.exp(-5 * news_sentiment))  # 0.5 to 1.0
+                    # Shifted sigmoid keeps positive news above 1.0 and negative below 1.0.
+                    sigmoid_boost = 0.5 + (1 / (1 + np.exp(-5 * news_sentiment)))  # 0.5 to 1.5
                     position_size *= sigmoid_boost  # Multiplicative scaling
                     
                     # Update conviction based on news agreement with trend
@@ -365,16 +559,30 @@ class SimpleProductionRunner:
                 
                 # Override signal based on integrated analysis
                 signal = integrated_score.recommendation
-                conviction = integrated_score.composite_score / 100  # Normalize to 0-1
+                if signal in ["BUY", "STRONG_BUY"]:
+                    conviction = integrated_score.composite_score / 100
+                elif signal in ["SELL", "STRONG_SELL"]:
+                    conviction = -(integrated_score.composite_score / 100)
+                else:
+                    conviction = 0.0
                 
                 # Adjust position size based on fundamentals
                 if signal in ["BUY", "STRONG_BUY"]:
-                    # High quality stocks can get larger positions
-                    if integrated_score.is_quality_pick:
+                    if position_size <= 0:
+                        position_size = self.calculate_kelly_position(data, confidence)
+
+                    # High quality stocks with real ROE/ROIC support can carry more size.
+                    if (
+                        integrated_score.roe is not None and integrated_score.roe > 20 and
+                        integrated_score.roic is not None and integrated_score.roic > 15
+                    ):
                         position_size = min(0.80, position_size * 1.2)
                     
-                    # Value picks get moderate positions (contrarian)
-                    if integrated_score.is_value_pick:
+                    # Deep value names keep moderate size because they can be slower catalysts.
+                    if (
+                        integrated_score.pe_ratio is not None and integrated_score.pe_ratio < 10 and
+                        integrated_score.pb_ratio is not None and integrated_score.pb_ratio < 1
+                    ):
                         position_size = max(0.15, min(0.50, position_size))
                     
                     # Poor fundamentals reduce position size
@@ -385,12 +593,17 @@ class SimpleProductionRunner:
                     if integrated_score.is_avoid:
                         signal = "HOLD"
                         position_size = 0.0
+                elif signal in ["SELL", "STRONG_SELL"]:
+                    position_size = 1.0
+                else:
+                    position_size = 0.0
                 
                 fundamental_data = {
                     'composite_score': integrated_score.composite_score,
                     'fundamental_grade': integrated_score.fundamental_grade,
                     'value_score': integrated_score.value_score,
                     'quality_score': integrated_score.quality_score,
+                    'growth_score': integrated_score.growth_score,
                     'is_value_pick': integrated_score.is_value_pick,
                     'is_quality_pick': integrated_score.is_quality_pick,
                     'is_momentum_pick': integrated_score.is_momentum_pick,
@@ -398,7 +611,9 @@ class SimpleProductionRunner:
                     'pe_ratio': integrated_score.pe_ratio,
                     'pb_ratio': integrated_score.pb_ratio,
                     'roe': integrated_score.roe,
+                    'roic': integrated_score.roic,
                     'div_yield': integrated_score.div_yield,
+                    'debt_equity': integrated_score.debt_equity,
                     'strengths': integrated_score.strengths,
                     'weaknesses': integrated_score.weaknesses,
                     'action_notes': integrated_score.action_notes,
@@ -432,32 +647,50 @@ class SimpleProductionRunner:
                 avg_vol = avg_volume.iloc[-1]
                 if avg_vol > 0:
                     technical_indicators['volume_vs_avg'] = (current_volume / avg_vol) * 100
+                technical_indicators['avg_volume_20d'] = float(avg_vol)
+                technical_indicators['avg_turnover_20d'] = float((data['Close'].tail(20) * data['Volume'].tail(20)).mean())
             
             # Price vs moving averages
             ma50 = data['Close'].rolling(window=50).mean()
             ma20 = data['Close'].rolling(window=20).mean()
             if len(ma50) > 0 and len(ma20) > 0:
-                current_price = data['Close'].iloc[-1]
-                technical_indicators['price_vs_50d'] = ((current_price - ma50.iloc[-1]) / ma50.iloc[-1]) * 100
-                technical_indicators['price_vs_20d'] = ((current_price - ma20.iloc[-1]) / ma20.iloc[-1]) * 100
+                current_close = data['Close'].iloc[-1]
+                technical_indicators['ma50'] = float(ma50.iloc[-1])
+                technical_indicators['ma20'] = float(ma20.iloc[-1])
+                technical_indicators['price_vs_50d'] = ((current_close - ma50.iloc[-1]) / ma50.iloc[-1]) * 100
+                technical_indicators['price_vs_20d'] = ((current_close - ma20.iloc[-1]) / ma20.iloc[-1]) * 100
             
             # Extract news headlines
             news_headlines = []
             if news_articles:
                 for article in news_articles[:3]:
                     title = article.get('title', '')
-                    source = article.get('source', '')
+                    source = article.get('source', article.get('source_publication', ''))
                     if title:
                         if source:
                             news_headlines.append(f"{title} ({source})")
                         else:
                             news_headlines.append(title)
+
+            risk_levels = None
+            if signal in ["BUY", "STRONG_BUY"]:
+                risk_levels = self._build_trade_levels(current_price, technical_indicators, market_regime)
+
+            signal, conviction, position_size = self._apply_liquidity_adjustment(
+                ticker, signal, conviction, position_size, liquidity_profile
+            )
+            if signal is None:
+                return None
             
             return {
                 "ticker": ticker,
                 "price": current_price,
                 "trend": trend,
                 "confidence": confidence,  # Add confidence from trend detector
+                "fusion_confidence": fusion_confidence,
+                "fused_score": fused_score,
+                "key_indicators": key_indicators,
+                "market_regime": market_regime,
                 "news_sentiment": news_sentiment,
                 "news_articles": news_articles,
                 "news_headlines": news_headlines,  # Add headlines for reporting
@@ -467,6 +700,8 @@ class SimpleProductionRunner:
                 "features": feature_summary,  # Add feature engineering data
                 "fundamentals": fundamental_data,  # Add fundamental data
                 "technical_indicators": technical_indicators,  # Add technical indicators
+                "risk_levels": risk_levels,
+                "liquidity": liquidity_profile,
             }
             
         except Exception as e:
@@ -671,8 +906,8 @@ class SimpleProductionRunner:
                 )
         
         # Stats
-        buy = [r for r in results if r['signal'] == "BUY"]
-        sell = [r for r in results if r['signal'] == "SELL"]
+        buy = [r for r in results if r['signal'] in ("BUY", "STRONG_BUY")]
+        sell = [r for r in results if r['signal'] in ("SELL", "STRONG_SELL")]
         
         print(f"\n{'-'*70}")
         print(f"🟢 BUY: {len(buy)} | 🔴 SELL: {len(sell)} | ⚪ HOLD: {len(results) - len(buy) - len(sell)}")

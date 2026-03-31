@@ -175,7 +175,8 @@ class TestSignalGeneration:
         """Create uptrend data."""
         dates = pd.date_range(start='2024-01-01', periods=100, freq='D')
         return pd.DataFrame({
-            'Close': np.linspace(100, 150, 100)
+            'Close': np.linspace(100, 150, 100),
+            'Volume': np.full(100, 1_500_000)
         }, index=dates)
     
     @pytest.fixture
@@ -183,7 +184,8 @@ class TestSignalGeneration:
         """Create downtrend data."""
         dates = pd.date_range(start='2024-01-01', periods=100, freq='D')
         return pd.DataFrame({
-            'Close': np.linspace(150, 100, 100)
+            'Close': np.linspace(150, 100, 100),
+            'Volume': np.full(100, 1_500_000)
         }, index=dates)
     
     def test_analyze_ticker_returns_dict(self, runner, uptrend_data):
@@ -207,7 +209,7 @@ class TestSignalGeneration:
             result = runner.analyze_ticker('TEST.SA')
             
             if result:
-                assert result['signal'] in ['BUY', 'SELL', 'HOLD']
+                assert result['signal'] in ['STRONG_BUY', 'BUY', 'HOLD', 'SELL', 'STRONG_SELL']
     
     def test_buy_signal_for_uptrend(self, runner, uptrend_data):
         """Test BUY signal for uptrend with high confidence."""
@@ -217,7 +219,7 @@ class TestSignalGeneration:
             result = runner.analyze_ticker('TEST.SA')
             
             if result and result['conviction'] >= 0.5:
-                assert result['signal'] == 'BUY'
+                assert result['signal'] in ['BUY', 'STRONG_BUY']
     
     def test_sell_signal_for_downtrend(self, runner, downtrend_data):
         """Test SELL signal for downtrend."""
@@ -226,10 +228,10 @@ class TestSignalGeneration:
             
             result = runner.analyze_ticker('TEST.SA')
             
-            if result and result['trend'] == 'downtrend':
+            if result and result['trend'] == 'DOWNTREND':
                 # Should be SELL if confidence is high enough
                 if result['conviction'] <= -0.5:
-                    assert result['signal'] == 'SELL'
+                    assert result['signal'] in ['SELL', 'STRONG_SELL']
 
 
 class TestNewsIntegration:
@@ -248,7 +250,8 @@ class TestNewsIntegration:
         """Create sample price data."""
         dates = pd.date_range(start='2024-01-01', periods=100, freq='D')
         return pd.DataFrame({
-            'Close': np.linspace(100, 150, 100)
+            'Close': np.linspace(100, 150, 100),
+            'Volume': np.full(100, 1_500_000)
         }, index=dates)
     
     def test_news_disabled(self, runner_no_news, sample_data):
@@ -272,6 +275,73 @@ class TestNewsIntegration:
                 
                 if result:
                     assert 'news_sentiment' in result
+
+    def test_news_headlines_in_result(self, runner_with_news, sample_data):
+        """Test that article sources flow through to alert headlines."""
+        with patch.object(runner_with_news, 'get_data') as mock_get:
+            mock_get.return_value = sample_data
+            with patch.object(runner_with_news, 'get_news_sentiment') as mock_news:
+                mock_news.return_value = {
+                    'sentiment': 0.4,
+                    'articles': [
+                        {'title': 'Petrobras beats estimates', 'source': 'Valor'},
+                        {'title': 'Dividend outlook improves', 'source': 'Reuters'},
+                    ],
+                }
+                
+                result = runner_with_news.analyze_ticker('TEST.SA')
+                
+                if result:
+                    assert result['news_headlines'][:2] == [
+                        'Petrobras beats estimates (Valor)',
+                        'Dividend outlook improves (Reuters)',
+                    ]
+
+
+class TestLiquidityPolicy:
+    """Tests for low-liquidity filtering and downgrade logic."""
+
+    @pytest.fixture
+    def runner(self):
+        return SimpleProductionRunner(use_news=False)
+
+    def test_calculate_liquidity_profile_skip(self, runner):
+        dates = pd.date_range(start='2024-01-01', periods=30, freq='D')
+        data = pd.DataFrame({
+            'Close': np.full(30, 10.0),
+            'Volume': np.full(30, 100.0),
+        }, index=dates)
+
+        profile = runner._calculate_liquidity_profile(data)
+
+        assert profile['status'] == 'skip'
+        assert profile['avg_turnover_20d'] < runner.MIN_SKIP_TURNOVER_BRL
+
+    def test_calculate_liquidity_profile_downgrade(self, runner):
+        dates = pd.date_range(start='2024-01-01', periods=30, freq='D')
+        data = pd.DataFrame({
+            'Close': np.full(30, 10.0),
+            'Volume': np.full(30, 20_000.0),  # R$200k turnover
+        }, index=dates)
+
+        profile = runner._calculate_liquidity_profile(data)
+
+        assert profile['status'] == 'downgrade'
+        assert runner.MIN_SKIP_TURNOVER_BRL <= profile['avg_turnover_20d'] < runner.MIN_DOWNGRADE_TURNOVER_BRL
+
+    def test_apply_liquidity_adjustment_downgrades_one_level(self, runner):
+        profile = {
+            'status': 'downgrade',
+            'avg_turnover_20d': 200_000.0,
+        }
+
+        signal, conviction, position_size = runner._apply_liquidity_adjustment(
+            'TEST.SA', 'STRONG_BUY', 0.9, 0.4, profile
+        )
+
+        assert signal == 'BUY'
+        assert conviction <= 0.65
+        assert position_size < 0.4
 
 
 class TestTopMovers:

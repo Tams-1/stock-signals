@@ -43,7 +43,9 @@ class IntegratedScore:
     pe_ratio: Optional[float]
     pb_ratio: Optional[float]
     roe: Optional[float]
+    roic: Optional[float]
     div_yield: Optional[float]
+    debt_equity: Optional[float]
     
     # Notes
     strengths: List[str]
@@ -74,6 +76,10 @@ class FundamentalIntegrator:
     WEAK_FUNDAMENTAL_THRESHOLD = 40  # Below this is "weak"
     STRONG_TECHNICAL_THRESHOLD = 60
     WEAK_TECHNICAL_THRESHOLD = 40
+    STRONG_BUY_THRESHOLD = 75
+    BUY_THRESHOLD = 60
+    HOLD_THRESHOLD = 40
+    SELL_THRESHOLD = 25
     
     def __init__(self, fundamentals_path: Optional[Path] = None):
         """Initialize with path to fundamental scores cache."""
@@ -94,6 +100,7 @@ class FundamentalIntegrator:
                 self.fundamentals_path = Path(__file__).parent.parent.parent / 'data' / 'fundamentals' / 'fundamental_scores.json'
         
         self._fundamentals_cache = None
+        self._raw_fundamentals_cache = None
     
     def load_fundamentals(self) -> Dict:
         """Load fundamental scores from cache."""
@@ -120,6 +127,28 @@ class FundamentalIntegrator:
         # Try with and without .SA suffix
         clean_ticker = ticker.replace('.SA', '')
         return fundamentals.get(clean_ticker)
+
+    def load_raw_fundamentals(self) -> Dict:
+        """Load raw fundamentals cache once and reuse it for all tickers."""
+        if self._raw_fundamentals_cache is not None:
+            return self._raw_fundamentals_cache
+
+        raw_path = self.fundamentals_path.parent / 'fundamentals_cache.json'
+        if not raw_path.exists():
+            self._raw_fundamentals_cache = {}
+            return self._raw_fundamentals_cache
+
+        with open(raw_path, 'r', encoding='utf-8') as f:
+            raw_data = json.load(f)
+
+        self._raw_fundamentals_cache = raw_data.get('data', {})
+        return self._raw_fundamentals_cache
+
+    def get_raw_fundamentals(self, ticker: str) -> Dict:
+        """Get raw fundamental metrics for a ticker."""
+        raw_fundamentals = self.load_raw_fundamentals()
+        clean_ticker = ticker.replace('.SA', '')
+        return raw_fundamentals.get(clean_ticker, {})
     
     def integrate(self, ticker: str, technical_score: float, 
                   trend: str, confidence: float,
@@ -167,31 +196,38 @@ class FundamentalIntegrator:
             value_score, quality_score
         )
         
-        # Load raw fundamental data for metrics and P/E validation
-        pe_ratio = None
-        pb_ratio = None
-        roe = None
-        div_yield = None
-        
-        raw_path = self.fundamentals_path.parent / 'fundamentals_cache.json'
-        if raw_path.exists():
-            with open(raw_path, 'r', encoding='utf-8') as f:
-                raw_data = json.load(f)
-            ticker_data = raw_data.get('data', {}).get(ticker.replace('.SA', ''), {})
-            pe_ratio = ticker_data.get('pe_ratio')
-            pb_ratio = ticker_data.get('pb_ratio')
-            roe = ticker_data.get('roe')
-            div_yield = ticker_data.get('div_yield')
+        # Load raw fundamental data for metrics and validation
+        raw_metrics = self.get_raw_fundamentals(ticker)
+        pe_ratio = raw_metrics.get('pe_ratio') or (fund_data.get('pe_ratio') if fund_data else None)
+        pb_ratio = raw_metrics.get('pb_ratio') or (fund_data.get('pb_ratio') if fund_data else None)
+        roe = raw_metrics.get('roe')
+        roic = raw_metrics.get('roic')
+        div_yield = raw_metrics.get('div_yield')
+        debt_equity = raw_metrics.get('debt_equity')
         
         rec_data = {
-            'pe_ratio': pe_ratio or (fund_data.get('pe_ratio') if fund_data else None),
+            'pe_ratio': pe_ratio,
+            'pb_ratio': pb_ratio,
+            'roe': roe,
+            'roic': roic,
             'value_score': value_score,
         }
         recommendation = self._get_recommendation(composite, trend, fund_score, rec_data)
         
         # Determine flags
-        is_value_pick = self._is_value_pick(technical_score, value_score, quality_score)
-        is_quality_pick = self._is_quality_pick(technical_score, quality_score)
+        is_value_pick = self._is_value_pick(
+            technical_score,
+            value_score,
+            quality_score,
+            pe_ratio=pe_ratio,
+            pb_ratio=pb_ratio,
+        )
+        is_quality_pick = self._is_quality_pick(
+            technical_score,
+            quality_score,
+            roe=roe,
+            roic=roic,
+        )
         is_momentum_pick = self._is_momentum_pick(technical_score, fund_score)
         is_avoid = self._is_avoid(technical_score, fund_score)
         
@@ -224,7 +260,9 @@ class FundamentalIntegrator:
             pe_ratio=pe_ratio,
             pb_ratio=pb_ratio,
             roe=roe,
+            roic=roic,
             div_yield=div_yield,
+            debt_equity=debt_equity,
             strengths=all_strengths,
             weaknesses=all_weaknesses,
             action_notes=action_notes
@@ -265,13 +303,13 @@ class FundamentalIntegrator:
     def _get_recommendation(self, composite: float, trend: str, 
                            fund_score: float, data: Optional[Dict] = None) -> str:
         """Generate recommendation based on composite score."""
-        if composite >= 75:
+        if composite >= self.STRONG_BUY_THRESHOLD:
             base_rec = 'STRONG_BUY'
-        elif composite >= 60:
+        elif composite >= self.BUY_THRESHOLD:
             base_rec = 'BUY'
-        elif composite >= 40:
+        elif composite >= self.HOLD_THRESHOLD:
             base_rec = 'HOLD'
-        elif composite >= 25:
+        elif composite >= self.SELL_THRESHOLD:
             base_rec = 'SELL'
         else:
             base_rec = 'STRONG_SELL'
@@ -295,16 +333,27 @@ class FundamentalIntegrator:
         
         return base_rec
     
-    def _is_value_pick(self, tech_score: float, value_score: float, 
-                       quality_score: float) -> bool:
+    def _is_value_pick(self, tech_score: float, value_score: float,
+                       quality_score: float, pe_ratio: Optional[float] = None,
+                       pb_ratio: Optional[float] = None) -> bool:
         """Check if this is a value investment opportunity."""
-        return (value_score >= 70 and 
-                quality_score >= 50 and 
+        raw_value_ok = (
+            pe_ratio is not None and pe_ratio < 10 and
+            pb_ratio is not None and pb_ratio < 1
+        )
+        return ((value_score >= 70 or raw_value_ok) and
+                quality_score >= 50 and
                 tech_score >= 35)
     
-    def _is_quality_pick(self, tech_score: float, quality_score: float) -> bool:
+    def _is_quality_pick(self, tech_score: float, quality_score: float,
+                         roe: Optional[float] = None,
+                         roic: Optional[float] = None) -> bool:
         """Check if this is a quality compounder."""
-        return quality_score >= 75 and tech_score >= 45
+        raw_quality_ok = (
+            roe is not None and roe >= 20 and
+            roic is not None and roic >= 15
+        )
+        return (quality_score >= 75 or raw_quality_ok) and tech_score >= 45
     
     def _is_momentum_pick(self, tech_score: float, fund_score: float) -> bool:
         """Check if this is a momentum play."""
@@ -367,6 +416,8 @@ def format_integrated_signal(score: IntegratedScore) -> str:
         metrics.append(f"P/B: {score.pb_ratio:.2f}")
     if score.roe:
         metrics.append(f"ROE: {score.roe:.1f}%")
+    if score.roic:
+        metrics.append(f"ROIC: {score.roic:.1f}%")
     if score.div_yield:
         metrics.append(f"Div: {score.div_yield:.1f}%")
     

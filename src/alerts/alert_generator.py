@@ -7,6 +7,7 @@ Formats signals for Telegram delivery.
 from typing import List, Dict
 from datetime import datetime
 import re
+import math
 
 
 def _get_ticker_group(ticker: str) -> str:
@@ -78,72 +79,117 @@ def _deduplicate_ticker_groups(results: List[Dict]) -> List[Dict]:
     return list(groups.values())
 
 
-def _interpret_technicals(tech_indicators: Dict, trend: str, confidence: float) -> str:
-    """
-    Generate a concise plain English interpretation of technical indicators.
-    
-    Args:
-        tech_indicators: Dictionary of technical indicators
-        trend: Current trend (uptrend/downtrend/consolidation)
-        confidence: Trend confidence (0-1)
-    
-    Returns:
-        Concise interpretation string
-    """
-    if not tech_indicators:
-        return f"{trend.upper()} ({confidence*100:.0f}% confidence)"
-    
-    parts = []
-    
-    # RSI interpretation
-    rsi = tech_indicators.get('rsi')
-    if rsi:
-        if rsi > 70:
-            parts.append("overbought")
-        elif rsi < 30:
-            parts.append("oversold")
-        elif rsi > 60:
-            parts.append("strong momentum")
-        elif rsi < 40:
-            parts.append("weak momentum")
-    
-    # MACD interpretation
-    macd = tech_indicators.get('macd')
-    macd_signal = tech_indicators.get('macd_signal')
-    if macd is not None and macd_signal is not None:
-        if macd > macd_signal:
-            parts.append("bullish MACD")
+def _signal_emoji(signal: str) -> str:
+    return {
+        "STRONG_BUY": "🚀",
+        "BUY": "🟢",
+        "HOLD": "🟡",
+        "SELL": "🔴",
+        "STRONG_SELL": "💀",
+    }.get(signal, "⚪")
+
+
+def _number_emoji(index: int) -> str:
+    emojis = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
+    return emojis[index - 1] if 0 < index <= len(emojis) else f"{index}."
+
+
+def _format_source_article(article: Dict) -> str:
+    title = article.get('title', '').strip()
+    source = article.get('source') or article.get('source_publication') or 'Unknown'
+    if not title:
+        return ""
+    return f"{title} ({source})"
+
+
+def _top_headlines(result: Dict, limit: int = 2) -> List[str]:
+    articles = result.get('news_articles') or []
+    formatted = []
+
+    for article in articles:
+        headline = _format_source_article(article)
+        if headline:
+            formatted.append(headline)
+        if len(formatted) >= limit:
+            return formatted
+
+    for headline in result.get('news_headlines', [])[:limit]:
+        if headline:
+            formatted.append(headline)
+
+    return formatted[:limit]
+
+
+def _describe_fusion(score: float) -> str:
+    if score >= 0.35:
+        return "Strong bullish alignment"
+    if score >= 0.15:
+        return "Bullish alignment"
+    if score <= -0.35:
+        return "Strong bearish divergence"
+    if score <= -0.15:
+        return "Bearish divergence"
+    return "Mixed/neutral setup"
+
+
+def _news_impact_text(sentiment: float) -> str:
+    position_multiplier = 0.5 + (1 / (1 + math.exp(-5 * sentiment)))
+    position_delta = (position_multiplier - 1.0) * 100
+    if sentiment > 0.10:
+        return f"✅ Positive news boost ({position_delta:+.0f}% position)"
+    if sentiment < -0.10:
+        return f"⚠️ Negative news headwind ({position_delta:+.0f}% position)"
+    return "😐 Neutral news (no material impact)"
+
+
+def _conviction_label(position_pct: float) -> str:
+    if position_pct >= 50:
+        return "VERY HIGH"
+    if position_pct >= 30:
+        return "HIGH"
+    if position_pct >= 15:
+        return "MEDIUM"
+    return "LOW"
+
+
+def _watch_warnings(result: Dict) -> List[str]:
+    technicals = result.get('technical_indicators', {})
+    warnings = []
+
+    price_vs_50d = technicals.get('price_vs_50d')
+    if price_vs_50d is not None:
+        if price_vs_50d > 0:
+            warnings.append("Price closes back below the 50-day MA -> exit or tighten stop-loss")
         else:
-            parts.append("bearish MACD")
-    
-    # Volume interpretation
-    volume = tech_indicators.get('volume_vs_avg')
-    if volume:
-        if volume > 150:
-            parts.append("high volume")
-        elif volume < 70:
-            parts.append("low volume")
-    
-    # MA interpretation
-    ma50 = tech_indicators.get('price_vs_50d')
-    if ma50:
-        if ma50 > 5:
-            parts.append("well above 50-day MA")
-        elif ma50 < -5:
-            parts.append("well below 50-day MA")
-    
-    # Combine into concise message
-    if not parts:
-        return f"{trend.upper()} ({confidence*100:.0f%} confidence)"
-    
-    # Create a natural flow
-    if len(parts) <= 2:
-        interpretation = f"{trend.upper()} with {', '.join(parts)} ({confidence*100:.0f}% confidence)"
-    else:
-        # Group by theme for longer lists
-        interpretation = f"{trend.upper()} ({confidence*100:.0f}% confidence) - {', '.join(parts)}"
-    
-    return interpretation
+            warnings.append("Price fails to reclaim the 50-day MA -> bullish thesis weakens")
+
+    rsi = technicals.get('rsi')
+    if rsi is not None:
+        if rsi >= 70:
+            warnings.append("RSI rolls back below 70 after overbought conditions -> take partial profits")
+        elif rsi >= 60:
+            warnings.append("RSI loses 55-60 momentum zone -> trend strength is fading")
+        else:
+            warnings.append("RSI breaks below 50 -> momentum confirmation is gone")
+
+    macd = technicals.get('macd')
+    macd_signal = technicals.get('macd_signal')
+    if macd is not None and macd_signal is not None and macd <= macd_signal:
+        warnings.append("MACD bearish crossover -> momentum confirmation has flipped")
+
+    volume_vs_avg = technicals.get('volume_vs_avg')
+    if volume_vs_avg is not None and volume_vs_avg < 70:
+        warnings.append("Volume stays below 70% of the 20-day average -> breakout may fail")
+
+    if not warnings:
+        warnings.append("Close loses the recent breakout zone -> wait for a fresh confirmation candle")
+
+    deduped = []
+    for warning in warnings:
+        if warning not in deduped:
+            deduped.append(warning)
+
+    return deduped[:2]
 
 
 def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
@@ -181,96 +227,57 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
     # BUY signals
     for i, r in enumerate(buy_signals, 1):
         fund = r.get('fundamentals', {})
-        features = r.get('features', {})
-        
-        # Number emoji
-        num_emoji = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣'][i-1]
-        
-        lines.append(f"{num_emoji}  {r['ticker'].replace('.SA', '')} - {r['signal']} 🟢")
+        num_emoji = _number_emoji(i)
+        ticker = r['ticker'].replace('.SA', '')
+        signal_label = r['signal'].replace('_', ' ')
+        trend = r.get('trend', 'UNKNOWN')
+        confidence = r.get('confidence', 0.0)
+        fused_score = r.get('fused_score', 0.0)
+        news_sentiment = r.get('news_sentiment', 0.0)
+        headlines = _top_headlines(r)
+        position_pct = r.get('position_size', 0.0) * 100
+
+        lines.append(f"{num_emoji}  {ticker} - {signal_label} {_signal_emoji(r['signal'])}")
         lines.append(f"    Price: R${r['price']:.2f}")
-        lines.append(f"    └─ Drivers:")
-        
-        # Technical interpretation (concise)
-        tech_indicators = r.get('technical_indicators', {})
-        tech_summary = _interpret_technicals(tech_indicators, r.get('trend', 'unknown'), r.get('confidence', 0))
-        lines.append(f"       • {tech_summary}")
-        
-        # News with headlines
-        if r.get('news_sentiment') is not None:
-            ns = r['news_sentiment']
-            lines.append(f"       • News: {ns:+.2f} sentiment")
-            
-            # Show news headlines if available
-            headlines = r.get('news_headlines', [])
-            if headlines:
-                for headline in headlines[:2]:
-                    lines.append(f"         📰 {headline}")
-            
-            if ns > 0.1:
-                lines.append(f"         ✅ Positive impact (+{(ns*10):.0f}% position)")
-            elif ns < -0.1:
-                lines.append(f"         ⚠️ Negative headwind ({(abs(ns)*10):.0f}% position reduction)")
-            else:
-                lines.append(f"         😐 Neutral (no impact)")
-        
-        # Fundamentals (concise)
+        lines.append("    └─ Drivers:")
+        lines.append(f"       • Trend: {trend} ({confidence:.0%} confidence)")
+        lines.append(f"       • Fusion: {_describe_fusion(fused_score)} ({fused_score:+.2f})")
+        lines.append(f"       • News: {news_sentiment:+.2f} sentiment")
+        lines.append(f"         {_news_impact_text(news_sentiment)}")
+
+        if headlines:
+            lines.append("         📰 Headlines:")
+            for headline in headlines:
+                lines.append(f"            • {headline}")
+
         if fund:
-            lines.append(f"       • Fundamentals: Grade {fund.get('fundamental_grade', 'N/A')}")
-            
-            if fund.get('pe_ratio') and fund.get('roe'):
-                lines.append(f"         P/E: {fund['pe_ratio']:.1f} | ROE: {fund['roe']:.1f}%")
-            
-            # Value/Quality summary
-            value = fund.get('value_score', 0)
-            quality = fund.get('quality_score', 0)
-            
-            if value > 70 and quality > 70:
-                lines.append(f"         ✅ Excellent value + quality")
-            elif value > 70:
-                lines.append(f"         ✅ Deep value play")
-            elif quality > 70:
-                lines.append(f"         ✅ High quality")
-        
-        # Position
-        pos_pct = r.get('position_size', 0) * 100
-        conviction_label = "VERY HIGH" if pos_pct > 50 else "HIGH" if pos_pct > 30 else "MEDIUM"
-        lines.append(f"       • Position: {pos_pct:.0f}% ({conviction_label} conviction)")
-        
-        # Entry/Stop/Target levels
-        price = r.get('price', 0)
-        position_size = r.get('position_size', 0)
-        
-        if price > 0 and position_size > 0:
-            # Calculate levels based on trend and position size
-            if r['signal'] in ['BUY', 'STRONG_BUY']:
-                # Stop loss: 8-12% below current price (tighter for high conviction)
-                stop_pct = 0.10 if position_size > 0.40 else 0.08
-                stop_loss = price * (1 - stop_pct)
-                
-                # Targets: 2:1 and 3:1 risk/reward
-                target1 = price + (price - stop_loss) * 2
-                target2 = price + (price - stop_loss) * 3
-                
-                lines.append(f"    └─ Levels:")
-                lines.append(f"       Entry: R${price:.2f} | Stop: R${stop_loss:.2f}")
-                lines.append(f"       Targets: R${target1:.2f} (2:1) | R${target2:.2f} (3:1)")
-        
-        # Action notes
-        lines.append(f"    └─ Watch for:")
-        tech_indicators = r.get('technical_indicators', {})
-        
-        # RSI warnings (simplified)
-        if 'rsi' in tech_indicators:
-            rsi = tech_indicators['rsi']
-            if rsi > 70:
-                lines.append(f"       ⚠️ RSI > 70 → Take partial profits")
-            elif rsi < 30 and r['signal'] in ['BUY', 'STRONG_BUY']:
-                lines.append(f"       ✅ RSI breaks above 40 → Strong entry")
-        
-        # MA warnings
-        if 'price_vs_50d' in tech_indicators and tech_indicators['price_vs_50d'] < -2:
-            lines.append(f"       ⚠️ Breaks below 50-day MA → Exit")
-        
+            grade = fund.get('fundamental_grade', 'N/A')
+            comp = fund.get('composite_score')
+            if comp is not None:
+                lines.append(f"       • Fundamentals: Grade {grade} | Composite {comp:.0f}")
+            else:
+                lines.append(f"       • Fundamentals: Grade {grade}")
+
+        lines.append(
+            f"       • Position: {position_pct:.0f}% "
+            f"({_conviction_label(position_pct)} conviction)"
+        )
+
+        risk_levels = r.get('risk_levels', {})
+        if risk_levels:
+            lines.append("    └─ Levels:")
+            lines.append(
+                f"       Entry: R${risk_levels.get('entry', r['price']):.2f} | "
+                f"Stop: R${risk_levels.get('stop_loss', r['price']):.2f}"
+            )
+            lines.append(
+                f"       Targets: R${risk_levels.get('target_1', r['price']):.2f} (2:1) | "
+                f"R${risk_levels.get('target_2', r['price']):.2f} (3:1)"
+            )
+
+        lines.append("    └─ Watch for:")
+        for warning in _watch_warnings(r):
+            lines.append(f"       ⚠️ {warning}")
         lines.append("")
     
     # Summary
@@ -285,7 +292,11 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
         for r in sell_signals:
             fund = r.get('fundamentals', {})
             grade = fund.get('fundamental_grade', 'N/A') if fund else 'N/A'
-            lines.append(f"  • {r['ticker'].replace('.SA', '')} - {r['trend']} | Grade: {grade}")
+            fused_score = r.get('fused_score', 0.0)
+            lines.append(
+                f"  • {r['ticker'].replace('.SA', '')} - {r['signal']} "
+                f"| Trend: {r['trend']} | Fusion: {fused_score:+.2f} | Grade: {grade}"
+            )
     
     return "\n".join(lines)
 
