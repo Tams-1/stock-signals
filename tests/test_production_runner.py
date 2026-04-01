@@ -344,6 +344,30 @@ class TestLiquidityPolicy:
         assert position_size < 0.4
 
 
+class TestFundamentalSignalAlignment:
+    """Tests for trend-aware fundamental overrides."""
+
+    @pytest.mark.parametrize(
+        ("trend", "recommendation", "expected"),
+        [
+            ("UPTREND", "SELL", "HOLD"),
+            ("UPTREND", "STRONG_SELL", "HOLD"),
+            ("DOWNTREND", "BUY", "HOLD"),
+            ("DOWNTREND", "STRONG_BUY", "HOLD"),
+            ("SIDEWAYS", "BUY", "BUY"),
+            ("SIDEWAYS", "SELL", "SELL"),
+        ],
+    )
+    def test_align_integrated_signal_with_trend(self, trend, recommendation, expected):
+        assert (
+            SimpleProductionRunner._align_integrated_signal_with_trend(
+                trend,
+                recommendation,
+            )
+            == expected
+        )
+
+
 class TestTopMovers:
     """Tests for top movers identification."""
     

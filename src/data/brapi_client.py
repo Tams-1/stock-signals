@@ -109,9 +109,15 @@ class BrAPIClient:
         
         # Fetch uncached tickers in smaller batches (5 for reliability)
         batch_size = 5
+        batch_delay = 1.0  # Delay between batches to avoid rate limiting
+        
         for i in range(0, len(uncached_tickers), batch_size):
             batch = uncached_tickers[i:i+batch_size]
             symbols = ','.join(batch)
+            
+            # Add delay between batches (except first batch)
+            if i > 0:
+                time.sleep(batch_delay)
             
             url = f"{self.BASE_URL}/quote/{symbols}"
             

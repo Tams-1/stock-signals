@@ -6,6 +6,7 @@ a comprehensive investment decision framework.
 """
 
 from dataclasses import dataclass
+import math
 from typing import Optional, Dict, List
 from pathlib import Path
 import json
@@ -101,6 +102,42 @@ class FundamentalIntegrator:
         
         self._fundamentals_cache = None
         self._raw_fundamentals_cache = None
+
+    @staticmethod
+    def _coerce_score(value, default: float = 50.0) -> float:
+        """Convert score-like inputs to finite floats with a neutral fallback."""
+        try:
+            if value is None:
+                return default
+            numeric = float(value)
+        except (TypeError, ValueError):
+            return default
+
+        if not math.isfinite(numeric):
+            return default
+        return numeric
+
+    @staticmethod
+    def _coerce_metric(value) -> Optional[float]:
+        """Convert optional numeric metrics to finite floats."""
+        try:
+            if value is None:
+                return None
+            numeric = float(value)
+        except (TypeError, ValueError):
+            return None
+
+        if not math.isfinite(numeric):
+            return None
+        return numeric
+
+    @staticmethod
+    def _downgrade_bullish_recommendation(recommendation: str) -> str:
+        """Downgrade bullish calls one notch toward neutral."""
+        return {
+            'STRONG_BUY': 'BUY',
+            'BUY': 'HOLD',
+        }.get(recommendation, recommendation)
     
     def load_fundamentals(self) -> Dict:
         """Load fundamental scores from cache."""
@@ -173,11 +210,11 @@ class FundamentalIntegrator:
         
         # Default fundamental scores if not available
         if fund_data:
-            fund_score = fund_data.get('composite_score', 50)
+            fund_score = self._coerce_score(fund_data.get('composite_score'), 50)
             fund_grade = fund_data.get('grade', 'C')
-            value_score = fund_data.get('value_score', 50)
-            quality_score = fund_data.get('quality_score', 50)
-            growth_score = fund_data.get('growth_score', 50)
+            value_score = self._coerce_score(fund_data.get('value_score'), 50)
+            quality_score = self._coerce_score(fund_data.get('quality_score'), 50)
+            growth_score = self._coerce_score(fund_data.get('growth_score'), 50)
             fund_strengths = fund_data.get('strengths', [])
             fund_weaknesses = fund_data.get('weaknesses', [])
         else:
@@ -198,12 +235,18 @@ class FundamentalIntegrator:
         
         # Load raw fundamental data for metrics and validation
         raw_metrics = self.get_raw_fundamentals(ticker)
-        pe_ratio = raw_metrics.get('pe_ratio') or (fund_data.get('pe_ratio') if fund_data else None)
-        pb_ratio = raw_metrics.get('pb_ratio') or (fund_data.get('pb_ratio') if fund_data else None)
-        roe = raw_metrics.get('roe')
-        roic = raw_metrics.get('roic')
-        div_yield = raw_metrics.get('div_yield')
-        debt_equity = raw_metrics.get('debt_equity')
+        pe_ratio = self._coerce_metric(raw_metrics.get('pe_ratio'))
+        if pe_ratio is None and fund_data:
+            pe_ratio = self._coerce_metric(fund_data.get('pe_ratio'))
+
+        pb_ratio = self._coerce_metric(raw_metrics.get('pb_ratio'))
+        if pb_ratio is None and fund_data:
+            pb_ratio = self._coerce_metric(fund_data.get('pb_ratio'))
+
+        roe = self._coerce_metric(raw_metrics.get('roe'))
+        roic = self._coerce_metric(raw_metrics.get('roic'))
+        div_yield = self._coerce_metric(raw_metrics.get('div_yield'))
+        debt_equity = self._coerce_metric(raw_metrics.get('debt_equity'))
         
         rec_data = {
             'pe_ratio': pe_ratio,
@@ -272,6 +315,12 @@ class FundamentalIntegrator:
                             trend: str, value_score: float, 
                             quality_score: float) -> float:
         """Calculate weighted composite score with regime-aware weighting."""
+        tech_score = self._coerce_score(tech_score, 50)
+        fund_score = self._coerce_score(fund_score, 50)
+        value_score = self._coerce_score(value_score, 50)
+        quality_score = self._coerce_score(quality_score, 50)
+        trend = (trend or '').upper()
+
         # Dynamic weights: in uptrends lean on technicals, in downtrends lean on fundamentals
         regime_weights = {
             'UPTREND':   (0.60, 0.40),
@@ -303,6 +352,10 @@ class FundamentalIntegrator:
     def _get_recommendation(self, composite: float, trend: str, 
                            fund_score: float, data: Optional[Dict] = None) -> str:
         """Generate recommendation based on composite score."""
+        composite = self._coerce_score(composite, 50)
+        fund_score = self._coerce_score(fund_score, 50)
+        trend = (trend or '').upper()
+
         if composite >= self.STRONG_BUY_THRESHOLD:
             base_rec = 'STRONG_BUY'
         elif composite >= self.BUY_THRESHOLD:
@@ -313,23 +366,30 @@ class FundamentalIntegrator:
             base_rec = 'SELL'
         else:
             base_rec = 'STRONG_SELL'
+
+        # Respect the prevailing technical regime: an uptrend should not become a hard sell
+        # purely because fundamentals are mediocre.
+        if trend == 'UPTREND' and base_rec in ['SELL', 'STRONG_SELL']:
+            base_rec = 'HOLD'
         
         # Downgrade if fundamentals are very poor
         if fund_score < 30 and base_rec in ['STRONG_BUY', 'BUY']:
-            if base_rec == 'STRONG_BUY':
-                return 'BUY'
-            else:
-                return 'HOLD'
+            base_rec = self._downgrade_bullish_recommendation(base_rec)
         
         # P/E validation: don't recommend STRONG_BUY for expensive stocks
         pe_ratio = None
         if data is not None:
-            pe_ratio = data.get('pe_ratio')
-        
-        if pe_ratio is not None and pe_ratio > 20 and base_rec == 'STRONG_BUY':
-            base_rec = 'BUY'
-        if pe_ratio is not None and pe_ratio > 25 and base_rec == 'BUY':
-            base_rec = 'HOLD'
+            pe_ratio = self._coerce_metric(data.get('pe_ratio'))
+
+        if pe_ratio is not None:
+            # Negative/zero P/E means earnings are not supporting the valuation.
+            if pe_ratio <= 0 and base_rec in ['STRONG_BUY', 'BUY']:
+                base_rec = self._downgrade_bullish_recommendation(base_rec)
+            # Expensive stocks should only be downgraded once, not twice.
+            elif pe_ratio > 25 and base_rec in ['STRONG_BUY', 'BUY']:
+                base_rec = self._downgrade_bullish_recommendation(base_rec)
+            elif pe_ratio > 20 and base_rec == 'STRONG_BUY':
+                base_rec = 'BUY'
         
         return base_rec
     

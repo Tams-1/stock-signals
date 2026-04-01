@@ -100,6 +100,18 @@ class SimpleProductionRunner:
             data.columns = data.columns.get_level_values(0)
         return data
 
+    @staticmethod
+    def _align_integrated_signal_with_trend(trend: str, recommendation: str) -> str:
+        """Prevent fundamentals from flipping against a confirmed trend."""
+        trend = (trend or "").upper()
+        recommendation = (recommendation or "HOLD").upper()
+
+        if trend == "UPTREND" and recommendation in {"SELL", "STRONG_SELL"}:
+            return "HOLD"
+        if trend == "DOWNTREND" and recommendation in {"BUY", "STRONG_BUY"}:
+            return "HOLD"
+        return recommendation
+
     def _calculate_liquidity_profile(self, data: pd.DataFrame) -> Dict:
         """
         Calculate 20-day liquidity using average traded value (price * volume).
@@ -557,8 +569,11 @@ class SimpleProductionRunner:
                     confidence=confidence
                 )
                 
-                # Override signal based on integrated analysis
-                signal = integrated_score.recommendation
+                # Preserve the technical regime when fundamentals disagree sharply.
+                signal = self._align_integrated_signal_with_trend(
+                    trend,
+                    integrated_score.recommendation,
+                )
                 if signal in ["BUY", "STRONG_BUY"]:
                     conviction = integrated_score.composite_score / 100
                 elif signal in ["SELL", "STRONG_SELL"]:
