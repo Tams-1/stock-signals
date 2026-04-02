@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """
-Production Runner with Integrated Fundamental Analysis
-Generates buy/sell signals combining technical analysis + value investing metrics
+Production runner: technicals + optional news + fundamentals.
+
+``SimpleProductionRunner`` is the engine behind ``scripts/quick_market_monitor.py``
+(top-50 liquid list, fundamentals on, news typically off) and can also analyze
+the full universe from ``data/validated_tickers.json`` when invoked from this module.
+
+Price data: **yfinance** for historical OHLCV; **BrAPI** (``src.brapi_client``) for
+spot quotes with ``price_cache.json`` caching.
 """
 
 import sys
@@ -60,7 +66,10 @@ import functools
 
 
 class SimpleProductionRunner:
-    """Production runner with integrated fundamental + technical analysis"""
+    """
+    End-to-end pipeline: indicators + TrendDetectorV2 + optional FinBERT news +
+    FundamentalIntegrator (Graham / Lynch / Greenblatt), then signals and sizing.
+    """
     
     # Class-level model cache (shared across instances)
     _model_cache = {}

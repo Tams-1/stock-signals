@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-BrAPI Price Fetcher with Caching
-Fetches real-time prices for Brazilian stocks using brapi.dev API.
-Includes file-based caching with configurable TTL to respect rate limits.
+BrAPI quote helper with file cache (``price_cache.json`` at repo root).
+
+Used by ``production_simple.SimpleProductionRunner`` for spot prices while
+historical candles come from yfinance. For the BrAPI-first historical client,
+see ``src.data.brapi_client``.
 """
 
 import os

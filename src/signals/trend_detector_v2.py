@@ -1,11 +1,9 @@
 """
-Improved trend detection with dual-timeframe analysis.
+Dual-timeframe trend detection for price series.
 
-FIX #1: Add macro regime (50-day) to prevent misclassifying bull market pullbacks as downtrends.
-
-Key change:
-- OLD: Single 20-day lookback → calls local dips "downtrend"
-- NEW: 50-day macro + 20-day micro → recognizes bull market context
+Combines a **macro** window (default 50 sessions) for bull/bear/sideways regime
+with a **micro** window (default 20 sessions) for local uptrend/downtrend/consolidation.
+This reduces false **downtrend** labels during pullbacks inside a broader uptrend.
 """
 
 import numpy as np

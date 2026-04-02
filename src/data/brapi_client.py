@@ -1,11 +1,10 @@
 """
-BrAPI Client - Brazilian stock market data via brapi.dev
+BrAPI client for batch quotes and historical series (brapi.dev).
 
-Features:
-- Near real-time prices (no rate limiting like yfinance)
-- Batch quotes (up to 50 tickers per request)
-- Historical data for technical analysis
-- Free tier available
+Primary consumers: ``production_brapi.BrAPIProductionRunner`` and
+``run_production.ProductionRunner``. Uses on-disk caches (see ``CACHE_DIR`` in
+this module, typically under ``src/data/cache``) — distinct from ``src.brapi_client``
+(``price_cache.json``) used by ``production_simple``.
 """
 
 import requests

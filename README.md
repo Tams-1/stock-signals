@@ -2,17 +2,17 @@
 
 **Production-grade trading signal system for Brazilian equities (IBOV + SMLL)**
 
-A multi-indicator, value investing fusion system that analyzes 214 stocks, combining technical indicators, volume analysis, news sentiment, and fundamental analysis to generate actionable trading recommendations with automatic Google Sheets synchronization.
+A multi-indicator, value-investing fusion stack that combines **TrendDetectorV2** (dual-timeframe technicals), **Graham / Lynch / Greenblatt** fundamentals (via `src/fundamentals/`), and optional **news sentiment** (newsdata.io + FinBERT). **Day-to-day production monitoring** runs on the **top 50 most liquid** names through `scripts/quick_market_monitor.py` (fundamentals on, news off for API stability); the full validated universe remains available for deeper batch runs and Sheets export.
 
 ---
 
 ## Features
 
-### Real-Time Price Data (BrAPI)
-- **BrAPI integration** (brapi.dev) - Near real-time Brazilian stock prices
-- **No rate limiting** - Fetches 200+ quotes in seconds (vs yfinance timeouts)
-- **Batch processing** - Reliable 5-ticker batches with retry logic
-- **Historical data** - 3 months of daily candles for technical analysis
+### Real-time price data (BrAPI)
+- **BrAPI** (brapi.dev) for near real-time Brazilian quotes
+- **Batch-friendly** — large quote batches complete quickly compared to naive per-ticker scraping
+- **`production_simple` path** — BrAPI spot prices plus **yfinance** daily history for indicators
+- **`production_brapi` / `run_production`** — BrAPI client in `src/data/brapi_client.py` (candles + quotes per that client’s API usage)
 
 ### Multi-Indicator Technical Analysis
 - **12 technical indicators** across 4 categories:
@@ -21,7 +21,7 @@ A multi-indicator, value investing fusion system that analyzes 214 stocks, combi
   - Volume: OBV, VWAP, MFI, Volume Momentum
   - Trend: Moving Averages (MA50/MA200), ADX, DI+/DI-
 - **Signal Fusion**: Weighted ensemble combining all indicators
-- **Two-timeframe trend detection**: MA50 (macro) + MA20 (micro) for robust signals
+- **Two-timeframe trend detection** (`TrendDetectorV2`): ~50-day macro regime + ~20-day micro trend (reduces false downtrends in bull pullbacks)
 
 ### Value Investing Integration
 - **Graham's Defensive Investor criteria** (7-point checklist)
@@ -36,7 +36,7 @@ A multi-indicator, value investing fusion system that analyzes 214 stocks, combi
 - **FinBERT sentiment analysis**: State-of-the-art financial NLP
 - **Multi-source**: newsdata.io API + Google News RSS fallback
 - **Smart caching**: 4h trading hours, 12h overnight
-- **Two-pass processing**: Technical screening → News enhancement for top candidates
+- **Two-pass processing**: Technical screening → News enhancement for top candidates (disabled in the scheduled quick monitor to respect news API limits)
 
 ### Position Sizing
 - **Kelly Criterion** for optimal sizing
@@ -55,130 +55,122 @@ A multi-indicator, value investing fusion system that analyzes 214 stocks, combi
 
 ---
 
+## Operations (production monitoring)
+
+| Item | Current setup |
+|------|----------------|
+| **Entry point** | `python scripts/quick_market_monitor.py` |
+| **Universe** | Top **50** liquid tickers from `data/top_50_tickers.json` (IBOV-oriented list; `.SA` suffix applied for Yahoo Finance) |
+| **Runner** | `SimpleProductionRunner` in `production_simple.py` — **BrAPI** spot prices (`src/brapi_client.py`, cache `price_cache.json`) + **yfinance** historical OHLCV |
+| **Fundamentals** | On (cached files under `data/fundamentals/`) |
+| **News / FinBERT** | **Off** in this path (`use_news=False`) to avoid news API rate limits |
+| **Alerts** | `src/alerts/alert_generator.py` formats output (e.g. Telegram-style text) |
+| **Typical schedule** | **3× on trading days** — **09:00, 14:00, 16:00** America/São Paulo (configure in your scheduler / OpenClaw cron) |
+
+Full-universe or BrAPI-first batch jobs use other runners (see **Architecture**).
+
+---
+
 ## Architecture
 
 ```
 stock-signals/
-├── production_brapi.py           # Main production runner (BrAPI)
-├── run_production.py             # Simplified runner with caching
-├── production_simple.py          # Legacy yfinance runner
-├── monitor_live.py               # Two-pass live monitor
-│
-├── src/
-│   ├── data/
-│   │   └── brapi_client.py       # BrAPI client for Brazilian stocks
-│   │
-│   ├── signals/
-│   │   └── trend_detector_v2.py  # Dual-timeframe trend detection
-│   │
-│   ├── fundamentals/
-│   │   ├── fundamentus_scraper.py  # Scrapes fundamentus.com.br
-│   │   ├── scorer.py             # Graham/Lynch/Greenblatt scoring
-│   │   └── integration.py        # Combines technical + fundamental
-│   │
-│   ├── news/
-│   │   ├── free_news_client.py   # News + translation + FinBERT
-│   │   └── news_cache.py         # TTL cache
-│   │
-│   ├── indicators/
-│   │   ├── momentum.py           # RSI, MACD, Stochastic, etc.
-│   │   ├── volatility.py         # ATR, Bollinger, Keltner
-│   │   ├── volume.py             # OBV, VWAP, MFI
-│   │   ├── trend.py              # MA, ADX, SuperTrend
-│   │   └── signal_fusion.py      # Weighted ensemble
-│   │
-│   ├── alerts/
-│   │   └── alert_generator.py   # Format signals for Telegram
-│   │
-│   └── config.py               # Centralized configuration
-│
-├── data/
-│   ├── validated_tickers.json    # 214 IBOV + SMLL tickers
-│   ├── quotes_cache.json         # Cached BrAPI quotes
-│   ├── full_results.json         # Latest analysis results
-│   └── fundamentals/
-│       ├── fundamentals_cache.json   # Daily scraped data
-│       └── fundamental_scores.json  # Computed scores
+├── production_simple.py          # SimpleProductionRunner: yfinance history + BrAPI (src.brapi_client)
+├── production_brapi.py           # BrAPIProductionRunner: BrAPI-heavy path (src.data.brapi_client)
+├── production_enhanced.py        # Extended / experimental production variants
+├── run_production.py             # Cached-quotes production runner (src.data.brapi_client)
+├── monitor_live.py               # Two-pass live monitor (legacy / alternate ops)
+├── monitor_brapi.py, monitor_simple.py, monitor_market_v3.py
 │
 ├── scripts/
-│   ├── update_fundamentals.py    # Daily scraper script
+│   ├── quick_market_monitor.py   # Scheduled top-50 monitor (calls production_simple)
+│   ├── update_fundamentals.py    # Daily fundamentus scraper
 │   ├── sheets_sync.py            # Google Sheets sync
-│   └── update_ticker_list.py     # Ticker maintenance
+│   └── update_ticker_list.py     # Ticker list maintenance
+│
+├── src/
+│   ├── brapi_client.py           # BrAPI client + price_cache.json (used by production_simple)
+│   ├── data/
+│   │   └── brapi_client.py       # BrAPI client + historical helpers (used by production_brapi, run_production)
+│   ├── signals/
+│   │   └── trend_detector_v2.py  # Dual-timeframe (50d + 20d) trend detection
+│   ├── fundamentals/
+│   │   ├── fundamentus_scraper.py
+│   │   ├── scorer.py             # Graham / Lynch / Greenblatt
+│   │   └── integration.py        # Technical + fundamental blend
+│   ├── news/
+│   │   └── free_news_client.py   # RSS + newsdata.io + FinBERT
+│   ├── indicators/               # Momentum, volatility, volume, trend, signal_fusion
+│   ├── alerts/
+│   │   └── alert_generator.py
+│   └── config.py
+│
+├── data/
+│   ├── top_50_tickers.json       # Liquid subset for quick_market_monitor
+│   ├── validated_tickers.json    # Full IBOV + SMLL universe (see total_tickers in file)
+│   ├── quotes_cache.json         # Cached quotes (BrAPI batch flows)
+│   ├── full_results.json         # Latest full run results (when written)
+│   └── fundamentals/
+│       ├── fundamentals_cache.json
+│       └── fundamental_scores.json
 │
 └── config/
-    └── thresholds.json           # Runtime thresholds
+    └── thresholds.json           # Regime / confidence thresholds
 ```
 
 ---
 
-## Processing Flow
+## Data flow
 
-### Production Pipeline (production_brapi.py)
+### A. Scheduled quick monitor (`scripts/quick_market_monitor.py`)
+
+1. Load `data/top_50_tickers.json` → normalize to `*.SA`.
+2. `SimpleProductionRunner`: parallel workers fetch history (yfinance), batch **spot** prices (BrAPI via `src/brapi_client.py`).
+3. **TrendDetectorV2** + indicator fusion → technical scores.
+4. **FundamentalIntegrator** reads cached fundamentus data → composite signal.
+5. **No news** in this path.
+6. `generate_trading_alerts(results)` → printable / sendable alert text.
+
+### B. Full universe / alternate runners
+
+- **`production_brapi.py`** — `BrAPIProductionRunner`: tickers from `validated_tickers.json`, BrAPI via `src.data.brapi_client`, optional news + fundamentals.
+- **`run_production.py`** — uses cached `data/quotes_cache.json` + same integrator stack.
+- **`production_simple.py`** — can also be called with a custom ticker list (default loader uses `validated_tickers.json`).
+
+Shared stages: technical fusion → fundamental integration → (optional) news enrichment → signals → position sizing → optional Sheets (`scripts/sheets_sync.py`).
+
+---
+
+## Processing flow (conceptual)
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│              Load 214 Tickers                           │
-│         (IBOV + SMLL from JSON)                         │
+│  Load tickers (top 50 OR full list from JSON)           │
 └─────────────────────────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│              Fetch Price Data (BrAPI)                   │
-│  • Real-time quotes (5-ticker batches)                  │
-│  • 3 months historical data (parallel workers)          │
-│  • Retry logic for 502 errors                           │
+│  Prices: BrAPI spot (+ yfinance or BrAPI history)       │
 └─────────────────────────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│          Technical Analysis (12 indicators)             │
-│  • Trend Detection (MA50/MA20)                          │
-│  • Signal Fusion (weighted ensemble)                    │
-│  • Volume/Volatility features                           │
+│  Technical stack (indicators + TrendDetectorV2 + fusion)│
 └─────────────────────────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│       Fundamental Analysis Integration                  │
-│  • Load cached fundamentals (daily update)              │
-│  • Graham/Lynch/Greenblatt scoring                      │
-│  • Combine: 50% tech + 50% fund                         │
-│  • Pass raw metrics (P/E, ROE, ROIC, etc.)              │
+│  Fundamentals: cached Graham / Lynch / Greenblatt blend │
 └─────────────────────────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│              News Sentiment (Top 10)                    │
-│  • Fetch for top candidates only                        │
-│  • Translate Portuguese → English                       │
-│  • FinBERT sentiment analysis                           │
+│  News + FinBERT (optional; skipped in quick monitor)   │
 └─────────────────────────────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────┐
-│            Generate Trading Signal                      │
-│  • STRONG_BUY: Composite >= 75                          │
-│  • BUY: Composite >= 60                                 │
-│  • HOLD: Composite 40-60                                │
-│  • SELL/STRONG_SELL: Composite < 40                     │
-│  • AVOID: Poor fund + poor tech                         │
-└─────────────────────────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│           Position Sizing                               │
-│  • Kelly Criterion (volatility-adjusted)                │
-│  • Quality picks: +20% boost                            │
-│  • Value picks: 15-50% position                         │
-│  • Poor fundamentals: -50% reduction                    │
-└─────────────────────────────────────────────────────────┘
-                           │
-                           ▼
-┌─────────────────────────────────────────────────────────┐
-│              Export to Google Sheets                    │
-│  • 52 columns per stock                                 │
-│  • All technical + fundamental metrics                  │
-│  • Append for historical tracking                       │
+│  Signals, Kelly-style sizing, alerts / Sheets           │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -272,18 +264,32 @@ cd stock-signals
 pip install -r requirements.txt
 ```
 
-### Set Environment Variables
+### Set environment variables
 
 ```bash
-# Required
-export NEWSDATA_API_KEY="your_newsdata_io_key"
-export BRAPI_API_KEY="your_brapi_key"  # Optional for higher limits
+# BrAPI (recommended for production; improves limits vs anonymous usage)
+export BRAPI_API_KEY="your_brapi_key"
 
-# For Google Sheets sync
+# News pipeline (only if you enable news — e.g. use_news=True)
+export NEWSDATA_API_KEY="your_newsdata_io_key"
+
+# Google Sheets sync (if using scripts/sheets_sync.py)
 export GOOGLE_CREDENTIALS_PATH="/path/to/credentials.json"
 ```
 
-### Run Full Analysis
+Set keys in the environment or in a repo-root `.env` file (loaded by `python-dotenv` where supported).
+
+### Run the quick monitor (production default)
+
+From the repo root:
+
+```bash
+python scripts/quick_market_monitor.py
+```
+
+Uses `data/top_50_tickers.json`, fundamentals on, news off. Wire this to cron or OpenClaw on **Mon–Fri** at **09:00, 14:00, 16:00** `America/Sao_Paulo` (or your chosen slots).
+
+### Run full-universe analysis
 
 ```python
 from run_production import ProductionRunner
@@ -291,14 +297,11 @@ from run_production import ProductionRunner
 runner = ProductionRunner()
 results = runner.run()
 
-# Results include:
-# - 214 stocks analyzed
-# - Technical + fundamental scores
-# - Trading signals
-# - Position sizing
+# Uses tickers from data/validated_tickers.json (see total_tickers in that file).
+# Includes technical + fundamental scores, signals, and position sizing.
 ```
 
-### Run with BrAPI (Recommended)
+### Run with BrAPI-first runner
 
 ```python
 from production_brapi import BrAPIProductionRunner
@@ -309,9 +312,7 @@ runner = BrAPIProductionRunner(
 )
 results = runner.run()
 
-# Outputs:
-# - data/full_results.json (all results)
-# - data/quotes_cache.json (price cache)
+# Writes consolidated outputs (e.g. data/full_results.json, quotes cache) when configured in that runner.
 ```
 
 ### Sync to Google Sheets
@@ -343,40 +344,18 @@ print(alert)
 
 ## Configuration
 
-### Thresholds (config/thresholds.json)
+### Thresholds (`config/thresholds.json`)
 
-```json
-{
-  "thresholds": {
-    "default": {
-      "buy_confidence": 0.55,
-      "sell_confidence": 0.45,
-      "min_score": 0.25,
-      "stop_loss": 0.15
-    },
-    "bull": {
-      "buy_confidence": 0.50,
-      "sell_confidence": 0.40,
-      "min_score": 0.20,
-      "stop_loss": 0.15
-    },
-    "bear": {
-      "buy_confidence": 0.65,
-      "sell_confidence": 0.35,
-      "min_score": 0.30,
-      "stop_loss": 0.10
-    }
-  }
-}
-```
+Regime-specific `buy_confidence`, `sell_confidence`, `min_score`, and `stop_loss` values live in this file (updated by the threshold optimizer). Open the JSON for the exact current numbers; do not rely on stale copies in docs.
 
-### Ticker List (data/validated_tickers.json)
+### Ticker lists
 
-- **214 stocks total**
-  - 83 IBOV constituents
-  - 131 SMLL constituents
-- Verified against B3 official index composition
-- Stocks outside IBOV/SMLL are not included
+| File | Purpose |
+|------|---------|
+| `data/top_50_tickers.json` | **Top 50** liquid names for `scripts/quick_market_monitor.py` |
+| `data/validated_tickers.json` | Full **IBOV + SMLL** universe; `total_tickers` and `all_tickers` are authoritative (count changes when B3 composition is refreshed) |
+
+Lists are verified against B3 index composition when regenerated; delisted names are removed during cleanup.
 
 ### BrAPI Config (data/brapi_config.yaml)
 
@@ -390,42 +369,53 @@ retry_delay: 0.5
 
 ---
 
-## Daily Jobs
+## Daily jobs
 
-### Update Fundamentals (6:00 AM Mon-Fri)
+### Update fundamentals (e.g. 06:00 Mon–Fri)
 
 ```bash
 python scripts/update_fundamentals.py --force
 ```
 
-- Scrapes all 214 stocks from fundamentus.com.br
-- Takes ~72 seconds
-- Updates `data/fundamentals/fundamentals_cache.json`
+- Scrapes fundamentus.com.br for the tickers your script configuration covers (typically the full validated universe).
+- Refreshes `data/fundamentals/fundamentals_cache.json` and related score files.
 
-### Sync to Google Sheets (After Market Open)
+### Quick market monitor (09:00, 14:00, 16:00 Mon–Fri — typical)
+
+```bash
+python scripts/quick_market_monitor.py
+```
+
+- Top 50 liquid tickers, fundamentals on, news off.
+
+### Sync to Google Sheets (after a full production run)
 
 ```bash
 python scripts/sheets_sync.py
 ```
 
-- Exports latest results to Google Sheets
-- Appends to historical log
-- 52 columns per stock
+- Appends rows to your configured sheet (52 columns per stock when using the standard schema).
 
-### Schedule via Cron
+### Example scheduler entries
 
 ```python
-# Add via OpenClaw
+# OpenClaw-style examples — adjust paths and timezone to your host.
 cron.add(
     name="Update Fundamentals Daily",
     schedule="0 6 * * 1-5",
-    command="python scripts/update_fundamentals.py --force"
+    command="cd /path/to/stock-signals && python scripts/update_fundamentals.py --force"
+)
+
+cron.add(
+    name="Quick Market Monitor",
+    schedule="0 9,14,16 * * 1-5",
+    command="cd /path/to/stock-signals && python scripts/quick_market_monitor.py"
 )
 
 cron.add(
     name="Sync to Google Sheets",
     schedule="30 10 * * 1-5",
-    command="python scripts/sheets_sync.py"
+    command="cd /path/to/stock-signals && python scripts/sheets_sync.py"
 )
 ```
 
@@ -519,47 +509,51 @@ translated = translator.translate("Petrobras lucro recorde")
 
 ---
 
-## Performance
+## Performance (order-of-magnitude)
 
-| Metric | Value |
-|--------|-------|
-| Processing time | ~30 sec for 214 stocks (BrAPI) |
-| Price fetch time | ~5 sec for 200 quotes |
-| API calls per cycle | 10-30 news calls |
-| Memory usage | ~500MB (FinBERT model) |
-| Parallel workers | 4 (configurable) |
-| Google Sheets sync | ~10 sec for 200 rows |
-
----
-
-## Data Sources
-
-| Data Type | Source | Update Frequency |
-|-----------|--------|------------------|
-| **Real-time prices** | BrAPI (brapi.dev) | On-demand |
-| **Historical data** | BrAPI | On-demand |
-| **Fundamentals** | Fundamentus | Daily (6:00 AM) |
-| **News** | newsdata.io + Google News | On-demand |
+| Metric | Typical notes |
+|--------|---------------|
+| Quick monitor (50 tickers) | Faster than a full-universe pass; dominated by yfinance history + BrAPI batch |
+| Full universe (`validated_tickers.json`) | Depends on worker count and runner; often tens of seconds to a few minutes |
+| News enabled | Extra latency + newsdata.io quota; FinBERT can use ~500MB+ RAM |
+| Parallel workers | `SimpleProductionRunner` caps at 8; quick monitor often uses 4 |
+| Google Sheets sync | Roughly seconds per hundred rows depending on API |
 
 ---
 
-## Logs & Monitoring
+## Data sources
 
-- Analysis results: `data/full_results.json`
-- Price cache: `data/quotes_cache.json`
-- API budget: `api_budget.json`
-- News cache: `news_sentiment_cache.json`
+| Data type | Source | Notes |
+|-----------|--------|--------|
+| Spot quotes (`production_simple`) | BrAPI via `src/brapi_client.py` | Cached in `price_cache.json` (repo root) |
+| History (`production_simple`) | yfinance | Daily OHLCV for indicators |
+| Quotes / history (other runners) | BrAPI (`src/data/brapi_client.py`) | See that module for endpoints and cache layout |
+| Fundamentals | Fundamentus (scraped) | Daily job recommended pre-market |
+| News sentiment | newsdata.io + Google News RSS + FinBERT | Optional |
+
+---
+
+## Logs and monitoring
+
+- Latest batch results (when written): `data/full_results.json`
+- BrAPI quote cache (batch runners): `data/quotes_cache.json`
+- BrAPI spot cache (`production_simple`): `price_cache.json` (repository root)
+- API budget tracker: `api_budget.json`
+- News sentiment cache: `news_sentiment_cache.json`
 - Fundamental cache: `data/fundamentals/fundamentals_cache.json`
-- System review: `REVIEW.md`
+- Internal review notes: `REVIEW.md`
+
+---
+
+## Further documentation
+
+- Threshold tuning: [docs/threshold_optimization.md](docs/threshold_optimization.md)
 
 ---
 
 ## Branches
 
-| Branch | Status | Description |
-|--------|--------|-------------|
-| `master` | Stable | Production-ready code |
-| `fundamental-analysis` | **Active** | Integrated value investing + BrAPI |
+`master` is the integration branch for production. Use short-lived feature branches for changes; merge via pull request when collaborating.
 
 ---
 

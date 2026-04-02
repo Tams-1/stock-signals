@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
-Alert generator for trading signals.
-Formats signals for Telegram delivery.
+Format ranked trading signals as a single text block (e.g. Telegram or logs).
+
+Deduplicates same-issuer lines (e.g. PETR3 vs PETR4), then builds a concise
+summary of top opportunities and risk notes from production result dicts.
 """
 
 from typing import List, Dict
@@ -194,14 +196,14 @@ def _watch_warnings(result: Dict) -> List[str]:
 
 def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
     """
-    Generate formatted trading alerts for Telegram.
-    
+    Build a human-readable alert string from a list of per-ticker result dicts.
+
     Args:
-        results: List of analysis results from production runner
-        top_n: Number of top signals to include
-    
+        results: Analysis rows from ``SimpleProductionRunner`` / related runners
+        top_n: Max number of top conviction names to expand in detail
+
     Returns:
-        Formatted string for Telegram
+        Multi-line formatted message suitable for chat or stdout
     """
     if not results:
         return "📊 No trading signals at this time."
