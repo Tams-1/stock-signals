@@ -234,6 +234,58 @@ class TestSignalGeneration:
                     assert result['signal'] in ['SELL', 'STRONG_SELL']
 
 
+class TestCurrentPriceResolution:
+    """Tests for real-time price source selection."""
+
+    @pytest.fixture
+    def runner(self):
+        return SimpleProductionRunner(use_news=False)
+
+    @pytest.fixture
+    def sample_data(self):
+        dates = pd.date_range(start='2024-01-01', periods=100, freq='D')
+        return pd.DataFrame({
+            'Close': np.linspace(100, 150, 100),
+            'Open': np.linspace(99, 149, 100),
+            'High': np.linspace(101, 151, 100),
+            'Low': np.linspace(98, 148, 100),
+            'Volume': np.full(100, 1_500_000),
+        }, index=dates)
+
+    def test_resolve_current_price_uses_snapshot(self, runner, sample_data):
+        runner._price_snapshots['TEST'] = {
+            'price': 123.45,
+            'source': 'brapi',
+            'quote_ts': '2026-04-03T13:00:00+00:00',
+        }
+
+        price, source, timestamp = runner._resolve_current_price('TEST.SA', sample_data)
+
+        assert price == pytest.approx(123.45)
+        assert source == 'brapi'
+        assert timestamp == '2026-04-03T13:00:00+00:00'
+
+    def test_resolve_current_price_skips_stale_market_hour_fallback(self, runner, sample_data):
+        with patch.object(runner.brapi_client, 'get_price_snapshot', return_value=None), \
+             patch.object(runner.brapi_client, 'get_spot_price', return_value=None), \
+             patch.object(runner.brapi_client, 'is_market_hours', return_value=True):
+            price, source, timestamp = runner._resolve_current_price('TEST.SA', sample_data)
+
+        assert price is None
+        assert source == 'missing'
+        assert timestamp is None
+
+    def test_resolve_current_price_uses_daily_close_after_hours(self, runner, sample_data):
+        with patch.object(runner.brapi_client, 'get_price_snapshot', return_value=None), \
+             patch.object(runner.brapi_client, 'get_spot_price', return_value=None), \
+             patch.object(runner.brapi_client, 'is_market_hours', return_value=False):
+            price, source, timestamp = runner._resolve_current_price('TEST.SA', sample_data)
+
+        assert price == pytest.approx(150.0)
+        assert source == 'yfinance_close'
+        assert timestamp == sample_data.index[-1].isoformat()
+
+
 class TestNewsIntegration:
     """Tests for news integration in runner."""
     

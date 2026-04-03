@@ -1,0 +1,1121 @@
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 16361.11it/s]
+[1mBertForSequenceClassification LOAD REPORT[0m from: ProsusAI/finbert
+Key                          | Status     |  | 
+-----------------------------+------------+--+-
+bert.embeddings.position_ids | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+✅ Sistema inicializado (news=ON, fundamentals=ON, price_source=BrAPI, workers=8)
+
+======================================================================
+🚀 PRODUÇÃO - 2026-03-30 15:30
+📊 Analyzing 210 tickers (IBOV + SMLL)
+======================================================================
+
+💰 Fetching real-time prices from BrAPI (210 tickers)...
+❌ BrAPI error for ABEV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ABEV3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ALPA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ALPA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ALPA4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ALPA4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ALSO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ALSO3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for AMAR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/AMAR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ARZZ3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ARZZ3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ASAI3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ASAI3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for AURE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/AURE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for AZUL4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/AZUL4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for B3SA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/B3SA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BALM3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BALM3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BBAS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BBAS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BBDC3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BBDC3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BBDC4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BBDC4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BBSE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BBSE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BEEF3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BEEF3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BLAU3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BLAU3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BMOB3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BMOB3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BPAC11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BPAC11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BRAP4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BRAP4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BRFS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BRFS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BRKM5: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BRKM5?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for BSEV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BSEV3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CAML3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CAML3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CASH3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CASH3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CBAV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CBAV3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CCRO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CCRO3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CESP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CESP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CESP5: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CESP5?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CESP6: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CESP6?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CMIG3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CMIG3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CMIG4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CMIG4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CMIN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CMIN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for COCE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/COCE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for COCE5: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/COCE5?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for COCE6: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/COCE6?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for COGN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/COGN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CPFE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CPFE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CPLE6: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CPLE6?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CPRE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CPRE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CRFB3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CRFB3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CSAN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CSAN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CSNA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CSNA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CTNM3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CTNM3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CURY3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CURY3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CVCB3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CVCB3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for CYRE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CYRE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for DEXP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/DEXP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for DIRR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/DIRR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for DTCY3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/DTCY3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for DXCO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/DXCO3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ECOR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ECOR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for EGIE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EGIE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ELET3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ELET3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ELET6: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ELET6?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ELMD3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ELMD3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for EMBR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EMBR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ENAT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ENAT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ENBR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ENBR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ENEV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ENEV3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ENGI11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ENGI11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for EQTL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EQTL3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ETER3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ETER3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for EVEN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EVEN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for EZTC3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EZTC3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for FIBR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/FIBR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for FLRY3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/FLRY3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for FRIO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/FRIO3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for GEPA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GEPA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for GEPA4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GEPA4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for GGBR4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GGBR4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for GMAT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GMAT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for GOAU4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GOAU4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for GPAR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GPAR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for GRND3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GRND3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for HAPV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/HAPV3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for HBRE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/HBRE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for HYPE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/HYPE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for IGTI11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/IGTI11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for INEP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/INEP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for INEP4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/INEP4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for IRBR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/IRBR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ITSA4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ITSA4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for JALL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/JALL3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for JBSS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/JBSS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for JHSF3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/JHSF3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for KEPL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/KEPL3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for KLBN11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/KLBN11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for LAVV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LAVV3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for LCAM3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LCAM3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for LIGT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LIGT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for LOGG3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LOGG3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for LPAN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LPAN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for LREN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LREN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for LUPA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LUPA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for LWSA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LWSA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MATD3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MATD3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MDNE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MDNE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MELK3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MELK3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MILS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MILS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MMXM3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MMXM3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MRFG3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MRFG3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MRVE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MRVE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MULT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MULT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for MYPK3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MYPK3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for NEOE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/NEOE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for NGRD3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/NGRD3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for NTCO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/NTCO3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ODER3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ODER3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for OFER3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/OFER3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for OPCT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/OPCT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ORVR3: 500 Server Error: Internal Server Error for url: https://brapi.dev/api/quote/ORVR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PARD3: 500 Server Error: Internal Server Error for url: https://brapi.dev/api/quote/PARD3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PATS3: 500 Server Error: Internal Server Error for url: https://brapi.dev/api/quote/PATS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PCAR3: 500 Server Error: Internal Server Error for url: https://brapi.dev/api/quote/PCAR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PDGR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PDGR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PETR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PETR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PETZ3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PETZ3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PGMN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PGMN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PKSA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PKSA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PLAS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PLAS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PMAM3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PMAM3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PNVL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PNVL3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PNVL4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PNVL4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for POWE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/POWE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PRIO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PRIO3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PTCA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PTCA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PTCA4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PTCA4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for PTNT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PTNT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for QGEC3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/QGEC3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for QGEC4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/QGEC4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RADL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RADL3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RAIL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RAIL3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RAIZ4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RAIZ4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RCSL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RCSL3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RCSL4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RCSL4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RDOR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RDOR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for REDE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/REDE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RENT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RENT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RNEW11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RNEW11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RNEW3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RNEW3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RNEW4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RNEW4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ROMI3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ROMI3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RPAD3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RPAD3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RPAD5: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RPAD5?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RRRP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RRRP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for RSID3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/RSID3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SANB11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SANB11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SAPR11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SAPR11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SAPR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SAPR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SAPR4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SAPR4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SBSP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SBSP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SEDU3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SEDU3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SEIV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SEIV3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SEIV4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SEIV4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SGPS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SGPS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SHOW3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SHOW3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SIMH3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SIMH3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SLCE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SLCE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SMFT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SMFT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SMTO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SMTO3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SOMA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SOMA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SPRI3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SPRI3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for STBP11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/STBP11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for STBP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/STBP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SULA11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SULA11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for SUZB3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/SUZB3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TAEE11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TAEE11?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TASA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TASA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TASA4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TASA4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TCIN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TCIN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TECN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TECN3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TGMA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TGMA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TIMS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TIMS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TLEF3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TLEF3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TLEF4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TLEF4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TMCP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TMCP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TMCP4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TMCP4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TNEP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TNEP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TNEP4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TNEP4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TNLP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TNLP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TNLP4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TNLP4?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TOTS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TOTS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TOYR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TOYR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TPIS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TPIS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TRAD3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TRAD3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TRIS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TRIS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for TRUS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/TRUS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for UCAS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/UCAS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for UGPA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/UGPA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for UNIP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/UNIP3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for UNIP5: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/UNIP5?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for UNIP6: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/UNIP6?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for USIM3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/USIM3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for USIM5: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/USIM5?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for USIM6: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/USIM6?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for VBBR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/VBBR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for VIVA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/VIVA3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for VIVR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/VIVR3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for VIVT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/VIVT3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for VULC3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/VULC3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for WEGE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/WEGE3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for WIZC3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/WIZC3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for WIZS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/WIZS3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for YDUQ3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/YDUQ3?token=nbuibYHztScvmY86pwCXKs
+❌ BrAPI error for ZAMP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ZAMP3?token=nbuibYHztScvmY86pwCXKs
+   ✅ Got 4/210 prices from BrAPI
+
+⚡ Parallel mode: 8 workers
+
+📊 ABEV3.SA... 📊 AURE3.SA... 📊 BBSE3.SA... 📊 BRKM5.SA... 📊 CESP5.SA... 📊 COCE6.SA... 📊 CSNA3.SA... 📊 DTCY3.SA... ❌ BrAPI error for ABEV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ABEV3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ABEV3, using yfinance close
+
+     [TREND] downtrend @ 49.1% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.05
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 ALPA3.SA... ❌ BrAPI error for DTCY3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/DTCY3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for DTCY3, using yfinance close
+
+     [TREND] uptrend @ 80.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (UPTREND)
+📊 DXCO3.SA... ❌ BrAPI error for BRKM5: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BRKM5?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BRKM5, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 37.8% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.41
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (SIDEWAYS)
+📊 BSEV3.SA... ❌ BrAPI error for AURE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/AURE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for AURE3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 5.5% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for COCE6: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/COCE6?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for COCE6, using yfinance close
+
+     [TREND] consolidation @ 0.0% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for CSNA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CSNA3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CSNA3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 85.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.07
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+SELL (SIDEWAYS)
+📊 AZUL4.SA... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bull -> buy_conf=0.50, sell_conf=0.35
+SELL (SIDEWAYS)
+📊 COGN3.SA... ❌ BrAPI error for BBSE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BBSE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BBSE3, using yfinance close
+
+     [TREND] consolidation @ 7.1% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.02
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+SELL (SIDEWAYS)
+📊 BEEF3.SA... ⚠️  No articles found, sentiment: -0.04
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 CTNM3.SA... ❌ BrAPI error for DXCO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/DXCO3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for DXCO3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 78.1% confidence
+     [NEWS] newsdata.io... $CESP5.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['CESP5.SA']: possibly delisted; no timezone found
+⚠️  No articles found, sentiment: -0.07
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 ECOR3.SA...     ⚠️ No data returned for CESP5.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 CESP6.SA... ❌ BrAPI error for ALPA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ALPA3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ALPA3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 37.8% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (SIDEWAYS)
+📊 ALPA4.SA... ❌ BrAPI error for COGN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/COGN3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for COGN3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 85.9% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.05
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+STRONG_BUY (DOWNTREND)
+📊 CPFE3.SA... ❌ BrAPI error for BEEF3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BEEF3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BEEF3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 84.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.04
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 BLAU3.SA... ❌ BrAPI error for ECOR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ECOR3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ECOR3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 90.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.01
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+STRONG_BUY (DOWNTREND)
+📊 EGIE3.SA... $BSEV3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['BSEV3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for BSEV3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 CAML3.SA... ❌ BrAPI error for CPFE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CPFE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CPFE3, using yfinance close
+
+     [TREND] downtrend @ 65.6% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 CPLE6.SA... ❌ BrAPI error for BLAU3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BLAU3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BLAU3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 37.8% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.10
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (SIDEWAYS)
+📊 BMOB3.SA... ❌ BrAPI error for EGIE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EGIE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for EGIE3, using yfinance close
+
+     [TREND] downtrend @ 33.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.10
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 ELET3.SA... ❌ BrAPI error for CAML3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CAML3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CAML3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 52.7% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.36
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 CASH3.SA... HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CTNM3.SA"}}}
+❌ BrAPI error for BMOB3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BMOB3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BMOB3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 16.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.22
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (UPTREND)
+📊 BPAC11.SA... HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: AZUL4.SA"}}}
+$CESP6.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['CESP6.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for CESP6.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 CMIG3.SA... $CTNM3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['CTNM3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for CTNM3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 CURY3.SA... ❌ BrAPI error for CASH3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CASH3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CASH3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 31.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (SIDEWAYS)
+📊 CBAV3.SA... $AZUL4.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['AZUL4.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for AZUL4.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 B3SA3.SA...     ⚠️ No data returned for B3SA3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 BALM3.SA... ❌ BrAPI error for BPAC11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BPAC11?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BPAC11, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 42.2% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.07
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 BRAP4.SA... ❌ BrAPI error for CMIG3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CMIG3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CMIG3, using yfinance close
+
+     [TREND] uptrend @ 78.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.12
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+BUY (UPTREND)
+📊 CMIG4.SA... ❌ BrAPI error for CURY3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CURY3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CURY3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 37.8% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.08
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (SIDEWAYS)
+📊 CVCB3.SA... ❌ BrAPI error for CBAV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CBAV3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CBAV3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 49.9% confidence
+     [NEWS] newsdata.io... HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ELET3.SA"}}}
+HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: CPLE6.SA"}}}
+❌ BrAPI error for BALM3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BALM3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BALM3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 36.1% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (UPTREND)
+📊 BBAS3.SA... ❌ BrAPI error for BRAP4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BRAP4?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BRAP4, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 50.8% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.42
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 BRFS3.SA... ❌ BrAPI error for CMIG4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CMIG4?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CMIG4, using yfinance close
+
+     [TREND] uptrend @ 69.1% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.11
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+BUY (UPTREND)
+📊 CMIN3.SA... $ELET3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['ELET3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for ELET3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 ELET6.SA... ❌ BrAPI error for CVCB3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CVCB3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CVCB3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 50.9% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.02
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 CYRE3.SA... Rate limited (HTTP 429) for CBAV3. Retry after 32s
+❌ BrAPI error for BBAS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BBAS3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BBAS3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 46.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.34
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 BBDC3.SA... $CPLE6.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['CPLE6.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for CPLE6.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 CPRE3.SA... ❌ BrAPI error for CMIN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CMIN3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CMIN3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 77.4% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 COCE3.SA... ❌ BrAPI error for CYRE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CYRE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CYRE3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 33.9% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.09
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 DEXP3.SA... HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ELET6.SA"}}}
+❌ BrAPI error for BBDC3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BBDC3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BBDC3, using yfinance close
+     [VOL] Unusual volume detected (+5% confidence)
+
+     [TREND] downtrend @ 71.8% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for DEXP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/DEXP3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for DEXP3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 42.3% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for COCE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/COCE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for COCE3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 41.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.08
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 DIRR3.SA... ⚠️  No articles found, sentiment: +0.08
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+BUY (DOWNTREND)
+📊 BBDC4.SA... $CPRE3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['CPRE3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for CPRE3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 CRFB3.SA... $ELET6.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['ELET6.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for ELET6.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 ELMD3.SA... ❌ BrAPI error for DIRR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/DIRR3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for DIRR3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 41.3% confidence
+     [NEWS] newsdata.io... Rate limited (HTTP 429) for COCE3. Retry after 30s
+❌ BrAPI error for BBDC4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/BBDC4?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for BBDC4, using yfinance close
+
+     [TREND] downtrend @ 71.1% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.13
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 EMBR3.SA... $CRFB3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['CRFB3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for CRFB3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 CSAN3.SA... ⚠️  No articles found, sentiment: +0.01
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+BUY (DOWNTREND)
+📊 EVEN3.SA... $ELMD3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['ELMD3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for ELMD3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 GGBR4.SA... ❌ BrAPI error for CSAN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/CSAN3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for CSAN3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 40.5% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for EVEN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EVEN3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for EVEN3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 40.9% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.18
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 EZTC3.SA... ⚠️  No articles found, sentiment: -0.08
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 HYPE3.SA... ❌ BrAPI error for GGBR4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GGBR4?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for GGBR4, using yfinance close
+
+     [TREND] downtrend @ 96.9% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.03
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 GMAT3.SA... ❌ BrAPI error for EZTC3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EZTC3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for EZTC3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 51.7% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 FIBR3.SA... HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: EMBR3.SA"}}}
+$FIBR3.SA: possibly delisted; no price data found  (1d 2025-11-30 -> 2026-03-30)
+
+1 Failed download:
+['FIBR3.SA']: possibly delisted; no price data found  (1d 2025-11-30 -> 2026-03-30)
+    ⚠️ No data returned for FIBR3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 FLRY3.SA... ❌ BrAPI error for GMAT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GMAT3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for GMAT3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 48.5% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for HYPE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/HYPE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for HYPE3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 31.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.05
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 GOAU4.SA... ⚠️  No articles found, sentiment: -0.02
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (SIDEWAYS)
+📊 IGTI11.SA... $EMBR3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['EMBR3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for EMBR3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 ENAT3.SA... ❌ BrAPI error for ALPA4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ALPA4?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ALPA4, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 50.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.02
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 ALSO3.SA... ❌ BrAPI error for FLRY3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/FLRY3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for FLRY3, using yfinance close
+
+     [TREND] downtrend @ 60.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.00
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+BUY (DOWNTREND)
+📊 FRIO3.SA... ❌ BrAPI error for GOAU4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GOAU4?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for GOAU4, using yfinance close
+
+     [TREND] downtrend @ 97.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.02
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+BUY (DOWNTREND)
+📊 GPAR3.SA... ❌ BrAPI error for IGTI11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/IGTI11?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for IGTI11, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 24.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.04
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 INEP3.SA... $ENAT3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['ENAT3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for ENAT3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 ENBR3.SA... ❌ BrAPI error for FRIO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/FRIO3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for FRIO3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 60.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 GEPA3.SA... ❌ BrAPI error for GPAR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GPAR3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for GPAR3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 72.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (UPTREND)
+📊 GRND3.SA... ❌ BrAPI error for INEP3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/INEP3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for INEP3, using yfinance close
+     [VOL] Unusual volume detected (+5% confidence)
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 30.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 INEP4.SA... ❌ BrAPI error for GEPA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GEPA3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for GEPA3, using yfinance close
+
+     [TREND] consolidation @ 0.0% confidence
+     [NEWS] newsdata.io... $ALSO3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['ALSO3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for ALSO3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 AMAR3.SA... $ENBR3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['ENBR3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for ENBR3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 ENEV3.SA... ❌ BrAPI error for INEP4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/INEP4?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for INEP4, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 36.7% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for GRND3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/GRND3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for GRND3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 12.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (UPTREND)
+📊 IRBR3.SA... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (SIDEWAYS)
+📊 HAPV3.SA... ❌ BrAPI error for AMAR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/AMAR3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for AMAR3, using yfinance close
+
+     [TREND] downtrend @ 66.2% confidence
+     [NEWS] newsdata.io... Rate limited (HTTP 429) for GEPA3. Retry after 26s
+⚠️  No articles found, sentiment: +0.00
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 ARZZ3.SA... ❌ BrAPI error for ENEV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ENEV3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ENEV3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 49.0% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for HAPV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/HAPV3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for HAPV3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 63.0% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for IRBR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/IRBR3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for IRBR3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 34.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.01
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (UPTREND)
+📊 ENGI11.SA... ⚠️  No articles found, sentiment: +0.19
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+SELL (DOWNTREND)
+📊 ITSA4.SA... ⚠️  No articles found, sentiment: -0.15
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 HBRE3.SA... ❌ BrAPI error for ENGI11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ENGI11?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ENGI11, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 37.8% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.10
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (SIDEWAYS)
+📊 EQTL3.SA... ❌ BrAPI error for ITSA4: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ITSA4?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ITSA4, using yfinance close
+
+     [TREND] consolidation @ 3.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.05
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (SIDEWAYS)
+📊 ITUB4.SA... ❌ BrAPI error for HBRE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/HBRE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for HBRE3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 57.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.16
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 JALL3.SA... ❌ BrAPI error for EQTL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/EQTL3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for EQTL3, using yfinance close
+
+     [TREND] consolidation @ 8.4% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.12
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+SELL (SIDEWAYS)
+📊 ETER3.SA... $ARZZ3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['ARZZ3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for ARZZ3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 ASAI3.SA... 
+     [TREND] downtrend @ 43.2% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for JALL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/JALL3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for JALL3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 50.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.27
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (UPTREND)
+📊 JBSS3.SA... ⚠️  No articles found, sentiment: +0.05
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 LIGT3.SA... ❌ BrAPI error for ETER3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ETER3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ETER3, using yfinance close
+
+     [TREND] downtrend @ 46.3% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for ASAI3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ASAI3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ASAI3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 23.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.12
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 MDNE3.SA... HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: BRFS3.SA"}}}
+❌ BrAPI error for LIGT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LIGT3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for LIGT3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 32.1% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.06
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 LOGG3.SA... $BRFS3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['BRFS3.SA']: possibly delisted; no timezone found
+Rate limited (HTTP 429) for ASAI3. Retry after 24s
+    ⚠️ No data returned for BRFS3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 MULT3.SA... ❌ BrAPI error for MDNE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MDNE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for MDNE3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 45.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.06
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (UPTREND)
+📊 MELK3.SA... ❌ BrAPI error for LOGG3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LOGG3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for LOGG3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 18.2% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 LPAN3.SA... $JBSS3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['JBSS3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for JBSS3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 JHSF3.SA... ❌ BrAPI error for MULT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MULT3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for MULT3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 36.1% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.03
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 MYPK3.SA... ❌ BrAPI error for MELK3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MELK3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for MELK3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 66.2% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.14
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 MGLU3.SA... ❌ BrAPI error for JHSF3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/JHSF3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for JHSF3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 40.4% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.09
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 KEPL3.SA...      [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 29.7% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.03
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+SELL (DOWNTREND)
+📊 MILS3.SA... ❌ BrAPI error for MYPK3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MYPK3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for MYPK3, using yfinance close
+
+     [TREND] downtrend @ 93.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+BUY (DOWNTREND)
+📊 NEOE3.SA... ❌ BrAPI error for KEPL3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/KEPL3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for KEPL3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 57.6% confidence
+     [NEWS] newsdata.io... $LPAN3.SA: possibly delisted; no timezone found
+⚠️  No articles found, sentiment: -0.03
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 KLBN11.SA... 
+1 Failed download:
+['LPAN3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for LPAN3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 LREN3.SA... ❌ BrAPI error for MILS3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MILS3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for MILS3, using yfinance close
+
+     [TREND] downtrend @ 66.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.05
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+STRONG_BUY (DOWNTREND)
+📊 MMXM3.SA... ❌ BrAPI error for LREN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LREN3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for LREN3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 13.7% confidence
+     [NEWS] newsdata.io... ❌ BrAPI error for KLBN11: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/KLBN11?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for KLBN11, using yfinance close
+
+     [TREND] downtrend @ 41.7% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (UPTREND)
+📊 LUPA3.SA... ⚠️  No articles found, sentiment: +0.15
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 LAVV3.SA... ❌ BrAPI error for NEOE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/NEOE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for NEOE3, using yfinance close
+
+     [TREND] uptrend @ 100.0% confidence
+     [NEWS] newsdata.io... $MMXM3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['MMXM3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for MMXM3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 MRFG3.SA... ❌ BrAPI error for LUPA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LUPA3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for LUPA3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 67.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.02
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 LWSA3.SA... ❌ BrAPI error for LAVV3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LAVV3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for LAVV3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 51.3% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.15
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 LCAM3.SA... Rate limited (HTTP 429) for NEOE3. Retry after 22s
+$MRFG3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['MRFG3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for MRFG3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 MRVE3.SA... ❌ BrAPI error for LWSA3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/LWSA3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for LWSA3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 40.1% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.24
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 MATD3.SA... $LCAM3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['LCAM3.SA']: possibly delisted; no timezone found
+❌ BrAPI error for MRVE3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MRVE3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for MRVE3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 54.0% confidence
+     [NEWS] newsdata.io...     ⚠️ No data returned for LCAM3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 OPCT3.SA... ❌ BrAPI error for MATD3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/MATD3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for MATD3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] consolidation @ 37.8% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.06
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (DOWNTREND)
+📊 PETR4.SA... ❌ BrAPI error for OPCT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/OPCT3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for OPCT3, using yfinance close
+
+     [TREND] downtrend @ 37.9% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+HOLD (DOWNTREND)
+📊 ORVR3.SA... ⚠️  No articles found, sentiment: +0.01
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+HOLD (SIDEWAYS)
+📊 PNVL4.SA... 
+     [TREND] uptrend @ 100.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] sideways -> buy_conf=0.55, sell_conf=0.45
+STRONG_BUY (UPTREND)
+📊 PETZ3.SA... ❌ BrAPI error for ORVR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/ORVR3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for ORVR3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 55.5% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: -0.20
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+SELL (DOWNTREND)
+📊 PARD3.SA... $PETZ3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['PETZ3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for PETZ3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 PGMN3.SA... $PNVL4.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['PNVL4.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for PNVL4.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 POWE3.SA... $PARD3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['PARD3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for PARD3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 PATS3.SA... ❌ BrAPI error for PGMN3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PGMN3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for PGMN3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 16.1% confidence
+     [NEWS] newsdata.io... $POWE3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['POWE3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for POWE3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 PRIO3.SA... $PATS3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['PATS3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for PATS3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 PCAR3.SA... Rate limited (HTTP 429) for PGMN3. Retry after 19s
+❌ BrAPI error for PRIO3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PRIO3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for PRIO3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] uptrend @ 90.0% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (UPTREND)
+📊 PTCA3.SA... ❌ BrAPI error for PCAR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PCAR3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for PCAR3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 86.2% confidence
+     [NEWS] newsdata.io... ⚠️  No articles found, sentiment: +0.00
+     [REGIME] bear -> buy_conf=0.65, sell_conf=0.35
+BUY (DOWNTREND)
+📊 PDGR3.SA... $PTCA3.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['PTCA3.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for PTCA3.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 PTCA4.SA... ❌ BrAPI error for PDGR3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PDGR3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for PDGR3, using yfinance close
+     [VOL] High volatility regime (-10% confidence)
+
+     [TREND] downtrend @ 71.2% confidence
+     [NEWS] newsdata.io... Rate limited (HTTP 429) for PDGR3. Retry after 18s
+$PTCA4.SA: possibly delisted; no timezone found
+
+1 Failed download:
+['PTCA4.SA']: possibly delisted; no timezone found
+    ⚠️ No data returned for PTCA4.SA
+  ❌ Error: object of type 'NoneType' has no len()
+SKIP
+📊 PTNT3.SA... ❌ BrAPI error for PTNT3: 429 Client Error: Too Many Requests for url: https://brapi.dev/api/quote/PTNT3?token=nbuibYHztScvmY86pwCXKs
+     ⚠️ BrAPI unavailable for PTNT3, using yfinance close
+
+     [TREND] uptrend @ 39.1% confidence
+     [NEWS] newsdata.io... Rate limited (HTTP 429) for PTNT3. Retry after 17s
+Rate limited (HTTP 429) for PGMN3. Retry after 0s
+Rate limited (HTTP 429) for ASAI3. Retry after 0s
+Rate limited (HTTP 429) for PGMN3. Retry after 60s
+Rate limited (HTTP 429) for GEPA3. Retry after 60s
+Rate limited (HTTP 429) for COCE3. Retry after 0s
+Rate limited (HTTP 429) for PGMN3. Retry after 75s
+Rate limited (HTTP 429) for COCE3. Retry after 75s
+Rate limited (HTTP 429) for PTNT3. Retry after 75s
+Rate limited (HTTP 429) for PDGR3. Retry after 75s
+Rate limited (HTTP 429) for ASAI3. Retry after 75s
+Rate limited (HTTP 429) for NEOE3. Retry after 60s
+Rate limited (HTTP 429) for COCE3. Retry after 60s
+Rate limited (HTTP 429) for ASAI3. Retry after 60s
+Rate limited (HTTP 429) for CBAV3. Retry after 60s
+/usr/lib64/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 7 leaked semaphore objects to clean up at shutdown: {'/loky-161976-82t2ykfm', '/loky-161976-sz0ho81v', '/loky-161976-8774ebbc', '/loky-161976-8r41x9q4', '/loky-161976-m9dx_x3q', '/loky-161976-vffb9s8m', '/loky-161976-15tqy71a'}
+  warnings.warn(

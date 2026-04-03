@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-13T06:02:18.103153",
+  "timestamp": "2026-03-31T06:08:40.090357",
   "total_stocks": 186,
   "scores": [
     {
@@ -14,10 +14,10 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (4.7)",
-        "Trading below book value (P/B: 0.96)",
+        "Low P/E (4.6)",
+        "Trading below book value (P/B: 0.94)",
         "High ROE (20.6%)",
-        "High dividend yield (5.8%)"
+        "High dividend yield (5.9%)"
       ],
       "weaknesses": []
     },
@@ -27,15 +27,15 @@
       "grade": "A",
       "value_score": 90.71428571428571,
       "quality_score": 85,
-      "growth_score": 55,
+      "growth_score": 45,
       "is_value": true,
       "is_quality": true,
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (9.4)",
-        "Low debt (D/E: 0.10)",
-        "High dividend yield (8.3%)"
+        "Low P/E (9.1)",
+        "Low debt (D/E: 0.12)",
+        "High dividend yield (9.2%)"
       ],
       "weaknesses": []
     },
@@ -51,18 +51,38 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (8.8)",
+        "Low P/E (8.2)",
         "High ROE (27.9%)",
         "Excellent ROIC (25.8%)",
         "Low debt (D/E: 0.23)",
-        "High dividend yield (13.7%)",
-        "Attractive PEG (0.40)"
+        "High dividend yield (14.7%)",
+        "Attractive PEG (0.37)"
+      ],
+      "weaknesses": []
+    },
+    {
+      "ticker": "WIZC3",
+      "composite_score": 86.73857142857143,
+      "grade": "A",
+      "value_score": 91.42857142857143,
+      "quality_score": 90,
+      "growth_score": 65,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (6.9)",
+        "High ROE (28.8%)",
+        "Excellent ROIC (36.6%)",
+        "High dividend yield (6.5%)",
+        "Attractive PEG (0.49)"
       ],
       "weaknesses": []
     },
     {
       "ticker": "CYRE3",
-      "composite_score": 85.02000000000001,
+      "composite_score": 85.09000000000002,
       "grade": "A",
       "value_score": 100,
       "quality_score": 80,
@@ -72,9 +92,9 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (6.9)",
-        "High dividend yield (11.6%)",
-        "Attractive PEG (0.40)"
+        "Low P/E (6.0)",
+        "High dividend yield (12.0%)",
+        "Attractive PEG (0.32)"
       ],
       "weaknesses": []
     },
@@ -90,48 +110,49 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.3)",
-        "High dividend yield (17.6%)",
-        "Attractive PEG (0.39)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "VIVA3",
-      "composite_score": 84.54928571428572,
-      "grade": "A",
-      "value_score": 95.71428571428571,
-      "quality_score": 100,
-      "growth_score": 80,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (8.4)",
-        "High ROE (25.3%)",
-        "Excellent ROIC (18.1%)",
-        "Low debt (D/E: 0.19)",
-        "High dividend yield (5.1%)",
-        "Attractive PEG (0.40)"
+        "Low P/E (6.6)",
+        "Trading below book value (P/B: 0.93)",
+        "High dividend yield (19.6%)",
+        "Attractive PEG (0.35)"
       ],
       "weaknesses": []
     },
     {
       "ticker": "EVEN3",
-      "composite_score": 84.28500000000001,
+      "composite_score": 84.70500000000001,
       "grade": "A",
       "value_score": 100,
-      "quality_score": 65,
+      "quality_score": 75,
       "growth_score": 45,
       "is_value": true,
       "is_quality": true,
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.9)",
-        "Trading below book value (P/B: 0.71)",
-        "High dividend yield (10.9%)"
+        "Low P/E (6.0)",
+        "Trading below book value (P/B: 0.75)",
+        "High dividend yield (10.8%)"
+      ],
+      "weaknesses": []
+    },
+    {
+      "ticker": "VIVA3",
+      "composite_score": 84.44428571428573,
+      "grade": "A",
+      "value_score": 95.71428571428571,
+      "quality_score": 100,
+      "growth_score": 70,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (9.6)",
+        "High ROE (21.0%)",
+        "Excellent ROIC (17.8%)",
+        "Low debt (D/E: 0.18)",
+        "High dividend yield (5.4%)",
+        "Attractive PEG (0.49)"
       ],
       "weaknesses": []
     },
@@ -147,11 +168,11 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (4.5)",
+        "Low P/E (4.6)",
         "High ROE (48.0%)",
         "Excellent ROIC (17.0%)",
-        "High dividend yield (28.0%)",
-        "Attractive PEG (0.28)"
+        "High dividend yield (26.6%)",
+        "Attractive PEG (0.29)"
       ],
       "weaknesses": []
     },
@@ -167,9 +188,9 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (8.8)",
-        "Trading below book value (P/B: 0.60)",
-        "High dividend yield (9.0%)"
+        "Low P/E (7.7)",
+        "Trading below book value (P/B: 0.52)",
+        "High dividend yield (7.7%)"
       ],
       "weaknesses": [
         "Low ROE (6.8%)"
@@ -177,19 +198,19 @@
     },
     {
       "ticker": "GMAT3",
-      "composite_score": 82.58928571428572,
+      "composite_score": 82.37928571428573,
       "grade": "A",
       "value_score": 100,
-      "quality_score": 80,
+      "quality_score": 75,
       "growth_score": 80,
       "is_value": true,
       "is_quality": true,
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (6.1)",
-        "Low debt (D/E: 0.26)",
-        "Attractive PEG (0.25)"
+        "Low P/E (5.7)",
+        "Low debt (D/E: 0.28)",
+        "Attractive PEG (0.23)"
       ],
       "weaknesses": []
     },
@@ -216,7 +237,7 @@
       "ticker": "LAVV3",
       "composite_score": 82.09928571428573,
       "grade": "A",
-      "value_score": 95.71428571428571,
+      "value_score": 100,
       "quality_score": 90,
       "growth_score": 80,
       "is_value": true,
@@ -224,10 +245,10 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.4)",
+        "Low P/E (6.5)",
         "High ROE (27.7%)",
-        "High dividend yield (17.0%)",
-        "Attractive PEG (0.20)"
+        "High dividend yield (19.5%)",
+        "Attractive PEG (0.18)"
       ],
       "weaknesses": []
     },
@@ -243,9 +264,9 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.6)",
+        "Low P/E (7.5)",
         "High ROE (27.7%)",
-        "High dividend yield (14.2%)",
+        "High dividend yield (14.4%)",
         "Attractive PEG (0.19)"
       ],
       "weaknesses": []
@@ -262,10 +283,27 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.4)",
+        "Low P/E (7.2)",
         "Excellent ROIC (15.8%)",
         "Low debt (D/E: 0.11)",
-        "Attractive PEG (0.72)"
+        "Attractive PEG (0.70)"
+      ],
+      "weaknesses": []
+    },
+    {
+      "ticker": "MILS3",
+      "composite_score": 80.82357142857144,
+      "grade": "A",
+      "value_score": 81.42857142857143,
+      "quality_score": 80,
+      "growth_score": 80,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": true,
+      "strengths": [
+        "Excellent ROIC (19.7%)",
+        "Attractive PEG (0.43)"
       ],
       "weaknesses": []
     },
@@ -282,29 +320,12 @@
       "is_undervalued": true,
       "strengths": [
         "Trading below book value (P/B: 0.16)",
-        "High dividend yield (40.6%)",
+        "High dividend yield (40.7%)",
         "Attractive PEG (0.24)"
       ],
       "weaknesses": [
         "Low ROE (1.5%)"
       ]
-    },
-    {
-      "ticker": "MILS3",
-      "composite_score": 80.43857142857145,
-      "grade": "A",
-      "value_score": 76.42857142857143,
-      "quality_score": 80,
-      "growth_score": 80,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": true,
-      "strengths": [
-        "Excellent ROIC (18.6%)",
-        "Attractive PEG (0.41)"
-      ],
-      "weaknesses": []
     },
     {
       "ticker": "LOGG3",
@@ -325,65 +346,6 @@
       "weaknesses": []
     },
     {
-      "ticker": "BLAU3",
-      "composite_score": 79.77000000000001,
-      "grade": "B",
-      "value_score": 100,
-      "quality_score": 90,
-      "growth_score": 60,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (7.4)",
-        "Trading below book value (P/B: 0.99)",
-        "Low debt (D/E: 0.23)",
-        "High dividend yield (7.9%)",
-        "Attractive PEG (0.98)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "WIZC3",
-      "composite_score": 79.35357142857144,
-      "grade": "B",
-      "value_score": 91.42857142857143,
-      "quality_score": 90,
-      "growth_score": 65,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (7.7)",
-        "High ROE (27.2%)",
-        "Excellent ROIC (35.5%)",
-        "High dividend yield (6.2%)",
-        "Attractive PEG (0.57)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "PETR4",
-      "composite_score": 79.30428571428573,
-      "grade": "B",
-      "value_score": 100,
-      "quality_score": 80,
-      "growth_score": 45,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": false,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (5.3)",
-        "High ROE (26.5%)",
-        "Excellent ROIC (17.4%)",
-        "High dividend yield (7.2%)"
-      ],
-      "weaknesses": []
-    },
-    {
       "ticker": "CURY3",
       "composite_score": 79.14714285714287,
       "grade": "B",
@@ -397,14 +359,34 @@
       "strengths": [
         "High ROE (70.6%)",
         "Excellent ROIC (39.4%)",
-        "High dividend yield (10.9%)",
-        "Attractive PEG (0.35)"
+        "High dividend yield (11.5%)",
+        "Attractive PEG (0.33)"
       ],
       "weaknesses": []
     },
     {
+      "ticker": "ECOR3",
+      "composite_score": 78.40857142857145,
+      "grade": "B",
+      "value_score": 86.42857142857143,
+      "quality_score": 65,
+      "growth_score": 80,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (6.5)",
+        "High ROE (21.6%)",
+        "Attractive PEG (0.25)"
+      ],
+      "weaknesses": [
+        "High debt (D/E: 6.43)"
+      ]
+    },
+    {
       "ticker": "JBSS3",
-      "composite_score": 78.61857142857144,
+      "composite_score": 78.37357142857145,
       "grade": "B",
       "value_score": 100,
       "quality_score": 60,
@@ -414,51 +396,15 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (2.9)",
-        "Trading below book value (P/B: 0.74)",
-        "High ROE (25.0%)",
+        "Low P/E (3.0)",
+        "Trading below book value (P/B: 0.72)",
+        "High ROE (24.2%)",
         "High dividend yield (19.6%)",
-        "Attractive PEG (0.37)"
+        "Attractive PEG (0.39)"
       ],
       "weaknesses": [
-        "High debt (D/E: 2.40)"
+        "High debt (D/E: 2.46)"
       ]
-    },
-    {
-      "ticker": "CASH3",
-      "composite_score": 78.51357142857144,
-      "grade": "B",
-      "value_score": 100,
-      "quality_score": 75,
-      "growth_score": 65,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (6.7)",
-        "Trading below book value (P/B: 0.68)",
-        "Attractive PEG (0.46)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "BMOB3",
-      "composite_score": 78.30357142857144,
-      "grade": "B",
-      "value_score": 76.42857142857143,
-      "quality_score": 80,
-      "growth_score": 80,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": true,
-      "strengths": [
-        "Low debt (D/E: 0.02)",
-        "High dividend yield (11.3%)",
-        "Attractive PEG (0.33)"
-      ],
-      "weaknesses": []
     },
     {
       "ticker": "RPAD5",
@@ -474,7 +420,7 @@
       "strengths": [
         "Low P/E (6.3)",
         "Trading below book value (P/B: 0.51)",
-        "High dividend yield (9.4%)"
+        "High dividend yield (9.3%)"
       ],
       "weaknesses": []
     },
@@ -490,29 +436,29 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.4)",
-        "Trading below book value (P/B: 0.78)",
-        "High dividend yield (8.7%)",
-        "Attractive PEG (0.57)"
+        "Low P/E (7.1)",
+        "Trading below book value (P/B: 0.75)",
+        "High dividend yield (8.3%)",
+        "Attractive PEG (0.54)"
       ],
       "weaknesses": []
     },
     {
       "ticker": "MELK3",
-      "composite_score": 77.53000000000002,
+      "composite_score": 77.18,
       "grade": "B",
       "value_score": 100,
-      "quality_score": 70,
-      "growth_score": 65,
+      "quality_score": 65,
+      "growth_score": 60,
       "is_value": true,
       "is_quality": true,
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.1)",
-        "Trading below book value (P/B: 0.69)",
-        "High dividend yield (35.3%)",
-        "Attractive PEG (0.61)"
+        "Low P/E (6.2)",
+        "Trading below book value (P/B: 0.65)",
+        "High dividend yield (16.8%)",
+        "Attractive PEG (0.80)"
       ],
       "weaknesses": []
     },
@@ -541,7 +487,7 @@
       "ticker": "GGBR4",
       "composite_score": 76.11928571428572,
       "grade": "B",
-      "value_score": 100,
+      "value_score": 75.71428571428571,
       "quality_score": 55,
       "growth_score": 45,
       "is_value": true,
@@ -549,11 +495,11 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Trading below book value (P/B: 0.67)",
+        "Trading below book value (P/B: 0.68)",
         "Low debt (D/E: 0.26)"
       ],
       "weaknesses": [
-        "High P/E (25.9)",
+        "High P/E (26.4)",
         "Low ROE (2.6%)"
       ]
     },
@@ -561,7 +507,7 @@
       "ticker": "GOAU4",
       "composite_score": 76.11928571428572,
       "grade": "B",
-      "value_score": 100,
+      "value_score": 75.71428571428571,
       "quality_score": 45,
       "growth_score": 45,
       "is_value": true,
@@ -576,6 +522,27 @@
       ]
     },
     {
+      "ticker": "BEEF3",
+      "composite_score": 75.90785714285715,
+      "grade": "B",
+      "value_score": 77.14285714285714,
+      "quality_score": 65,
+      "growth_score": 70,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "Low P/E (5.1)",
+        "High ROE (61.9%)",
+        "Excellent ROIC (17.9%)",
+        "Attractive PEG (0.31)"
+      ],
+      "weaknesses": [
+        "High debt (D/E: 21.21)"
+      ]
+    },
+    {
       "ticker": "SANB11",
       "composite_score": 75.71428571428572,
       "grade": "B",
@@ -587,10 +554,28 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.4)",
-        "High dividend yield (7.1%)"
+        "Low P/E (7.2)",
+        "High dividend yield (7.4%)"
       ],
       "weaknesses": []
+    },
+    {
+      "ticker": "MATD3",
+      "composite_score": 74.92428571428572,
+      "grade": "B",
+      "value_score": 75.71428571428571,
+      "quality_score": 65,
+      "growth_score": 70,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": true,
+      "strengths": [
+        "Attractive PEG (0.85)"
+      ],
+      "weaknesses": [
+        "Low ROE (7.5%)"
+      ]
     },
     {
       "ticker": "SAPR11",
@@ -604,9 +589,8 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (5.8)",
-        "Trading below book value (P/B: 0.97)",
-        "Attractive PEG (0.66)"
+        "Low P/E (6.3)",
+        "Attractive PEG (0.71)"
       ],
       "weaknesses": []
     },
@@ -622,8 +606,8 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (6.4)",
-        "Attractive PEG (0.73)"
+        "Low P/E (7.2)",
+        "Attractive PEG (0.82)"
       ],
       "weaknesses": []
     },
@@ -639,10 +623,8 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (5.6)",
-        "Trading below book value (P/B: 0.95)",
-        "High dividend yield (5.2%)",
-        "Attractive PEG (0.64)"
+        "Low P/E (6.0)",
+        "Attractive PEG (0.68)"
       ],
       "weaknesses": []
     },
@@ -658,68 +640,32 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (9.8)",
-        "Trading below book value (P/B: 0.45)",
-        "High dividend yield (5.6%)",
-        "Attractive PEG (0.93)"
+        "Low P/E (9.9)",
+        "Trading below book value (P/B: 0.46)",
+        "High dividend yield (5.5%)",
+        "Attractive PEG (0.94)"
       ],
       "weaknesses": [
         "Low ROE (4.6%)"
       ]
     },
     {
-      "ticker": "TASA3",
-      "composite_score": 74.29928571428572,
+      "ticker": "BMOB3",
+      "composite_score": 73.31785714285715,
       "grade": "B",
-      "value_score": 100,
-      "quality_score": 50,
-      "growth_score": 35,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (6.1)",
-        "Trading below book value (P/B: 0.58)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "TASA4",
-      "composite_score": 74.29928571428572,
-      "grade": "B",
-      "value_score": 100,
-      "quality_score": 50,
-      "growth_score": 35,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (6.0)",
-        "Trading below book value (P/B: 0.57)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "ECOR3",
-      "composite_score": 74.15785714285715,
-      "grade": "B",
-      "value_score": 72.14285714285714,
-      "quality_score": 65,
+      "value_score": 57.14285714285714,
+      "quality_score": 80,
       "growth_score": 80,
-      "is_value": true,
+      "is_value": false,
       "is_quality": true,
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (6.9)",
-        "High ROE (21.9%)",
-        "Attractive PEG (0.26)"
+        "Low debt (D/E: 0.02)",
+        "High dividend yield (10.5%)",
+        "Attractive PEG (0.48)"
       ],
-      "weaknesses": [
-        "High debt (D/E: 5.90)"
-      ]
+      "weaknesses": []
     },
     {
       "ticker": "BBDC3",
@@ -733,8 +679,8 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.2)",
-        "High dividend yield (7.8%)"
+        "Low P/E (7.0)",
+        "High dividend yield (8.0%)"
       ],
       "weaknesses": []
     },
@@ -742,7 +688,7 @@
       "ticker": "BBDC4",
       "composite_score": 73.21428571428572,
       "grade": "B",
-      "value_score": 76.42857142857143,
+      "value_score": 81.42857142857143,
       "quality_score": 50,
       "growth_score": 55,
       "is_value": true,
@@ -750,26 +696,8 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (8.4)",
-        "High dividend yield (7.4%)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "BRAP4",
-      "composite_score": 73.07428571428572,
-      "grade": "B",
-      "value_score": 100,
-      "quality_score": 40,
-      "growth_score": 50,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (7.8)",
-        "Trading below book value (P/B: 0.97)",
-        "High dividend yield (14.5%)"
+        "Low P/E (8.0)",
+        "High dividend yield (7.8%)"
       ],
       "weaknesses": []
     },
@@ -785,29 +713,28 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (9.2)",
+        "Low P/E (8.5)",
         "High ROE (41.2%)",
-        "High dividend yield (15.9%)",
-        "Attractive PEG (0.37)"
+        "High dividend yield (17.2%)",
+        "Attractive PEG (0.34)"
       ],
       "weaknesses": []
     },
     {
-      "ticker": "DEXP3",
-      "composite_score": 72.73500000000001,
+      "ticker": "BLAU3",
+      "composite_score": 72.70000000000002,
       "grade": "B",
       "value_score": 100,
-      "quality_score": 80,
+      "quality_score": 90,
       "growth_score": 60,
       "is_value": true,
       "is_quality": true,
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (5.8)",
-        "Trading below book value (P/B: 0.86)",
-        "Low debt (D/E: 0.22)",
-        "High dividend yield (11.5%)"
+        "Low P/E (7.8)",
+        "Low debt (D/E: 0.26)",
+        "High dividend yield (6.7%)"
       ],
       "weaknesses": []
     },
@@ -815,7 +742,7 @@
       "ticker": "LREN3",
       "composite_score": 72.19428571428573,
       "grade": "B",
-      "value_score": 95.71428571428571,
+      "value_score": 100,
       "quality_score": 80,
       "growth_score": 60,
       "is_value": true,
@@ -823,17 +750,38 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
+        "Low P/E (9.8)",
         "Excellent ROIC (22.8%)",
         "Low debt (D/E: 0.04)",
-        "High dividend yield (5.8%)"
+        "High dividend yield (6.3%)"
       ],
       "weaknesses": []
+    },
+    {
+      "ticker": "GPAR3",
+      "composite_score": 71.42857142857144,
+      "grade": "B",
+      "value_score": 91.42857142857143,
+      "quality_score": 35,
+      "growth_score": 35,
+      "is_value": true,
+      "is_quality": false,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (-37.9)",
+        "Low debt (D/E: 0.01)",
+        "High dividend yield (10.8%)"
+      ],
+      "weaknesses": [
+        "Low ROE (-4.0%)"
+      ]
     },
     {
       "ticker": "NGRD3",
       "composite_score": 71.42857142857144,
       "grade": "B",
-      "value_score": 100,
+      "value_score": 91.42857142857143,
       "quality_score": 35,
       "growth_score": 55,
       "is_value": true,
@@ -841,12 +789,12 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (-13.2)",
-        "Trading below book value (P/B: 0.59)",
+        "Low P/E (-50.4)",
+        "Trading below book value (P/B: 0.61)",
         "Low debt (D/E: 0.04)"
       ],
       "weaknesses": [
-        "Low ROE (-4.4%)"
+        "Low ROE (-1.2%)"
       ]
     },
     {
@@ -898,7 +846,7 @@
       "is_undervalued": true,
       "strengths": [
         "Low P/E (-1.8)",
-        "Trading below book value (P/B: 0.48)"
+        "Trading below book value (P/B: 0.49)"
       ],
       "weaknesses": [
         "Low ROE (-27.0%)"
@@ -906,6 +854,25 @@
     },
     {
       "ticker": "PETR3",
+      "composite_score": 70.01857142857145,
+      "grade": "B",
+      "value_score": 91.42857142857143,
+      "quality_score": 80,
+      "growth_score": 45,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (6.4)",
+        "High ROE (26.5%)",
+        "Excellent ROIC (17.4%)",
+        "High dividend yield (5.9%)"
+      ],
+      "weaknesses": []
+    },
+    {
+      "ticker": "PETR4",
       "composite_score": 70.01857142857145,
       "grade": "B",
       "value_score": 91.42857142857143,
@@ -961,34 +928,34 @@
     },
     {
       "ticker": "CMIG4",
-      "composite_score": 68.09928571428573,
+      "composite_score": 67.78428571428573,
       "grade": "B",
-      "value_score": 95.71428571428571,
-      "quality_score": 55,
+      "value_score": 100,
+      "quality_score": 75,
       "growth_score": 60,
       "is_value": true,
-      "is_quality": false,
+      "is_quality": true,
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (8.3)",
-        "High dividend yield (7.7%)"
+        "Low P/E (7.2)",
+        "High dividend yield (8.4%)"
       ],
       "weaknesses": []
     },
     {
       "ticker": "SBSP3",
-      "composite_score": 67.12285714285714,
+      "composite_score": 67.43785714285715,
       "grade": "B",
       "value_score": 57.14285714285714,
       "quality_score": 80,
-      "growth_score": 70,
+      "growth_score": 80,
       "is_value": false,
       "is_quality": true,
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Attractive PEG (0.77)"
+        "Attractive PEG (0.64)"
       ],
       "weaknesses": []
     },
@@ -1004,7 +971,7 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Attractive PEG (0.99)"
+        "Attractive PEG (0.98)"
       ],
       "weaknesses": []
     },
@@ -1012,15 +979,15 @@
       "ticker": "PGMN3",
       "composite_score": 66.80785714285715,
       "grade": "B",
-      "value_score": 67.14285714285714,
+      "value_score": 52.14285714285714,
       "quality_score": 55,
       "growth_score": 70,
-      "is_value": true,
+      "is_value": false,
       "is_quality": false,
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Attractive PEG (0.92)"
+        "Attractive PEG (0.93)"
       ],
       "weaknesses": []
     },
@@ -1063,6 +1030,25 @@
       "weaknesses": []
     },
     {
+      "ticker": "TAEE11",
+      "composite_score": 66.35285714285716,
+      "grade": "B",
+      "value_score": 62.14285714285714,
+      "quality_score": 75,
+      "growth_score": 60,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "Low P/E (9.1)",
+        "High ROE (20.8%)",
+        "High dividend yield (7.8%)",
+        "Attractive PEG (0.94)"
+      ],
+      "weaknesses": []
+    },
+    {
       "ticker": "SMTO3",
       "composite_score": 66.17428571428572,
       "grade": "B",
@@ -1074,8 +1060,8 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.6)",
-        "Trading below book value (P/B: 0.80)"
+        "Low P/E (9.3)",
+        "Trading below book value (P/B: 0.98)"
       ],
       "weaknesses": [
         "High debt (D/E: 1.56)"
@@ -1093,8 +1079,8 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (7.7)",
-        "Trading below book value (P/B: 0.75)"
+        "Low P/E (7.1)",
+        "Trading below book value (P/B: 0.70)"
       ],
       "weaknesses": []
     },
@@ -1130,10 +1116,10 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (-9.7)",
-        "Trading below book value (P/B: 0.89)",
+        "Low P/E (-9.1)",
+        "Trading below book value (P/B: 0.83)",
         "Low debt (D/E: 0.03)",
-        "High dividend yield (7.9%)"
+        "High dividend yield (8.5%)"
       ],
       "weaknesses": [
         "Low ROE (-9.1%)"
@@ -1151,8 +1137,8 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (-2.6)",
-        "Trading below book value (P/B: 0.39)"
+        "Low P/E (-2.7)",
+        "Trading below book value (P/B: 0.40)"
       ],
       "weaknesses": [
         "Low ROE (-14.8%)"
@@ -1170,8 +1156,8 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (-2.6)",
-        "Trading below book value (P/B: 0.39)"
+        "Low P/E (-2.7)",
+        "Trading below book value (P/B: 0.40)"
       ],
       "weaknesses": [
         "Low ROE (-14.8%)"
@@ -1218,7 +1204,7 @@
       "ticker": "SMFT3",
       "composite_score": 64.50142857142858,
       "grade": "C",
-      "value_score": 38.57142857142857,
+      "value_score": 23.57142857142857,
       "quality_score": 50,
       "growth_score": 80,
       "is_value": false,
@@ -1226,7 +1212,7 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "High dividend yield (5.5%)",
+        "High dividend yield (5.4%)",
         "Attractive PEG (0.31)"
       ],
       "weaknesses": []
@@ -1244,23 +1230,7 @@
       "is_undervalued": false,
       "strengths": [
         "High ROE (23.3%)",
-        "High dividend yield (7.2%)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "CMIG3",
-      "composite_score": 63.813571428571436,
-      "grade": "C",
-      "value_score": 76.42857142857143,
-      "quality_score": 55,
-      "growth_score": 60,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": true,
-      "is_undervalued": true,
-      "strengths": [
-        "High dividend yield (5.8%)"
+        "High dividend yield (8.2%)"
       ],
       "weaknesses": []
     },
@@ -1268,7 +1238,7 @@
       "ticker": "NEOE3",
       "composite_score": 63.813571428571436,
       "grade": "C",
-      "value_score": 86.42857142857143,
+      "value_score": 81.42857142857143,
       "quality_score": 55,
       "growth_score": 60,
       "is_value": true,
@@ -1276,7 +1246,7 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (8.0)"
+        "Low P/E (8.1)"
       ],
       "weaknesses": [
         "High debt (D/E: 1.58)"
@@ -1286,7 +1256,7 @@
       "ticker": "RDOR3",
       "composite_score": 63.71214285714286,
       "grade": "C",
-      "value_score": 47.857142857142854,
+      "value_score": 32.857142857142854,
       "quality_score": 75,
       "growth_score": 80,
       "is_value": false,
@@ -1296,8 +1266,8 @@
       "strengths": [
         "High ROE (24.2%)",
         "Excellent ROIC (15.3%)",
-        "High dividend yield (11.5%)",
-        "Attractive PEG (0.56)"
+        "High dividend yield (11.3%)",
+        "Attractive PEG (0.57)"
       ],
       "weaknesses": [
         "High debt (D/E: 2.39)"
@@ -1323,6 +1293,23 @@
       "weaknesses": [
         "Low ROE (5.0%)"
       ]
+    },
+    {
+      "ticker": "CMIG3",
+      "composite_score": 63.49857142857144,
+      "grade": "C",
+      "value_score": 76.42857142857143,
+      "quality_score": 75,
+      "growth_score": 60,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (9.6)",
+        "High dividend yield (6.3%)"
+      ],
+      "weaknesses": []
     },
     {
       "ticker": "ENGI11",
@@ -1352,31 +1339,10 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (5.6)",
-        "Trading below book value (P/B: 0.45)"
+        "Low P/E (5.8)",
+        "Trading below book value (P/B: 0.47)"
       ],
       "weaknesses": []
-    },
-    {
-      "ticker": "BRFS3",
-      "composite_score": 62.957857142857144,
-      "grade": "C",
-      "value_score": 72.14285714285714,
-      "quality_score": 70,
-      "growth_score": 60,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Low P/E (8.5)",
-        "High ROE (23.9%)",
-        "Excellent ROIC (20.9%)",
-        "High dividend yield (12.3%)"
-      ],
-      "weaknesses": [
-        "High debt (D/E: 1.58)"
-      ]
     },
     {
       "ticker": "FLRY3",
@@ -1396,10 +1362,50 @@
       "weaknesses": []
     },
     {
+      "ticker": "SUZB3",
+      "composite_score": 62.51857142857144,
+      "grade": "C",
+      "value_score": 86.42857142857143,
+      "quality_score": 75,
+      "growth_score": 55,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (4.8)",
+        "High ROE (30.6%)"
+      ],
+      "weaknesses": [
+        "High debt (D/E: 2.16)"
+      ]
+    },
+    {
+      "ticker": "BRFS3",
+      "composite_score": 61.73285714285715,
+      "grade": "C",
+      "value_score": 72.14285714285714,
+      "quality_score": 70,
+      "growth_score": 60,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "Low P/E (8.6)",
+        "High ROE (24.5%)",
+        "Excellent ROIC (17.4%)",
+        "High dividend yield (12.3%)"
+      ],
+      "weaknesses": [
+        "High debt (D/E: 2.20)"
+      ]
+    },
+    {
       "ticker": "B3SA3",
       "composite_score": 61.42857142857143,
       "grade": "C",
-      "value_score": 42.857142857142854,
+      "value_score": 27.857142857142854,
       "quality_score": 90,
       "growth_score": 55,
       "is_value": false,
@@ -1434,94 +1440,114 @@
       "grade": "C",
       "value_score": 100,
       "quality_score": 35,
-      "growth_score": 55,
+      "growth_score": 45,
       "is_value": true,
       "is_quality": false,
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (0.1)",
-        "Trading below book value (P/B: -0.04)",
-        "Low debt (D/E: -0.39)"
+        "Low P/E (0.4)",
+        "Trading below book value (P/B: -0.05)",
+        "Low debt (D/E: -0.51)"
       ],
       "weaknesses": [
-        "Low ROE (-28.4%)"
+        "Low ROE (-11.3%)"
+      ]
+    },
+    {
+      "ticker": "TASA3",
+      "composite_score": 60.714285714285715,
+      "grade": "C",
+      "value_score": 51.42857142857143,
+      "quality_score": 35,
+      "growth_score": 35,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [
+        "Trading below book value (P/B: 0.54)"
+      ],
+      "weaknesses": [
+        "High P/E (38.4)",
+        "Low ROE (1.4%)"
+      ]
+    },
+    {
+      "ticker": "TASA4",
+      "composite_score": 60.714285714285715,
+      "grade": "C",
+      "value_score": 51.42857142857143,
+      "quality_score": 35,
+      "growth_score": 35,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [
+        "Trading below book value (P/B: 0.53)"
+      ],
+      "weaknesses": [
+        "High P/E (37.5)",
+        "Low ROE (1.4%)"
       ]
     },
     {
       "ticker": "UNIP3",
-      "composite_score": 60.627857142857145,
+      "composite_score": 59.43785714285715,
       "grade": "C",
-      "value_score": 67.14285714285714,
-      "quality_score": 80,
+      "value_score": 57.14285714285714,
+      "quality_score": 70,
       "growth_score": 35,
-      "is_value": true,
+      "is_value": false,
       "is_quality": true,
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (9.2)",
-        "High ROE (31.8%)",
-        "Excellent ROIC (17.1%)",
-        "High dividend yield (17.7%)"
+        "High ROE (27.1%)",
+        "High dividend yield (15.4%)"
       ],
-      "weaknesses": []
+      "weaknesses": [
+        "High debt (D/E: 1.96)"
+      ]
     },
     {
       "ticker": "UNIP5",
-      "composite_score": 60.627857142857145,
+      "composite_score": 59.43785714285715,
       "grade": "C",
-      "value_score": 67.14285714285714,
-      "quality_score": 80,
+      "value_score": 57.14285714285714,
+      "quality_score": 70,
       "growth_score": 35,
-      "is_value": true,
+      "is_value": false,
       "is_quality": true,
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (9.9)",
-        "High ROE (31.8%)",
-        "Excellent ROIC (17.1%)",
-        "High dividend yield (18.1%)"
+        "High ROE (27.1%)",
+        "High dividend yield (17.0%)"
       ],
-      "weaknesses": []
+      "weaknesses": [
+        "High debt (D/E: 1.96)"
+      ]
     },
     {
       "ticker": "UNIP6",
-      "composite_score": 60.627857142857145,
+      "composite_score": 59.43785714285715,
       "grade": "C",
-      "value_score": 67.14285714285714,
-      "quality_score": 80,
+      "value_score": 57.14285714285714,
+      "quality_score": 70,
       "growth_score": 35,
-      "is_value": true,
+      "is_value": false,
       "is_quality": true,
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (9.7)",
-        "High ROE (31.8%)",
-        "Excellent ROIC (17.1%)",
-        "High dividend yield (18.4%)"
+        "High ROE (27.1%)",
+        "High dividend yield (17.0%)"
       ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "TAEE11",
-      "composite_score": 59.597857142857144,
-      "grade": "C",
-      "value_score": 62.14285714285714,
-      "quality_score": 75,
-      "growth_score": 60,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Low P/E (8.4)",
-        "High ROE (22.5%)",
-        "High dividend yield (7.7%)"
-      ],
-      "weaknesses": []
+      "weaknesses": [
+        "High debt (D/E: 1.96)"
+      ]
     },
     {
       "ticker": "BPAC11",
@@ -1540,10 +1566,29 @@
       "weaknesses": []
     },
     {
+      "ticker": "DEXP3",
+      "composite_score": 58.595000000000006,
+      "grade": "C",
+      "value_score": 100,
+      "quality_score": 80,
+      "growth_score": 55,
+      "is_value": true,
+      "is_quality": true,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (6.0)",
+        "Trading below book value (P/B: 0.87)",
+        "Low debt (D/E: 0.29)",
+        "High dividend yield (11.9%)"
+      ],
+      "weaknesses": []
+    },
+    {
       "ticker": "OPCT3",
       "composite_score": 58.37642857142857,
       "grade": "C",
-      "value_score": 33.57142857142857,
+      "value_score": 23.57142857142857,
       "quality_score": 55,
       "growth_score": 80,
       "is_value": false,
@@ -1551,7 +1596,7 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Attractive PEG (0.75)"
+        "Attractive PEG (0.71)"
       ],
       "weaknesses": [
         "High debt (D/E: 2.05)"
@@ -1561,7 +1606,7 @@
       "ticker": "RENT3",
       "composite_score": 58.236428571428576,
       "grade": "C",
-      "value_score": 33.57142857142857,
+      "value_score": 3.5714285714285694,
       "quality_score": 45,
       "growth_score": 80,
       "is_value": false,
@@ -1572,28 +1617,9 @@
         "Attractive PEG (0.66)"
       ],
       "weaknesses": [
-        "High P/E (27.1)",
+        "High P/E (27.0)",
         "Low ROE (7.3%)",
         "High debt (D/E: 1.71)"
-      ]
-    },
-    {
-      "ticker": "SUZB3",
-      "composite_score": 58.23285714285715,
-      "grade": "C",
-      "value_score": 72.14285714285714,
-      "quality_score": 75,
-      "growth_score": 55,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": false,
-      "is_undervalued": false,
-      "strengths": [
-        "Low P/E (5.0)",
-        "High ROE (30.6%)"
-      ],
-      "weaknesses": [
-        "High debt (D/E: 2.16)"
       ]
     },
     {
@@ -1616,23 +1642,20 @@
       ]
     },
     {
-      "ticker": "EQTL3",
-      "composite_score": 57.431428571428576,
+      "ticker": "TOTS3",
+      "composite_score": 57.291428571428575,
       "grade": "C",
-      "value_score": 33.57142857142857,
-      "quality_score": 50,
-      "growth_score": 80,
+      "value_score": 0,
+      "quality_score": 90,
+      "growth_score": 70,
       "is_value": false,
-      "is_quality": false,
+      "is_quality": true,
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "High dividend yield (5.7%)",
-        "Attractive PEG (0.63)"
+        "Excellent ROIC (29.2%)"
       ],
-      "weaknesses": [
-        "High debt (D/E: 2.19)"
-      ]
+      "weaknesses": []
     },
     {
       "ticker": "GRND3",
@@ -1646,10 +1669,10 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (6.3)",
+        "Low P/E (6.5)",
         "High ROE (20.4%)",
         "Low debt (D/E: 0.02)",
-        "High dividend yield (37.7%)"
+        "High dividend yield (36.7%)"
       ],
       "weaknesses": []
     },
@@ -1658,17 +1681,17 @@
       "composite_score": 57.142857142857146,
       "grade": "C",
       "value_score": 77.14285714285714,
-      "quality_score": 55,
+      "quality_score": 45,
       "growth_score": 35,
       "is_value": true,
       "is_quality": false,
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-2.0)",
-        "Trading below book value (P/B: -2.75)",
-        "High ROE (134.6%)",
-        "Low debt (D/E: -12.66)"
+        "Low P/E (-0.7)",
+        "Trading below book value (P/B: -0.44)",
+        "High ROE (61.2%)",
+        "Low debt (D/E: -3.21)"
       ],
       "weaknesses": []
     },
@@ -1703,7 +1726,7 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "High dividend yield (30.2%)"
+        "High dividend yield (30.9%)"
       ],
       "weaknesses": []
     },
@@ -1719,28 +1742,9 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "High dividend yield (29.2%)"
+        "High dividend yield (28.4%)"
       ],
       "weaknesses": []
-    },
-    {
-      "ticker": "GPAR3",
-      "composite_score": 57.142857142857146,
-      "grade": "C",
-      "value_score": 77.14285714285714,
-      "quality_score": 35,
-      "growth_score": 35,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": false,
-      "strengths": [
-        "Low P/E (-37.9)",
-        "Low debt (D/E: 0.01)"
-      ],
-      "weaknesses": [
-        "Low ROE (-4.0%)"
-      ]
     },
     {
       "ticker": "INEP3",
@@ -1754,7 +1758,7 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-0.1)",
+        "Low P/E (-0.2)",
         "Trading below book value (P/B: -0.04)",
         "High ROE (28.3%)",
         "Low debt (D/E: -0.52)"
@@ -1773,7 +1777,7 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-0.1)",
+        "Low P/E (-0.2)",
         "Trading below book value (P/B: -0.04)",
         "High ROE (28.3%)",
         "Low debt (D/E: -0.52)"
@@ -1785,7 +1789,7 @@
       "composite_score": 57.142857142857146,
       "grade": "C",
       "value_score": 87.14285714285714,
-      "quality_score": 30,
+      "quality_score": 35,
       "growth_score": 35,
       "is_value": true,
       "is_quality": false,
@@ -1793,17 +1797,15 @@
       "is_undervalued": false,
       "strengths": [
         "Low P/E (-0.0)",
-        "Low debt (D/E: -0.13)"
+        "Low debt (D/E: -0.12)"
       ],
-      "weaknesses": [
-        "Low ROE (5.2%)"
-      ]
+      "weaknesses": []
     },
     {
       "ticker": "PLAS3",
       "composite_score": 57.142857142857146,
       "grade": "C",
-      "value_score": 77.14285714285714,
+      "value_score": 82.14285714285714,
       "quality_score": 45,
       "growth_score": 70,
       "is_value": true,
@@ -1811,10 +1813,10 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-0.3)",
-        "Trading below book value (P/B: -0.09)",
-        "High ROE (26.1%)",
-        "Low debt (D/E: -0.43)"
+        "Low P/E (-0.2)",
+        "Trading below book value (P/B: -0.07)",
+        "High ROE (28.2%)",
+        "Low debt (D/E: -0.37)"
       ],
       "weaknesses": []
     },
@@ -1823,7 +1825,7 @@
       "composite_score": 57.142857142857146,
       "grade": "C",
       "value_score": 87.14285714285714,
-      "quality_score": 45,
+      "quality_score": 40,
       "growth_score": 35,
       "is_value": true,
       "is_quality": false,
@@ -1832,8 +1834,7 @@
       "strengths": [
         "Low P/E (-0.1)",
         "Trading below book value (P/B: -0.01)",
-        "High ROE (23.0%)",
-        "Low debt (D/E: -0.79)"
+        "Low debt (D/E: -0.76)"
       ],
       "weaknesses": []
     },
@@ -1868,8 +1869,8 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-2.7)",
-        "Trading below book value (P/B: 0.37)"
+        "Low P/E (-2.3)",
+        "Trading below book value (P/B: 0.31)"
       ],
       "weaknesses": [
         "Low ROE (-13.6%)"
@@ -1887,8 +1888,8 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-2.8)",
-        "Trading below book value (P/B: 0.38)"
+        "Low P/E (-2.3)",
+        "Trading below book value (P/B: 0.31)"
       ],
       "weaknesses": [
         "Low ROE (-13.6%)"
@@ -1912,6 +1913,25 @@
         "Low debt (D/E: -1.43)"
       ],
       "weaknesses": []
+    },
+    {
+      "ticker": "SHOW3",
+      "composite_score": 57.142857142857146,
+      "grade": "C",
+      "value_score": 87.14285714285714,
+      "quality_score": 25,
+      "growth_score": 80,
+      "is_value": true,
+      "is_quality": false,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "Low P/E (-0.6)",
+        "Trading below book value (P/B: 0.28)"
+      ],
+      "weaknesses": [
+        "Low ROE (-50.7%)"
+      ]
     },
     {
       "ticker": "SPRI3",
@@ -1943,7 +1963,7 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "High dividend yield (9.4%)"
+        "High dividend yield (9.8%)"
       ],
       "weaknesses": []
     },
@@ -1960,8 +1980,8 @@
       "is_undervalued": false,
       "strengths": [
         "Low P/E (-0.8)",
-        "Trading below book value (P/B: 0.62)",
-        "High dividend yield (7.6%)"
+        "Trading below book value (P/B: 0.57)",
+        "High dividend yield (8.3%)"
       ],
       "weaknesses": [
         "Low ROE (-75.2%)",
@@ -1980,11 +2000,11 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-40.9)",
-        "Trading below book value (P/B: 0.52)"
+        "Low P/E (-8.5)",
+        "Trading below book value (P/B: 0.54)"
       ],
       "weaknesses": [
-        "Low ROE (-1.3%)"
+        "Low ROE (-6.4%)"
       ]
     },
     {
@@ -1999,31 +2019,11 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-1.2)",
-        "Trading below book value (P/B: 0.27)"
+        "Low P/E (-1.1)",
+        "Trading below book value (P/B: 0.25)"
       ],
       "weaknesses": [
         "Low ROE (-22.9%)"
-      ]
-    },
-    {
-      "ticker": "LIGT3",
-      "composite_score": 57.09285714285715,
-      "grade": "C",
-      "value_score": 87.14285714285714,
-      "quality_score": 60,
-      "growth_score": 45,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": false,
-      "strengths": [
-        "Low P/E (0.7)",
-        "Trading below book value (P/B: 0.30)",
-        "High ROE (40.8%)"
-      ],
-      "weaknesses": [
-        "High debt (D/E: 1.69)"
       ]
     },
     {
@@ -2038,8 +2038,8 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-4.4)",
-        "Trading below book value (P/B: 0.86)"
+        "Low P/E (-4.1)",
+        "Trading below book value (P/B: 0.80)"
       ],
       "weaknesses": [
         "Low ROE (-19.6%)",
@@ -2047,42 +2047,22 @@
       ]
     },
     {
-      "ticker": "ENEV3",
-      "composite_score": 56.38142857142858,
+      "ticker": "CASH3",
+      "composite_score": 55.93785714285715,
       "grade": "C",
-      "value_score": 28.57142857142857,
-      "quality_score": 55,
-      "growth_score": 80,
-      "is_value": false,
-      "is_quality": false,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Attractive PEG (0.91)"
-      ],
-      "weaknesses": [
-        "High P/E (34.0)",
-        "Low ROE (5.8%)"
-      ]
-    },
-    {
-      "ticker": "HAPV3",
-      "composite_score": 55.377857142857145,
-      "grade": "C",
-      "value_score": 87.14285714285714,
-      "quality_score": 45,
-      "growth_score": 80,
+      "value_score": 77.14285714285714,
+      "quality_score": 40,
+      "growth_score": 65,
       "is_value": true,
       "is_quality": false,
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-15.0)",
-        "Trading below book value (P/B: 0.10)",
-        "Low debt (D/E: 0.27)"
+        "Low P/E (-649.1)",
+        "Trading below book value (P/B: 0.79)"
       ],
       "weaknesses": [
-        "Low ROE (-0.6%)"
+        "Low ROE (-0.1%)"
       ]
     },
     {
@@ -2097,7 +2077,8 @@
       "is_growth": true,
       "is_undervalued": true,
       "strengths": [
-        "Trading below book value (P/B: 0.62)"
+        "Trading below book value (P/B: 0.59)",
+        "High dividend yield (5.1%)"
       ],
       "weaknesses": [
         "Low ROE (4.8%)",
@@ -2105,10 +2086,30 @@
       ]
     },
     {
+      "ticker": "HAPV3",
+      "composite_score": 55.307857142857145,
+      "grade": "C",
+      "value_score": 87.14285714285714,
+      "quality_score": 45,
+      "growth_score": 80,
+      "is_value": true,
+      "is_quality": false,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "Low P/E (-35.2)",
+        "Trading below book value (P/B: 0.10)",
+        "Low debt (D/E: 0.27)"
+      ],
+      "weaknesses": [
+        "Low ROE (-0.3%)"
+      ]
+    },
+    {
       "ticker": "ELMD3",
       "composite_score": 54.61571428571429,
       "grade": "C",
-      "value_score": 14.285714285714285,
+      "value_score": 0,
       "quality_score": 60,
       "growth_score": 80,
       "is_value": false,
@@ -2123,43 +2124,21 @@
       ]
     },
     {
-      "ticker": "AZUL4",
-      "composite_score": 53.57142857142857,
+      "ticker": "BRAP4",
+      "composite_score": 54.502857142857145,
       "grade": "C",
-      "value_score": 67.14285714285714,
-      "quality_score": 65,
-      "growth_score": 80,
-      "is_value": true,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Trading below book value (P/B: -21.57)",
-        "Excellent ROIC (17.6%)",
-        "Low debt (D/E: -1.36)"
-      ],
-      "weaknesses": [
-        "High P/E (37.7)",
-        "Low ROE (-57.2%)"
-      ]
-    },
-    {
-      "ticker": "SHOW3",
-      "composite_score": 53.487857142857145,
-      "grade": "C",
-      "value_score": 77.14285714285714,
-      "quality_score": 20,
-      "growth_score": 80,
-      "is_value": true,
+      "value_score": 52.14285714285714,
+      "quality_score": 30,
+      "growth_score": 50,
+      "is_value": false,
       "is_quality": false,
-      "is_growth": true,
+      "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-0.5)",
-        "Trading below book value (P/B: 0.32)"
+        "High dividend yield (14.7%)"
       ],
       "weaknesses": [
-        "Low ROE (-59.5%)"
+        "Low ROE (7.2%)"
       ]
     },
     {
@@ -2173,16 +2152,14 @@
       "is_quality": true,
       "is_growth": true,
       "is_undervalued": true,
-      "strengths": [
-        "High dividend yield (5.5%)"
-      ],
+      "strengths": [],
       "weaknesses": []
     },
     {
       "ticker": "VALE3",
       "composite_score": 51.51714285714286,
       "grade": "C",
-      "value_score": 52.857142857142854,
+      "value_score": 22.857142857142854,
       "quality_score": 65,
       "growth_score": 35,
       "is_value": false,
@@ -2191,31 +2168,11 @@
       "is_undervalued": false,
       "strengths": [
         "Excellent ROIC (17.6%)",
-        "High dividend yield (6.9%)"
+        "High dividend yield (7.0%)"
       ],
       "weaknesses": [
-        "High P/E (26.0)",
+        "High P/E (25.6)",
         "Low ROE (7.5%)"
-      ]
-    },
-    {
-      "ticker": "BEEF3",
-      "composite_score": 51.30714285714286,
-      "grade": "C",
-      "value_score": 62.857142857142854,
-      "quality_score": 40,
-      "growth_score": 65,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Low P/E (-5.3)",
-        "Excellent ROIC (17.0%)"
-      ],
-      "weaknesses": [
-        "Low ROE (-63.1%)",
-        "High debt (D/E: 20.66)"
       ]
     },
     {
@@ -2230,51 +2187,37 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Low P/E (9.1)",
+        "Low P/E (9.3)",
         "High ROE (20.2%)",
-        "High dividend yield (10.5%)"
+        "High dividend yield (10.3%)"
       ],
       "weaknesses": []
+    },
+    {
+      "ticker": "EQTL3",
+      "composite_score": 50.746428571428574,
+      "grade": "C",
+      "value_score": 3.5714285714285694,
+      "quality_score": 45,
+      "growth_score": 80,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "High dividend yield (5.7%)"
+      ],
+      "weaknesses": [
+        "High P/E (29.7)",
+        "Low ROE (6.5%)",
+        "High debt (D/E: 2.12)"
+      ]
     },
     {
       "ticker": "TMCP3",
       "composite_score": 50.56785714285714,
       "grade": "C",
-      "value_score": 57.14285714285714,
-      "quality_score": 70,
-      "growth_score": 65,
-      "is_value": false,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Low debt (D/E: 0.03)"
-      ],
-      "weaknesses": [
-        "Low ROE (7.4%)"
-      ]
-    },
-    {
-      "ticker": "TOTS3",
-      "composite_score": 50.291428571428575,
-      "grade": "C",
-      "value_score": 28.57142857142857,
-      "quality_score": 90,
-      "growth_score": 70,
-      "is_value": false,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Excellent ROIC (29.2%)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "TMCP4",
-      "composite_score": 50.03344124368119,
-      "grade": "C",
-      "value_score": 57.14285714285714,
+      "value_score": 42.14285714285714,
       "quality_score": 70,
       "growth_score": 65,
       "is_value": false,
@@ -2290,9 +2233,9 @@
     },
     {
       "ticker": "PNVL3",
-      "composite_score": 49.90642857142858,
-      "grade": "D",
-      "value_score": 33.57142857142857,
+      "composite_score": 50.151428571428575,
+      "grade": "C",
+      "value_score": 18.57142857142857,
       "quality_score": 40,
       "growth_score": 65,
       "is_value": false,
@@ -2301,6 +2244,24 @@
       "is_undervalued": false,
       "strengths": [],
       "weaknesses": []
+    },
+    {
+      "ticker": "TMCP4",
+      "composite_score": 50.03344124368119,
+      "grade": "C",
+      "value_score": 42.14285714285714,
+      "quality_score": 70,
+      "growth_score": 65,
+      "is_value": false,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "Low debt (D/E: 0.03)"
+      ],
+      "weaknesses": [
+        "Low ROE (7.4%)"
+      ]
     },
     {
       "ticker": "PCAR3",
@@ -2314,8 +2275,8 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-1.5)",
-        "Trading below book value (P/B: 0.58)"
+        "Low P/E (-1.4)",
+        "Trading below book value (P/B: 0.53)"
       ],
       "weaknesses": [
         "Low ROE (-39.1%)",
@@ -2326,7 +2287,7 @@
       "ticker": "ASAI3",
       "composite_score": 49.61071428571429,
       "grade": "D",
-      "value_score": 24.285714285714285,
+      "value_score": 0,
       "quality_score": 50,
       "growth_score": 70,
       "is_value": false,
@@ -2379,19 +2340,20 @@
       ]
     },
     {
-      "ticker": "MATD3",
-      "composite_score": 49.18357142857143,
+      "ticker": "ENEV3",
+      "composite_score": 49.38142857142858,
       "grade": "D",
-      "value_score": 76.42857142857143,
+      "value_score": 0,
       "quality_score": 55,
-      "growth_score": 65,
-      "is_value": true,
+      "growth_score": 80,
+      "is_value": false,
       "is_quality": false,
       "is_growth": true,
-      "is_undervalued": true,
+      "is_undervalued": false,
       "strengths": [],
       "weaknesses": [
-        "Low ROE (5.6%)"
+        "High P/E (40.5)",
+        "Low ROE (5.8%)"
       ]
     },
     {
@@ -2424,7 +2386,7 @@
       "is_growth": false,
       "is_undervalued": true,
       "strengths": [
-        "Trading below book value (P/B: 0.33)"
+        "Trading below book value (P/B: 0.32)"
       ],
       "weaknesses": [
         "Low ROE (2.3%)"
@@ -2434,10 +2396,10 @@
       "ticker": "BSEV3",
       "composite_score": 48.88785714285715,
       "grade": "D",
-      "value_score": 77.14285714285714,
+      "value_score": 47.14285714285714,
       "quality_score": 50,
       "growth_score": 60,
-      "is_value": true,
+      "is_value": false,
       "is_quality": false,
       "is_growth": true,
       "is_undervalued": false,
@@ -2463,7 +2425,7 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-2.3)"
+        "Low P/E (-2.1)"
       ],
       "weaknesses": [
         "Low ROE (-183.3%)",
@@ -2482,7 +2444,7 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-4.0)",
+        "Low P/E (-4.1)",
         "Trading below book value (P/B: 0.63)"
       ],
       "weaknesses": [
@@ -2491,36 +2453,55 @@
       ]
     },
     {
+      "ticker": "MGLU3",
+      "composite_score": 48.09857142857143,
+      "grade": "D",
+      "value_score": 61.42857142857143,
+      "quality_score": 45,
+      "growth_score": 55,
+      "is_value": true,
+      "is_quality": false,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [
+        "Trading below book value (P/B: 0.55)"
+      ],
+      "weaknesses": [
+        "High P/E (30.3)",
+        "Low ROE (1.8%)"
+      ]
+    },
+    {
       "ticker": "CVCB3",
-      "composite_score": 47.42214285714286,
+      "composite_score": 47.70214285714286,
       "grade": "D",
       "value_score": 62.857142857142854,
       "quality_score": 30,
-      "growth_score": 70,
+      "growth_score": 65,
       "is_value": true,
       "is_quality": false,
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-13.6)"
+        "Low P/E (-25.0)"
       ],
       "weaknesses": [
-        "Low ROE (-14.8%)"
+        "Low ROE (-8.5%)"
       ]
     },
     {
       "ticker": "ALPA3",
       "composite_score": 46.78785714285715,
       "grade": "D",
-      "value_score": 62.14285714285714,
+      "value_score": 57.14285714285714,
       "quality_score": 80,
       "growth_score": 55,
-      "is_value": true,
+      "is_value": false,
       "is_quality": true,
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "High dividend yield (16.4%)"
+        "High dividend yield (15.4%)"
       ],
       "weaknesses": []
     },
@@ -2536,15 +2517,35 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "High dividend yield (16.1%)"
+        "High dividend yield (14.9%)"
       ],
       "weaknesses": []
+    },
+    {
+      "ticker": "ETER3",
+      "composite_score": 46.62857142857143,
+      "grade": "D",
+      "value_score": 100,
+      "quality_score": 55,
+      "growth_score": 55,
+      "is_value": true,
+      "is_quality": false,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [
+        "Low P/E (5.3)",
+        "Trading below book value (P/B: 0.31)",
+        "Low debt (D/E: 0.18)"
+      ],
+      "weaknesses": [
+        "Low ROE (5.8%)"
+      ]
     },
     {
       "ticker": "POWE3",
       "composite_score": 46.58214285714286,
       "grade": "D",
-      "value_score": 47.857142857142854,
+      "value_score": 17.857142857142854,
       "quality_score": 45,
       "growth_score": 50,
       "is_value": false,
@@ -2560,49 +2561,31 @@
       ]
     },
     {
-      "ticker": "ETER3",
-      "composite_score": 46.55857142857143,
+      "ticker": "AZUL4",
+      "composite_score": 46.42857142857143,
       "grade": "D",
-      "value_score": 100,
-      "quality_score": 55,
-      "growth_score": 55,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": true,
-      "strengths": [
-        "Low P/E (5.0)",
-        "Trading below book value (P/B: 0.28)",
-        "Low debt (D/E: 0.21)"
-      ],
-      "weaknesses": [
-        "Low ROE (5.6%)"
-      ]
-    },
-    {
-      "ticker": "JALL3",
-      "composite_score": 46.2653583105358,
-      "grade": "D",
-      "value_score": 77.14285714285714,
-      "quality_score": 15,
-      "growth_score": 65,
-      "is_value": true,
+      "value_score": 22.857142857142854,
+      "quality_score": 50,
+      "growth_score": 70,
+      "is_value": false,
       "is_quality": false,
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Trading below book value (P/B: 0.48)"
+        "Trading below book value (P/B: -20.36)",
+        "Excellent ROIC (23.1%)",
+        "Low debt (D/E: -1.23)"
       ],
       "weaknesses": [
-        "Low ROE (2.3%)",
-        "High debt (D/E: 2.59)"
+        "High P/E (4733.7)",
+        "Low ROE (-0.4%)"
       ]
     },
     {
       "ticker": "TNLP4",
       "composite_score": 45.96714285714286,
       "grade": "D",
-      "value_score": 52.857142857142854,
+      "value_score": 22.857142857142854,
       "quality_score": 25,
       "growth_score": 70,
       "is_value": false,
@@ -2619,71 +2602,18 @@
       ]
     },
     {
-      "ticker": "UGPA3",
-      "composite_score": 45.91285714285715,
-      "grade": "D",
-      "value_score": 62.14285714285714,
-      "quality_score": 55,
-      "growth_score": 55,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": false,
-      "strengths": [],
-      "weaknesses": []
-    },
-    {
-      "ticker": "PTNT3",
-      "composite_score": 45.664550385570514,
-      "grade": "D",
-      "value_score": 76.42857142857143,
-      "quality_score": 40,
-      "growth_score": 55,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": true,
-      "strengths": [
-        "Trading below book value (P/B: 0.95)"
-      ],
-      "weaknesses": [
-        "Low ROE (5.9%)"
-      ]
-    },
-    {
-      "ticker": "WEGE3",
-      "composite_score": 45.613644484293026,
-      "grade": "D",
-      "value_score": 42.857142857142854,
-      "quality_score": 100,
-      "growth_score": 65,
-      "is_value": false,
-      "is_quality": true,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "High ROE (36.6%)",
-        "Excellent ROIC (27.1%)",
-        "Low debt (D/E: 0.26)"
-      ],
-      "weaknesses": [
-        "High P/E (30.2)"
-      ]
-    },
-    {
       "ticker": "YDUQ3",
       "composite_score": 45.52785714285715,
       "grade": "D",
-      "value_score": 72.14285714285714,
+      "value_score": 52.14285714285714,
       "quality_score": 45,
       "growth_score": 60,
-      "is_value": true,
+      "is_value": false,
       "is_quality": false,
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Trading below book value (P/B: 0.96)",
-        "High dividend yield (11.1%)"
+        "High dividend yield (9.8%)"
       ],
       "weaknesses": [
         "Low ROE (6.2%)",
@@ -2710,7 +2640,7 @@
       "ticker": "RADL3",
       "composite_score": 45.35642857142857,
       "grade": "D",
-      "value_score": 28.57142857142857,
+      "value_score": 0,
       "quality_score": 70,
       "growth_score": 70,
       "is_value": false,
@@ -2721,7 +2651,7 @@
         "Excellent ROIC (15.1%)"
       ],
       "weaknesses": [
-        "High P/E (32.0)"
+        "High P/E (31.5)"
       ]
     },
     {
@@ -2745,7 +2675,7 @@
     },
     {
       "ticker": "AURE3",
-      "composite_score": 45.21861127576896,
+      "composite_score": 45.248424612339164,
       "grade": "D",
       "value_score": 57.857142857142854,
       "quality_score": 25,
@@ -2755,12 +2685,28 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-18.5)",
+        "Low P/E (-18.4)",
         "Trading below book value (P/B: 0.98)"
       ],
       "weaknesses": [
         "Low ROE (-5.3%)",
         "High debt (D/E: 1.97)"
+      ]
+    },
+    {
+      "ticker": "PTNT3",
+      "composite_score": 44.977564423317496,
+      "grade": "D",
+      "value_score": 56.42857142857143,
+      "quality_score": 40,
+      "growth_score": 55,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": false,
+      "is_undervalued": true,
+      "strengths": [],
+      "weaknesses": [
+        "Low ROE (5.9%)"
       ]
     },
     {
@@ -2783,6 +2729,45 @@
       ]
     },
     {
+      "ticker": "JALL3",
+      "composite_score": 44.611391987525494,
+      "grade": "D",
+      "value_score": 47.14285714285714,
+      "quality_score": 15,
+      "growth_score": 65,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "Trading below book value (P/B: 0.54)"
+      ],
+      "weaknesses": [
+        "Low ROE (2.3%)",
+        "High debt (D/E: 2.59)"
+      ]
+    },
+    {
+      "ticker": "WEGE3",
+      "composite_score": 44.526524635884726,
+      "grade": "D",
+      "value_score": 12.857142857142854,
+      "quality_score": 100,
+      "growth_score": 65,
+      "is_value": false,
+      "is_quality": true,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "High ROE (36.6%)",
+        "Excellent ROIC (27.1%)",
+        "Low debt (D/E: 0.26)"
+      ],
+      "weaknesses": [
+        "High P/E (32.3)"
+      ]
+    },
+    {
       "ticker": "CPRE3",
       "composite_score": 44.39214285714286,
       "grade": "D",
@@ -2800,10 +2785,50 @@
       "weaknesses": []
     },
     {
+      "ticker": "RAIL3",
+      "composite_score": 44.37642857142857,
+      "grade": "D",
+      "value_score": 3.5714285714285694,
+      "quality_score": 50,
+      "growth_score": 70,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "High dividend yield (5.2%)"
+      ],
+      "weaknesses": [
+        "High P/E (34.2)",
+        "Low ROE (6.1%)",
+        "High debt (D/E: 1.67)"
+      ]
+    },
+    {
+      "ticker": "LIGT3",
+      "composite_score": 44.33785714285715,
+      "grade": "D",
+      "value_score": 82.14285714285714,
+      "quality_score": 20,
+      "growth_score": 55,
+      "is_value": true,
+      "is_quality": false,
+      "is_growth": false,
+      "is_undervalued": false,
+      "strengths": [
+        "Low P/E (8.2)",
+        "Trading below book value (P/B: 0.32)"
+      ],
+      "weaknesses": [
+        "Low ROE (3.9%)",
+        "High debt (D/E: 1.78)"
+      ]
+    },
+    {
       "ticker": "ABEV3",
       "composite_score": 44.28714285714286,
       "grade": "D",
-      "value_score": 42.857142857142854,
+      "value_score": 27.857142857142854,
       "quality_score": 85,
       "growth_score": 60,
       "is_value": false,
@@ -2813,44 +2838,9 @@
       "strengths": [
         "Excellent ROIC (19.8%)",
         "Low debt (D/E: 0.04)",
-        "High dividend yield (7.5%)"
+        "High dividend yield (6.6%)"
       ],
       "weaknesses": []
-    },
-    {
-      "ticker": "PRIO3",
-      "composite_score": 44.117221462747786,
-      "grade": "D",
-      "value_score": 14.285714285714285,
-      "quality_score": 45,
-      "growth_score": 80,
-      "is_value": false,
-      "is_quality": false,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Attractive PEG (0.58)"
-      ],
-      "weaknesses": []
-    },
-    {
-      "ticker": "MGLU3",
-      "composite_score": 43.81285714285715,
-      "grade": "D",
-      "value_score": 77.14285714285714,
-      "quality_score": 45,
-      "growth_score": 55,
-      "is_value": true,
-      "is_quality": false,
-      "is_growth": false,
-      "is_undervalued": false,
-      "strengths": [
-        "Trading below book value (P/B: 0.65)"
-      ],
-      "weaknesses": [
-        "High P/E (35.6)",
-        "Low ROE (1.8%)"
-      ]
     },
     {
       "ticker": "BBSE3",
@@ -2864,9 +2854,9 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (7.6)",
+        "Low P/E (7.4)",
         "High ROE (86.8%)",
-        "High dividend yield (13.2%)"
+        "High dividend yield (13.6%)"
       ],
       "weaknesses": []
     },
@@ -2882,7 +2872,7 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Trading below book value (P/B: 0.85)"
+        "Trading below book value (P/B: 0.81)"
       ],
       "weaknesses": []
     },
@@ -2898,8 +2888,8 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-5.3)",
-        "Trading below book value (P/B: 0.48)"
+        "Low P/E (-3.8)",
+        "Trading below book value (P/B: 0.34)"
       ],
       "weaknesses": [
         "Low ROE (-9.0%)",
@@ -2932,11 +2922,29 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-4.4)",
-        "Trading below book value (P/B: -3.32)",
+        "Low P/E (-4.3)",
+        "Trading below book value (P/B: -3.23)",
         "High ROE (75.4%)"
       ],
       "weaknesses": []
+    },
+    {
+      "ticker": "PRIO3",
+      "composite_score": 42.80822344322345,
+      "grade": "D",
+      "value_score": 0,
+      "quality_score": 45,
+      "growth_score": 80,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [
+        "Attractive PEG (0.70)"
+      ],
+      "weaknesses": [
+        "High P/E (27.9)"
+      ]
     },
     {
       "ticker": "CPFE3",
@@ -2952,7 +2960,7 @@
       "strengths": [
         "High ROE (24.4%)",
         "Excellent ROIC (15.4%)",
-        "High dividend yield (5.8%)"
+        "High dividend yield (5.9%)"
       ],
       "weaknesses": []
     },
@@ -2960,7 +2968,7 @@
       "ticker": "PARD3",
       "composite_score": 42.71214285714286,
       "grade": "D",
-      "value_score": 42.857142857142854,
+      "value_score": 12.857142857142854,
       "quality_score": 60,
       "growth_score": 70,
       "is_value": false,
@@ -2986,14 +2994,16 @@
       "is_quality": false,
       "is_growth": true,
       "is_undervalued": false,
-      "strengths": [],
+      "strengths": [
+        "High dividend yield (6.4%)"
+      ],
       "weaknesses": [
         "High debt (D/E: 3.08)"
       ]
     },
     {
       "ticker": "RAIZ4",
-      "composite_score": 41.803523892298415,
+      "composite_score": 41.75655525142998,
       "grade": "D",
       "value_score": 82.14285714285714,
       "quality_score": 70,
@@ -3004,17 +3014,31 @@
       "is_undervalued": false,
       "strengths": [
         "Low P/E (-0.2)",
-        "Trading below book value (P/B: -2.98)",
+        "Trading below book value (P/B: -3.44)",
         "High ROE (1393.8%)",
         "Low debt (D/E: -48.93)"
       ],
       "weaknesses": []
     },
     {
+      "ticker": "UGPA3",
+      "composite_score": 41.627142857142864,
+      "grade": "D",
+      "value_score": 47.857142857142854,
+      "quality_score": 55,
+      "growth_score": 55,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": false,
+      "is_undervalued": false,
+      "strengths": [],
+      "weaknesses": []
+    },
+    {
       "ticker": "CMIN3",
       "composite_score": 41.121428571428574,
       "grade": "D",
-      "value_score": 38.57142857142857,
+      "value_score": 23.57142857142857,
       "quality_score": 70,
       "growth_score": 55,
       "is_value": false,
@@ -3024,7 +3048,7 @@
       "strengths": [
         "High ROE (24.7%)",
         "Excellent ROIC (23.0%)",
-        "High dividend yield (23.6%)"
+        "High dividend yield (24.5%)"
       ],
       "weaknesses": []
     },
@@ -3032,7 +3056,7 @@
       "ticker": "CPLE6",
       "composite_score": 40.36714285714286,
       "grade": "D",
-      "value_score": 42.857142857142854,
+      "value_score": 27.857142857142854,
       "quality_score": 55,
       "growth_score": 55,
       "is_value": false,
@@ -3046,7 +3070,7 @@
       "ticker": "VIVT3",
       "composite_score": 40.36714285714286,
       "grade": "D",
-      "value_score": 47.857142857142854,
+      "value_score": 17.857142857142854,
       "quality_score": 65,
       "growth_score": 60,
       "is_value": false,
@@ -3057,29 +3081,10 @@
       "weaknesses": []
     },
     {
-      "ticker": "SIMH3",
-      "composite_score": 40.13142857142858,
-      "grade": "D",
-      "value_score": 48.57142857142857,
-      "quality_score": 35,
-      "growth_score": 80,
-      "is_value": false,
-      "is_quality": false,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [
-        "Low P/E (-7.5)"
-      ],
-      "weaknesses": [
-        "Low ROE (-20.3%)",
-        "High debt (D/E: 18.23)"
-      ]
-    },
-    {
       "ticker": "PETZ3",
-      "composite_score": 39.737142857142864,
+      "composite_score": 39.80714285714286,
       "grade": "D",
-      "value_score": 52.857142857142854,
+      "value_score": 22.857142857142854,
       "quality_score": 50,
       "growth_score": 65,
       "is_value": false,
@@ -3087,18 +3092,18 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "Low debt (D/E: 0.25)"
+        "Low debt (D/E: 0.24)"
       ],
       "weaknesses": [
-        "High P/E (543.4)",
-        "Low ROE (0.2%)"
+        "High P/E (49.5)",
+        "Low ROE (2.3%)"
       ]
     },
     {
       "ticker": "SULA11",
       "composite_score": 39.68285714285715,
       "grade": "D",
-      "value_score": 57.14285714285714,
+      "value_score": 27.14285714285714,
       "quality_score": 30,
       "growth_score": 55,
       "is_value": false,
@@ -3113,9 +3118,9 @@
     },
     {
       "ticker": "PNVL4",
-      "composite_score": 38.62071428571429,
+      "composite_score": 38.86571428571429,
       "grade": "D",
-      "value_score": 14.285714285714285,
+      "value_score": 0,
       "quality_score": 40,
       "growth_score": 65,
       "is_value": false,
@@ -3126,28 +3131,10 @@
       "weaknesses": []
     },
     {
-      "ticker": "RAIL3",
-      "composite_score": 37.376428571428576,
-      "grade": "D",
-      "value_score": 33.57142857142857,
-      "quality_score": 50,
-      "growth_score": 70,
-      "is_value": false,
-      "is_quality": false,
-      "is_growth": true,
-      "is_undervalued": false,
-      "strengths": [],
-      "weaknesses": [
-        "High P/E (36.2)",
-        "Low ROE (6.1%)",
-        "High debt (D/E: 1.67)"
-      ]
-    },
-    {
       "ticker": "SLCE3",
       "composite_score": 37.166428571428575,
       "grade": "D",
-      "value_score": 33.57142857142857,
+      "value_score": 18.57142857142857,
       "quality_score": 55,
       "growth_score": 60,
       "is_value": false,
@@ -3155,7 +3142,7 @@
       "is_growth": true,
       "is_undervalued": false,
       "strengths": [
-        "High dividend yield (7.4%)"
+        "High dividend yield (6.9%)"
       ],
       "weaknesses": [
         "High debt (D/E: 1.54)"
@@ -3165,7 +3152,7 @@
       "ticker": "DXCO3",
       "composite_score": 37.15642857142858,
       "grade": "D",
-      "value_score": 43.57142857142857,
+      "value_score": 13.57142857142857,
       "quality_score": 30,
       "growth_score": 45,
       "is_value": false,
@@ -3173,33 +3160,49 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Trading below book value (P/B: 0.64)"
+        "Trading below book value (P/B: 0.60)"
       ],
       "weaknesses": [
-        "High P/E (3685.5)"
+        "High P/E (3475.5)"
+      ]
+    },
+    {
+      "ticker": "SIMH3",
+      "composite_score": 37.026428571428575,
+      "grade": "D",
+      "value_score": 8.57142857142857,
+      "quality_score": 35,
+      "growth_score": 80,
+      "is_value": false,
+      "is_quality": false,
+      "is_growth": true,
+      "is_undervalued": false,
+      "strengths": [],
+      "weaknesses": [
+        "High P/E (116.8)",
+        "Low ROE (0.9%)",
+        "High debt (D/E: 13.09)"
       ]
     },
     {
       "ticker": "VBBR3",
       "composite_score": 36.11642857142858,
       "grade": "D",
-      "value_score": 28.57142857142857,
+      "value_score": 13.57142857142857,
       "quality_score": 40,
       "growth_score": 60,
       "is_value": false,
       "is_quality": false,
       "is_growth": true,
       "is_undervalued": false,
-      "strengths": [
-        "High dividend yield (5.1%)"
-      ],
+      "strengths": [],
       "weaknesses": []
     },
     {
       "ticker": "TNLP3",
       "composite_score": 34.681428571428576,
       "grade": "F",
-      "value_score": 33.57142857142857,
+      "value_score": 3.5714285714285694,
       "quality_score": 25,
       "growth_score": 70,
       "is_value": false,
@@ -3217,28 +3220,27 @@
     },
     {
       "ticker": "FRIO3",
-      "composite_score": 31.62071428571429,
+      "composite_score": 32.425714285714285,
       "grade": "F",
-      "value_score": 14.285714285714285,
-      "quality_score": 40,
-      "growth_score": 60,
+      "value_score": 0,
+      "quality_score": 45,
+      "growth_score": 55,
       "is_value": false,
       "is_quality": false,
-      "is_growth": true,
+      "is_growth": false,
       "is_undervalued": false,
       "strengths": [],
       "weaknesses": [
-        "High P/E (45.0)",
-        "Low ROE (6.6%)",
-        "High debt (D/E: 2.26)"
+        "High P/E (28.9)",
+        "High debt (D/E: 2.06)"
       ]
     },
     {
       "ticker": "ORVR3",
-      "composite_score": 31.397995032855594,
+      "composite_score": 31.958947482169872,
       "grade": "F",
-      "value_score": 28.57142857142857,
-      "quality_score": 35,
+      "value_score": 0,
+      "quality_score": 40,
       "growth_score": 80,
       "is_value": false,
       "is_quality": false,
@@ -3246,15 +3248,15 @@
       "is_undervalued": false,
       "strengths": [],
       "weaknesses": [
-        "High P/E (214.9)",
-        "Low ROE (2.1%)"
+        "High P/E (109.6)",
+        "Low ROE (4.2%)"
       ]
     },
     {
       "ticker": "AMAR3",
       "composite_score": 30.32071428571429,
       "grade": "F",
-      "value_score": 24.285714285714285,
+      "value_score": 0,
       "quality_score": 35,
       "growth_score": 35,
       "is_value": false,
@@ -3263,7 +3265,7 @@
       "is_undervalued": false,
       "strengths": [],
       "weaknesses": [
-        "High P/E (28.1)",
+        "High P/E (28.4)",
         "Low ROE (5.4%)",
         "High debt (D/E: 2.90)"
       ]
@@ -3272,7 +3274,7 @@
       "ticker": "LCAM3",
       "composite_score": 30.08392724011323,
       "grade": "F",
-      "value_score": 42.857142857142854,
+      "value_score": 12.857142857142854,
       "quality_score": 85,
       "growth_score": 65,
       "is_value": false,
@@ -3290,7 +3292,7 @@
       "ticker": "CESP3",
       "composite_score": 29.48071428571429,
       "grade": "F",
-      "value_score": 14.285714285714285,
+      "value_score": 0,
       "quality_score": 55,
       "growth_score": 35,
       "is_value": false,
@@ -3307,7 +3309,7 @@
       "ticker": "CESP5",
       "composite_score": 29.48071428571429,
       "grade": "F",
-      "value_score": 14.285714285714285,
+      "value_score": 0,
       "quality_score": 55,
       "growth_score": 35,
       "is_value": false,
@@ -3324,7 +3326,7 @@
       "ticker": "CESP6",
       "composite_score": 29.48071428571429,
       "grade": "F",
-      "value_score": 14.285714285714285,
+      "value_score": 0,
       "quality_score": 55,
       "growth_score": 35,
       "is_value": false,
@@ -3349,7 +3351,7 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-179.9)"
+        "Low P/E (-179.2)"
       ],
       "weaknesses": [
         "Low ROE (-13.3%)"
@@ -3367,8 +3369,8 @@
       "is_growth": false,
       "is_undervalued": false,
       "strengths": [
-        "Low P/E (-7.8)",
-        "Trading below book value (P/B: -5.85)",
+        "Low P/E (-6.0)",
+        "Trading below book value (P/B: -4.54)",
         "High ROE (75.4%)"
       ],
       "weaknesses": []
@@ -3394,9 +3396,9 @@
     },
     {
       "ticker": "CBAV3",
-      "composite_score": 20.042804525124968,
+      "composite_score": 20.057670005271483,
       "grade": "F",
-      "value_score": 14.285714285714285,
+      "value_score": 0,
       "quality_score": 25,
       "growth_score": 55,
       "is_value": false,
@@ -3405,7 +3407,7 @@
       "is_undervalued": false,
       "strengths": [],
       "weaknesses": [
-        "High P/E (56.0)",
+        "High P/E (55.8)",
         "Low ROE (2.8%)"
       ]
     }

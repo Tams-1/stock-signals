@@ -87,6 +87,7 @@ class SimpleProductionRunner:
         # BrAPI client for real-time prices (replaces yfinance stale prices)
         self.brapi_client = BrAPIClient()
         self._brapi_prices: Dict[str, float] = {}
+        self._price_snapshots: Dict[str, Dict] = {}
         
         if use_news:
             # Check if model already cached
@@ -99,7 +100,7 @@ class SimpleProductionRunner:
         
         print(f"✅ Sistema inicializado (news={'ON' if use_news else 'OFF'}, "
               f"fundamentals={'ON' if use_fundamentals else 'OFF'}, "
-              f"price_source=BrAPI, workers={self.n_workers})")
+              f"price_source=BrAPI->Yahoo fallback, workers={self.n_workers})")
 
     @staticmethod
     def _normalize_data(data: pd.DataFrame) -> pd.DataFrame:
@@ -224,6 +225,101 @@ class SimpleProductionRunner:
 
         top_signals.sort(key=lambda x: abs(x['strength']), reverse=True)
         return top_signals[:5]
+
+    @staticmethod
+    def _latest_close_from_data(data: pd.DataFrame) -> float:
+        price_val = data['Close'].iloc[-1]
+        return float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+
+    @staticmethod
+    def _format_index_timestamp(index_value) -> Optional[str]:
+        if hasattr(index_value, 'isoformat'):
+            return index_value.isoformat()
+        return str(index_value) if index_value is not None else None
+
+    def _prefetch_spot_prices(self, tickers: List[str]) -> None:
+        clean_tickers = [t.replace('.SA', '') for t in tickers]
+
+        if self.brapi_client.is_quota_exceeded():
+            print(f"💰 BrAPI quota exhausted - fetching Yahoo Finance spot fallback ({len(clean_tickers)} tickers)...")
+        else:
+            print(f"💰 Fetching real-time spot prices ({len(clean_tickers)} tickers)...")
+
+        self._brapi_prices = self.brapi_client.get_batch_prices(clean_tickers)
+        self._price_snapshots = {}
+
+        # When quota exceeded, accept stale quotes (previous close)
+        allow_stale = self.brapi_client.is_quota_exceeded()
+        for ticker in clean_tickers:
+            snapshot = self.brapi_client.get_price_snapshot(ticker, allow_stale=allow_stale)
+            if snapshot is not None:
+                self._price_snapshots[ticker] = snapshot
+
+        brapi_count = sum(1 for snapshot in self._price_snapshots.values() if snapshot.get('source') == 'brapi')
+        yahoo_count = sum(
+            1 for snapshot in self._price_snapshots.values()
+            if str(snapshot.get('source', '')).startswith('yfinance')
+        )
+        stale_count = sum(1 for snapshot in self._price_snapshots.values() if snapshot.get('is_stale', False))
+        missing_count = len(clean_tickers) - len(self._price_snapshots)
+
+        if self.brapi_client.is_quota_exceeded():
+            print("   ⚠️ BrAPI quota exhausted; Yahoo Finance fallback active")
+
+        print(
+            f"   ✅ Spot prices: {len(self._price_snapshots)}/{len(clean_tickers)} "
+            f"(BrAPI={brapi_count}, Yahoo={yahoo_count}, stale={stale_count}, missing={missing_count})\n"
+        )
+
+    def _resolve_current_price(self, ticker: str, data: pd.DataFrame) -> Tuple[Optional[float], str, Optional[str], bool]:
+        """
+        Resolve current price from BrAPI or fallback sources.
+        
+        Returns:
+            Tuple of (price, source, quote_ts, is_stale)
+            is_stale is True when using previous day's close during market hours
+        """
+        clean_ticker = ticker.replace('.SA', '')
+        
+        # First check if we have a stale cached price from prefetch
+        if clean_ticker in self._price_snapshots:
+            snapshot = self._price_snapshots[clean_ticker]
+            is_stale = snapshot.get('is_stale', False)
+            return (
+                float(snapshot['price']),
+                str(snapshot.get('source', 'unknown')),
+                snapshot.get('quote_ts') or snapshot.get('updated'),
+                is_stale,
+            )
+        
+        # Otherwise fetch fresh
+        snapshot = self.brapi_client.get_price_snapshot(clean_ticker)
+
+        if snapshot is None:
+            live_price = self.brapi_client.get_spot_price(clean_ticker)
+            if live_price is not None:
+                snapshot = self.brapi_client.get_price_snapshot(clean_ticker)
+                self._brapi_prices[clean_ticker] = live_price
+                if snapshot is not None:
+                    self._price_snapshots[clean_ticker] = snapshot
+
+        if snapshot is not None:
+            is_stale = snapshot.get('is_stale', False)
+            return (
+                float(snapshot['price']),
+                str(snapshot.get('source', 'unknown')),
+                snapshot.get('quote_ts') or snapshot.get('updated'),
+                is_stale,
+            )
+
+        if self.brapi_client.is_market_hours():
+            print(f"     [PRICE] No spot quote for {ticker}; skipping during market hours")
+            return None, 'missing', None, False
+
+        latest_close = self._latest_close_from_data(data)
+        close_ts = self._format_index_timestamp(data.index[-1] if len(data.index) else None)
+        print(f"     [PRICE] Using latest daily close for {ticker} outside market hours")
+        return latest_close, 'yfinance_close', close_ts, False
 
     def _build_trade_levels(
         self,
@@ -435,16 +531,9 @@ class SimpleProductionRunner:
             if len(data) < 50:
                 return None
             
-            # Current price: use pre-fetched BrAPI prices or fall back to yfinance close
-            clean_ticker = ticker.replace('.SA', '')
-            brapi_price = self._brapi_prices.get(clean_ticker)
-            
-            if brapi_price is not None:
-                current_price = brapi_price
-            else:
-                # Fall back to yfinance close (no additional API calls)
-                price_val = data['Close'].iloc[-1]
-                current_price = float(price_val.item()) if hasattr(price_val, 'item') else float(price_val)
+            current_price, price_source, price_timestamp, is_price_stale = self._resolve_current_price(ticker, data)
+            if current_price is None:
+                return None
 
             liquidity_profile = self._calculate_liquidity_profile(data)
             if liquidity_profile['status'] == 'skip':
@@ -709,6 +798,9 @@ class SimpleProductionRunner:
             return {
                 "ticker": ticker,
                 "price": current_price,
+                "price_source": price_source,
+                "price_timestamp": price_timestamp,
+                "is_price_stale": is_price_stale,  # True when using previous close during market hours
                 "trend": trend,
                 "confidence": confidence,  # Add confidence from trend detector
                 "fusion_confidence": fusion_confidence,
@@ -787,12 +879,7 @@ class SimpleProductionRunner:
         print(f"📊 Analyzing {len(tickers)} tickers (IBOV + SMLL)")
         print(f"{'='*70}\n")
         
-        # Pre-fetch all real-time prices from BrAPI in batches
-        clean_tickers = [t.replace('.SA', '') for t in tickers]
-        print(f"💰 Fetching real-time prices from BrAPI ({len(clean_tickers)} tickers)...")
-        self._brapi_prices = self.brapi_client.get_prices(clean_tickers)
-        cached_count = sum(1 for t in clean_tickers if t in self._brapi_prices)
-        print(f"   ✅ Got {cached_count}/{len(clean_tickers)} prices from BrAPI\n")
+        self._prefetch_spot_prices(tickers)
         
         results = []
         

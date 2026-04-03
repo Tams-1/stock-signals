@@ -240,7 +240,11 @@ def generate_trading_alerts(results: List[Dict], top_n: int = 5) -> str:
         position_pct = r.get('position_size', 0.0) * 100
 
         lines.append(f"{num_emoji}  {ticker} - {signal_label} {_signal_emoji(r['signal'])}")
-        lines.append(f"    Price: R${r['price']:.2f}")
+        # Show price with stale indicator if needed
+        price_str = f"R${r['price']:.2f}"
+        if r.get('is_price_stale'):
+            price_str += " ⚠️ PREV CLOSE"
+        lines.append(f"    Price: {price_str}")
         lines.append("    └─ Drivers:")
         lines.append(f"       • Trend: {trend} ({confidence:.0%} confidence)")
         lines.append(f"       • Fusion: {_describe_fusion(fused_score)} ({fused_score:+.2f})")
