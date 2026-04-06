@@ -178,14 +178,14 @@ Shared stages: technical fusion → fundamental integration → (optional) news 
 
 ## Signal Types
 
-| Signal | Composite Score | Condition |
-|--------|-----------------|-----------|
-| STRONG_BUY | ≥ 75 | Quality fundamentals + strong technicals |
-| BUY | ≥ 60 | Acceptable fundamentals |
-| HOLD | 40-60 | Mixed or weak signals |
-| SELL | < 40 | Poor fundamentals + weak technicals |
-| STRONG_SELL | < 25 | Very poor overall |
-| **AVOID** | Any | Fundamentals < 40 + Technicals < 35 (signal blocked) |
+| Signal | Composite score (0–100) | Notes |
+|--------|-------------------------|--------|
+| STRONG_BUY | ≥ 75 | After `FundamentalIntegrator` blending (see `src/fundamentals/integration.py`); `run_production` / `production_brapi` use the same numeric cutoffs for a simpler 50/50 tech/fund blend. |
+| BUY | 60–74 | |
+| HOLD | 40–59 | |
+| SELL | 25–39 | |
+| STRONG_SELL | < 25 | |
+| **Avoid flag** | (not a signal label) | When **technical** score &lt; 35 **and** **fundamental** score &lt; 40, `is_avoid` is set. In `SimpleProductionRunner`, a would-be **BUY** / **STRONG_BUY** is forced to **HOLD** with **zero** position size. |
 
 ---
 
@@ -273,8 +273,8 @@ export BRAPI_API_KEY="your_brapi_key"
 # News pipeline (only if you enable news — e.g. use_news=True)
 export NEWSDATA_API_KEY="your_newsdata_io_key"
 
-# Google Sheets sync (if using scripts/sheets_sync.py)
-export GOOGLE_CREDENTIALS_PATH="/path/to/credentials.json"
+# Google Sheets: OAuth token + client secret JSON must match what scripts/sheets_sync.py
+# expects (default paths under $HOME; see that file before scheduling).
 ```
 
 Set keys in the environment or in a repo-root `.env` file (loaded by `python-dotenv` where supported).
@@ -290,6 +290,8 @@ python scripts/quick_market_monitor.py
 Uses `data/top_50_tickers.json`, fundamentals on, news off. Wire this to cron or OpenClaw on **Mon–Fri** at **09:00, 14:00, 16:00** `America/Sao_Paulo` (or your chosen slots).
 
 ### Run full-universe analysis
+
+Requires **`BRAPI_API_KEY`** in the environment (the runner initializes `BrAPIClient` from `src.data.brapi_client`).
 
 ```python
 from run_production import ProductionRunner
@@ -317,18 +319,15 @@ results = runner.run()
 
 ### Sync to Google Sheets
 
+`scripts/sheets_sync.py` appends rows via `append_results()` (there is no `SheetsSync` class). It expects OAuth token + client credentials on disk (see paths inside that script, e.g. `~/sheets_token.json` or `~/gmail_token.json` and `~/.openclaw/credentials/gmail_credentials.json`). Sheet ID can be stored in `data/sheets_id.txt` after first run.
+
 ```python
-from scripts.sheets_sync import SheetsSync
+from scripts.sheets_sync import append_results
 
-sync = SheetsSync(sheet_id="your_sheet_id")
-sync.append_results(results)
+append_results(results)  # or append_results(results, dry_run=True)
 
-# 52 columns per stock:
-# - Ticker, Price, Date
-# - Signal, Composite Score
-# - Tech Score, Fund Score
-# - All 20+ fundamental metrics
-# - Position size, Risk level
+# Row layout: 52 columns — see HEADERS in scripts/sheets_sync.py (timestamp, ticker,
+# signal, technicals, feature flags, fundamentus-style metrics, flags, position %, notes).
 ```
 
 ### Generate Trading Alerts
@@ -357,15 +356,15 @@ Regime-specific `buy_confidence`, `sell_confidence`, `min_score`, and `stop_loss
 
 Lists are verified against B3 index composition when regenerated; delisted names are removed during cleanup.
 
-### BrAPI Config (data/brapi_config.yaml)
+### BrAPI config (`data/brapi_config.yaml`)
+
+Used by **`production_brapi.py`** (and similar loaders) when `BRAPI_API_KEY` is not set: the file is scanned for a line `brapi_api_key: <your_key>`. Batch size and HTTP retry behavior are configured in code (`BrAPIClient` / runners), not via this minimal YAML.
 
 ```yaml
-api_key: "your_brapi_key"
-base_url: "https://brapi.dev/api"
-batch_size: 5
-retry_attempts: 3
-retry_delay: 0.5
+brapi_api_key: "your_brapi_key"
 ```
+
+Prefer environment variables or `.env` for secrets so the key is not committed.
 
 ---
 
@@ -467,19 +466,22 @@ Generated: 10:15:00
 
 ---
 
-## Google Sheets Columns (52 total)
+## Google Sheets columns (52 total)
+
+Aligned with `HEADERS` in `scripts/sheets_sync.py` (not MA columns or a separate “risk level” column).
 
 | Category | Columns |
 |----------|---------|
-| **Basic** | Date, Ticker, Price, Signal, Composite Score |
-| **Technical** | Tech Score, Trend, Confidence, MA50, MA200 |
-| **Fundamental Scores** | Fund Score, Graham Score, Lynch Score, Greenblatt Score |
-| **Valuation** | P/E, P/B, P/S, P/FCF, EV/EBITDA, PEG |
-| **Profitability** | ROE, ROIC, Net Margin, EBIT Margin, Gross Margin |
-| **Financial Health** | Debt/Equity, Current Ratio, Asset Turnover |
-| **Dividends** | Div Yield, Payout Ratio |
-| **Growth** | Revenue Growth, Earnings Growth, Book Value Growth |
-| **Position** | Position Size, Risk Level, Entry, Stop, Target |
+| **Basic** | Date, Time, Ticker, Company Name, Sector, Subsector, Price, Signal, Composite Score |
+| **Technical** | Technical Score, Trend, Confidence, Volume Momentum, Unusual Volume, Volatility Regime, News Sentiment |
+| **Fundamental scores** | Fundamental Grade, Value Score, Quality Score, Growth Score |
+| **Valuation** | P/E, P/B, P/S, P/EBIT, EV/EBITDA, EV/EBIT |
+| **Profitability** | ROE, ROIC, Gross Margin, EBIT Margin, Net Margin |
+| **Financial health** | Debt/Equity, Current Ratio, Div Yield % |
+| **Growth / per-share** | Revenue Growth 5Y, EPS, BVPS |
+| **Scale (millions)** | Market Cap, Total Assets, Total Equity, Net Debt, EBIT, Net Income, Revenue |
+| **Flags** | Is Value Pick, Is Quality Pick, Is Growth Pick, Is Avoid |
+| **Position / notes** | Position Size, Position %, Strengths, Weaknesses |
 
 ---
 
@@ -559,7 +561,7 @@ translated = translator.translate("Petrobras lucro recorde")
 
 ## License
 
-MIT License - See LICENSE file for details.
+MIT License. This checkout may not include a separate `LICENSE` file; treat the above as the stated intent for the project.
 
 ---
 
