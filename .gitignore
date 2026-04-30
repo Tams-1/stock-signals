@@ -54,6 +54,7 @@ monitor_alerts.txt
 # Data caches (regenerated at runtime)
 src/data/cache/
 data/fundamentals/*.json
+data/brapi_config.yaml
 data/logs/
 live_alerts.json
 live_alerts.txt
