@@ -40,6 +40,47 @@ from src.strategy.regime_detection import get_regime_detector, get_adaptive_para
 # US Market index for regime detection
 US_MARKET_INDEX = "^GSPC"  # S&P 500
 
+
+# -- US-specific thresholds --
+def _load_us_thresholds() -> Dict:
+    """Load US market thresholds from config."""
+    config_path = Path(__file__).parent / 'config' / 'us_thresholds.json'
+    defaults = {
+        'buy_confidence': 0.45, 'sell_confidence': 0.40,
+        'min_score': 0.25, 'stop_loss': 0.08,
+        'max_position_pct': 0.50, 'min_position_pct': 0.05,
+        'default_position_pct': 0.15, 'kelly_fraction': 0.40,
+        'max_portfolio_exposure': 0.75,
+        'min_skip_turnover_usd': 10_000_000,
+        'min_downgrade_turnover_usd': 50_000_000,
+    }
+    if config_path.exists():
+        try:
+            with open(config_path, 'r') as f:
+                data = json.load(f)
+            th = data.get('thresholds', {})
+            ps = data.get('position_sizing', {})
+            liq = data.get('liquidity', {})
+            defaults.update({
+                'buy_confidence': th.get('default', {}).get('buy_confidence', defaults['buy_confidence']),
+                'sell_confidence': th.get('default', {}).get('sell_confidence', defaults['sell_confidence']),
+                'min_score': th.get('default', {}).get('min_score', defaults['min_score']),
+                'stop_loss': th.get('default', {}).get('stop_loss', defaults['stop_loss']),
+                'max_position_pct': ps.get('max_position_pct', defaults['max_position_pct']),
+                'min_position_pct': ps.get('min_position_pct', defaults['min_position_pct']),
+                'default_position_pct': ps.get('default_position_pct', defaults['default_position_pct']),
+                'kelly_fraction': ps.get('kelly_fraction', defaults['kelly_fraction']),
+                'max_portfolio_exposure': ps.get('max_portfolio_exposure', defaults['max_portfolio_exposure']),
+                'min_skip_turnover_usd': liq.get('min_skip_turnover_usd', defaults['min_skip_turnover_usd']),
+                'min_downgrade_turnover_usd': liq.get('min_downgrade_turnover_usd', defaults['min_downgrade_turnover_usd']),
+            })
+        except Exception as e:
+            print(f"⚠️ Error loading US thresholds: {e}")
+    return defaults
+
+
+_US_THRESHOLDS = _load_us_thresholds()
+
 # Default US ticker universe (S&P 500 top liquid names)
 SP500_TOP_TICKERS = [
     "AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "BRK-B", "LLY", "AVGO", "TSLA",
@@ -87,8 +128,8 @@ class USProductionRunner:
 
     # Class-level model cache
     _model_cache = {}
-    MIN_SKIP_TURNOVER_USD = 10_000_000   # Skip if avg daily turnover < $10M
-    MIN_DOWNGRADE_TURNOVER_USD = 50_000_000  # Downgrade if < $50M
+    MIN_SKIP_TURNOVER_USD = _US_THRESHOLDS.get('min_skip_turnover_usd', 10_000_000)
+    MIN_DOWNGRADE_TURNOVER_USD = _US_THRESHOLDS.get('min_downgrade_turnover_usd', 50_000_000)
 
     def __init__(self, use_news: bool = True, use_fundamentals: bool = True,
                  n_workers: int = None, ticker_list: List[str] = None):
@@ -126,6 +167,9 @@ class USProductionRunner:
         print(f"✅ US System initialized (news={'ON' if use_news else 'OFF'}, "
               f"fundamentals={'ON' if use_fundamentals else 'OFF'}, "
               f"universe={len(self.tickers)} tickers, workers={self.n_workers})")
+        print(f"   Thresholds: buy={_US_THRESHOLDS['buy_confidence']}, "
+              f"sell={_US_THRESHOLDS['sell_confidence']}, "
+              f"min_score={_US_THRESHOLDS['min_score']}")
 
     @staticmethod
     def _normalize_data(data: pd.DataFrame) -> pd.DataFrame:
@@ -350,29 +394,31 @@ class USProductionRunner:
                 except Exception as e:
                     print(f"[FUND ERR: {e}]", end=" ", flush=True)
 
-            # Composite score
+            # Composite score (60/40 tech/fund for US since fundamentals are live)
             fund_comp = fund_score.get('composite_score', 50) if fund_score else 50
-            composite = (tech_score * 0.5) + (fund_comp * 0.5)
+            tech_weight = 0.50
+            fund_weight = 0.50
+            composite = (tech_score * tech_weight) + (fund_comp * fund_weight)
 
-            # Signal
-            if composite >= 75:
+            # US-calibrated signal thresholds (from composite score 0-100)
+            if composite >= 70:
                 signal = "STRONG_BUY"
-            elif composite >= 60:
+            elif composite >= 55:
                 signal = "BUY"
-            elif composite >= 40:
+            elif composite >= 35:
                 signal = "HOLD"
-            elif composite >= 30:
+            elif composite >= 20:
                 signal = "SELL"
             else:
                 signal = "STRONG_SELL"
 
-            # Position sizing
-            position_size = 0.20
+            # Position sizing (US-calibrated)
+            position_size = _US_THRESHOLDS.get('default_position_pct', 0.15)
             if fund_score:
                 if fund_score.get('is_quality_pick'):
-                    position_size *= 1.2
+                    position_size = min(position_size * 1.3, _US_THRESHOLDS.get('max_position_pct', 0.50))
                 if fund_score.get('is_value_pick'):
-                    position_size *= 1.15
+                    position_size = min(position_size * 1.2, _US_THRESHOLDS.get('max_position_pct', 0.50))
                 if fund_comp < 40:
                     position_size *= 0.5
 
