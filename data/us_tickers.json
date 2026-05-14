@@ -1,0 +1,24 @@
+{
+  "description": "US stock tickers for trading analysis (S&P 500 + NASDAQ 100)",
+  "tickers": [
+    "AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "BRK-B", "LLY", "AVGO", "TSLA",
+    "JPM", "V", "XOM", "UNH", "MA", "PG", "COST", "JNJ", "HD", "MRK",
+    "ABBV", "CVX", "CRM", "BAC", "WMT", "NFLX", "AMD", "KO", "PEP", "ADBE",
+    "TMO", "DIS", "WFC", "CSCO", "MCD", "ABT", "ACN", "DHR", "VZ", "LIN",
+    "CMCSA", "TXN", "NEE", "PM", "IBM", "QCOM", "INTU", "AMGN", "UBER", "GE",
+    "GS", "CAT", "RTX", "SPGI", "LOW", "MS", "PFE", "BLK", "AXP", "C",
+    "SYK", "SCHW", "BKNG", "DE", "UNP", "PLD", "AMAT", "GILD", "ADP", "TMUS",
+    "MDT", "ISRG", "TJX", "MU", "LRCX", "ELV", "CI", "REGN", "VRTX", "HCA",
+    "MMC", "CB", "PGR", "ICE", "CME", "ZTS", "EOG", "COP", "SLB", "NSC",
+    "KLAC", "ITW", "BDX", "APD", "TGT", "AON", "MCO", "SHW", "ECL",
+    "MELI", "CRWD", "PANW", "SNPS", "CDNS", "ADSK", "WDAY", "DDOG", "TEAM",
+    "ZS", "NET", "MDB", "TTD", "CPRT", "FAST", "PAYX", "CTAS", "BKR", "ODFL",
+    "ROST", "MAR", "HLT", "LULU", "SBUX", "MNST", "KDP", "CHTR", "ANSS",
+    "IDXX", "DXCM", "ILMN", "ALGN", "VRSK", "VRSN", "FOXA", "FOX",
+    "AEP", "PCG", "EXC", "XEL", "ED", "EIX", "WBD"
+  ],
+  "indices": {
+    "SP500_TOP": ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "BRK-B", "LLY", "AVGO", "TSLA"],
+    "NASDAQ_100": ["MELI", "CRWD", "PANW", "SNPS", "CDNS", "ADSK", "WDAY", "DDOG", "TEAM"]
+  }
+}
